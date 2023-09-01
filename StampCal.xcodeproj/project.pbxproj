@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C7234E52A9B433A0065512A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E42A9B433A0065512A /* MainView.swift */; };
+		1C7234E72A9B518C0065512A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C7234E62A9B518C0065512A /* Localizable.strings */; };
+		1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E82A9B73A00065512A /* MonthCalendarView.swift */; };
+		1C7234EB2A9B73BA0065512A /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234EA2A9B73BA0065512A /* WeekCalendarView.swift */; };
+		1C7234ED2A9B73C90065512A /* DayCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234EC2A9B73C90065512A /* DayCalendarView.swift */; };
+		1C7234EF2A9B79380065512A /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234EE2A9B79380065512A /* Calendar+Extensions.swift */; };
+		1C7234F12A9B8EB90065512A /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234F02A9B8EB90065512A /* Day.swift */; };
+		1C7234F32A9B8ED20065512A /* MonthCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234F22A9B8ED20065512A /* MonthCalendarViewModel.swift */; };
+		1C7234F52A9B9A010065512A /* WeekCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234F42A9B9A010065512A /* WeekCalendarViewModel.swift */; };
+		1C7234F72A9CE35B0065512A /* PiyoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234F62A9CE35B0065512A /* PiyoView.swift */; };
+		1C7234F92A9CE94E0065512A /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234F82A9CE94E0065512A /* View+Extensions.swift */; };
+		1C7234FB2A9CEAF50065512A /* SCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234FA2A9CEAF50065512A /* SCColor.swift */; };
+		1C7234FD2A9CEE840065512A /* DetectOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234FC2A9CEE840065512A /* DetectOrientation.swift */; };
+		1CF3D60C2A90A4BE005B6E71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF3D60B2A90A4BE005B6E71 /* ContentView.swift */; };
+		1CF3D60E2A90A4BF005B6E71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CF3D60D2A90A4BF005B6E71 /* Assets.xcassets */; };
+		1CF3D6112A90A4BF005B6E71 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CF3D6102A90A4BF005B6E71 /* Preview Assets.xcassets */; };
+		1CF3D6132A90A4BF005B6E71 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF3D6122A90A4BF005B6E71 /* Persistence.swift */; };
+		1CF3D6162A90A4BF005B6E71 /* StampCal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CF3D6142A90A4BF005B6E71 /* StampCal.xcdatamodeld */; };
+		1CF3D61E2A9110E6005B6E71 /* StampCalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF3D61D2A9110E6005B6E71 /* StampCalApp.swift */; };
+		1CF3D6282A911A6B005B6E71 /* StampCalAppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF3D6272A911A6B005B6E71 /* StampCalAppModel.swift */; };
+		1CF3D62C2A911B18005B6E71 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF3D62B2A911B18005B6E71 /* Utils.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1C7234E42A9B433A0065512A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		1C7234E62A9B518C0065512A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		1C7234E82A9B73A00065512A /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
+		1C7234EA2A9B73BA0065512A /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
+		1C7234EC2A9B73C90065512A /* DayCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarView.swift; sourceTree = "<group>"; };
+		1C7234EE2A9B79380065512A /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
+		1C7234F02A9B8EB90065512A /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		1C7234F22A9B8ED20065512A /* MonthCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarViewModel.swift; sourceTree = "<group>"; };
+		1C7234F42A9B9A010065512A /* WeekCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarViewModel.swift; sourceTree = "<group>"; };
+		1C7234F62A9CE35B0065512A /* PiyoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiyoView.swift; sourceTree = "<group>"; };
+		1C7234F82A9CE94E0065512A /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		1C7234FA2A9CEAF50065512A /* SCColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCColor.swift; sourceTree = "<group>"; };
+		1C7234FC2A9CEE840065512A /* DetectOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectOrientation.swift; sourceTree = "<group>"; };
+		1CF3D6062A90A4BE005B6E71 /* StampCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StampCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CF3D60B2A90A4BE005B6E71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1CF3D60D2A90A4BF005B6E71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1CF3D6102A90A4BF005B6E71 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1CF3D6122A90A4BF005B6E71 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		1CF3D6152A90A4BF005B6E71 /* StampCal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StampCal.xcdatamodel; sourceTree = "<group>"; };
+		1CF3D6172A90A4BF005B6E71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CF3D61D2A9110E6005B6E71 /* StampCalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampCalApp.swift; sourceTree = "<group>"; };
+		1CF3D6272A911A6B005B6E71 /* StampCalAppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampCalAppModel.swift; sourceTree = "<group>"; };
+		1CF3D62B2A911B18005B6E71 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1CF3D6032A90A4BE005B6E71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1CF3D5FD2A90A4BD005B6E71 = {
+			isa = PBXGroup;
+			children = (
+				1CF3D6082A90A4BE005B6E71 /* StampCal */,
+				1CF3D6072A90A4BE005B6E71 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1CF3D6072A90A4BE005B6E71 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1CF3D6062A90A4BE005B6E71 /* StampCal.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1CF3D6082A90A4BE005B6E71 /* StampCal */ = {
+			isa = PBXGroup;
+			children = (
+				1CF3D6172A90A4BF005B6E71 /* Info.plist */,
+				1C7234E62A9B518C0065512A /* Localizable.strings */,
+				1CF3D60D2A90A4BF005B6E71 /* Assets.xcassets */,
+				1CF3D6142A90A4BF005B6E71 /* StampCal.xcdatamodeld */,
+				1CF3D61F2A91192E005B6E71 /* Data */,
+				1CF3D6202A911935005B6E71 /* Domain */,
+				1CF3D6212A91193B005B6E71 /* Presentation */,
+				1CF3D6292A911AEA005B6E71 /* Helper */,
+				1CF3D60F2A90A4BF005B6E71 /* Preview Content */,
+			);
+			path = StampCal;
+			sourceTree = "<group>";
+		};
+		1CF3D60F2A90A4BF005B6E71 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1CF3D6102A90A4BF005B6E71 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1CF3D61F2A91192E005B6E71 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1CF3D6222A91195B005B6E71 /* Entity */,
+				1CF3D6232A911961005B6E71 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1CF3D6202A911935005B6E71 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				1CF3D6272A911A6B005B6E71 /* StampCalAppModel.swift */,
+				1CF3D6242A91196C005B6E71 /* Model */,
+				1CF3D6252A911972005B6E71 /* ViewModel */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		1CF3D6212A91193B005B6E71 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				1CF3D61D2A9110E6005B6E71 /* StampCalApp.swift */,
+				1CF3D6262A911990005B6E71 /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		1CF3D6222A91195B005B6E71 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				1C7234F02A9B8EB90065512A /* Day.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		1CF3D6232A911961005B6E71 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		1CF3D6242A91196C005B6E71 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1CF3D6122A90A4BF005B6E71 /* Persistence.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1CF3D6252A911972005B6E71 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1C7234F42A9B9A010065512A /* WeekCalendarViewModel.swift */,
+				1C7234F22A9B8ED20065512A /* MonthCalendarViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1CF3D6262A911990005B6E71 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1CF3D60B2A90A4BE005B6E71 /* ContentView.swift */,
+				1C7234E42A9B433A0065512A /* MainView.swift */,
+				1C7234EC2A9B73C90065512A /* DayCalendarView.swift */,
+				1C7234EA2A9B73BA0065512A /* WeekCalendarView.swift */,
+				1C7234E82A9B73A00065512A /* MonthCalendarView.swift */,
+				1C7234F62A9CE35B0065512A /* PiyoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1CF3D6292A911AEA005B6E71 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1CF3D62B2A911B18005B6E71 /* Utils.swift */,
+				1C7234EE2A9B79380065512A /* Calendar+Extensions.swift */,
+				1C7234F82A9CE94E0065512A /* View+Extensions.swift */,
+				1C7234FA2A9CEAF50065512A /* SCColor.swift */,
+				1C7234FC2A9CEE840065512A /* DetectOrientation.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1CF3D6052A90A4BE005B6E71 /* StampCal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CF3D61A2A90A4BF005B6E71 /* Build configuration list for PBXNativeTarget "StampCal" */;
+			buildPhases = (
+				1CF3D6022A90A4BE005B6E71 /* Sources */,
+				1CF3D6032A90A4BE005B6E71 /* Frameworks */,
+				1CF3D6042A90A4BE005B6E71 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StampCal;
+			productName = StampCal;
+			productReference = 1CF3D6062A90A4BE005B6E71 /* StampCal.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1CF3D5FE2A90A4BD005B6E71 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				ORGANIZATIONNAME = "Studio Kyome";
+				TargetAttributes = {
+					1CF3D6052A90A4BE005B6E71 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 1CF3D6012A90A4BD005B6E71 /* Build configuration list for PBXProject "StampCal" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1CF3D5FD2A90A4BD005B6E71;
+			productRefGroup = 1CF3D6072A90A4BE005B6E71 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1CF3D6052A90A4BE005B6E71 /* StampCal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1CF3D6042A90A4BE005B6E71 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CF3D6112A90A4BF005B6E71 /* Preview Assets.xcassets in Resources */,
+				1C7234E72A9B518C0065512A /* Localizable.strings in Resources */,
+				1CF3D60E2A90A4BF005B6E71 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1CF3D6022A90A4BE005B6E71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C7234F72A9CE35B0065512A /* PiyoView.swift in Sources */,
+				1CF3D6132A90A4BF005B6E71 /* Persistence.swift in Sources */,
+				1C7234F32A9B8ED20065512A /* MonthCalendarViewModel.swift in Sources */,
+				1C7234F52A9B9A010065512A /* WeekCalendarViewModel.swift in Sources */,
+				1C7234FB2A9CEAF50065512A /* SCColor.swift in Sources */,
+				1C7234E52A9B433A0065512A /* MainView.swift in Sources */,
+				1C7234F12A9B8EB90065512A /* Day.swift in Sources */,
+				1C7234F92A9CE94E0065512A /* View+Extensions.swift in Sources */,
+				1CF3D60C2A90A4BE005B6E71 /* ContentView.swift in Sources */,
+				1CF3D6282A911A6B005B6E71 /* StampCalAppModel.swift in Sources */,
+				1CF3D61E2A9110E6005B6E71 /* StampCalApp.swift in Sources */,
+				1C7234FD2A9CEE840065512A /* DetectOrientation.swift in Sources */,
+				1C7234EB2A9B73BA0065512A /* WeekCalendarView.swift in Sources */,
+				1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */,
+				1C7234ED2A9B73C90065512A /* DayCalendarView.swift in Sources */,
+				1CF3D6162A90A4BF005B6E71 /* StampCal.xcdatamodeld in Sources */,
+				1CF3D62C2A911B18005B6E71 /* Utils.swift in Sources */,
+				1C7234EF2A9B79380065512A /* Calendar+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1CF3D6182A90A4BF005B6E71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1CF3D6192A90A4BF005B6E71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1CF3D61B2A90A4BF005B6E71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"StampCal/Preview Content\"";
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.StampCal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1CF3D61C2A90A4BF005B6E71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"StampCal/Preview Content\"";
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.StampCal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1CF3D6012A90A4BD005B6E71 /* Build configuration list for PBXProject "StampCal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CF3D6182A90A4BF005B6E71 /* Debug */,
+				1CF3D6192A90A4BF005B6E71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1CF3D61A2A90A4BF005B6E71 /* Build configuration list for PBXNativeTarget "StampCal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CF3D61B2A90A4BF005B6E71 /* Debug */,
+				1CF3D61C2A90A4BF005B6E71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1CF3D6142A90A4BF005B6E71 /* StampCal.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1CF3D6152A90A4BF005B6E71 /* StampCal.xcdatamodel */,
+			);
+			currentVersion = 1CF3D6152A90A4BF005B6E71 /* StampCal.xcdatamodel */;
+			path = StampCal.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1CF3D5FE2A90A4BD005B6E71 /* Project object */;
+}
