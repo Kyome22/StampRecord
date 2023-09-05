@@ -38,6 +38,11 @@ extension Calendar {
 
     func isEqual(a: Date?, b: Date) -> Bool {
         guard let a else { return false }
-        return self.isDate(a, inSameDayAs: b)
+        return isDate(a, inSameDayAs: b)
+    }
+
+    func dayText(of date: Date?) -> String {
+        guard let date else { return "?" }
+        return component(.day, from: date).description
     }
 }

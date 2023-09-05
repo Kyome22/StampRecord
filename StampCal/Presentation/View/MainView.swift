@@ -27,7 +27,7 @@ struct MainView: View {
                 .tabItem {
                     Label("month", systemImage: "calendar")
                 }
-            PiyoView()
+            Text("Hello")
                 .tabItem {
                     Label("settings", systemImage: "gearshape")
                 }

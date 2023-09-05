@@ -39,7 +39,7 @@ struct MonthCalendarView: View {
             }
             LazyVGrid(columns: viewModel.columns, spacing: 20) {
                 ForEach(viewModel.days) { day in
-                    Text(viewModel.dayText(of: day.date))
+                    Text(day.text)
                         .foregroundColor(day.isToday ? .red : (day.inMonth ? .primary : .secondary))
                         .frame(maxHeight: .infinity)
                 }

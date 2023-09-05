@@ -14,6 +14,7 @@ struct StampCalApp: App {
 
     var body: some Scene {
         WindowGroup {
+//            InfinitePagingView()
             MainView()
 //            ContentView()
 //                .environment(\.managedObjectContext, appModel.persistenceController.container.viewContext)

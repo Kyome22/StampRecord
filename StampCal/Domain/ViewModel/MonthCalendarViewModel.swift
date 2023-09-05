@@ -36,7 +36,8 @@ final class MonthCalendarViewModel: ObservableObject {
                 let date = calendar.date(byAdding: .day, value: i, to: startOfMonth)
                 let inMonth = (0 ..< daysInMonth).contains(i)
                 let isToday = calendar.isEqual(a: date, b: now)
-                days.append(Day(date: date, inMonth: inMonth, isToday: isToday))
+                let text = calendar.dayText(of: date)
+                days.append(Day(date: date, inMonth: inMonth, isToday: isToday, text: text))
             }
         }
         return days
@@ -58,10 +59,5 @@ final class MonthCalendarViewModel: ObservableObject {
                 target = next
             }
         }
-    }
-
-    func dayText(of date: Date?) -> String {
-        guard let date else { return "?" }
-        return calendar.component(.day, from: date).description
     }
 }

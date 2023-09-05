@@ -13,4 +13,5 @@ struct Day: Identifiable {
     var date: Date?
     var inMonth: Bool
     var isToday: Bool
+    var text: String
 }
