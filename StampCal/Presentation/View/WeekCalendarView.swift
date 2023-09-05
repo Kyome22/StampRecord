@@ -13,8 +13,24 @@ struct WeekCalendarView: View {
 
     var body: some View {
         VStack {
+            HStack {
+                Button {
+                    viewModel.paging(with: .backward)
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .fontWeight(.semibold)
+                }
+                Text(verbatim: viewModel.title)
+                    .frame(maxWidth: .infinity)
+                Button {
+                    viewModel.paging(with: .forward)
+                } label: {
+                    Image(systemName: "chevron.right")
+                        .fontWeight(.semibold)
+                }
+            }
+            .padding(.horizontal)
             InfinitePagingView(
-                title: $viewModel.title,
                 objects: $viewModel.weekList,
                 pagingHandler: { pageDirection in
                     viewModel.paging(with: pageDirection)

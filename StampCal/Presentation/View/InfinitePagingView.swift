@@ -28,8 +28,8 @@ struct Page<T: Hashable>: Hashable, Identifiable {
 }
 
 struct InfinitePagingView<T: Hashable, Content: View>: View {
-    @Binding var title: String
     @Binding var objects: [T]
+    @State var title: String = ""
     @State var pages: [Page<T>]
     @State var selection: UUID
     @State var selectionChanged: Bool = false
@@ -38,12 +38,10 @@ struct InfinitePagingView<T: Hashable, Content: View>: View {
     private let content: (T) -> Content
 
     init(
-        title: Binding<String>,
         objects: Binding<[T]>,
         pagingHandler: @escaping (PageDirection) -> Void,
         @ViewBuilder content: @escaping (T) -> Content
     ) {
-        _title = title
         assert(objects.wrappedValue.count == 3, "objects.count must be 3.")
         _objects = objects
         let pages = objects.wrappedValue.map { Page(object: $0) }
@@ -54,35 +52,16 @@ struct InfinitePagingView<T: Hashable, Content: View>: View {
     }
 
     var body: some View {
-        VStack {
-            HStack {
-                Button {
-                    goBackward()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .fontWeight(.semibold)
-                }
-                Text(verbatim: title)
-                    .frame(maxWidth: .infinity)
-                Button {
-                    goForward()
-                } label: {
-                    Image(systemName: "chevron.right")
-                        .fontWeight(.semibold)
-                }
-            }
-            .padding(.horizontal)
-            TabView(selection: $selection) {
-                ForEach(pages) { page in
-                    content(page.object)
+        TabView(selection: $selection) {
+            ForEach(pages) { page in
+                content(page.object)
                     .tag(page.id)
                     .onDisappear {
                         update(previousPage: page)
                     }
-                }
             }
-            .tabViewStyle(PageTabViewStyle())
         }
+        .tabViewStyle(PageTabViewStyle())
         .onChange(of: selection) { _ in
             if updated {
                 updated = false
@@ -93,14 +72,6 @@ struct InfinitePagingView<T: Hashable, Content: View>: View {
         .onChange(of: objects) { _ in
             updatePages()
         }
-    }
-
-    private func goBackward() {
-        selection = pages[0].id
-    }
-
-    private func goForward() {
-        selection = pages[2].id
     }
 
     private func update(previousPage: Page<T>) {

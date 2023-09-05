@@ -10,6 +10,7 @@ import Foundation
 
 struct Week: Hashable {
     var id = UUID()
+    var title: String
     var days: [Day]
 
     static func == (lhs: Week, rhs: Week) -> Bool {
