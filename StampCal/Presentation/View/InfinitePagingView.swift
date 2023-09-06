@@ -61,7 +61,7 @@ struct InfinitePagingView<T: Hashable, Content: View>: View {
                     }
             }
         }
-        .tabViewStyle(PageTabViewStyle())
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         .onChange(of: selection) { _ in
             if updated {
                 updated = false

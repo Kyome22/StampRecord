@@ -9,27 +9,55 @@
 import SwiftUI
 
 final class MonthCalendarViewModel: ObservableObject {
-    @Published var target: Date = .now
+    @Published var title: String = ""
+    @Published var monthList: [Month] = []
 
-    let calendar = Calendar.current
-    let columns = [GridItem](repeating: .init(.flexible()), count: 7)
-
-    var title: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy MMM"
-        return formatter.string(from: target)
-    }
+    private let calendar = Calendar.current
 
     var weekdays: [String] {
         calendar.shortWeekdaySymbols
     }
 
-    var days: [Day] {
+    init() {
+        let now = Date.now
+        monthList.append(Month(title: getTitle(of: now), days: getDays(of: now)))
+        if let date = getPreviousMonth(of: now) {
+            monthList.insert(Month(title: getTitle(of: date), days: getDays(of: date)), at: 0)
+        }
+        if let date = getNextMonth(of: now) {
+            monthList.append(Month(title: getTitle(of: date), days: getDays(of: date)))
+        }
+        title = monthList[1].title
+    }
+
+    private func getTitle(of date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy MMM"
+        return formatter.string(from: date)
+    }
+
+    private func getPreviousMonth(of date: Date) -> Date? {
+        if let startOfMonth = calendar.startOfMonth(for: date),
+           let previousDate = calendar.date(byAdding: .month, value: -1, to: startOfMonth) {
+            return previousDate
+        }
+        return nil
+    }
+
+    private func getNextMonth(of date: Date) -> Date? {
+        if let startOfMonth = calendar.startOfMonth(for: date),
+           let nextDate = calendar.date(byAdding: .month, value: 1, to: startOfMonth) {
+            return nextDate
+        }
+        return nil
+    }
+
+    private func getDays(of targetDate: Date) -> [Day] {
         let now = Date.now
         var days = [Day]()
-        if let daysInMonth = calendar.daysInMonth(for: target),
-           let startOfMonth = calendar.startOfMonth(for: target),
-           let endOfMonth = calendar.endOfMonth(for: target) {
+        if let daysInMonth = calendar.daysInMonth(for: targetDate),
+           let startOfMonth = calendar.startOfMonth(for: targetDate),
+           let endOfMonth = calendar.endOfMonth(for: targetDate) {
             let startOrdinal = calendar.component(.weekday, from: startOfMonth)
             let endOrdinal = calendar.component(.weekday, from: endOfMonth)
             (1 - startOrdinal ..< daysInMonth + 7 - endOrdinal).forEach { i in
@@ -43,21 +71,23 @@ final class MonthCalendarViewModel: ObservableObject {
         return days
     }
 
-    func previousMonth() {
-        if let startOfMonth = calendar.startOfMonth(for: target),
-           let previous = calendar.date(byAdding: .month, value: -1, to: startOfMonth) {
-            withAnimation(.linear) {
-                target = previous
+    func paging(with pageDirection: PageDirection) {
+        switch pageDirection {
+        case .backward:
+            let days = monthList[pageDirection.baseIndex].days
+            if let baseDate = days.first(where: { $0.inMonth })?.date,
+               let date = getPreviousMonth(of: baseDate) {
+                monthList.insert(Month(title: getTitle(of: date), days: getDays(of: date)), at: 0)
+                monthList.removeLast()
+            }
+        case .forward:
+            let days = monthList[pageDirection.baseIndex].days
+            if let baseDate = days.first(where: { $0.inMonth })?.date,
+               let date = getNextMonth(of: baseDate) {
+                monthList.append(Month(title: getTitle(of: date), days: getDays(of: date)))
+                monthList.removeFirst()
             }
         }
-    }
-
-    func nextMonth() {
-        if let startOfMonth = calendar.startOfMonth(for: target),
-           let next = calendar.date(byAdding: .month, value: 1, to: startOfMonth) {
-            withAnimation(.linear) {
-                target = next
-            }
-        }
+        title = monthList[1].title
     }
 }

@@ -31,7 +31,7 @@ struct WeekView: View {
                     Text(weekday)
                         .frame(width: 64)
                         .frame(maxHeight: .infinity)
-                        .background(Color.white)
+                        .background(SCColor.cellBackground)
                         .cornerRadius(8)
                 }
             }
@@ -44,7 +44,7 @@ struct WeekView: View {
                             .font(.title)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                    .background(Color.white)
+                    .background(SCColor.cellBackground)
                     .cornerRadius(8)
                 }
             }
@@ -65,7 +65,7 @@ struct WeekView: View {
             HStack {
                 ForEach(days) { day in
                     VStack {
-                        wrapText(maxKey: "AA", key: day.text)
+                        Text(day.text)
                             .padding(.vertical, 8)
                         Text("😃")
                             .font(.title)

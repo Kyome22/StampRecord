@@ -31,11 +31,11 @@ final class WeekCalendarViewModel: ObservableObject {
     init() {
         let now = Date.now
         weekList.append(Week(title: getTitle(of: now), days: getDays(of: now)))
-        if let previousWeek = getPreviousWeek(of: now) {
-            weekList.insert(Week(title: getTitle(of: previousWeek), days: getDays(of: previousWeek)), at: 0)
+        if let date = getPreviousWeek(of: now) {
+            weekList.insert(Week(title: getTitle(of: date), days: getDays(of: date)), at: 0)
         }
-        if let nextWeek = getNextWeek(of: now) {
-            weekList.append(Week(title: getTitle(of: nextWeek), days: getDays(of: nextWeek)))
+        if let date = getNextWeek(of: now) {
+            weekList.append(Week(title: getTitle(of: date), days: getDays(of: date)))
         }
         title = weekList[1].title
     }
@@ -84,14 +84,14 @@ final class WeekCalendarViewModel: ObservableObject {
         switch pageDirection {
         case .backward:
             if let baseDate = weekList[pageDirection.baseIndex].days.first?.date,
-               let previousWeek = getPreviousWeek(of: baseDate) {
-                weekList.insert(Week(title: getTitle(of: previousWeek), days: getDays(of: previousWeek)), at: 0)
+               let date = getPreviousWeek(of: baseDate) {
+                weekList.insert(Week(title: getTitle(of: date), days: getDays(of: date)), at: 0)
                 weekList.removeLast()
             }
         case .forward:
             if let baseDate = weekList[pageDirection.baseIndex].days.first?.date,
-               let nextWeek = getNextWeek(of: baseDate) {
-                weekList.append(Week(title: getTitle(of: nextWeek), days: getDays(of: nextWeek)))
+               let date = getNextWeek(of: baseDate) {
+                weekList.append(Week(title: getTitle(of: date), days: getDays(of: date)))
                 weekList.removeFirst()
             }
         }

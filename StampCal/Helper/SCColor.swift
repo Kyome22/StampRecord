@@ -9,6 +9,9 @@
 import SwiftUI
 
 enum SCColor {
-    static let background = Color(red: 0.927, green: 0.950, blue: 0.967)
-    static let accent = Color(red: 0.242, green: 0.659, blue: 1.000)
+    static var accent: Color {
+        return Color.accentColor
+    }
+    static let appBackground = Color("app.background")
+    static let cellBackground = Color("cell.background")
 }

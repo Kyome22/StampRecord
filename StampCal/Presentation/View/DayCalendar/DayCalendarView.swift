@@ -25,7 +25,7 @@ struct DayCalendarView: View {
     var body: some View {
         Text(today)
             .padding()
-            .background(SCColor.background)
+            .background(SCColor.appBackground)
     }
 }
 
