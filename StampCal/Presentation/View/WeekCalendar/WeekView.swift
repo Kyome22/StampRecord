@@ -23,7 +23,7 @@ struct WeekView: View {
                         .background(SCColor.cellBackground)
                         .cornerRadius(8)
                     HStack {
-                        wrapText(maxKey: "AA", key: day.text)
+                        wrapText(maxKey: "88", key: day.text)
                             .foregroundColor(weekdayColor(day.weekday, day.isToday))
                             .padding(2)
                             .background(

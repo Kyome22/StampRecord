@@ -21,7 +21,7 @@ struct MainView: View {
                 }
             WeekCalendarView()
                 .tabItem {
-                    Label("week", image: "calendar.week")
+                    Label("week", image: "calendar.week.horizontal")
                 }
             MonthCalendarView()
                 .tabItem {
