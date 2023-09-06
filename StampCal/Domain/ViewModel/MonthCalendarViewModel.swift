@@ -12,28 +12,20 @@ final class MonthCalendarViewModel: ObservableObject {
     @Published var title: String = ""
     @Published var monthList: [Month] = []
 
+    var shortWeekdays: [String] = []
     private let calendar = Calendar.current
-
-    var weekdays: [String] {
-        calendar.shortWeekdaySymbols
-    }
 
     init() {
         let now = Date.now
-        monthList.append(Month(title: getTitle(of: now), days: getDays(of: now)))
+        monthList.append(Month(title: now.title, days: getDays(of: now)))
         if let date = getPreviousMonth(of: now) {
-            monthList.insert(Month(title: getTitle(of: date), days: getDays(of: date)), at: 0)
+            monthList.insert(Month(title: date.title, days: getDays(of: date)), at: 0)
         }
         if let date = getNextMonth(of: now) {
-            monthList.append(Month(title: getTitle(of: date), days: getDays(of: date)))
+            monthList.append(Month(title: date.title, days: getDays(of: date)))
         }
         title = monthList[1].title
-    }
-
-    private func getTitle(of date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy MMM"
-        return formatter.string(from: date)
+        shortWeekdays = calendar.shortWeekdaySymbols
     }
 
     private func getPreviousMonth(of date: Date) -> Date? {
@@ -60,12 +52,13 @@ final class MonthCalendarViewModel: ObservableObject {
            let endOfMonth = calendar.endOfMonth(for: targetDate) {
             let startOrdinal = calendar.component(.weekday, from: startOfMonth)
             let endOrdinal = calendar.component(.weekday, from: endOfMonth)
-            (1 - startOrdinal ..< daysInMonth + 7 - endOrdinal).forEach { i in
+            days = (1 - startOrdinal ..< daysInMonth + 7 - endOrdinal).map { i in
                 let date = calendar.date(byAdding: .day, value: i, to: startOfMonth)
-                let inMonth = (0 ..< daysInMonth).contains(i)
-                let isToday = calendar.isEqual(a: date, b: now)
-                let text = calendar.dayText(of: date)
-                days.append(Day(date: date, inMonth: inMonth, isToday: isToday, text: text))
+                return Day(date: date,
+                           inMonth: (0 ..< daysInMonth).contains(i),
+                           isToday: calendar.isEqual(a: date, b: now),
+                           text: calendar.dayText(of: date),
+                           weekday: calendar.weekday(of: date))
             }
         }
         return days
@@ -77,14 +70,14 @@ final class MonthCalendarViewModel: ObservableObject {
             let days = monthList[pageDirection.baseIndex].days
             if let baseDate = days.first(where: { $0.inMonth })?.date,
                let date = getPreviousMonth(of: baseDate) {
-                monthList.insert(Month(title: getTitle(of: date), days: getDays(of: date)), at: 0)
+                monthList.insert(Month(title: date.title, days: getDays(of: date)), at: 0)
                 monthList.removeLast()
             }
         case .forward:
             let days = monthList[pageDirection.baseIndex].days
             if let baseDate = days.first(where: { $0.inMonth })?.date,
                let date = getNextMonth(of: baseDate) {
-                monthList.append(Month(title: getTitle(of: date), days: getDays(of: date)))
+                monthList.append(Month(title: date.title, days: getDays(of: date)))
                 monthList.removeFirst()
             }
         }

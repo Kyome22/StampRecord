@@ -45,4 +45,9 @@ extension Calendar {
         guard let date else { return "?" }
         return component(.day, from: date).description
     }
+
+    func weekday(of date: Date?) -> Int {
+        guard let date else { return 0 }
+        return component(.weekday, from: date) - 1
+    }
 }

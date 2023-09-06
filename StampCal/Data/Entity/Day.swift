@@ -8,10 +8,19 @@
 
 import Foundation
 
-struct Day: Identifiable {
+struct Day: Hashable, Identifiable {
     var id = UUID()
     var date: Date?
-    var inMonth: Bool
-    var isToday: Bool
+    var inMonth: Bool = false
+    var isToday: Bool = false
     var text: String
+    var weekday: Int
+
+    static func == (lhs: Day, rhs: Day) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }

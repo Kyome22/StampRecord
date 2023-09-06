@@ -9,23 +9,40 @@
 import SwiftUI
 
 struct DayCalendarView: View {
-    let today: String
-
-    init() {
-        let now = Date.now
-//        let components = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: now)
-        let calendar = Calendar.current
-        let year = calendar.component(.year, from: now)
-        let month = calendar.component(.month, from: now)
-        let day = calendar.component(.day, from: now)
-        let weekday = calendar.component(.weekday, from: now)
-        today = "\(year)/\(month)/\(day) (\(weekday))"
-    }
+    @StateObject var viewModel = DayCalendarViewModel()
 
     var body: some View {
-        Text(today)
-            .padding()
-            .background(SCColor.appBackground)
+        VStack {
+            HStack {
+                Button {
+                    viewModel.paging(with: .backward)
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .fontWeight(.semibold)
+                }
+                Text(verbatim: viewModel.title)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity)
+                Button {
+                    viewModel.paging(with: .forward)
+                } label: {
+                    Image(systemName: "chevron.right")
+                        .fontWeight(.semibold)
+                }
+            }
+            .padding(.horizontal)
+            InfinitePagingView(
+                objects: $viewModel.dayList,
+                pagingHandler: { pageDirection in
+                    viewModel.paging(with: pageDirection)
+                },
+                content: { day in
+                    DayView(shortWeekdays: viewModel.shortWeekdays, day: day)
+                }
+            )
+        }
+        .padding(.vertical)
+        .background(SCColor.appBackground)
     }
 }
 

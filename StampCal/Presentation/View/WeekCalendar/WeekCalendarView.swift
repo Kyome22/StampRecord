@@ -21,6 +21,7 @@ struct WeekCalendarView: View {
                         .fontWeight(.semibold)
                 }
                 Text(verbatim: viewModel.title)
+                    .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                 Button {
                     viewModel.paging(with: .forward)
@@ -36,17 +37,12 @@ struct WeekCalendarView: View {
                     viewModel.paging(with: pageDirection)
                 },
                 content: { week in
-                    WeekView(
-                        isPortrait: viewModel.isPortrait,
-                        weekdays: viewModel.weekdays,
-                        days: week.days
-                    )
+                    WeekView(shortWeekdays: viewModel.shortWeekdays, days: week.days)
                 }
             )
         }
         .padding(.vertical)
         .background(SCColor.appBackground)
-        .onRotate($viewModel.orientation)
     }
 }
 

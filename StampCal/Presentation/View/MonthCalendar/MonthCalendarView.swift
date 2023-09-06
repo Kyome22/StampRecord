@@ -21,6 +21,7 @@ struct MonthCalendarView: View {
                         .fontWeight(.semibold)
                 }
                 Text(verbatim: viewModel.title)
+                    .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                 Button {
                     viewModel.paging(with: .forward)
@@ -36,7 +37,7 @@ struct MonthCalendarView: View {
                     viewModel.paging(with: pageDirection)
                 },
                 content: { month in
-                    MonthView(weekdays: viewModel.weekdays, days: month.days)
+                    MonthView(shortWeekdays: viewModel.shortWeekdays, days: month.days)
                 }
             )
         }

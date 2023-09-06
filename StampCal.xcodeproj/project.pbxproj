@@ -12,6 +12,10 @@
 		1C56385D2AA8133D00694F44 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56385C2AA8133D00694F44 /* Month.swift */; };
 		1C56385F2AA8187700694F44 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56385E2AA8187700694F44 /* MonthView.swift */; };
 		1C5638642AA853CE00694F44 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638632AA853CE00694F44 /* Array+Extensions.swift */; };
+		1C5638662AA85A0F00694F44 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638652AA85A0F00694F44 /* Weekday.swift */; };
+		1C5638682AA8B5C700694F44 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638672AA8B5C700694F44 /* DayView.swift */; };
+		1C56386A2AA8B5E400694F44 /* DayCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638692AA8B5E400694F44 /* DayCalendarViewModel.swift */; };
+		1C56386C2AA8DC0B00694F44 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56386B2AA8DC0B00694F44 /* Date+Extensions.swift */; };
 		1C7234E52A9B433A0065512A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E42A9B433A0065512A /* MainView.swift */; };
 		1C7234E72A9B518C0065512A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C7234E62A9B518C0065512A /* Localizable.strings */; };
 		1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E82A9B73A00065512A /* MonthCalendarView.swift */; };
@@ -41,6 +45,10 @@
 		1C56385C2AA8133D00694F44 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		1C56385E2AA8187700694F44 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
 		1C5638632AA853CE00694F44 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		1C5638652AA85A0F00694F44 /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
+		1C5638672AA8B5C700694F44 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		1C5638692AA8B5E400694F44 /* DayCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarViewModel.swift; sourceTree = "<group>"; };
+		1C56386B2AA8DC0B00694F44 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		1C7234E42A9B433A0065512A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1C7234E62A9B518C0065512A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1C7234E82A9B73A00065512A /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
@@ -99,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				1C7234EC2A9B73C90065512A /* DayCalendarView.swift */,
+				1C5638672AA8B5C700694F44 /* DayView.swift */,
 			);
 			path = DayCalendar;
 			sourceTree = "<group>";
@@ -177,6 +186,7 @@
 				1C7234F02A9B8EB90065512A /* Day.swift */,
 				1C56385A2AA5C67600694F44 /* Week.swift */,
 				1C56385C2AA8133D00694F44 /* Month.swift */,
+				1C5638652AA85A0F00694F44 /* Weekday.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -199,6 +209,7 @@
 		1CF3D6252A911972005B6E71 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1C5638692AA8B5E400694F44 /* DayCalendarViewModel.swift */,
 				1C7234F42A9B9A010065512A /* WeekCalendarViewModel.swift */,
 				1C7234F22A9B8ED20065512A /* MonthCalendarViewModel.swift */,
 			);
@@ -224,6 +235,7 @@
 				1CF3D62B2A911B18005B6E71 /* Utils.swift */,
 				1C5638632AA853CE00694F44 /* Array+Extensions.swift */,
 				1C7234EE2A9B79380065512A /* Calendar+Extensions.swift */,
+				1C56386B2AA8DC0B00694F44 /* Date+Extensions.swift */,
 				1C7234F82A9CE94E0065512A /* View+Extensions.swift */,
 				1C7234FA2A9CEAF50065512A /* SCColor.swift */,
 				1C7234FC2A9CEE840065512A /* DetectOrientation.swift */,
@@ -304,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C7234F72A9CE35B0065512A /* InfinitePagingView.swift in Sources */,
+				1C5638682AA8B5C700694F44 /* DayView.swift in Sources */,
 				1CF3D6132A90A4BF005B6E71 /* Persistence.swift in Sources */,
 				1C56385D2AA8133D00694F44 /* Month.swift in Sources */,
 				1C7234F32A9B8ED20065512A /* MonthCalendarViewModel.swift in Sources */,
@@ -313,6 +326,7 @@
 				1C56385B2AA5C67600694F44 /* Week.swift in Sources */,
 				1C5638592AA5A01500694F44 /* WeekView.swift in Sources */,
 				1C7234F12A9B8EB90065512A /* Day.swift in Sources */,
+				1C56386C2AA8DC0B00694F44 /* Date+Extensions.swift in Sources */,
 				1C7234F92A9CE94E0065512A /* View+Extensions.swift in Sources */,
 				1C56385F2AA8187700694F44 /* MonthView.swift in Sources */,
 				1CF3D60C2A90A4BE005B6E71 /* ContentView.swift in Sources */,
@@ -321,7 +335,9 @@
 				1C7234FD2A9CEE840065512A /* DetectOrientation.swift in Sources */,
 				1C7234EB2A9B73BA0065512A /* WeekCalendarView.swift in Sources */,
 				1C5638642AA853CE00694F44 /* Array+Extensions.swift in Sources */,
+				1C5638662AA85A0F00694F44 /* Weekday.swift in Sources */,
 				1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */,
+				1C56386A2AA8B5E400694F44 /* DayCalendarViewModel.swift in Sources */,
 				1C7234ED2A9B73C90065512A /* DayCalendarView.swift in Sources */,
 				1CF3D6162A90A4BF005B6E71 /* StampCal.xcdatamodeld in Sources */,
 				1CF3D62C2A911B18005B6E71 /* Utils.swift in Sources */,
@@ -460,8 +476,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -489,8 +505,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

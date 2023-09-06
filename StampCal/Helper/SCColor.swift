@@ -14,4 +14,7 @@ enum SCColor {
     }
     static let appBackground = Color("app.background")
     static let cellBackground = Color("cell.background")
+    static let cellRed = Color("cell.red")
+    static let cellBlue = Color("cell.blue")
+    static let cellHighlight = Color("cell.highlight")
 }

@@ -11,39 +11,21 @@ import SwiftUI
 final class WeekCalendarViewModel: ObservableObject {
     @Published var title: String = ""
     @Published var weekList: [Week] = []
-    @Published var isPortrait: Bool = true
-    @Published var orientation: UIDeviceOrientation = .unknown {
-        didSet {
-            if orientation.isPortrait {
-                self.isPortrait = true
-            } else if orientation.isLandscape {
-                self.isPortrait = false
-            }
-        }
-    }
 
+    var shortWeekdays: [String] = []
     private let calendar = Calendar.current
-
-    var weekdays: [String] {
-        calendar.shortWeekdaySymbols
-    }
 
     init() {
         let now = Date.now
-        weekList.append(Week(title: getTitle(of: now), days: getDays(of: now)))
+        weekList.append(Week(title: now.title, days: getDays(of: now)))
         if let date = getPreviousWeek(of: now) {
-            weekList.insert(Week(title: getTitle(of: date), days: getDays(of: date)), at: 0)
+            weekList.insert(Week(title: date.title, days: getDays(of: date)), at: 0)
         }
         if let date = getNextWeek(of: now) {
-            weekList.append(Week(title: getTitle(of: date), days: getDays(of: date)))
+            weekList.append(Week(title: date.title, days: getDays(of: date)))
         }
         title = weekList[1].title
-    }
-
-    private func getTitle(of date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy MMM"
-        return formatter.string(from: date)
+        shortWeekdays = calendar.shortWeekdaySymbols
     }
 
     private func getPreviousWeek(of date: Date) -> Date? {
@@ -69,12 +51,13 @@ final class WeekCalendarViewModel: ObservableObject {
            let startOfMonth = calendar.startOfMonth(for: targetDate) {
             let day = calendar.component(.day, from: targetDate)
             let weekday = calendar.component(.weekday, from: targetDate)
-            (day - weekday ..< day + 7 - weekday).forEach { i in
+            days = (day - weekday ..< day + 7 - weekday).map { i in
                 let date = calendar.date(byAdding: .day, value: i, to: startOfMonth)
-                let inMonth = (0 ..< daysInMonth).contains(i)
-                let isToday = calendar.isEqual(a: date, b: now)
-                let text = calendar.dayText(of: date)
-                days.append(Day(date: date, inMonth: inMonth, isToday: isToday, text: text))
+                return Day(date: date,
+                           inMonth: (0 ..< daysInMonth).contains(i),
+                           isToday: calendar.isEqual(a: date, b: now),
+                           text: calendar.dayText(of: date),
+                           weekday: calendar.weekday(of: date))
             }
         }
         return days
@@ -85,13 +68,13 @@ final class WeekCalendarViewModel: ObservableObject {
         case .backward:
             if let baseDate = weekList[pageDirection.baseIndex].days.first?.date,
                let date = getPreviousWeek(of: baseDate) {
-                weekList.insert(Week(title: getTitle(of: date), days: getDays(of: date)), at: 0)
+                weekList.insert(Week(title: date.title, days: getDays(of: date)), at: 0)
                 weekList.removeLast()
             }
         case .forward:
             if let baseDate = weekList[pageDirection.baseIndex].days.first?.date,
                let date = getNextWeek(of: baseDate) {
-                weekList.append(Week(title: getTitle(of: date), days: getDays(of: date)))
+                weekList.append(Week(title: date.title, days: getDays(of: date)))
                 weekList.removeFirst()
             }
         }

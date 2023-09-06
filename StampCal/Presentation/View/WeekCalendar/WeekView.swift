@@ -9,37 +9,29 @@
 import SwiftUI
 
 struct WeekView: View {
-    let isPortrait: Bool
-    let weekdays: [String]
+    let shortWeekdays: [String]
     let days: [Day]
 
     var body: some View {
-        Group {
-            if isPortrait {
-                portraitView
-            } else {
-                landscapeView
-            }
-        }
-        .padding(8)
-    }
-
-    var portraitView: some View {
-        HStack {
-            VStack {
-                ForEach(weekdays, id: \.self) { weekday in
-                    Text(weekday)
+        VStack {
+            ForEach(days) { day in
+                HStack {
+                    Text(shortWeekdays[day.weekday])
                         .frame(width: 64)
                         .frame(maxHeight: .infinity)
+                        .foregroundColor(weekdayColor(day.weekday))
                         .background(SCColor.cellBackground)
                         .cornerRadius(8)
-                }
-            }
-            VStack {
-                ForEach(days) { day in
                     HStack {
                         wrapText(maxKey: "AA", key: day.text)
-                            .padding(.horizontal, 8)
+                            .foregroundColor(weekdayColor(day.weekday, day.isToday))
+                            .padding(2)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(day.isToday ? SCColor.accent : Color.clear)
+                                    .aspectRatio(1, contentMode: .fill)
+                            )
+                            .padding(6)
                         Text("😃")
                             .font(.title)
                     }
@@ -49,38 +41,12 @@ struct WeekView: View {
                 }
             }
         }
-    }
-
-    var landscapeView: some View {
-        VStack {
-            HStack {
-                ForEach(weekdays, id: \.self) { weekday in
-                    Text(weekday)
-                        .frame(height: 40)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.white)
-                        .cornerRadius(8)
-                }
-            }
-            HStack {
-                ForEach(days) { day in
-                    VStack {
-                        Text(day.text)
-                            .padding(.vertical, 8)
-                        Text("😃")
-                            .font(.title)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                    .background(Color.white)
-                    .cornerRadius(8)
-                }
-            }
-        }
+        .padding(8)
     }
 }
 
 struct WeekView_Previews: PreviewProvider {
     static var previews: some View {
-        WeekView(isPortrait: true, weekdays: [], days: [])
+        WeekView(shortWeekdays: [], days: [])
     }
 }

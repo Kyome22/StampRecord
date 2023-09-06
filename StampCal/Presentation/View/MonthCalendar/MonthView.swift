@@ -9,16 +9,17 @@
 import SwiftUI
 
 struct MonthView: View {
-    let weekdays: [String]
+    let shortWeekdays: [String]
     let days: [Day]
 
     var body: some View {
         VStack {
             HStack {
-                ForEach(weekdays, id: \.self) { weekday in
-                    Text(weekday)
+                ForEach(0 ..< 7, id: \.self) { i in
+                    Text(shortWeekdays[i])
                         .frame(height: 40)
                         .frame(maxWidth: .infinity)
+                        .foregroundColor(weekdayColor(i))
                         .background(SCColor.cellBackground)
                         .cornerRadius(8)
                 }
@@ -27,10 +28,21 @@ struct MonthView: View {
                 HStack {
                     ForEach(chunk.elements) { day in
                         VStack {
-                            Text(day.text)
-                                .padding(.vertical, 8)
-                            Text("😃")
-                                .font(.title2)
+                            if day.inMonth {
+                                Text(day.text)
+                                    .foregroundColor(weekdayColor(day.weekday, day.isToday))
+                                    .padding(2)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(day.isToday ? SCColor.accent : Color.clear)
+                                            .aspectRatio(1, contentMode: .fill)
+                                    )
+                                    .padding(6)
+                                Text("😃")
+                                    .font(.title2)
+                            } else {
+                                EmptyView()
+                            }
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                         .background(SCColor.cellBackground)
@@ -46,6 +58,6 @@ struct MonthView: View {
 
 struct MonthView_Previews: PreviewProvider {
     static var previews: some View {
-        MonthView(weekdays: [], days: [])
+        MonthView(shortWeekdays: [], days: [])
     }
 }
