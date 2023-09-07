@@ -13,7 +13,7 @@ struct MainView: View {
         TabView {
             Text("stamps")
                 .tabItem {
-                    Label("stamps", systemImage: "pawprint.fill")
+                    Label("stamps", image: "stamp")
                 }
             DayCalendarView()
                 .tabItem {
