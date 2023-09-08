@@ -12,12 +12,14 @@ enum SCColor {
     static var accent: Color {
         return Color.accentColor
     }
+    static let toolbarBackground = Color("toolbar.background")
     static let appBackground = Color("app.background")
     static let cellBackground = Color("cell.background")
     static let cellRed = Color("cell.red")
     static let cellBlue = Color("cell.blue")
     static let cellHighlightStrong = Color("cell.highlight.strong")
     static let cellHighlightWeek = Color("cell.highlight.week")
+    static let shadow = Color(white: 0, opacity: 0.2)
 
     static func weekday(_ index: Int, _ isToday: Bool = false) -> Color {
         if isToday { return Color.white }

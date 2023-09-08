@@ -12,25 +12,16 @@ struct DayCalendarView: View {
     @StateObject var viewModel = DayCalendarViewModel()
 
     var body: some View {
-        VStack {
-            HStack {
-                Button {
+        VStack(spacing: 0) {
+            HeaderView(
+                title: $viewModel.title,
+                pageBackwardHandler: {
                     viewModel.paging(with: .backward)
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .fontWeight(.semibold)
-                }
-                Text(verbatim: viewModel.title)
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity)
-                Button {
+                },
+                pageForwardHandler: {
                     viewModel.paging(with: .forward)
-                } label: {
-                    Image(systemName: "chevron.right")
-                        .fontWeight(.semibold)
                 }
-            }
-            .padding(.horizontal)
+            )
             InfinitePagingView(
                 objects: $viewModel.dayList,
                 pagingHandler: { pageDirection in
@@ -41,7 +32,6 @@ struct DayCalendarView: View {
                 }
             )
         }
-        .padding(.vertical)
         .background(SCColor.appBackground)
     }
 }

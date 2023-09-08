@@ -13,30 +13,34 @@ struct MainView: View {
 
     var body: some View {
         TabView {
-            Text("stamps")
-                .tabItem {
-                    Label("stamps", image: "stamp")
-                }
-            DayCalendarView()
-                .tabItem {
-                    Label("day", image: "calendar.day")
-                }
-            WeekCalendarView(isPhone: $isPhone)
-                .tabItem {
-                    if isPhone {
-                        Label("week", image: "calendar.week.horizontal")
-                    } else {
-                        Label("week", image: "calendar.week.vertical")
+            Group {
+                StampsView()
+                    .tabItem {
+                        Label("stamps", image: "stamp")
                     }
-                }
-            MonthCalendarView()
-                .tabItem {
-                    Label("month", systemImage: "calendar")
-                }
-            Text("Hello")
-                .tabItem {
-                    Label("settings", systemImage: "gearshape")
-                }
+                DayCalendarView()
+                    .tabItem {
+                        Label("day", image: "calendar.day")
+                    }
+                WeekCalendarView(isPhone: $isPhone)
+                    .tabItem {
+                        if isPhone {
+                            Label("week", image: "calendar.week.horizontal")
+                        } else {
+                            Label("week", image: "calendar.week.vertical")
+                        }
+                    }
+                MonthCalendarView()
+                    .tabItem {
+                        Label("month", systemImage: "calendar")
+                    }
+                Text("Hello")
+                    .tabItem {
+                        Label("settings", systemImage: "gearshape")
+                    }
+            }
+            .toolbarBackground(SCColor.toolbarBackground, for: .tabBar)
+            .toolbarBackground(.visible, for: .tabBar)
         }
         .onAppear {
             judgeDevice()

@@ -13,13 +13,14 @@ struct DayView: View {
     let day: Day
 
     var body: some View {
-        VStack {
+        VStack(spacing: 24) {
             Text(shortWeekdays[day.weekday])
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
                 .foregroundColor(SCColor.weekday(day.weekday))
                 .background(SCColor.cellHighlightWeek)
                 .cornerRadius(8)
+                .shadow(color: SCColor.shadow, radius: 3, x: 0, y: 3)
             VStack {
                 Text(day.text)
                     .foregroundColor(SCColor.weekday(day.weekday, day.isToday))
@@ -33,8 +34,9 @@ struct DayView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(SCColor.cellBackground)
             .cornerRadius(8)
+            .shadow(color: SCColor.shadow, radius: 3, x: 0, y: 3)
         }
-        .padding(8)
+        .padding(24)
     }
 }
 

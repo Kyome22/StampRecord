@@ -13,8 +13,8 @@ struct MonthView: View {
     let days: [Day]
 
     var body: some View {
-        VStack {
-            HStack {
+        VStack(spacing: 8) {
+            HStack(spacing: 8) {
                 ForEach(0 ..< 7, id: \.self) { i in
                     Text(shortWeekdays[i])
                         .frame(maxWidth: .infinity)
@@ -22,10 +22,11 @@ struct MonthView: View {
                         .foregroundColor(SCColor.weekday(i))
                         .background(SCColor.cellHighlightWeek)
                         .cornerRadius(8)
+                        .shadow(color: SCColor.shadow, radius: 2, x: 0, y: 3)
                 }
             }
             ForEach(days.chunked(by: 7)) { chunk in
-                HStack {
+                HStack(spacing: 8) {
                     ForEach(chunk.elements) { day in
                         VStack(spacing: 0) {
                             if day.inMonth {
@@ -46,12 +47,13 @@ struct MonthView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                         .background(SCColor.cellBackground)
                         .cornerRadius(8)
+                        .shadow(color: SCColor.shadow, radius: 2, x: 0, y: 3)
                         .opacity(day.inMonth ? 1.0 : 0.3)
                     }
                 }
             }
         }
-        .padding(8)
+        .padding(24)
     }
 }
 

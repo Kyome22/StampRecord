@@ -13,15 +13,16 @@ struct VerticalWeekView: View {
     let days: [Day]
 
     var body: some View {
-        HStack {
+        HStack(spacing: 16) {
             ForEach(days) { day in
-                VStack {
+                VStack(spacing: 16) {
                     Text(shortWeekdays[day.weekday])
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 8)
                         .foregroundColor(SCColor.weekday(day.weekday))
                         .background(SCColor.cellHighlightWeek)
                         .cornerRadius(8)
+                        .shadow(color: SCColor.shadow, radius: 2, x: 0, y: 3)
                     VStack {
                         Text(day.text)
                             .frame(maxWidth: .infinity)
@@ -37,10 +38,11 @@ struct VerticalWeekView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     .background(SCColor.cellBackground)
                     .cornerRadius(8)
+                    .shadow(color: SCColor.shadow, radius: 2, x: 0, y: 3)
                 }
             }
         }
-        .padding(8)
+        .padding(24)
     }
 }
 
