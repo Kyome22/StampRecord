@@ -11,7 +11,7 @@ import Foundation
 extension Date {
     var title: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy MMM"
+        formatter.dateFormat = "MMM, yyyy"
         return formatter.string(from: self)
     }
 }

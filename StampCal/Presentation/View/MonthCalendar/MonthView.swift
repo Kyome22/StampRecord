@@ -17,29 +17,28 @@ struct MonthView: View {
             HStack {
                 ForEach(0 ..< 7, id: \.self) { i in
                     Text(shortWeekdays[i])
-                        .frame(height: 40)
                         .frame(maxWidth: .infinity)
-                        .foregroundColor(weekdayColor(i))
-                        .background(SCColor.cellBackground)
+                        .padding(.vertical, 8)
+                        .foregroundColor(SCColor.weekday(i))
+                        .background(SCColor.cellHighlightWeek)
                         .cornerRadius(8)
                 }
             }
             ForEach(days.chunked(by: 7)) { chunk in
                 HStack {
                     ForEach(chunk.elements) { day in
-                        VStack {
+                        VStack(spacing: 0) {
                             if day.inMonth {
                                 Text(day.text)
-                                    .foregroundColor(weekdayColor(day.weekday, day.isToday))
-                                    .padding(2)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .fill(day.isToday ? SCColor.accent : Color.clear)
-                                            .aspectRatio(1, contentMode: .fill)
-                                    )
-                                    .padding(6)
-                                Text("😃")
-                                    .font(.title2)
+                                    .foregroundColor(SCColor.weekday(day.weekday, day.isToday))
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 4)
+                                    .background(SCColor.highlight(day.isToday))
+                                VStack {
+                                    Text("😃")
+                                        .font(.title2)
+                                }
+                                .padding(.vertical, 4)
                             } else {
                                 EmptyView()
                             }

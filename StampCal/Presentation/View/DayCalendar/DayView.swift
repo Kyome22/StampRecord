@@ -15,23 +15,20 @@ struct DayView: View {
     var body: some View {
         VStack {
             Text(shortWeekdays[day.weekday])
-                .frame(height: 40)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(weekdayColor(day.weekday))
-                .background(SCColor.cellBackground)
+                .padding(.vertical, 8)
+                .foregroundColor(SCColor.weekday(day.weekday))
+                .background(SCColor.cellHighlightWeek)
                 .cornerRadius(8)
             VStack {
                 Text(day.text)
-                    .foregroundColor(weekdayColor(day.weekday, day.isToday))
-                    .padding(2)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(day.isToday ? SCColor.accent : Color.clear)
-                            .aspectRatio(1, contentMode: .fill)
-                    )
-                    .padding(6)
+                    .foregroundColor(SCColor.weekday(day.weekday, day.isToday))
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                    .background(SCColor.highlight(day.isToday))
                 Text("😃")
                     .font(.title)
+                    .padding()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(SCColor.cellBackground)

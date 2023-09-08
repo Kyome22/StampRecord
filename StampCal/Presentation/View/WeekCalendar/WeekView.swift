@@ -16,24 +16,23 @@ struct WeekView: View {
         VStack {
             ForEach(days) { day in
                 HStack {
-                    Text(shortWeekdays[day.weekday])
-                        .frame(width: 64)
+                    wrapText(maxKey: "MMM", key: shortWeekdays[day.weekday])
                         .frame(maxHeight: .infinity)
-                        .foregroundColor(weekdayColor(day.weekday))
-                        .background(SCColor.cellBackground)
+                        .padding(.horizontal, 4)
+                        .foregroundColor(SCColor.weekday(day.weekday))
+                        .background(SCColor.cellHighlightWeek)
                         .cornerRadius(8)
                     HStack {
                         wrapText(maxKey: "88", key: day.text)
-                            .foregroundColor(weekdayColor(day.weekday, day.isToday))
-                            .padding(2)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(day.isToday ? SCColor.accent : Color.clear)
-                                    .aspectRatio(1, contentMode: .fill)
-                            )
-                            .padding(6)
-                        Text("😃")
-                            .font(.title)
+                            .frame(maxHeight: .infinity)
+                            .padding(.horizontal, 8)
+                            .foregroundColor(SCColor.weekday(day.weekday, day.isToday))
+                            .background(SCColor.highlight(day.isToday))
+                        HStack(spacing: 0) {
+                            Text("😃")
+                                .font(.title)
+                        }
+                        .padding(.horizontal, 4)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .background(SCColor.cellBackground)
