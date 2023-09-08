@@ -1,5 +1,5 @@
 /*
- WeekView.swift
+ HorizontalWeekView.swift
  StampCal
 
  Created by Takuto Nakamura on 2023/09/04.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct WeekView: View {
+struct HorizontalWeekView: View {
     let shortWeekdays: [String]
     let days: [Day]
 
@@ -44,8 +44,8 @@ struct WeekView: View {
     }
 }
 
-struct WeekView_Previews: PreviewProvider {
+struct HorizontalWeekView_Previews: PreviewProvider {
     static var previews: some View {
-        WeekView(shortWeekdays: [], days: [])
+        HorizontalWeekView(shortWeekdays: [], days: [])
     }
 }

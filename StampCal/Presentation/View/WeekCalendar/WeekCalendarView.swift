@@ -10,6 +10,7 @@ import SwiftUI
 
 struct WeekCalendarView: View {
     @StateObject var viewModel = WeekCalendarViewModel()
+    @Binding var isPhone: Bool
 
     var body: some View {
         VStack {
@@ -37,7 +38,11 @@ struct WeekCalendarView: View {
                     viewModel.paging(with: pageDirection)
                 },
                 content: { week in
-                    WeekView(shortWeekdays: viewModel.shortWeekdays, days: week.days)
+                    if isPhone {
+                        HorizontalWeekView(shortWeekdays: viewModel.shortWeekdays, days: week.days)
+                    } else {
+                        VerticalWeekView(shortWeekdays: viewModel.shortWeekdays, days: week.days)
+                    }
                 }
             )
         }
@@ -48,6 +53,6 @@ struct WeekCalendarView: View {
 
 struct WeekCalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        WeekCalendarView()
+        WeekCalendarView(isPhone: .constant(true))
     }
 }

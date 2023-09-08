@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct MainView: View {
+    @State var isPhone: Bool = true
+
     var body: some View {
         TabView {
             Text("stamps")
@@ -19,9 +21,13 @@ struct MainView: View {
                 .tabItem {
                     Label("day", image: "calendar.day")
                 }
-            WeekCalendarView()
+            WeekCalendarView(isPhone: $isPhone)
                 .tabItem {
-                    Label("week", image: "calendar.week.horizontal")
+                    if isPhone {
+                        Label("week", image: "calendar.week.horizontal")
+                    } else {
+                        Label("week", image: "calendar.week.vertical")
+                    }
                 }
             MonthCalendarView()
                 .tabItem {
@@ -31,6 +37,15 @@ struct MainView: View {
                 .tabItem {
                     Label("settings", systemImage: "gearshape")
                 }
+        }
+        .onAppear {
+            judgeDevice()
+        }
+    }
+
+    func judgeDevice() {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            isPhone = false
         }
     }
 }
