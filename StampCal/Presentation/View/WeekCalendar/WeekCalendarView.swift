@@ -14,7 +14,7 @@ struct WeekCalendarView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            HeaderView(
+            PagingHeaderView(
                 title: $viewModel.title,
                 pageBackwardHandler: {
                     viewModel.paging(with: .backward)

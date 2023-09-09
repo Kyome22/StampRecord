@@ -1,5 +1,5 @@
 /*
- HeaderView.swift
+ PagingHeaderView.swift
  StampCal
 
  Created by Takuto Nakamura on 2023/09/08.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct HeaderView: View {
+struct PagingHeaderView: View {
     @Binding var title: String
     let pageBackwardHandler: () -> Void
     let pageForwardHandler: () -> Void
@@ -44,7 +44,7 @@ struct HeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(title: .constant(""),
+        PagingHeaderView(title: .constant(""),
                    pageBackwardHandler: {},
                    pageForwardHandler: {})
     }
