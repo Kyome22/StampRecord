@@ -7,7 +7,7 @@
 */
 
 import SwiftUI
-import MCEmojiPicker
+import EmojiPalette
 
 struct AddNewStampView: View {
     @Environment(\.dismiss) var dismiss
@@ -40,9 +40,11 @@ struct AddNewStampView: View {
                 } label: {
                     Text(viewModel.emoji)
                 }
-                .buttonStyle(.selectEmoji)
-                .emojiPicker(isPresented: $viewModel.showEmojiPicker,
-                             selectedEmoji: $viewModel.emoji)
+                .buttonStyle(
+                    SelectEmojiButtonStyle(isPresented: $viewModel.showEmojiPicker) {
+                        EmojiPaletteView()
+                    }
+                )
                 VStack(alignment: .leading, spacing: 16) {
                     Text("summary")
                         .font(.callout)

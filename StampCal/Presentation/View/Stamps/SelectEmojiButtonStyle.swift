@@ -8,13 +8,25 @@
 
 import SwiftUI
 
-struct SelectEmojiButtonStyle: ButtonStyle {
+struct SelectEmojiButtonStyle<Content: View>: ButtonStyle {
+    @Binding private var isPresented: Bool
+    private let content: () -> Content
+
+    init(isPresented: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) {
+        _isPresented = isPresented
+        self.content = content
+    }
+
     func makeBody(configuration: Configuration) -> some View {
         HStack(spacing: 16) {
             configuration.label
                 .font(.largeTitle)
                 .padding(16)
                 .background(SCColor.appBackground)
+                .popover(isPresented: $isPresented, attachmentAnchor: .point(.trailing)) {
+                    content()
+                        .presentationCompactAdaptation(.popover)
+                }
             Text("selectEmoji")
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -25,11 +37,5 @@ struct SelectEmojiButtonStyle: ButtonStyle {
             RoundedRectangle(cornerRadius: 8)
                 .stroke(SCColor.cellBorder, lineWidth: 1)
         }
-    }
-}
-
-extension ButtonStyle where Self == SelectEmojiButtonStyle {
-    static var selectEmoji: SelectEmojiButtonStyle {
-        return SelectEmojiButtonStyle()
     }
 }
