@@ -11,3 +11,9 @@
 "week" = "Week";
 "month" = "Month";
 "settings" = "Settings";
+
+"summary" = "Summary";
+"cancel" = "Cancel";
+"add" = "Add";
+"newStamp" = "New Stamp";
+"selectEmoji" = "Select an Emoji.";

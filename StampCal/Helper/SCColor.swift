@@ -15,6 +15,7 @@ enum SCColor {
     static let toolbarBackground = Color("toolbar.background")
     static let appBackground = Color("app.background")
     static let cellBackground = Color("cell.background")
+    static let cellBorder = Color("cell.border")
     static let cellRed = Color("cell.red")
     static let cellBlue = Color("cell.blue")
     static let cellHighlightStrong = Color("cell.highlight.strong")

@@ -10,6 +10,7 @@ import SwiftUI
 
 final class StampsViewModel: ObservableObject {
     @Published var stamps: [Stamp] = Stamp.dummy
+    @Published var showingSheet: Bool = false
 
     init() {}
 
@@ -18,6 +19,6 @@ final class StampsViewModel: ObservableObject {
     }
 
     func deleteStamp() {
-        
+
     }
 }

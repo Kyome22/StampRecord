@@ -24,7 +24,7 @@ struct StampsView: View {
                     HStack {
                         Spacer()
                         Button {
-                            viewModel.addStamp()
+                            viewModel.showingSheet = true
                         } label: {
                             Image(systemName: "plus")
                                 .font(.title2)
@@ -68,6 +68,9 @@ struct StampsView: View {
             }
         }
         .background(SCColor.appBackground)
+        .sheet(isPresented: $viewModel.showingSheet) {
+            AddNewStampView()
+        }
     }
 }
 
