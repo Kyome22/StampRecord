@@ -42,7 +42,7 @@ struct AddNewStampView: View {
                 }
                 .buttonStyle(
                     SelectEmojiButtonStyle(isPresented: $viewModel.showEmojiPicker) {
-                        EmojiPaletteView()
+                        EmojiPaletteView(selectedEmoji: $viewModel.emoji)
                     }
                 )
                 VStack(alignment: .leading, spacing: 16) {

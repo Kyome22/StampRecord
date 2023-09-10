@@ -8,32 +8,33 @@
 
 import SwiftUI
 
-final class EmojiPaletteViewModel: ObservableObject {
-    @Published var emojiSets: [EmojiSet]
-    @Published var selection: EmojiCategory = .smileysAndPeople
-    private let parser = EmojiParser()
-
-    init() {
-        emojiSets = parser.getEmojiSets()
-    }
-}
-
 public struct EmojiPaletteView: View {
-    @StateObject var viewModel = EmojiPaletteViewModel()
+    @Binding var selectedEmoji: String
+    @State var emojiSets: [EmojiSet]
+    @State var selection: EmojiCategory = .smileysAndPeople
+    private let parser = EmojiParser()
     private let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 8), count: 6)
 
-    public init() {}
+    public init(selectedEmoji: Binding<String>) {
+        _selectedEmoji = selectedEmoji
+        emojiSets = parser.getEmojiSets()
+    }
 
     public var body: some View {
         VStack(spacing: 0) {
             ScrollViewReader { proxy in
                 List {
-                    ForEach(viewModel.emojiSets) { emojiSet in
+                    ForEach(emojiSets) { emojiSet in
                         Section {
                             LazyVGrid(columns: columns, spacing: 8) {
                                 ForEach(emojiSet.emojis) { emoji in
-                                    Text(emoji.character)
-                                        .font(.title)
+                                    Button {
+                                        selectedEmoji = emoji.character
+                                    } label: {
+                                        Text(emoji.character)
+                                            .font(.title)
+                                    }
+                                    .buttonStyle(.borderless)
                                 }
                             }
                         } header: {
@@ -48,10 +49,10 @@ public struct EmojiPaletteView: View {
                 HStack {
                     ForEach(EmojiCategory.allCases) { emojiCategory in
                         Image(systemName: emojiCategory.imageName)
-                            .foregroundColor(viewModel.selection == emojiCategory ? Color.accentColor : .secondary)
+                            .foregroundColor(selection == emojiCategory ? Color.accentColor : .secondary)
                             .frame(maxWidth: .infinity)
                             .onTapGesture {
-                                viewModel.selection = emojiCategory
+                                selection = emojiCategory
                                 withAnimation {
                                     proxy.scrollTo(emojiCategory, anchor: UnitPoint(x: 0, y: 0))
                                 }
@@ -67,6 +68,6 @@ public struct EmojiPaletteView: View {
 
 struct EmojiPaletteView_Previews: PreviewProvider {
     static var previews: some View {
-        EmojiPaletteView()
+        EmojiPaletteView(selectedEmoji: .constant(""))
     }
 }
