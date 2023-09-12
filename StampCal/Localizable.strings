@@ -13,7 +13,12 @@
 "settings" = "Settings";
 
 "summary" = "Summary";
+"inputSummary" = "Input summary (required)";
 "cancel" = "Cancel";
 "add" = "Add";
+"done" = "Done";
 "newStamp" = "New Stamp";
+"editStamp" = "Edit Stamp";
 "selectEmoji" = "Select an Emoji.";
+"unableAddStamp" = "Unable to Add Stamp";
+"overlappedErrorMessage" = "This emoji is already used.";

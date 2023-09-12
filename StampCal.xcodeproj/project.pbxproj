@@ -24,6 +24,11 @@
 		1C5638872AADBFBD00694F44 /* AddNewStampViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638862AADBFBD00694F44 /* AddNewStampViewModel.swift */; };
 		1C5638892AADF46600694F44 /* SelectEmojiButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638882AADF46600694F44 /* SelectEmojiButtonStyle.swift */; };
 		1C5638912AAE1F2C00694F44 /* EmojiPalette in Frameworks */ = {isa = PBXBuildFile; productRef = 1C5638902AAE1F2C00694F44 /* EmojiPalette */; };
+		1C5638BD2AB0323F00694F44 /* EmojiPalette in Frameworks */ = {isa = PBXBuildFile; productRef = 1C5638BC2AB0323F00694F44 /* EmojiPalette */; };
+		1C5638C32AB0B8F900694F44 /* EditStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638C22AB0B8F900694F44 /* EditStampView.swift */; };
+		1C5638C52AB0C45600694F44 /* FocusedField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638C42AB0C45600694F44 /* FocusedField.swift */; };
+		1C5638C72AB0C4BE00694F44 /* EditStampViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638C62AB0C4BE00694F44 /* EditStampViewModel.swift */; };
+		1C5638C92AB0C8D000694F44 /* HeaderHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */; };
 		1C7234E52A9B433A0065512A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E42A9B433A0065512A /* MainView.swift */; };
 		1C7234E72A9B518C0065512A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C7234E62A9B518C0065512A /* Localizable.strings */; };
 		1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E82A9B73A00065512A /* MonthCalendarView.swift */; };
@@ -64,7 +69,10 @@
 		1C5638782AADA10A00694F44 /* AddNewStampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStampView.swift; sourceTree = "<group>"; };
 		1C5638862AADBFBD00694F44 /* AddNewStampViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStampViewModel.swift; sourceTree = "<group>"; };
 		1C5638882AADF46600694F44 /* SelectEmojiButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEmojiButtonStyle.swift; sourceTree = "<group>"; };
-		1C56388E2AAE11E500694F44 /* EmojiPalettePackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = EmojiPalettePackage; sourceTree = "<group>"; };
+		1C5638C22AB0B8F900694F44 /* EditStampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStampView.swift; sourceTree = "<group>"; };
+		1C5638C42AB0C45600694F44 /* FocusedField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedField.swift; sourceTree = "<group>"; };
+		1C5638C62AB0C4BE00694F44 /* EditStampViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStampViewModel.swift; sourceTree = "<group>"; };
+		1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderHStack.swift; sourceTree = "<group>"; };
 		1C7234E42A9B433A0065512A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1C7234E62A9B518C0065512A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1C7234E82A9B73A00065512A /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
@@ -96,6 +104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C5638912AAE1F2C00694F44 /* EmojiPalette in Frameworks */,
+				1C5638BD2AB0323F00694F44 /* EmojiPalette in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,18 +143,11 @@
 			isa = PBXGroup;
 			children = (
 				1C5638702AAB55A200694F44 /* StampsView.swift */,
-				1C5638782AADA10A00694F44 /* AddNewStampView.swift */,
 				1C5638882AADF46600694F44 /* SelectEmojiButtonStyle.swift */,
+				1C5638782AADA10A00694F44 /* AddNewStampView.swift */,
+				1C5638C22AB0B8F900694F44 /* EditStampView.swift */,
 			);
 			path = Stamps;
-			sourceTree = "<group>";
-		};
-		1C56388D2AAE11E500694F44 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				1C56388E2AAE11E500694F44 /* EmojiPalettePackage */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 		1C56388F2AAE1F2C00694F44 /* Frameworks */ = {
@@ -158,7 +160,6 @@
 		1CF3D5FD2A90A4BD005B6E71 = {
 			isa = PBXGroup;
 			children = (
-				1C56388D2AAE11E500694F44 /* Packages */,
 				1CF3D6082A90A4BE005B6E71 /* StampCal */,
 				1CF3D6072A90A4BE005B6E71 /* Products */,
 				1C56388F2AAE1F2C00694F44 /* Frameworks */,
@@ -232,6 +233,7 @@
 				1C7234F02A9B8EB90065512A /* Day.swift */,
 				1C56385A2AA5C67600694F44 /* Week.swift */,
 				1C56385C2AA8133D00694F44 /* Month.swift */,
+				1C5638C42AB0C45600694F44 /* FocusedField.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -256,6 +258,7 @@
 			children = (
 				1C5638722AAB561A00694F44 /* StampsViewModel.swift */,
 				1C5638862AADBFBD00694F44 /* AddNewStampViewModel.swift */,
+				1C5638C62AB0C4BE00694F44 /* EditStampViewModel.swift */,
 				1C5638692AA8B5E400694F44 /* DayCalendarViewModel.swift */,
 				1C7234F42A9B9A010065512A /* WeekCalendarViewModel.swift */,
 				1C7234F22A9B8ED20065512A /* MonthCalendarViewModel.swift */,
@@ -268,6 +271,7 @@
 			children = (
 				1CF3D60B2A90A4BE005B6E71 /* ContentView.swift */,
 				1C7234E42A9B433A0065512A /* MainView.swift */,
+				1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */,
 				1C5638762AAB6D3D00694F44 /* PagingHeaderView.swift */,
 				1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */,
 				1C56386F2AAB556900694F44 /* Stamps */,
@@ -310,6 +314,7 @@
 			name = StampCal;
 			packageProductDependencies = (
 				1C5638902AAE1F2C00694F44 /* EmojiPalette */,
+				1C5638BC2AB0323F00694F44 /* EmojiPalette */,
 			);
 			productName = StampCal;
 			productReference = 1CF3D6062A90A4BE005B6E71 /* StampCal.app */;
@@ -341,6 +346,7 @@
 			);
 			mainGroup = 1CF3D5FD2A90A4BD005B6E71;
 			packageReferences = (
+				1C5638BB2AB0323F00694F44 /* XCRemoteSwiftPackageReference "EmojiPalette" */,
 			);
 			productRefGroup = 1CF3D6072A90A4BE005B6E71 /* Products */;
 			projectDirPath = "";
@@ -373,8 +379,10 @@
 				1C5638682AA8B5C700694F44 /* DayView.swift in Sources */,
 				1CF3D6132A90A4BF005B6E71 /* Persistence.swift in Sources */,
 				1C5638792AADA10A00694F44 /* AddNewStampView.swift in Sources */,
+				1C5638C92AB0C8D000694F44 /* HeaderHStack.swift in Sources */,
 				1C56385D2AA8133D00694F44 /* Month.swift in Sources */,
 				1C7234F32A9B8ED20065512A /* MonthCalendarViewModel.swift in Sources */,
+				1C5638C52AB0C45600694F44 /* FocusedField.swift in Sources */,
 				1C7234F52A9B9A010065512A /* WeekCalendarViewModel.swift in Sources */,
 				1C7234FB2A9CEAF50065512A /* SCColor.swift in Sources */,
 				1C7234E52A9B433A0065512A /* MainView.swift in Sources */,
@@ -386,6 +394,7 @@
 				1C7234F92A9CE94E0065512A /* View+Extensions.swift in Sources */,
 				1C56385F2AA8187700694F44 /* MonthView.swift in Sources */,
 				1CF3D60C2A90A4BE005B6E71 /* ContentView.swift in Sources */,
+				1C5638C72AB0C4BE00694F44 /* EditStampViewModel.swift in Sources */,
 				1C56386E2AAB530E00694F44 /* VerticalWeekView.swift in Sources */,
 				1CF3D6282A911A6B005B6E71 /* StampCalAppModel.swift in Sources */,
 				1CF3D61E2A9110E6005B6E71 /* StampCalApp.swift in Sources */,
@@ -399,6 +408,7 @@
 				1C5638892AADF46600694F44 /* SelectEmojiButtonStyle.swift in Sources */,
 				1C7234ED2A9B73C90065512A /* DayCalendarView.swift in Sources */,
 				1CF3D6162A90A4BF005B6E71 /* StampCal.xcdatamodeld in Sources */,
+				1C5638C32AB0B8F900694F44 /* EditStampView.swift in Sources */,
 				1CF3D62C2A911B18005B6E71 /* Utils.swift in Sources */,
 				1C5638872AADBFBD00694F44 /* AddNewStampViewModel.swift in Sources */,
 				1C7234EF2A9B79380065512A /* Calendar+Extensions.swift in Sources */,
@@ -604,9 +614,25 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		1C5638BB2AB0323F00694F44 /* XCRemoteSwiftPackageReference "EmojiPalette" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kyome22/EmojiPalette.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		1C5638902AAE1F2C00694F44 /* EmojiPalette */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = EmojiPalette;
+		};
+		1C5638BC2AB0323F00694F44 /* EmojiPalette */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C5638BB2AB0323F00694F44 /* XCRemoteSwiftPackageReference "EmojiPalette" */;
 			productName = EmojiPalette;
 		};
 /* End XCSwiftPackageProductDependency section */

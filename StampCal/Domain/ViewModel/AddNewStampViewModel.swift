@@ -6,12 +6,27 @@
  Copyright © 2023 Studio Kyome. All rights reserved.
 */
 
-import SwiftUI
+import Foundation
+import EmojiPalette
 
 final class AddNewStampViewModel: ObservableObject {
-    @Published var emoji: String = "🏖️"
+    @Published var emoji: String = ""
     @Published var summary: String = ""
     @Published var showEmojiPicker: Bool = false
+    @Published var showOverlappedError: Bool = false
 
-    init() {}
+    private let addNewStampHandler: (Stamp) -> Bool
+
+    init(addNewStampHandler: @escaping (Stamp) -> Bool) {
+        self.addNewStampHandler = addNewStampHandler
+
+        let categories: [EmojiCategory] = [.animalsAndNature, .foodAndDrink, .activity, .objects]
+        emoji = EmojiParser.shared.randomEmoji(categories: categories).character
+    }
+
+    func addNewStamp() -> Bool {
+        let result = addNewStampHandler(Stamp(emoji: emoji, summary: summary))
+        showOverlappedError = !result
+        return result
+    }
 }

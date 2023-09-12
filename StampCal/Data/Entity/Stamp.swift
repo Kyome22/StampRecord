@@ -9,9 +9,10 @@
 import Foundation
 
 struct Stamp: Identifiable {
-    var emoji: Character
+    var emoji: String
     var summary: String
-    var id: Character { emoji }
+    // TODO: idを後で修正する
+    var id: String { emoji }
 
     static let dummy: [Self] = [
         Stamp(emoji: "💪", summary: "筋トレ"),

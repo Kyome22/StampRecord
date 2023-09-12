@@ -6,7 +6,7 @@
  Copyright © 2023 Studio Kyome. All rights reserved.
 */
 
-import SwiftUI
+import Foundation
 
 final class StampsViewModel: ObservableObject {
     @Published var stamps: [Stamp] = Stamp.dummy
@@ -14,8 +14,13 @@ final class StampsViewModel: ObservableObject {
 
     init() {}
 
-    func addStamp() {
-
+    func addNewStamp(_ stamp: Stamp) -> Bool {
+        // TODO: idを後で修正する
+        if stamps.contains(where: { $0.emoji == stamp.emoji }) {
+            return false
+        }
+        stamps.insert(stamp, at: 0)
+        return true
     }
 
     func deleteStamp() {

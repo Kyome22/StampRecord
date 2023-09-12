@@ -15,7 +15,7 @@ struct PagingHeaderView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
+            HeaderHStack {
                 Button {
                     pageBackwardHandler()
                 } label: {

@@ -1,20 +1,20 @@
 /*
- AddNewStampView.swift
+ EditStampView.swift
  StampCal
 
- Created by Takuto Nakamura on 2023/09/10.
+ Created by Takuto Nakamura on 2023/09/13.
  Copyright © 2023 Studio Kyome. All rights reserved.
 */
 
 import SwiftUI
 import EmojiPalette
 
-struct AddNewStampView: View {
+struct EditStampView: View {
     @Environment(\.dismiss) var dismiss
     @FocusState var focusedField: FocusedField?
-    @StateObject var viewModel: AddNewStampViewModel
+    @StateObject var viewModel: EditStampViewModel
 
-    init(viewModel: @autoclosure @escaping () -> AddNewStampViewModel) {
+    init(viewModel: @autoclosure @escaping () -> EditStampViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel())
     }
 
@@ -25,11 +25,11 @@ struct AddNewStampView: View {
                 Button("cancel") {
                     dismiss()
                 }
-                Text("newStamp")
+                Text("editStamp")
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
-                Button("add") {
-                    if viewModel.addNewStamp() {
+                Button("done") {
+                    if viewModel.doneEditStamp() {
                         dismiss()
                     }
                 }
@@ -63,6 +63,12 @@ struct AddNewStampView: View {
                     .textFieldStyle(.roundedBorder)
                     .focused($focusedField, equals: .title)
                 }
+                Button {
+                    viewModel.deleteStamp()
+                    dismiss()
+                } label: {
+                    Text("delete")
+                }
                 Spacer()
             }
             .padding(24)
@@ -83,8 +89,12 @@ struct AddNewStampView: View {
     }
 }
 
-struct AddNewStampView_Previews: PreviewProvider {
+struct EditStampView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewStampView(viewModel: AddNewStampViewModel(addNewStampHandler: { _ in true }))
+        EditStampView(viewModel: EditStampViewModel(
+            originalStamp: Stamp(emoji: "", summary: ""),
+            doneEditStampHandler: { _ in true },
+            deleteStampHandler: {}
+        ))
     }
 }

@@ -69,7 +69,9 @@ struct StampsView: View {
         }
         .background(SCColor.appBackground)
         .sheet(isPresented: $viewModel.showingSheet) {
-            AddNewStampView()
+            AddNewStampView(viewModel: AddNewStampViewModel(addNewStampHandler: { stamp in
+                return viewModel.addNewStamp(stamp)
+            }))
         }
     }
 }

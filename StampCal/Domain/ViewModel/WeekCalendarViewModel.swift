@@ -6,7 +6,7 @@
  Copyright © 2023 Studio Kyome. All rights reserved.
 */
 
-import SwiftUI
+import Foundation
 
 final class WeekCalendarViewModel: ObservableObject {
     @Published var title: String = ""
