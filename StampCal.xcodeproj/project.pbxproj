@@ -29,6 +29,7 @@
 		1C5638C52AB0C45600694F44 /* FocusedField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638C42AB0C45600694F44 /* FocusedField.swift */; };
 		1C5638C72AB0C4BE00694F44 /* EditStampViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638C62AB0C4BE00694F44 /* EditStampViewModel.swift */; };
 		1C5638C92AB0C8D000694F44 /* HeaderHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */; };
+		1C5638CB2AB1F4DF00694F44 /* StampOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638CA2AB1F4DF00694F44 /* StampOrder.swift */; };
 		1C7234E52A9B433A0065512A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E42A9B433A0065512A /* MainView.swift */; };
 		1C7234E72A9B518C0065512A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C7234E62A9B518C0065512A /* Localizable.strings */; };
 		1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E82A9B73A00065512A /* MonthCalendarView.swift */; };
@@ -73,6 +74,7 @@
 		1C5638C42AB0C45600694F44 /* FocusedField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedField.swift; sourceTree = "<group>"; };
 		1C5638C62AB0C4BE00694F44 /* EditStampViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStampViewModel.swift; sourceTree = "<group>"; };
 		1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderHStack.swift; sourceTree = "<group>"; };
+		1C5638CA2AB1F4DF00694F44 /* StampOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampOrder.swift; sourceTree = "<group>"; };
 		1C7234E42A9B433A0065512A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1C7234E62A9B518C0065512A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1C7234E82A9B73A00065512A /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				1C56385A2AA5C67600694F44 /* Week.swift */,
 				1C56385C2AA8133D00694F44 /* Month.swift */,
 				1C5638C42AB0C45600694F44 /* FocusedField.swift */,
+				1C5638CA2AB1F4DF00694F44 /* StampOrder.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				1C5638732AAB561A00694F44 /* StampsViewModel.swift in Sources */,
 				1C5638642AA853CE00694F44 /* Array+Extensions.swift in Sources */,
 				1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */,
+				1C5638CB2AB1F4DF00694F44 /* StampOrder.swift in Sources */,
 				1C56386A2AA8B5E400694F44 /* DayCalendarViewModel.swift in Sources */,
 				1C5638892AADF46600694F44 /* SelectEmojiButtonStyle.swift in Sources */,
 				1C7234ED2A9B73C90065512A /* DayCalendarView.swift in Sources */,

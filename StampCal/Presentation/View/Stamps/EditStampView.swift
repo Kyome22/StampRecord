@@ -29,11 +29,11 @@ struct EditStampView: View {
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                 Button("done") {
-                    if viewModel.doneEditStamp() {
+                    if viewModel.overriteAndSaveStamp() {
                         dismiss()
                     }
                 }
-                .disabled(viewModel.emoji.isEmpty || viewModel.summary.isEmpty)
+                .disabled(viewModel.disabledDone)
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
@@ -79,7 +79,7 @@ struct EditStampView: View {
             focusedField = nil
         }
         .alert(
-            "unableAddStamp",
+            "unableSaveStamp",
             isPresented: $viewModel.showOverlappedError,
             actions: {},
             message: {
@@ -92,9 +92,9 @@ struct EditStampView: View {
 struct EditStampView_Previews: PreviewProvider {
     static var previews: some View {
         EditStampView(viewModel: EditStampViewModel(
-            originalStamp: Stamp(emoji: "", summary: ""),
-            doneEditStampHandler: { _ in true },
-            deleteStampHandler: {}
+            original: Stamp(emoji: "", summary: ""),
+            overwriteAndSaveStampHandler: { _, _ in true },
+            deleteStampHandler: { _ in }
         ))
     }
 }

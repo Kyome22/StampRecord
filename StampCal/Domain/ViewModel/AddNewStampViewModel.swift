@@ -25,7 +25,8 @@ final class AddNewStampViewModel: ObservableObject {
     }
 
     func addNewStamp() -> Bool {
-        let result = addNewStampHandler(Stamp(emoji: emoji, summary: summary))
+        let stamp = Stamp(emoji: emoji, summary: summary)
+        let result = addNewStampHandler(stamp)
         showOverlappedError = !result
         return result
     }

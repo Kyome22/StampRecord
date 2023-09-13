@@ -20,19 +20,17 @@ struct StampsView: View {
         VStack(spacing: 0) {
             // Header
             VStack(spacing: 0) {
-                ZStack {
-                    HStack {
-                        Spacer()
-                        Button {
-                            viewModel.showingSheet = true
-                        } label: {
-                            Image(systemName: "plus")
-                                .font(.title2)
-                        }
-                    }
+                HeaderHStack {
+                    sortMenu
                     Text("stamps")
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity)
+                    Button {
+                        viewModel.showingSheet = true
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.title2)
+                    }
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 16)
@@ -43,36 +41,89 @@ struct StampsView: View {
             ScrollView(.vertical) {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(viewModel.stamps) { stamp in
-                        RoundedRectangle(cornerRadius: 8)
-                            .aspectRatio(1, contentMode: .fill)
-                            .frame(maxWidth: .infinity)
-                            .foregroundColor(SCColor.cellBackground)
-                            .shadow(color: SCColor.shadow, radius: 3, x: 0, y: 3)
-                            .overlay {
-                                VStack(spacing: 0) {
-                                    Text(String(stamp.emoji))
-                                        .font(.largeTitle)
-                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                                        .background(SCColor.cellHighlightWeek)
-                                    Text(stamp.summary)
-                                        .lineLimit(1)
-                                        .minimumScaleFactor(0.5)
-                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                                        .padding(4)
-                                }
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                            }
+                        stampCard(stamp)
                     }
                 }
                 .padding(24)
             }
         }
         .background(SCColor.appBackground)
-        .sheet(isPresented: $viewModel.showingSheet) {
-            AddNewStampView(viewModel: AddNewStampViewModel(addNewStampHandler: { stamp in
-                return viewModel.addNewStamp(stamp)
-            }))
+        .sheet(
+            isPresented: $viewModel.showingSheet,
+            onDismiss: {
+                viewModel.targetStamp = nil
+            },
+            content: {
+                if let stamp = viewModel.targetStamp {
+                    EditStampView(viewModel: EditStampViewModel(
+                        original: stamp,
+                        overwriteAndSaveStampHandler: { id, stamp in
+                            return viewModel.overwriteAndSave(id, stamp)
+                        },
+                        deleteStampHandler: { id in
+                            viewModel.deleteStamp(id)
+                        }
+                    ))
+                } else {
+                    AddNewStampView(viewModel: AddNewStampViewModel(addNewStampHandler: { stamp in
+                        return viewModel.addNewStamp(stamp)
+                    }))
+                }
+            }
+        )
+    }
+
+    private var sortMenu: some View {
+        Menu {
+            Picker(selection: $viewModel.stampOrderBy) {
+                ForEach(StampOrderBy.allCases) { orderBy in
+                    Text(orderBy.label).tag(orderBy)
+                }
+            } label: {
+                Text("sortBy")
+            }
+            Picker(selection: $viewModel.stampOrderIn) {
+                ForEach(StampOrderIn.allCases) { orderIn in
+                    Text(orderIn.label).tag(orderIn)
+                }
+            } label: {
+                Text("sortIn")
+            }
+        } label: {
+            Image(systemName: "arrow.up.arrow.down")
         }
+        .onChange(of: viewModel.stampOrderBy) { _ in
+            viewModel.sortStamps()
+        }
+        .onChange(of: viewModel.stampOrderIn) { _ in
+            viewModel.sortStamps()
+        }
+    }
+
+    private func stampCard(_ stamp: Stamp) -> some View {
+        RoundedRectangle(cornerRadius: 8)
+            .aspectRatio(1, contentMode: .fill)
+            .frame(maxWidth: .infinity)
+            .foregroundColor(SCColor.cellBackground)
+            .shadow(color: SCColor.shadow, radius: 3, x: 0, y: 3)
+            .overlay {
+                VStack(spacing: 0) {
+                    Text(String(stamp.emoji))
+                        .font(.largeTitle)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .background(SCColor.cellHighlightWeek)
+                    Text(stamp.summary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .padding(4)
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .onTapGesture {
+                    viewModel.targetStamp = stamp
+                    viewModel.showingSheet = true
+                }
+            }
     }
 }
 

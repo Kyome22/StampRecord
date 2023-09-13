@@ -14,27 +14,40 @@ final class EditStampViewModel: ObservableObject {
     @Published var showEmojiPicker: Bool = false
     @Published var showOverlappedError: Bool = false
 
-    private let doneEditStampHandler: (Stamp) -> Bool
-    private let deleteStampHandler: () -> Void
+    private let original: Stamp
+    private let overwriteAndSaveStampHandler: (String, Stamp) -> Bool
+    private let deleteStampHandler: (String) -> Void
 
-    init(
-        originalStamp: Stamp,
-        doneEditStampHandler: @escaping (Stamp) -> Bool,
-        deleteStampHandler: @escaping () -> Void
-    ) {
-        emoji = originalStamp.emoji
-        summary = originalStamp.summary
-        self.doneEditStampHandler = doneEditStampHandler
-        self.deleteStampHandler = deleteStampHandler
+    var disabledDone: Bool {
+        if emoji.isEmpty || summary.isEmpty {
+            return true
+        }
+        if emoji == original.emoji && summary == original.summary {
+            return true
+        }
+        return false
     }
 
-    func doneEditStamp() -> Bool {
-        let result = doneEditStampHandler(Stamp(emoji: emoji, summary: summary))
+    init(
+        original: Stamp,
+        overwriteAndSaveStampHandler: @escaping (String, Stamp) -> Bool,
+        deleteStampHandler: @escaping (String) -> Void
+    ) {
+        self.original = original
+        self.overwriteAndSaveStampHandler = overwriteAndSaveStampHandler
+        self.deleteStampHandler = deleteStampHandler
+        emoji = original.emoji
+        summary = original.summary
+    }
+
+    func overriteAndSaveStamp() -> Bool {
+        let stamp = Stamp(emoji: emoji, summary: summary, createdDate: original.createdDate)
+        let result = overwriteAndSaveStampHandler(original.id, stamp)
         showOverlappedError = !result
         return result
     }
 
     func deleteStamp() {
-        deleteStampHandler()
+        deleteStampHandler(original.id)
     }
 }

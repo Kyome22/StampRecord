@@ -17,8 +17,17 @@
 "cancel" = "Cancel";
 "add" = "Add";
 "done" = "Done";
+"delete" = "Delete";
 "newStamp" = "New Stamp";
 "editStamp" = "Edit Stamp";
 "selectEmoji" = "Select an Emoji.";
 "unableAddStamp" = "Unable to Add Stamp";
+"unableSaveStamp" = "Unable to Overwrite and Save Stamp";
 "overlappedErrorMessage" = "This emoji is already used.";
+
+"sort" = "Sort";
+"sortBy" = "Sort By";
+"sortIn" = "Sort In";
+"ascending" = "Ascending";
+"descending" = "Descending";
+"createdDate" = "Created Date";
