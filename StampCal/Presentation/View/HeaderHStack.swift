@@ -13,13 +13,14 @@ struct HeaderHStack: Layout {
         return subviews.map { $0.sizeThatFits(.unspecified).height }.max() ?? .zero
     }
 
-    private func maxSize(subviews: Subviews) -> CGSize {
+    private func maxSizeOfBothEdges(subviews: Subviews) -> CGSize {
         if subviews.count < 2 { return .zero }
         let subviewSizes = subviews.map { $0.sizeThatFits(.unspecified) }
         guard let first = subviewSizes.first, let last = subviewSizes.last else { return .zero }
         return CGSize(width: max(first.width, last.width),
                       height: max(first.height, last.height))
     }
+
     private func spacing(subviews: Subviews) -> CGFloat {
         return subviews.indices.map { index in
             guard index < subviews.count - 1 else { return 0 }
@@ -36,7 +37,7 @@ struct HeaderHStack: Layout {
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
         if subviews.count < 3 { return }
 
-        let maxSize = maxSize(subviews: subviews)
+        let maxSize = maxSizeOfBothEdges(subviews: subviews)
         let spacing = spacing(subviews: subviews)
 
         subviews.indices.forEach { index in
