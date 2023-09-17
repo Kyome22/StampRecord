@@ -27,6 +27,7 @@ protocol StampsViewModel: ObservableObject {
 
 final class StampsViewModelImpl<SR: StampRepository>: StampsViewModel {
     typealias SR = SR
+
     @Published var stampOrderBy: StampOrderBy = .createdDate
     @Published var stampOrderIn: StampOrderIn = .ascending
     @Published var stamps: [Stamp] = []
@@ -40,12 +41,6 @@ final class StampsViewModelImpl<SR: StampRepository>: StampsViewModel {
         stamps = stampRepository.stamps
         sortStamps()
     }
-
-//    init(_ stampRepository: StampRepository) {
-//        self.stampRepository = stampRepository as! SR
-//        stamps = stampRepository.stamps
-//        sortStamps()
-//    }
 
     func sortStamps() {
         switch (stampOrderBy, stampOrderIn) {

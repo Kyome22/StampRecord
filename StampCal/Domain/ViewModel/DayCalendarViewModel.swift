@@ -9,24 +9,35 @@
 import Foundation
 
 protocol DayCalendarViewModel: ObservableObject {
+    associatedtype SR: StampRepository
+    associatedtype LR: LogRepository
+
     var title: String { get set }
     var dayList: [Day] { get set }
     var shortWeekdays: [String] { get }
 
-    init()
+    init(_ stampRepository: SR, _ logRepository: LR)
 
     func paging(with pageDirection: PageDirection)
 }
 
-final class DayCalendarViewModelImpl: DayCalendarViewModel {
+final class DayCalendarViewModelImpl<SR: StampRepository,
+                                     LR: LogRepository>: DayCalendarViewModel {
+    typealias SR = SR
+    typealias LR = LR
+
     @Published var title: String = ""
     @Published var dayList: [Day] = []
 
     let shortWeekdays: [String]
     private let calendar = Calendar.current
+    private let stampRepository: SR
+    private let logRepository: LR
 
-    init() {
+    init(_ stampRepository: SR, _ logRepository: LR) {
         shortWeekdays = calendar.shortWeekdaySymbols
+        self.stampRepository = stampRepository
+        self.logRepository = logRepository
         let now = Date.now
         let day = Day(date: now,
                       isToday: true,
@@ -74,9 +85,17 @@ final class DayCalendarViewModelImpl: DayCalendarViewModel {
 // MARK: - Preview Mock
 extension PreviewMock {
     final class DayCalendarViewModelMock: DayCalendarViewModel {
+        typealias SR = StampRepositoryMock
+        typealias LR = LogRepositoryMock
+
         @Published var title: String = ""
         @Published var dayList: [Day] = []
+
         let shortWeekdays: [String]
+
+        init(_ stampRepository: SR, _ logRepository: LR) {
+            shortWeekdays = []
+        }
 
         init() {
             let calendar = Calendar.current

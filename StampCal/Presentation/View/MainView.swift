@@ -19,7 +19,7 @@ struct MainView<SAM: StampCalAppModel>: View {
                     .tabItem {
                         Label("stamps", image: "stamp")
                     }
-                DayCalendarView(viewModel: DayCalendarViewModelImpl())
+                DayCalendarView(viewModel: DayCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository))
                     .tabItem {
                         Label("day", image: "calendar.day")
                     }

@@ -15,6 +15,7 @@ struct Day: Hashable, Identifiable {
     var isToday: Bool = false
     var text: String
     var weekday: Int
+    var log: Log?
 
     static func == (lhs: Day, rhs: Day) -> Bool {
         return lhs.id == rhs.id
