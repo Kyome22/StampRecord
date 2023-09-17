@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct MonthCalendarView: View {
-    @StateObject var viewModel = MonthCalendarViewModel()
+struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
+    @StateObject var viewModel: MVM
 
     var body: some View {
         VStack(spacing: 0) {
@@ -38,6 +38,6 @@ struct MonthCalendarView: View {
 
 struct MonthCalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        MonthCalendarView()
+        MonthCalendarView(viewModel: PreviewMock.MonthCalendarViewModelMock())
     }
 }

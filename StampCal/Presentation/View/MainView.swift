@@ -8,21 +8,22 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct MainView<SAM: StampCalAppModel>: View {
+    @EnvironmentObject private var appModel: SAM
     @State var isPhone: Bool = true
 
     var body: some View {
         TabView {
             Group {
-                StampsView()
+                StampsView(viewModel: StampsViewModelImpl(appModel.stampRepository))
                     .tabItem {
                         Label("stamps", image: "stamp")
                     }
-                DayCalendarView()
+                DayCalendarView(viewModel: DayCalendarViewModelImpl())
                     .tabItem {
                         Label("day", image: "calendar.day")
                     }
-                WeekCalendarView(isPhone: $isPhone)
+                WeekCalendarView(viewModel: WeekCalendarViewModelImpl(), isPhone: $isPhone)
                     .tabItem {
                         if isPhone {
                             Label("week", image: "calendar.week.horizontal")
@@ -30,11 +31,11 @@ struct MainView: View {
                             Label("week", image: "calendar.week.vertical")
                         }
                     }
-                MonthCalendarView()
+                MonthCalendarView(viewModel: MonthCalendarViewModelImpl())
                     .tabItem {
                         Label("month", systemImage: "calendar")
                     }
-                Text("Hello")
+                Text("Hello World")
                     .tabItem {
                         Label("settings", systemImage: "gearshape")
                     }
@@ -47,7 +48,7 @@ struct MainView: View {
         }
     }
 
-    func judgeDevice() {
+    private func judgeDevice() {
         if UIDevice.current.userInterfaceIdiom == .pad {
             isPhone = false
         }

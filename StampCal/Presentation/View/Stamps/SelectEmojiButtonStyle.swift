@@ -9,24 +9,15 @@
 import SwiftUI
 
 struct SelectEmojiButtonStyle<Content: View>: ButtonStyle {
-    @Binding private var isPresented: Bool
-    private let content: () -> Content
+    let transform: (SelectEmojiLabel) -> Content
 
-    init(isPresented: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) {
-        _isPresented = isPresented
-        self.content = content
+    init(@ViewBuilder transform: @escaping (SelectEmojiLabel) -> Content) {
+        self.transform = transform
     }
 
     func makeBody(configuration: Configuration) -> some View {
         HStack(spacing: 16) {
-            configuration.label
-                .font(.largeTitle)
-                .padding(16)
-                .background(SCColor.appBackground)
-                .popover(isPresented: $isPresented, attachmentAnchor: .point(.trailing)) {
-                    content()
-                        .presentationCompactAdaptation(.popover)
-                }
+            transform(SelectEmojiLabel(configuration: configuration))
             Text("selectEmoji")
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -39,3 +30,22 @@ struct SelectEmojiButtonStyle<Content: View>: ButtonStyle {
         }
     }
 }
+
+struct SelectEmojiLabel: View {
+    let configuration: ButtonStyle.Configuration
+
+    var body: some View {
+        configuration.label
+            .font(.largeTitle)
+            .padding(16)
+            .background(SCColor.appBackground)
+    }
+}
+
+// extension ButtonStyle {
+//     static func selectEmojiButton<Content: View>(
+//         @ViewBuilder transform: @escaping (SelectEmojiLabel) -> Content
+//     ) -> SelectEmojiButtonStyle<Content> where Self == SelectEmojiButtonStyle<Content> {
+//         return SelectEmojiButtonStyle<Content>(transform: transform)
+//     }
+// }

@@ -8,14 +8,25 @@
 
 import Foundation
 
-final class DayCalendarViewModel: ObservableObject {
+protocol DayCalendarViewModel: ObservableObject {
+    var title: String { get set }
+    var dayList: [Day] { get set }
+    var shortWeekdays: [String] { get }
+
+    init()
+
+    func paging(with pageDirection: PageDirection)
+}
+
+final class DayCalendarViewModelImpl: DayCalendarViewModel {
     @Published var title: String = ""
     @Published var dayList: [Day] = []
 
-    var shortWeekdays: [String] = []
+    let shortWeekdays: [String]
     private let calendar = Calendar.current
 
     init() {
+        shortWeekdays = calendar.shortWeekdaySymbols
         let now = Date.now
         let day = Day(date: now,
                       isToday: true,
@@ -25,7 +36,6 @@ final class DayCalendarViewModel: ObservableObject {
         dayList.insert(getYesterday(of: now), at: 0)
         dayList.append(getTommorow(of: now))
         title = now.title
-        shortWeekdays = calendar.shortWeekdaySymbols
     }
 
     private func getYesterday(of date: Date) -> Day {
@@ -58,5 +68,28 @@ final class DayCalendarViewModel: ObservableObject {
             }
         }
         title = dayList[1].date?.title ?? "?"
+    }
+}
+
+// MARK: - Preview Mock
+extension PreviewMock {
+    final class DayCalendarViewModelMock: DayCalendarViewModel {
+        @Published var title: String = ""
+        @Published var dayList: [Day] = []
+        let shortWeekdays: [String]
+
+        init() {
+            let calendar = Calendar.current
+            shortWeekdays = calendar.shortWeekdaySymbols
+            let now = Date.now
+            let day = Day(date: now,
+                          isToday: true,
+                          text: calendar.dayText(of: now),
+                          weekday: calendar.weekday(of: now))
+            dayList.append(day)
+            title = now.title
+        }
+
+        func paging(with pageDirection: PageDirection) {}
     }
 }

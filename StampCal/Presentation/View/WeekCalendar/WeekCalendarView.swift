@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct WeekCalendarView: View {
-    @StateObject var viewModel = WeekCalendarViewModel()
+struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
+    @StateObject var viewModel: WVM
     @Binding var isPhone: Bool
 
     var body: some View {
@@ -43,6 +43,7 @@ struct WeekCalendarView: View {
 
 struct WeekCalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        WeekCalendarView(isPhone: .constant(true))
+        WeekCalendarView(viewModel: PreviewMock.WeekCalendarViewModelMock(),
+                         isPhone: .constant(true))
     }
 }

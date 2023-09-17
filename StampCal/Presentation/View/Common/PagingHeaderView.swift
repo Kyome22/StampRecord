@@ -19,20 +19,21 @@ struct PagingHeaderView: View {
                 Button {
                     pageBackwardHandler()
                 } label: {
-                    Image(systemName: "chevron.left")
+                    Text(Image(systemName: "chevron.left"))
                         .font(.title2)
-                        .fontWeight(.semibold)
                 }
+                .buttonStyle(.square)
                 Text(verbatim: title)
+                    .font(.body)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                 Button {
                     pageForwardHandler()
                 } label: {
-                    Image(systemName: "chevron.right")
+                    Text(Image(systemName: "chevron.right"))
                         .font(.title2)
-                        .fontWeight(.semibold)
                 }
+                .buttonStyle(.square)
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
@@ -45,7 +46,7 @@ struct PagingHeaderView: View {
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         PagingHeaderView(title: .constant(""),
-                   pageBackwardHandler: {},
-                   pageForwardHandler: {})
+                         pageBackwardHandler: {},
+                         pageForwardHandler: {})
     }
 }

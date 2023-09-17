@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct StampsView: View {
-    @StateObject var viewModel = StampsViewModel()
+struct StampsView<SVM: StampsViewModel>: View {
+    @StateObject var viewModel: SVM
     private let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16),
@@ -23,14 +23,16 @@ struct StampsView: View {
                 HeaderHStack {
                     sortMenu
                     Text("stamps")
+                        .font(.body)
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity)
                     Button {
                         viewModel.showingSheet = true
                     } label: {
-                        Image(systemName: "plus")
+                        Text(Image(systemName: "plus"))
                             .font(.title2)
                     }
+                    .buttonStyle(.square)
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 16)
@@ -55,19 +57,21 @@ struct StampsView: View {
             },
             content: {
                 if let stamp = viewModel.targetStamp {
-                    EditStampView(viewModel: EditStampViewModel(
+                    EditStampView(viewModel: EditStampViewModelImpl(
                         original: stamp,
-                        overwriteAndSaveStampHandler: { id, stamp in
-                            return viewModel.overwriteAndSave(id, stamp)
+                        updateStampHandler: { id, stamp in
+                            return viewModel.updateStamp(id, stamp)
                         },
                         deleteStampHandler: { id in
                             viewModel.deleteStamp(id)
                         }
                     ))
                 } else {
-                    AddNewStampView(viewModel: AddNewStampViewModel(addNewStampHandler: { stamp in
-                        return viewModel.addNewStamp(stamp)
-                    }))
+                    AddNewStampView(viewModel: AddNewStampViewModelImpl(
+                        addStampHandler: { stamp in
+                            return viewModel.addNewStamp(stamp)
+                        }
+                    ))
                 }
             }
         )
@@ -129,6 +133,6 @@ struct StampsView: View {
 
 struct StampsView_Previews: PreviewProvider {
     static var previews: some View {
-        StampsView()
+        StampsView(viewModel: PreviewMock.StampsViewModelMock())
     }
 }

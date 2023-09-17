@@ -30,6 +30,9 @@
 		1C5638C72AB0C4BE00694F44 /* EditStampViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638C62AB0C4BE00694F44 /* EditStampViewModel.swift */; };
 		1C5638C92AB0C8D000694F44 /* HeaderHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */; };
 		1C5638CB2AB1F4DF00694F44 /* StampOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638CA2AB1F4DF00694F44 /* StampOrder.swift */; };
+		1C5638CD2AB3504000694F44 /* SquareButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638CC2AB3504000694F44 /* SquareButtonStyle.swift */; };
+		1C5638CF2AB6BE2400694F44 /* DeleteButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638CE2AB6BE2400694F44 /* DeleteButtonStyle.swift */; };
+		1C5638D12AB6ECE800694F44 /* StampRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D02AB6ECE800694F44 /* StampRepository.swift */; };
 		1C7234E52A9B433A0065512A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E42A9B433A0065512A /* MainView.swift */; };
 		1C7234E72A9B518C0065512A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C7234E62A9B518C0065512A /* Localizable.strings */; };
 		1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E82A9B73A00065512A /* MonthCalendarView.swift */; };
@@ -75,6 +78,9 @@
 		1C5638C62AB0C4BE00694F44 /* EditStampViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStampViewModel.swift; sourceTree = "<group>"; };
 		1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderHStack.swift; sourceTree = "<group>"; };
 		1C5638CA2AB1F4DF00694F44 /* StampOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampOrder.swift; sourceTree = "<group>"; };
+		1C5638CC2AB3504000694F44 /* SquareButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareButtonStyle.swift; sourceTree = "<group>"; };
+		1C5638CE2AB6BE2400694F44 /* DeleteButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButtonStyle.swift; sourceTree = "<group>"; };
+		1C5638D02AB6ECE800694F44 /* StampRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRepository.swift; sourceTree = "<group>"; };
 		1C7234E42A9B433A0065512A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1C7234E62A9B518C0065512A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1C7234E82A9B73A00065512A /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 				1C5638702AAB55A200694F44 /* StampsView.swift */,
 				1C5638882AADF46600694F44 /* SelectEmojiButtonStyle.swift */,
 				1C5638782AADA10A00694F44 /* AddNewStampView.swift */,
+				1C5638CE2AB6BE2400694F44 /* DeleteButtonStyle.swift */,
 				1C5638C22AB0B8F900694F44 /* EditStampView.swift */,
 			);
 			path = Stamps;
@@ -157,6 +164,18 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1C5638D22AB7340F00694F44 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1C7234FC2A9CEE840065512A /* DetectOrientation.swift */,
+				1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */,
+				1C5638762AAB6D3D00694F44 /* PagingHeaderView.swift */,
+				1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */,
+				1C5638CC2AB3504000694F44 /* SquareButtonStyle.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		1CF3D5FD2A90A4BD005B6E71 = {
@@ -244,6 +263,7 @@
 		1CF3D6232A911961005B6E71 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				1C5638D02AB6ECE800694F44 /* StampRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -274,9 +294,7 @@
 			children = (
 				1CF3D60B2A90A4BE005B6E71 /* ContentView.swift */,
 				1C7234E42A9B433A0065512A /* MainView.swift */,
-				1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */,
-				1C5638762AAB6D3D00694F44 /* PagingHeaderView.swift */,
-				1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */,
+				1C5638D22AB7340F00694F44 /* Common */,
 				1C56386F2AAB556900694F44 /* Stamps */,
 				1C5638622AA84E6900694F44 /* DayCalendar */,
 				1C5638602AA84E5800694F44 /* WeekCalendar */,
@@ -289,12 +307,11 @@
 			isa = PBXGroup;
 			children = (
 				1CF3D62B2A911B18005B6E71 /* Utils.swift */,
+				1C7234FA2A9CEAF50065512A /* SCColor.swift */,
 				1C5638632AA853CE00694F44 /* Array+Extensions.swift */,
 				1C7234EE2A9B79380065512A /* Calendar+Extensions.swift */,
 				1C56386B2AA8DC0B00694F44 /* Date+Extensions.swift */,
 				1C7234F82A9CE94E0065512A /* View+Extensions.swift */,
-				1C7234FA2A9CEAF50065512A /* SCColor.swift */,
-				1C7234FC2A9CEE840065512A /* DetectOrientation.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -379,13 +396,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C7234F72A9CE35B0065512A /* InfinitePagingView.swift in Sources */,
+				1C5638CF2AB6BE2400694F44 /* DeleteButtonStyle.swift in Sources */,
 				1C5638682AA8B5C700694F44 /* DayView.swift in Sources */,
 				1CF3D6132A90A4BF005B6E71 /* Persistence.swift in Sources */,
 				1C5638792AADA10A00694F44 /* AddNewStampView.swift in Sources */,
+				1C5638D12AB6ECE800694F44 /* StampRepository.swift in Sources */,
 				1C5638C92AB0C8D000694F44 /* HeaderHStack.swift in Sources */,
 				1C56385D2AA8133D00694F44 /* Month.swift in Sources */,
 				1C7234F32A9B8ED20065512A /* MonthCalendarViewModel.swift in Sources */,
 				1C5638C52AB0C45600694F44 /* FocusedField.swift in Sources */,
+				1C5638CD2AB3504000694F44 /* SquareButtonStyle.swift in Sources */,
 				1C7234F52A9B9A010065512A /* WeekCalendarViewModel.swift in Sources */,
 				1C7234FB2A9CEAF50065512A /* SCColor.swift in Sources */,
 				1C7234E52A9B433A0065512A /* MainView.swift in Sources */,

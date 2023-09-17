@@ -9,16 +9,27 @@
 import Foundation
 import EmojiPalette
 
-final class AddNewStampViewModel: ObservableObject {
+protocol AddNewStampViewModel: ObservableObject {
+    var emoji: String { get set }
+    var summary: String { get set }
+    var showEmojiPicker: Bool { get set }
+    var showOverlappedError: Bool { get set }
+
+    init(addStampHandler: @escaping (Stamp) -> Bool)
+
+    func addNewStamp() -> Bool
+}
+
+final class AddNewStampViewModelImpl: AddNewStampViewModel {
     @Published var emoji: String = ""
     @Published var summary: String = ""
     @Published var showEmojiPicker: Bool = false
     @Published var showOverlappedError: Bool = false
 
-    private let addNewStampHandler: (Stamp) -> Bool
+    private let addStampHandler: (Stamp) -> Bool
 
-    init(addNewStampHandler: @escaping (Stamp) -> Bool) {
-        self.addNewStampHandler = addNewStampHandler
+    init(addStampHandler: @escaping (Stamp) -> Bool) {
+        self.addStampHandler = addStampHandler
 
         let categories: [EmojiCategory] = [.animalsAndNature, .foodAndDrink, .activity, .objects]
         emoji = EmojiParser.shared.randomEmoji(categories: categories).character
@@ -26,8 +37,23 @@ final class AddNewStampViewModel: ObservableObject {
 
     func addNewStamp() -> Bool {
         let stamp = Stamp(emoji: emoji, summary: summary)
-        let result = addNewStampHandler(stamp)
+        let result = addStampHandler(stamp)
         showOverlappedError = !result
         return result
+    }
+}
+
+// MARK: - Preview Mock
+extension PreviewMock {
+    final class AddNewStampViewModelMock: AddNewStampViewModel {
+        @Published var emoji: String = ""
+        @Published var summary: String = ""
+        @Published var showEmojiPicker: Bool = false
+        @Published var showOverlappedError: Bool = false
+
+        init(addStampHandler: @escaping (Stamp) -> Bool) {}
+        init() {}
+
+        func addNewStamp() -> Bool { return true }
     }
 }

@@ -8,14 +8,25 @@
 
 import Foundation
 
-final class MonthCalendarViewModel: ObservableObject {
+protocol MonthCalendarViewModel: ObservableObject {
+    var title: String { get set }
+    var monthList: [Month] { get set }
+    var shortWeekdays: [String] { get }
+
+    init()
+
+    func paging(with pageDirection: PageDirection)
+}
+
+final class MonthCalendarViewModelImpl: MonthCalendarViewModel {
     @Published var title: String = ""
     @Published var monthList: [Month] = []
 
-    var shortWeekdays: [String] = []
+    let shortWeekdays: [String]
     private let calendar = Calendar.current
 
     init() {
+        shortWeekdays = calendar.shortWeekdaySymbols
         let now = Date.now
         monthList.append(Month(title: now.title, days: getDays(of: now)))
         if let date = getPreviousMonth(of: now) {
@@ -25,7 +36,6 @@ final class MonthCalendarViewModel: ObservableObject {
             monthList.append(Month(title: date.title, days: getDays(of: date)))
         }
         title = monthList[1].title
-        shortWeekdays = calendar.shortWeekdaySymbols
     }
 
     private func getPreviousMonth(of date: Date) -> Date? {
@@ -82,5 +92,35 @@ final class MonthCalendarViewModel: ObservableObject {
             }
         }
         title = monthList[1].title
+    }
+}
+
+// MARK: - Preview Mock
+extension PreviewMock {
+    final class MonthCalendarViewModelMock: MonthCalendarViewModel {
+        @Published var title: String = ""
+        @Published var monthList: [Month] = []
+        let shortWeekdays: [String]
+
+        init() {
+            let calendar = Calendar.current
+            shortWeekdays = calendar.shortWeekdaySymbols
+            let now = Date.now
+            if let startOfMonth = calendar.startOfMonth(for: now) {
+                let days = (0 ..< 30).map { i in
+                    let date = calendar.date(byAdding: .day, value: i, to: startOfMonth)
+                    return Day(date: date,
+                               inMonth: true,
+                               isToday: calendar.isEqual(a: date, b: now),
+                               text: calendar.dayText(of: date),
+                               weekday: calendar.weekday(of: date))
+                }
+                let month = Month(title: now.title, days: days)
+                monthList.append(month)
+            }
+            title = now.title
+        }
+
+        func paging(with pageDirection: PageDirection) {}
     }
 }

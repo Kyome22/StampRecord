@@ -9,14 +9,10 @@
 import SwiftUI
 import EmojiPalette
 
-struct EditStampView: View {
+struct EditStampView<EVM: EditStampViewModel>: View {
     @Environment(\.dismiss) var dismiss
     @FocusState var focusedField: FocusedField?
-    @StateObject var viewModel: EditStampViewModel
-
-    init(viewModel: @autoclosure @escaping () -> EditStampViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel())
-    }
+    @StateObject var viewModel: EVM
 
     var body: some View {
         VStack(spacing: 0) {
@@ -29,7 +25,7 @@ struct EditStampView: View {
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                 Button("done") {
-                    if viewModel.overriteAndSaveStamp() {
+                    if viewModel.updateStamp() {
                         dismiss()
                     }
                 }
@@ -45,11 +41,10 @@ struct EditStampView: View {
                 } label: {
                     Text(viewModel.emoji)
                 }
-                .buttonStyle(
-                    SelectEmojiButtonStyle(isPresented: $viewModel.showEmojiPicker) {
-                        EmojiPaletteView(selectedEmoji: $viewModel.emoji)
-                    }
-                )
+                .buttonStyle(SelectEmojiButtonStyle(transform: { label in
+                    label.emojiPalette(selectedEmoji: $viewModel.emoji,
+                                       isPresented: $viewModel.showEmojiPicker)
+                }))
                 VStack(alignment: .leading, spacing: 16) {
                     Text("summary")
                         .font(.headline)
@@ -69,6 +64,7 @@ struct EditStampView: View {
                 } label: {
                     Text("delete")
                 }
+                .buttonStyle(.delete)
                 Spacer()
             }
             .padding(24)
@@ -91,10 +87,6 @@ struct EditStampView: View {
 
 struct EditStampView_Previews: PreviewProvider {
     static var previews: some View {
-        EditStampView(viewModel: EditStampViewModel(
-            original: Stamp(emoji: "", summary: ""),
-            overwriteAndSaveStampHandler: { _, _ in true },
-            deleteStampHandler: { _ in }
-        ))
+        EditStampView(viewModel: PreviewMock.EditStampViewModelMock())
     }
 }

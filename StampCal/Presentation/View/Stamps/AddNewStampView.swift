@@ -9,14 +9,10 @@
 import SwiftUI
 import EmojiPalette
 
-struct AddNewStampView: View {
+struct AddNewStampView<AVM: AddNewStampViewModel>: View {
     @Environment(\.dismiss) var dismiss
     @FocusState var focusedField: FocusedField?
-    @StateObject var viewModel: AddNewStampViewModel
-
-    init(viewModel: @autoclosure @escaping () -> AddNewStampViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel())
-    }
+    @StateObject var viewModel: AVM
 
     var body: some View {
         VStack(spacing: 0) {
@@ -45,11 +41,10 @@ struct AddNewStampView: View {
                 } label: {
                     Text(viewModel.emoji)
                 }
-                .buttonStyle(
-                    SelectEmojiButtonStyle(isPresented: $viewModel.showEmojiPicker) {
-                        EmojiPaletteView(selectedEmoji: $viewModel.emoji)
-                    }
-                )
+                .buttonStyle(SelectEmojiButtonStyle(transform: { label in
+                    label.emojiPalette(selectedEmoji: $viewModel.emoji,
+                                       isPresented: $viewModel.showEmojiPicker)
+                }))
                 VStack(alignment: .leading, spacing: 16) {
                     Text("summary")
                         .font(.headline)
@@ -85,6 +80,6 @@ struct AddNewStampView: View {
 
 struct AddNewStampView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewStampView(viewModel: AddNewStampViewModel(addNewStampHandler: { _ in true }))
+        AddNewStampView(viewModel: PreviewMock.AddNewStampViewModelMock())
     }
 }

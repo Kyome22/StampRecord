@@ -8,10 +8,27 @@
 
 import Foundation
 
-final class StampCalAppModel: ObservableObject {
-    let persistenceController: PersistenceController
+protocol StampCalAppModel: ObservableObject {
+    associatedtype SR: StampRepository
+
+    var stampRepository: SR { get }
+}
+
+final class StampCalAppModelImpl: StampCalAppModel {
+    typealias SR = StampRepositoryImpl
+
+    let stampRepository: SR
 
     init() {
-        self.persistenceController = PersistenceController.shared
+        stampRepository = SR()
+    }
+}
+
+// MARK: - Preview Mock
+extension PreviewMock {
+    final class StampCalAppModelMock: StampCalAppModel {
+        typealias SR = StampRepositoryMock
+
+        let stampRepository = SR()
     }
 }

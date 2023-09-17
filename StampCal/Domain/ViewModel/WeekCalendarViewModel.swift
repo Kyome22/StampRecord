@@ -8,14 +8,25 @@
 
 import Foundation
 
-final class WeekCalendarViewModel: ObservableObject {
+protocol WeekCalendarViewModel: ObservableObject {
+    var title: String { get set }
+    var weekList: [Week] { get set }
+    var shortWeekdays: [String] { get }
+
+    init()
+
+    func paging(with pageDirection: PageDirection)
+}
+
+final class WeekCalendarViewModelImpl: WeekCalendarViewModel {
     @Published var title: String = ""
     @Published var weekList: [Week] = []
 
-    var shortWeekdays: [String] = []
+    let shortWeekdays: [String]
     private let calendar = Calendar.current
 
     init() {
+        shortWeekdays = calendar.shortWeekdaySymbols
         let now = Date.now
         weekList.append(Week(title: now.title, days: getDays(of: now)))
         if let date = getPreviousWeek(of: now) {
@@ -25,7 +36,6 @@ final class WeekCalendarViewModel: ObservableObject {
             weekList.append(Week(title: date.title, days: getDays(of: date)))
         }
         title = weekList[1].title
-        shortWeekdays = calendar.shortWeekdaySymbols
     }
 
     private func getPreviousWeek(of date: Date) -> Date? {
@@ -79,5 +89,35 @@ final class WeekCalendarViewModel: ObservableObject {
             }
         }
         title = weekList[1].title
+    }
+}
+
+// MARK: - Preview Mock
+extension PreviewMock {
+    final class WeekCalendarViewModelMock: WeekCalendarViewModel {
+        @Published var title: String = ""
+        @Published var weekList: [Week] = []
+        let shortWeekdays: [String]
+
+        init() {
+            let calendar = Calendar.current
+            shortWeekdays = calendar.shortWeekdaySymbols
+            let now = Date.now
+            if let startOfMonth = calendar.startOfMonth(for: now) {
+                let days = (0 ..< 7).map { i in
+                    let date = calendar.date(byAdding: .day, value: i, to: startOfMonth)
+                    return Day(date: date,
+                               inMonth: true,
+                               isToday: calendar.isEqual(a: date, b: now),
+                               text: calendar.dayText(of: date),
+                               weekday: calendar.weekday(of: date))
+                }
+                let week = Week(title: now.title, days: days)
+                weekList.append(week)
+                title = now.title
+            }
+        }
+
+        func paging(with pageDirection: PageDirection) {}
     }
 }

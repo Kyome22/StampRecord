@@ -10,14 +10,13 @@ import SwiftUI
 
 @main
 struct StampCalApp: App {
-    @StateObject var appModel = StampCalAppModel()
+    @StateObject private var appModel = StampCalAppModelImpl()
 
     var body: some Scene {
         WindowGroup {
-//            InfinitePagingView()
-            MainView()
-//            ContentView()
-//                .environment(\.managedObjectContext, appModel.persistenceController.container.viewContext)
+            MainView<StampCalAppModelImpl>()
+                .environmentObject(appModel)
+            // .environment(\.managedObjectContext, appModel.persistenceController.container.viewContext)
         }
     }
 }
