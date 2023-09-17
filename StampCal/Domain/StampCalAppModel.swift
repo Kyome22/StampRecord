@@ -10,25 +10,29 @@ import Foundation
 
 protocol StampCalAppModel: ObservableObject {
     associatedtype SR: StampRepository
+    associatedtype LR: LogRepository
 
     var stampRepository: SR { get }
+    var logRepository: LR { get }
 }
 
 final class StampCalAppModelImpl: StampCalAppModel {
     typealias SR = StampRepositoryImpl
+    typealias LR = LogRepositoryImpl
 
-    let stampRepository: SR
+    let stampRepository = SR()
+    let logRepository = LR()
 
-    init() {
-        stampRepository = SR()
-    }
+    init() {}
 }
 
 // MARK: - Preview Mock
 extension PreviewMock {
     final class StampCalAppModelMock: StampCalAppModel {
         typealias SR = StampRepositoryMock
+        typealias LR = LogRepositoryMock
 
         let stampRepository = SR()
+        let logRepository = LR()
     }
 }

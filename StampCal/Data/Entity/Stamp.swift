@@ -8,11 +8,15 @@
 
 import Foundation
 
-struct Stamp: Identifiable {
+struct Stamp: Identifiable, CustomStringConvertible {
     var emoji: String
     var summary: String
     var createdDate: Date
     var id: String
+
+    var description: String {
+        return "emoji: \(emoji), summary: \(summary), createdDate: \(createdDate.timeIntervalSince1970)"
+    }
 
     init(emoji: String, summary: String, createdDate: Date = .now) {
         self.emoji = emoji
