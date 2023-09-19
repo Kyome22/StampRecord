@@ -9,7 +9,7 @@
 import Foundation
 
 protocol LogRepository: AnyObject {
-    func getLog(of date: Date) -> Log?
+    func getLog(of date: Date?) -> Log?
     func updateLog(_ log: Log)
 }
 
@@ -19,7 +19,8 @@ final class LogRepositoryImpl: LogRepository {
 
     init() {}
 
-    func getLog(of date: Date) -> Log? {
+    func getLog(of date: Date?) -> Log? {
+        guard let date else { return nil }
         return logs.first { calendar.isEqual(a: $0.date, b: date) }
     }
 
@@ -42,7 +43,7 @@ final class LogRepositoryImpl: LogRepository {
 // MARK: - Preview Mock
 extension PreviewMock {
     final class LogRepositoryMock: LogRepository {
-        func getLog(of date: Date) -> Log? { return nil }
+        func getLog(of date: Date?) -> Log? { return nil }
         func updateLog(_ log: Log) {}
     }
 }

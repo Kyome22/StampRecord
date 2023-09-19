@@ -13,16 +13,18 @@ struct MainView<SAM: StampCalAppModel>: View {
     @State var isPhone: Bool = true
 
     var body: some View {
-        TabView {
+        TabView(selection: $appModel.tabSelection) {
             Group {
                 StampsView(viewModel: StampsViewModelImpl(appModel.stampRepository))
                     .tabItem {
-                        Label("stamps", image: "stamp")
+                        Label("stamps", image: "stamp.fill")
                     }
+                    .tag(Tabs.stamps)
                 DayCalendarView(viewModel: DayCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository))
                     .tabItem {
                         Label("day", image: "calendar.day")
                     }
+                    .tag(Tabs.dayCalendar)
                 WeekCalendarView(viewModel: WeekCalendarViewModelImpl(), isPhone: $isPhone)
                     .tabItem {
                         if isPhone {
@@ -31,14 +33,17 @@ struct MainView<SAM: StampCalAppModel>: View {
                             Label("week", image: "calendar.week.vertical")
                         }
                     }
+                    .tag(Tabs.weekCalendar)
                 MonthCalendarView(viewModel: MonthCalendarViewModelImpl())
                     .tabItem {
                         Label("month", systemImage: "calendar")
                     }
+                    .tag(Tabs.monthCalendar)
                 Text("Hello World")
                     .tabItem {
                         Label("settings", systemImage: "gearshape")
                     }
+                    .tag(Tabs.settings)
             }
             .toolbarBackground(SCColor.toolbarBackground, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)

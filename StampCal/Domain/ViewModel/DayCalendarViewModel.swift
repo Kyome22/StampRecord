@@ -39,10 +39,24 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
         self.stampRepository = stampRepository
         self.logRepository = logRepository
         let now = Date.now
+        // Dummy
+        let log = Log(date: now, stamps: [
+            Stamp(emoji: "🍽️", summary: "皿洗い", createdDate: Date(timeIntervalSince1970: 1690902000.0)),
+            Stamp(emoji: "💪", summary: "筋トレ", createdDate: Date(timeIntervalSince1970: 1690815600.0)),
+            Stamp(emoji: "🛠️", summary: "開発", createdDate: Date(timeIntervalSince1970: 1691161200.0)),
+            Stamp(emoji: "🛁", summary: "風呂洗い", createdDate: Date(timeIntervalSince1970: 1691247600.0)),
+            Stamp(emoji: "🗣️", summary: "人と話す", createdDate: Date(timeIntervalSince1970: 1691420400.0)),
+            Stamp(emoji: "🍱", summary: "昼食", createdDate: Date(timeIntervalSince1970: 1691593200.0)),
+            Stamp(emoji: "🍛", summary: "夕食", createdDate: Date(timeIntervalSince1970: 1691679600.0)),
+            Stamp(emoji: "🧘", summary: "瞑想", createdDate: Date(timeIntervalSince1970: 1691766000.0)),
+            Stamp(emoji: "🏆", summary: "優勝", createdDate: Date(timeIntervalSince1970: 1691852400.0)),
+            Stamp(emoji: "🧩", summary: "パズル", createdDate: Date(timeIntervalSince1970: 1691938800.0))
+        ])
         let day = Day(date: now,
                       isToday: true,
                       text: calendar.dayText(of: now),
-                      weekday: calendar.weekday(of: now))
+                      weekday: calendar.weekday(of: now),
+                      log: log)
         dayList.append(day)
         dayList.insert(getYesterday(of: now), at: 0)
         dayList.append(getTommorow(of: now))
@@ -54,7 +68,8 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
         return Day(date: yesterday,
                    isToday: calendar.isEqual(a: yesterday, b: Date.now),
                    text: calendar.dayText(of: yesterday),
-                   weekday: calendar.weekday(of: yesterday))
+                   weekday: calendar.weekday(of: yesterday),
+                   log: logRepository.getLog(of: yesterday))
     }
 
     private func getTommorow(of date: Date) -> Day {
@@ -62,7 +77,8 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
         return Day(date: tommorow,
                    isToday: calendar.isEqual(a: tommorow, b: Date.now),
                    text: calendar.dayText(of: tommorow),
-                   weekday: calendar.weekday(of: tommorow))
+                   weekday: calendar.weekday(of: tommorow),
+                   log: logRepository.getLog(of: tommorow))
     }
 
     func paging(with pageDirection: PageDirection) {

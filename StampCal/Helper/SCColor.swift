@@ -21,6 +21,7 @@ enum SCColor {
     static let cellHighlightStrong = Color("cell.highlight.strong")
     static let cellHighlightWeek = Color("cell.highlight.week")
     static let delete = Color("delete")
+    static let stampBackground = Color("stamp.background")
     static let shadow = Color(white: 0, opacity: 0.2)
 
     static func weekday(_ index: Int, _ isToday: Bool = false) -> Color {

@@ -12,6 +12,7 @@ protocol StampCalAppModel: ObservableObject {
     associatedtype SR: StampRepository
     associatedtype LR: LogRepository
 
+    var tabSelection: Tabs { get set }
     var stampRepository: SR { get }
     var logRepository: LR { get }
 }
@@ -19,6 +20,8 @@ protocol StampCalAppModel: ObservableObject {
 final class StampCalAppModelImpl: StampCalAppModel {
     typealias SR = StampRepositoryImpl
     typealias LR = LogRepositoryImpl
+
+    @Published var tabSelection: Tabs = .dayCalendar
 
     let stampRepository = SR()
     let logRepository = LR()
@@ -31,6 +34,8 @@ extension PreviewMock {
     final class StampCalAppModelMock: StampCalAppModel {
         typealias SR = StampRepositoryMock
         typealias LR = LogRepositoryMock
+
+        @Published var tabSelection: Tabs = .dayCalendar
 
         let stampRepository = SR()
         let logRepository = LR()
