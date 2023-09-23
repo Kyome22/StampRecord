@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct DayView: View {
+    @State var showStampPicker: Bool = false
     let shortWeekdays: [String]
     let day: Day
+    let putStampHandler: (Day, Stamp) -> Void
 
     var body: some View {
         VStack(spacing: 24) {
@@ -31,18 +33,7 @@ struct DayView: View {
                     VStack(spacing: 8) {
                         if let log = day.log {
                             ForEach(log.stamps) { stamp in
-                                HStack(alignment: .center, spacing: 16) {
-                                    Text(stamp.emoji)
-                                        .font(.largeTitle)
-                                    Text(stamp.summary)
-                                        .font(.body)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                .padding(8)
-                                .overlay {
-                                    RoundedRectangle(cornerRadius: 100)
-                                        .stroke(SCColor.cellBorder, lineWidth: 1)
-                                }
+                                stampCard(stamp)
                             }
                         } else {
                             EmptyView()
@@ -54,11 +45,20 @@ struct DayView: View {
                 HStack {
                     Spacer()
                     Button {
-
+                        showStampPicker = true
                     } label: {
                         Image("stamp")
                     }
                     .buttonStyle(.stamp)
+                    .stampPicker(
+                        isPresented: $showStampPicker,
+                        stamps: Stamp.dummy,
+                        selectStampHandler: { stamp in
+                            putStampHandler(day, stamp)
+                            showStampPicker = false
+                        },
+                        attachmentAnchor: .point(.center)
+                    )
                     Spacer()
                 }
                 .padding(.horizontal, 16)
@@ -71,10 +71,32 @@ struct DayView: View {
         }
         .padding(24)
     }
+
+    private func stampCard(_ stamp: Stamp) -> some View {
+        HStack(alignment: .center, spacing: 0) {
+            Text(stamp.emoji)
+                .font(.largeTitle)
+                .padding(8)
+                .overlay(alignment: .trailing) {
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.3))
+                        .frame(width: 1)
+                        .padding(.vertical, 4)
+                }
+            Text(stamp.summary)
+                .font(.body)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 8)
+        }
+        .overlay {
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(SCColor.cellBorder, lineWidth: 1)
+        }
+    }
 }
 
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView(shortWeekdays: [], day: Day(text: "", weekday: 0))
+        DayView(shortWeekdays: [], day: Day(text: "", weekday: 0), putStampHandler: { _, _ in })
     }
 }

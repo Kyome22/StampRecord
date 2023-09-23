@@ -17,6 +17,15 @@ enum StampOrderBy: String, Identifiable, CaseIterable {
     var label: LocalizedStringKey {
         return LocalizedStringKey(rawValue)
     }
+
+    var image: Image {
+        switch self {
+        case .createdDate:
+            return Image("clock.badge.plus")
+        case .summary:
+            return Image(systemName: "abc")
+        }
+    }
 }
 
 enum StampOrderIn: String, Identifiable, CaseIterable {
@@ -27,5 +36,14 @@ enum StampOrderIn: String, Identifiable, CaseIterable {
 
     var label: LocalizedStringKey {
         return LocalizedStringKey(rawValue)
+    }
+
+    var image: Image {
+        switch self {
+        case .ascending:
+            return Image(systemName: "text.line.first.and.arrowtriangle.forward")
+        case .descending:
+            return Image(systemName: "text.line.last.and.arrowtriangle.forward")
+        }
     }
 }

@@ -18,6 +18,12 @@ struct SelectEmojiButtonStyle<Content: View>: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         HStack(spacing: 16) {
             transform(SelectEmojiLabel(configuration: configuration))
+                .padding(8)
+                .overlay(alignment: .trailing) {
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.3))
+                        .frame(width: 1)
+                }
             Text("selectEmoji")
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -37,8 +43,7 @@ struct SelectEmojiLabel: View {
     var body: some View {
         configuration.label
             .font(.largeTitle)
-            .padding(16)
-            .background(SCColor.appBackground)
+            .padding(8)
     }
 }
 

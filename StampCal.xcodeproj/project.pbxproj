@@ -37,6 +37,10 @@
 		1C5638D62AB73D0D00694F44 /* LogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D52AB73D0D00694F44 /* LogRepository.swift */; };
 		1C5638D82AB8881500694F44 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D72AB8881500694F44 /* Tabs.swift */; };
 		1C5638DA2AB8901B00694F44 /* StampButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D92AB8901B00694F44 /* StampButtonStyle.swift */; };
+		1C5638DD2ABC767800694F44 /* ColorDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638DC2ABC767800694F44 /* ColorDebugView.swift */; };
+		1C5638DF2ABECA6300694F44 /* StampPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638DE2ABECA6300694F44 /* StampPickerView.swift */; };
+		1C5638E12ABECE2A00694F44 /* StampPickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638E02ABECE2A00694F44 /* StampPickerModifier.swift */; };
+		1C5638E42ABF090F00694F44 /* CellButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638E32ABF090F00694F44 /* CellButtonStyle.swift */; };
 		1C7234E52A9B433A0065512A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E42A9B433A0065512A /* MainView.swift */; };
 		1C7234E72A9B518C0065512A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C7234E62A9B518C0065512A /* Localizable.strings */; };
 		1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E82A9B73A00065512A /* MonthCalendarView.swift */; };
@@ -89,6 +93,10 @@
 		1C5638D52AB73D0D00694F44 /* LogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRepository.swift; sourceTree = "<group>"; };
 		1C5638D72AB8881500694F44 /* Tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
 		1C5638D92AB8901B00694F44 /* StampButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampButtonStyle.swift; sourceTree = "<group>"; };
+		1C5638DC2ABC767800694F44 /* ColorDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDebugView.swift; sourceTree = "<group>"; };
+		1C5638DE2ABECA6300694F44 /* StampPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampPickerView.swift; sourceTree = "<group>"; };
+		1C5638E02ABECE2A00694F44 /* StampPickerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampPickerModifier.swift; sourceTree = "<group>"; };
+		1C5638E32ABF090F00694F44 /* CellButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellButtonStyle.swift; sourceTree = "<group>"; };
 		1C7234E42A9B433A0065512A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1C7234E62A9B518C0065512A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1C7234E82A9B73A00065512A /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
@@ -183,8 +191,26 @@
 				1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */,
 				1C5638CC2AB3504000694F44 /* SquareButtonStyle.swift */,
 				1C5638D92AB8901B00694F44 /* StampButtonStyle.swift */,
+				1C5638E32ABF090F00694F44 /* CellButtonStyle.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		1C5638DB2ABC766000694F44 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				1C5638DC2ABC767800694F44 /* ColorDebugView.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		1C5638E22ABF080D00694F44 /* StampPicker */ = {
+			isa = PBXGroup;
+			children = (
+				1C5638DE2ABECA6300694F44 /* StampPickerView.swift */,
+				1C5638E02ABECE2A00694F44 /* StampPickerModifier.swift */,
+			);
+			path = StampPicker;
 			sourceTree = "<group>";
 		};
 		1CF3D5FD2A90A4BD005B6E71 = {
@@ -307,10 +333,12 @@
 				1CF3D60B2A90A4BE005B6E71 /* ContentView.swift */,
 				1C7234E42A9B433A0065512A /* MainView.swift */,
 				1C5638D22AB7340F00694F44 /* Common */,
+				1C5638E22ABF080D00694F44 /* StampPicker */,
 				1C56386F2AAB556900694F44 /* Stamps */,
 				1C5638622AA84E6900694F44 /* DayCalendar */,
 				1C5638602AA84E5800694F44 /* WeekCalendar */,
 				1C5638612AA84E6200694F44 /* MonthCalendar */,
+				1C5638DB2ABC766000694F44 /* Debug */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -416,13 +444,16 @@
 				1C5638792AADA10A00694F44 /* AddNewStampView.swift in Sources */,
 				1C5638D12AB6ECE800694F44 /* StampRepository.swift in Sources */,
 				1C5638C92AB0C8D000694F44 /* HeaderHStack.swift in Sources */,
+				1C5638E42ABF090F00694F44 /* CellButtonStyle.swift in Sources */,
 				1C56385D2AA8133D00694F44 /* Month.swift in Sources */,
 				1C7234F32A9B8ED20065512A /* MonthCalendarViewModel.swift in Sources */,
 				1C5638C52AB0C45600694F44 /* FocusedField.swift in Sources */,
 				1C5638CD2AB3504000694F44 /* SquareButtonStyle.swift in Sources */,
 				1C7234F52A9B9A010065512A /* WeekCalendarViewModel.swift in Sources */,
+				1C5638DD2ABC767800694F44 /* ColorDebugView.swift in Sources */,
 				1C7234FB2A9CEAF50065512A /* SCColor.swift in Sources */,
 				1C7234E52A9B433A0065512A /* MainView.swift in Sources */,
+				1C5638E12ABECE2A00694F44 /* StampPickerModifier.swift in Sources */,
 				1C56385B2AA5C67600694F44 /* Week.swift in Sources */,
 				1C5638592AA5A01500694F44 /* HorizontalWeekView.swift in Sources */,
 				1C5638712AAB55A200694F44 /* StampsView.swift in Sources */,
@@ -452,6 +483,7 @@
 				1CF3D62C2A911B18005B6E71 /* Utils.swift in Sources */,
 				1C5638872AADBFBD00694F44 /* AddNewStampViewModel.swift in Sources */,
 				1C7234EF2A9B79380065512A /* Calendar+Extensions.swift in Sources */,
+				1C5638DF2ABECA6300694F44 /* StampPickerView.swift in Sources */,
 				1C5638752AAB568D00694F44 /* Stamp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

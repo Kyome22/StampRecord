@@ -24,4 +24,13 @@ struct Day: Hashable, Identifiable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
+
+    func updated(with log: Log?) -> Day {
+        return Day(date: date,
+                   inMonth: inMonth,
+                   isToday: isToday,
+                   text: text,
+                   weekday: weekday,
+                   log: log)
+    }
 }

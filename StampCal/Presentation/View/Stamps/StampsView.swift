@@ -10,11 +10,7 @@ import SwiftUI
 
 struct StampsView<SVM: StampsViewModel>: View {
     @StateObject var viewModel: SVM
-    private let columns: [GridItem] = [
-        GridItem(.flexible(), spacing: 16),
-        GridItem(.flexible(), spacing: 16),
-        GridItem(.flexible(), spacing: 16)
-    ]
+    private let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 16), count: 3)
 
     var body: some View {
         VStack(spacing: 0) {
@@ -81,14 +77,24 @@ struct StampsView<SVM: StampsViewModel>: View {
         Menu {
             Picker(selection: $viewModel.stampOrderBy) {
                 ForEach(StampOrderBy.allCases) { orderBy in
-                    Text(orderBy.label).tag(orderBy)
+                    Label {
+                        Text(orderBy.label)
+                    } icon: {
+                        orderBy.image
+                    }
+                    .tag(orderBy)
                 }
             } label: {
                 Text("sortBy")
             }
             Picker(selection: $viewModel.stampOrderIn) {
                 ForEach(StampOrderIn.allCases) { orderIn in
-                    Text(orderIn.label).tag(orderIn)
+                    Label {
+                        Text(orderIn.label)
+                    } icon: {
+                        orderIn.image
+                    }
+                    .tag(orderIn)
                 }
             } label: {
                 Text("sortIn")
@@ -105,29 +111,27 @@ struct StampsView<SVM: StampsViewModel>: View {
     }
 
     private func stampCard(_ stamp: Stamp) -> some View {
-        RoundedRectangle(cornerRadius: 8)
-            .aspectRatio(1, contentMode: .fill)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(SCColor.cellBackground)
-            .shadow(color: SCColor.shadow, radius: 3, x: 0, y: 3)
-            .overlay {
-                VStack(spacing: 0) {
-                    Text(String(stamp.emoji))
-                        .font(.largeTitle)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                        .background(SCColor.cellHighlightWeek)
-                    Text(stamp.summary)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                        .padding(4)
-                }
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .onTapGesture {
-                    viewModel.targetStamp = stamp
-                    viewModel.showingSheet = true
-                }
+        Button {
+            viewModel.targetStamp = stamp
+            viewModel.showingSheet = true
+        } label: {
+            VStack(spacing: 0) {
+                Text(String(stamp.emoji))
+                    .font(.largeTitle)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    .aspectRatio(1.66, contentMode: .fill)
+                Divider()
+                    .padding(.horizontal, 8)
+                Text(stamp.summary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    .padding(4)
             }
+            .aspectRatio(1, contentMode: .fill)
+        }
+        .buttonStyle(.cell)
+        .shadow(color: SCColor.shadow, radius: 3, x: 0, y: 3)
     }
 }
 

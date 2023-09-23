@@ -28,7 +28,9 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
                     viewModel.paging(with: pageDirection)
                 },
                 content: { day in
-                    DayView(shortWeekdays: viewModel.shortWeekdays, day: day)
+                    DayView(shortWeekdays: viewModel.shortWeekdays, day: day) { day, stamp in
+                        viewModel.putStamp(day: day, stamp: stamp)
+                    }
                 }
             )
         }

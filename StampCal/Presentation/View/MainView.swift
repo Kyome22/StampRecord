@@ -39,7 +39,7 @@ struct MainView<SAM: StampCalAppModel>: View {
                         Label("month", systemImage: "calendar")
                     }
                     .tag(Tabs.monthCalendar)
-                Text("Hello World")
+                ColorDebugView()
                     .tabItem {
                         Label("settings", systemImage: "gearshape")
                     }
