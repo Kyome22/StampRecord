@@ -121,6 +121,7 @@ struct StampsView<SVM: StampsViewModel>: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     .aspectRatio(1.66, contentMode: .fill)
                 Divider()
+                    .overlay(SCColor.cellBorder)
                     .padding(.horizontal, 8)
                 Text(stamp.summary)
                     .lineLimit(1)

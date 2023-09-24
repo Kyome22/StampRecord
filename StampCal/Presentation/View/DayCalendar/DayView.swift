@@ -19,18 +19,27 @@ struct DayView: View {
     var body: some View {
         VStack(spacing: 24) {
             Text(shortWeekdays[day.weekday])
+                .font(.title2)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
                 .foregroundColor(SCColor.weekday(day.weekday))
-                .background(SCColor.cellHighlightWeek)
+                .background(SCColor.cellBackground)
                 .cornerRadius(8)
                 .shadow(color: SCColor.shadow, radius: 3, x: 0, y: 3)
             VStack(spacing: 0) {
                 Text(day.text)
+                    .font(.title2)
                     .foregroundColor(SCColor.weekday(day.weekday, day.isToday))
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 8)
-                    .background(SCColor.highlight(day.isToday))
+                    .padding(4)
+                    .background {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(SCColor.highlight(day.isToday))
+                    }
+                    .padding(4)
+                Divider()
+                    .overlay(SCColor.cellBorder)
+                    .padding(.horizontal, 8)
                 ScrollView(.vertical, showsIndicators: false) {
                     if let log = day.log {
                         LazyVGrid(columns: columns, spacing: 8) {
@@ -44,23 +53,11 @@ struct DayView: View {
                     }
                 }
                 Divider()
+                    .overlay(SCColor.cellBorder)
+                    .padding(.horizontal, 8)
                 HStack {
                     Spacer()
-                    Button {
-                        showStampPicker = true
-                    } label: {
-                        Image("stamp")
-                    }
-                    .buttonStyle(.stamp)
-                    .stampPicker(
-                        isPresented: $showStampPicker,
-                        stamps: Stamp.dummy,
-                        selectStampHandler: { stamp in
-                            putStampHandler(day, stamp)
-                            showStampPicker = false
-                        },
-                        attachmentAnchor: .point(.center)
-                    )
+                    stampButton
                     Spacer()
                 }
                 .padding(.horizontal, 16)
@@ -72,6 +69,24 @@ struct DayView: View {
             .shadow(color: SCColor.shadow, radius: 3, x: 0, y: 3)
         }
         .padding(24)
+    }
+
+    var stampButton: some View {
+        Button {
+            showStampPicker = true
+        } label: {
+            Image("stamp")
+        }
+        .buttonStyle(.stamp)
+        .stampPicker(
+            isPresented: $showStampPicker,
+            stamps: Stamp.dummy,
+            selectStampHandler: { stamp in
+                putStampHandler(day, stamp)
+                showStampPicker = false
+            },
+            attachmentAnchor: .point(.center)
+        )
     }
 }
 

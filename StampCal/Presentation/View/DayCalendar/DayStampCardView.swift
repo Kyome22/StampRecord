@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct DayStampCardView: View {
-    @State var showPopover: Bool = false
+    @State var showDialog: Bool = false
     let stamp: Stamp
     let removeStampHandler: () -> Void
 
     var body: some View {
         Button {
-            showPopover = true
+            showDialog = true
         } label: {
             VStack(spacing: 4) {
                 Text(stamp.emoji)
@@ -31,16 +31,12 @@ struct DayStampCardView: View {
             .containerShape(RoundedRectangle(cornerRadius: 8))
         }
         .buttonStyle(.innerCell)
-        .popover(isPresented: $showPopover) {
-            Button {
+        .confirmationDialog("", isPresented: $showDialog, titleVisibility: .hidden) {
+            Button(role: .destructive) {
                 removeStampHandler()
-                showPopover = false
             } label: {
                 Text("removeStamp")
             }
-            .tint(SCColor.delete)
-            .padding(16)
-            .presentationCompactAdaptation(.popover)
         }
     }
 }

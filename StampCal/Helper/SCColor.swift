@@ -9,9 +9,7 @@
 import SwiftUI
 
 enum SCColor {
-    static var accent: Color {
-        return Color.accentColor
-    }
+    static let accent = Color("accent")
     static let toolbarBackground = Color("toolbar.background")
     static let appBackground = Color("app.background")
     static let cellBackground = Color("cell.background")
@@ -25,7 +23,7 @@ enum SCColor {
     static let shadow = Color(white: 0, opacity: 0.2)
 
     static func weekday(_ index: Int, _ isToday: Bool = false) -> Color {
-        if isToday { return Color.white }
+        if isToday { return SCColor.cellBackground }
         switch index {
         case 0: return SCColor.cellRed
         case 6: return SCColor.cellBlue
@@ -35,9 +33,9 @@ enum SCColor {
 
     static func highlight(_ isToday: Bool) -> Color {
         if isToday {
-            return SCColor.cellHighlightStrong
+            return SCColor.accent
         } else {
-            return SCColor.cellHighlightWeek
+            return Color.clear
         }
     }
 }

@@ -21,7 +21,7 @@ struct SelectEmojiButtonStyle<Content: View>: ButtonStyle {
                 .padding(8)
                 .overlay(alignment: .trailing) {
                     Rectangle()
-                        .fill(Color.gray.opacity(0.3))
+                        .fill(SCColor.cellBorder)
                         .frame(width: 1)
                 }
             Text("selectEmoji")
