@@ -17,10 +17,6 @@ struct Day: Hashable, Identifiable {
     var weekday: Int
     var log: Log?
 
-    static func == (lhs: Day, rhs: Day) -> Bool {
-        return lhs.id == rhs.id
-    }
-
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

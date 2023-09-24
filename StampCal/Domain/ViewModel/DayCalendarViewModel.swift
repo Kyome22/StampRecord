@@ -20,6 +20,7 @@ protocol DayCalendarViewModel: ObservableObject {
 
     func paging(with pageDirection: PageDirection)
     func putStamp(day: Day, stamp: Stamp)
+    func removeStamp(day: Day, index: Int)
 }
 
 final class DayCalendarViewModelImpl<SR: StampRepository,
@@ -94,8 +95,17 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
             logRepository.updateLog(log)
         }
         if let index = dayList.firstIndex(of: day) {
-            let log = logRepository.getLog(of: day.date)
-            dayList[index] = day.updated(with: log)
+            dayList[index].log = logRepository.getLog(of: day.date)
+        }
+    }
+
+    func removeStamp(day: Day, index: Int) {
+        if var log = day.log {
+            log.stamps.remove(at: index)
+            logRepository.updateLog(log)
+        }
+        if let index = dayList.firstIndex(of: day) {
+            dayList[index].log = logRepository.getLog(of: day.date)
         }
     }
 }
@@ -129,5 +139,6 @@ extension PreviewMock {
 
         func paging(with pageDirection: PageDirection) {}
         func putStamp(day: Day, stamp: Stamp) {}
+        func removeStamp(day: Day, index: Int) {}
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Log: CustomStringConvertible {
+struct Log: Equatable, CustomStringConvertible {
     var date: Date
     var stamps: [Stamp]
 
@@ -18,5 +18,10 @@ struct Log: CustomStringConvertible {
             text += "\n\t\(stamp)"
         }
         return text
+    }
+
+    static func == (lhs: Log, rhs: Log) -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDate(lhs.date, inSameDayAs: rhs.date) && lhs.stamps == rhs.stamps
     }
 }

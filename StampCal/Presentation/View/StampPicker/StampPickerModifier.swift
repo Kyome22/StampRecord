@@ -35,12 +35,8 @@ struct StampPickerModifier: ViewModifier {
             attachmentAnchor: attachmentAnchor,
             arrowEdge: arrowEdge
         ) {
-            if #available(iOS 16.4, *) {
-                StampPickerView(stamps: stamps, selectStampHandler: selectStampHandler)
-                    .presentationCompactAdaptation(.popover)
-            } else {
-                StampPickerView(stamps: stamps, selectStampHandler: selectStampHandler)
-            }
+            StampPickerView(stamps: stamps, selectStampHandler: selectStampHandler)
+                .presentationCompactAdaptation(.popover)
         }
     }
 }

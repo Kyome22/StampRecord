@@ -20,12 +20,11 @@ final class LogRepositoryImpl: LogRepository {
     init() {}
 
     func getLog(of date: Date?) -> Log? {
-        guard let date else { return nil }
-        return logs.first { calendar.isEqual(a: $0.date, b: date) }
+        return logs.first { calendar.isEqual(a: date, b: $0.date) }
     }
 
     func updateLog(_ log: Log) {
-        let index = logs.firstIndex { calendar.isEqual(a: $0.date, b: log.date) }
+        let index = logs.firstIndex { calendar.isDate(log.date, inSameDayAs: $0.date) }
         if let index {
             if log.stamps.isEmpty {
                 logs.remove(at: index)

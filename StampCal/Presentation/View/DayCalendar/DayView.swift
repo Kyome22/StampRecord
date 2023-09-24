@@ -13,6 +13,8 @@ struct DayView: View {
     let shortWeekdays: [String]
     let day: Day
     let putStampHandler: (Day, Stamp) -> Void
+    let removeStampHandler: (Day, Int) -> Void
+    let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 8), count: 3)
 
     var body: some View {
         VStack(spacing: 24) {
@@ -30,16 +32,16 @@ struct DayView: View {
                     .padding(.vertical, 8)
                     .background(SCColor.highlight(day.isToday))
                 ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 8) {
-                        if let log = day.log {
-                            ForEach(log.stamps) { stamp in
-                                stampCard(stamp)
+                    if let log = day.log {
+                        LazyVGrid(columns: columns, spacing: 8) {
+                            ForEach(log.stamps.indices, id: \.self) { index in
+                                DayStampCardView(stamp: log.stamps[index]) {
+                                    removeStampHandler(day, index)
+                                }
                             }
-                        } else {
-                            EmptyView()
                         }
+                        .padding(8)
                     }
-                    .padding(16)
                 }
                 Divider()
                 HStack {
@@ -71,32 +73,13 @@ struct DayView: View {
         }
         .padding(24)
     }
-
-    private func stampCard(_ stamp: Stamp) -> some View {
-        HStack(alignment: .center, spacing: 0) {
-            Text(stamp.emoji)
-                .font(.largeTitle)
-                .padding(8)
-                .overlay(alignment: .trailing) {
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: 1)
-                        .padding(.vertical, 4)
-                }
-            Text(stamp.summary)
-                .font(.body)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 8)
-        }
-        .overlay {
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(SCColor.cellBorder, lineWidth: 1)
-        }
-    }
 }
 
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView(shortWeekdays: [], day: Day(text: "", weekday: 0), putStampHandler: { _, _ in })
+        DayView(shortWeekdays: [],
+                day: Day(text: "", weekday: 0),
+                putStampHandler: { _, _ in },
+                removeStampHandler: { _, _ in })
     }
 }

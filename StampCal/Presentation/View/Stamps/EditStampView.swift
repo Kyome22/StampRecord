@@ -62,7 +62,7 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                     viewModel.deleteStamp()
                     dismiss()
                 } label: {
-                    Text("delete")
+                    Text("deleteStamp")
                 }
                 .buttonStyle(.delete)
                 Spacer()
