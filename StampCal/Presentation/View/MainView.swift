@@ -25,7 +25,7 @@ struct MainView<SAM: StampCalAppModel>: View {
                         Label("day", image: "calendar.day")
                     }
                     .tag(Tabs.dayCalendar)
-                WeekCalendarView(viewModel: WeekCalendarViewModelImpl(), isPhone: $isPhone)
+                WeekCalendarView(viewModel: WeekCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository), isPhone: $isPhone)
                     .tabItem {
                         if isPhone {
                             Label("week", image: "calendar.week.horizontal")
@@ -39,7 +39,7 @@ struct MainView<SAM: StampCalAppModel>: View {
                         Label("month", systemImage: "calendar")
                     }
                     .tag(Tabs.monthCalendar)
-                PlaygroundView()
+                ColorDebugView()
                     .tabItem {
                         Label("settings", systemImage: "gearshape")
                     }

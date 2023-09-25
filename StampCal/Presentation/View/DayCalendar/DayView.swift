@@ -29,9 +29,9 @@ struct DayView: View {
             VStack(spacing: 0) {
                 Text(day.text)
                     .font(.title2)
-                    .foregroundColor(SCColor.weekday(day.weekday, day.isToday))
                     .frame(maxWidth: .infinity)
                     .padding(4)
+                    .foregroundColor(SCColor.weekday(day.weekday, day.isToday))
                     .background {
                         RoundedRectangle(cornerRadius: 8)
                             .fill(SCColor.highlight(day.isToday))

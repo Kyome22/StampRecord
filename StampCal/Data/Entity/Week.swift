@@ -8,14 +8,10 @@
 
 import Foundation
 
-struct Week: Hashable {
+struct Week: Hashable, Identifiable {
     var id = UUID()
     var title: String
     var days: [Day]
-
-    static func == (lhs: Week, rhs: Week) -> Bool {
-        return lhs.id == rhs.id
-    }
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

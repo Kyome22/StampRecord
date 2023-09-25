@@ -45,6 +45,9 @@
 		1C5638EA2AC06CCC00694F44 /* StampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638E92AC06CCC00694F44 /* StampView.swift */; };
 		1C5638EC2AC0718600694F44 /* InnerCellButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638EB2AC0718600694F44 /* InnerCellButtonStyle.swift */; };
 		1C5638EE2AC07A3600694F44 /* DayStampCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638ED2AC07A3600694F44 /* DayStampCardView.swift */; };
+		1C5638F02AC0AB6000694F44 /* HWDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638EF2AC0AB6000694F44 /* HWDayView.swift */; };
+		1C5638F22AC0AB6F00694F44 /* VWDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638F12AC0AB6F00694F44 /* VWDayView.swift */; };
+		1C5638F82AC1DAB200694F44 /* OverlappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638F72AC1DAB200694F44 /* OverlappingHStack.swift */; };
 		1C7234E52A9B433A0065512A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E42A9B433A0065512A /* MainView.swift */; };
 		1C7234E72A9B518C0065512A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C7234E62A9B518C0065512A /* Localizable.strings */; };
 		1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E82A9B73A00065512A /* MonthCalendarView.swift */; };
@@ -105,6 +108,9 @@
 		1C5638E92AC06CCC00694F44 /* StampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampView.swift; sourceTree = "<group>"; };
 		1C5638EB2AC0718600694F44 /* InnerCellButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerCellButtonStyle.swift; sourceTree = "<group>"; };
 		1C5638ED2AC07A3600694F44 /* DayStampCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStampCardView.swift; sourceTree = "<group>"; };
+		1C5638EF2AC0AB6000694F44 /* HWDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWDayView.swift; sourceTree = "<group>"; };
+		1C5638F12AC0AB6F00694F44 /* VWDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VWDayView.swift; sourceTree = "<group>"; };
+		1C5638F72AC1DAB200694F44 /* OverlappingHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlappingHStack.swift; sourceTree = "<group>"; };
 		1C7234E42A9B433A0065512A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1C7234E62A9B518C0065512A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1C7234E82A9B73A00065512A /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
@@ -148,7 +154,9 @@
 			children = (
 				1C7234EA2A9B73BA0065512A /* WeekCalendarView.swift */,
 				1C5638582AA5A01500694F44 /* HorizontalWeekView.swift */,
+				1C5638EF2AC0AB6000694F44 /* HWDayView.swift */,
 				1C56386D2AAB530E00694F44 /* VerticalWeekView.swift */,
+				1C5638F12AC0AB6F00694F44 /* VWDayView.swift */,
 			);
 			path = WeekCalendar;
 			sourceTree = "<group>";
@@ -196,6 +204,7 @@
 			children = (
 				1C7234FC2A9CEE840065512A /* DetectOrientation.swift */,
 				1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */,
+				1C5638F72AC1DAB200694F44 /* OverlappingHStack.swift */,
 				1C5638762AAB6D3D00694F44 /* PagingHeaderView.swift */,
 				1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */,
 				1C5638CC2AB3504000694F44 /* SquareButtonStyle.swift */,
@@ -460,6 +469,7 @@
 				1C5638E42ABF090F00694F44 /* CellButtonStyle.swift in Sources */,
 				1C56385D2AA8133D00694F44 /* Month.swift in Sources */,
 				1C7234F32A9B8ED20065512A /* MonthCalendarViewModel.swift in Sources */,
+				1C5638F02AC0AB6000694F44 /* HWDayView.swift in Sources */,
 				1C5638C52AB0C45600694F44 /* FocusedField.swift in Sources */,
 				1C5638CD2AB3504000694F44 /* SquareButtonStyle.swift in Sources */,
 				1C7234F52A9B9A010065512A /* WeekCalendarViewModel.swift in Sources */,
@@ -486,6 +496,7 @@
 				1C5638DA2AB8901B00694F44 /* StampButtonStyle.swift in Sources */,
 				1C7234EB2A9B73BA0065512A /* WeekCalendarView.swift in Sources */,
 				1C5638732AAB561A00694F44 /* StampsViewModel.swift in Sources */,
+				1C5638F22AC0AB6F00694F44 /* VWDayView.swift in Sources */,
 				1C5638EA2AC06CCC00694F44 /* StampView.swift in Sources */,
 				1C5638642AA853CE00694F44 /* Array+Extensions.swift in Sources */,
 				1C5638EE2AC07A3600694F44 /* DayStampCardView.swift in Sources */,
@@ -498,6 +509,7 @@
 				1C5638C32AB0B8F900694F44 /* EditStampView.swift in Sources */,
 				1CF3D62C2A911B18005B6E71 /* Utils.swift in Sources */,
 				1C5638872AADBFBD00694F44 /* AddNewStampViewModel.swift in Sources */,
+				1C5638F82AC1DAB200694F44 /* OverlappingHStack.swift in Sources */,
 				1C7234EF2A9B79380065512A /* Calendar+Extensions.swift in Sources */,
 				1C5638DF2ABECA6300694F44 /* StampPickerView.swift in Sources */,
 				1C5638752AAB568D00694F44 /* Stamp.swift in Sources */,

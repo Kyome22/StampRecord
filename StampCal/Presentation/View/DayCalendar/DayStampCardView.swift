@@ -24,6 +24,7 @@ struct DayStampCardView: View {
                 Text(stamp.summary)
                     .font(.caption)
                     .lineLimit(1)
+                    .minimumScaleFactor(0.05)
             }
             .frame(maxWidth: .infinity)
             .aspectRatio(1, contentMode: .fit)

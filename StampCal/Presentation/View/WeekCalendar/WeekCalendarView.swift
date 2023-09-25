@@ -30,7 +30,16 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                 },
                 content: { week in
                     if isPhone {
-                        HorizontalWeekView(shortWeekdays: viewModel.shortWeekdays, days: week.days)
+                        HorizontalWeekView(
+                            shortWeekdays: viewModel.shortWeekdays,
+                            days: week.days,
+                            putStampHandler: { day, stamp in
+                                viewModel.putStamp(day: day, stamp: stamp)
+                            },
+                            removeStampHandler: { day, index in
+                                viewModel.removeStamp(day: day, index: index)
+                            }
+                        )
                     } else {
                         VerticalWeekView(shortWeekdays: viewModel.shortWeekdays, days: week.days)
                     }

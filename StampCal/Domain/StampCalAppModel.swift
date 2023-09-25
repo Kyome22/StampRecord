@@ -21,7 +21,7 @@ final class StampCalAppModelImpl: StampCalAppModel {
     typealias SR = StampRepositoryImpl
     typealias LR = LogRepositoryImpl
 
-    @Published var tabSelection: Tabs = .dayCalendar
+    @Published var tabSelection: Tabs = .weekCalendar
 
     let stampRepository = SR()
     let logRepository = LR()

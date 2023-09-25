@@ -9,24 +9,37 @@
 import Foundation
 
 protocol WeekCalendarViewModel: ObservableObject {
+    associatedtype SR: StampRepository
+    associatedtype LR: LogRepository
+
     var title: String { get set }
     var weekList: [Week] { get set }
     var shortWeekdays: [String] { get }
 
-    init()
+    init(_ stampRepository: SR, _ logRepository: LR)
 
     func paging(with pageDirection: PageDirection)
+    func putStamp(day: Day, stamp: Stamp)
+    func removeStamp(day: Day, index: Int)
 }
 
-final class WeekCalendarViewModelImpl: WeekCalendarViewModel {
+final class WeekCalendarViewModelImpl<SR: StampRepository,
+                                      LR: LogRepository>: WeekCalendarViewModel {
+    typealias SR = SR
+    typealias LR = LR
+
     @Published var title: String = ""
     @Published var weekList: [Week] = []
 
     let shortWeekdays: [String]
     private let calendar = Calendar.current
+    private let stampRepository: SR
+    private let logRepository: LR
 
-    init() {
+    init(_ stampRepository: SR, _ logRepository: LR) {
         shortWeekdays = calendar.shortWeekdaySymbols
+        self.stampRepository = stampRepository
+        self.logRepository = logRepository
         let now = Date.now
         weekList.append(Week(title: now.title, days: getDays(of: now)))
         if let date = getPreviousWeek(of: now) {
@@ -67,7 +80,8 @@ final class WeekCalendarViewModelImpl: WeekCalendarViewModel {
                            inMonth: (0 ..< daysInMonth).contains(i),
                            isToday: calendar.isEqual(a: date, b: now),
                            text: calendar.dayText(of: date),
-                           weekday: calendar.weekday(of: date))
+                           weekday: calendar.weekday(of: date),
+                           log: logRepository.getLog(of: date))
             }
         }
         return days
@@ -90,14 +104,47 @@ final class WeekCalendarViewModelImpl: WeekCalendarViewModel {
         }
         title = weekList[1].title
     }
+
+    func putStamp(day: Day, stamp: Stamp) {
+        if var log = day.log {
+            log.stamps.append(stamp)
+            logRepository.updateLog(log)
+        } else if let date = day.date {
+            let log = Log(date: date, stamps: [stamp])
+            logRepository.updateLog(log)
+        }
+        if let i = weekList.firstIndex(where: { $0.days.contains(day) }),
+           let j = weekList[i].days.firstIndex(of: day) {
+            weekList[i].days[j].log = logRepository.getLog(of: day.date)
+        }
+    }
+
+    func removeStamp(day: Day, index: Int) {
+        if var log = day.log {
+            log.stamps.remove(at: index)
+            logRepository.updateLog(log)
+        }
+        if let i = weekList.firstIndex(where: { $0.days.contains(day) }),
+           let j = weekList[i].days.firstIndex(of: day) {
+            weekList[i].days[j].log = logRepository.getLog(of: day.date)
+        }
+    }
 }
 
 // MARK: - Preview Mock
 extension PreviewMock {
     final class WeekCalendarViewModelMock: WeekCalendarViewModel {
+        typealias SR = StampRepositoryMock
+        typealias LR = LogRepositoryMock
+
         @Published var title: String = ""
         @Published var weekList: [Week] = []
+
         let shortWeekdays: [String]
+
+        init(_ stampRepository: SR, _ logRepository: LR) {
+            shortWeekdays = []
+        }
 
         init() {
             let calendar = Calendar.current
@@ -119,5 +166,7 @@ extension PreviewMock {
         }
 
         func paging(with pageDirection: PageDirection) {}
+        func putStamp(day: Day, stamp: Stamp) {}
+        func removeStamp(day: Day, index: Int) {}
     }
 }
