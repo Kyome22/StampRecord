@@ -21,7 +21,7 @@ enum StampOrderBy: String, Identifiable, CaseIterable {
     var image: Image {
         switch self {
         case .createdDate:
-            return Image("clock.badge.plus")
+            return Image(.clockBadgePlus)
         case .summary:
             return Image(systemName: "abc")
         }

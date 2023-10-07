@@ -27,11 +27,11 @@ struct StampView: View {
         ZStack {
             Text(emoji)
                 .font(.system(size: ratio * 150))
-            Image("stamp.label")
+            Image(.stampLabel)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(.white)
-            Image("stamp.base")
+            Image(.stampBase)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(Color(.cellBlue))

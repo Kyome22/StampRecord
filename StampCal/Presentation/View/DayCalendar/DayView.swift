@@ -75,7 +75,7 @@ struct DayView: View {
         Button {
             showStampPicker = true
         } label: {
-            Image("stamp")
+            Image(.stamp)
         }
         .buttonStyle(.stamp)
         .stampPicker(
