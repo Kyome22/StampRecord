@@ -17,8 +17,8 @@ struct StampButtonStyle: ButtonStyle {
             .contentShape(Circle())
             .background {
                 Circle()
-                    .fill(SCColor.stampBackground)
-                    .shadow(color: configuration.isPressed ? SCColor.accent : Color.clear, radius: 3)
+                    .fill(Color(.stampBackground))
+                    .shadow(color: configuration.isPressed ? Color(.appAccent) : Color.clear, radius: 3)
             }
     }
 }

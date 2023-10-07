@@ -48,6 +48,8 @@
 		1C5638F02AC0AB6000694F44 /* HWDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638EF2AC0AB6000694F44 /* HWDayView.swift */; };
 		1C5638F22AC0AB6F00694F44 /* VWDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638F12AC0AB6F00694F44 /* VWDayView.swift */; };
 		1C5638F82AC1DAB200694F44 /* OverlappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638F72AC1DAB200694F44 /* OverlappingHStack.swift */; };
+		1C5639002AC86D3100694F44 /* RunningCat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1C5638F92AC8625C00694F44 /* RunningCat-Regular.otf */; };
+		1C56391E2AC9A72A00694F44 /* FontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56391D2AC9A72A00694F44 /* FontView.swift */; };
 		1C7234E52A9B433A0065512A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E42A9B433A0065512A /* MainView.swift */; };
 		1C7234E72A9B518C0065512A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C7234E62A9B518C0065512A /* Localizable.strings */; };
 		1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234E82A9B73A00065512A /* MonthCalendarView.swift */; };
@@ -59,7 +61,7 @@
 		1C7234F52A9B9A010065512A /* WeekCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234F42A9B9A010065512A /* WeekCalendarViewModel.swift */; };
 		1C7234F72A9CE35B0065512A /* InfinitePagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */; };
 		1C7234F92A9CE94E0065512A /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234F82A9CE94E0065512A /* View+Extensions.swift */; };
-		1C7234FB2A9CEAF50065512A /* SCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234FA2A9CEAF50065512A /* SCColor.swift */; };
+		1C7234FB2A9CEAF50065512A /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234FA2A9CEAF50065512A /* Color+Extensions.swift */; };
 		1C7234FD2A9CEE840065512A /* DetectOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234FC2A9CEE840065512A /* DetectOrientation.swift */; };
 		1CF3D60C2A90A4BE005B6E71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF3D60B2A90A4BE005B6E71 /* ContentView.swift */; };
 		1CF3D60E2A90A4BF005B6E71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CF3D60D2A90A4BF005B6E71 /* Assets.xcassets */; };
@@ -70,6 +72,19 @@
 		1CF3D6282A911A6B005B6E71 /* StampCalAppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF3D6272A911A6B005B6E71 /* StampCalAppModel.swift */; };
 		1CF3D62C2A911B18005B6E71 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF3D62B2A911B18005B6E71 /* Utils.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1C56391A2AC86E3600694F44 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1C5638582AA5A01500694F44 /* HorizontalWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalWeekView.swift; sourceTree = "<group>"; };
@@ -111,6 +126,10 @@
 		1C5638EF2AC0AB6000694F44 /* HWDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWDayView.swift; sourceTree = "<group>"; };
 		1C5638F12AC0AB6F00694F44 /* VWDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VWDayView.swift; sourceTree = "<group>"; };
 		1C5638F72AC1DAB200694F44 /* OverlappingHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlappingHStack.swift; sourceTree = "<group>"; };
+		1C5638F92AC8625C00694F44 /* RunningCat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RunningCat-Regular.otf"; sourceTree = "<group>"; };
+		1C5639062AC86E3500694F44 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		1C5639082AC86E3500694F44 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		1C56391D2AC9A72A00694F44 /* FontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontView.swift; sourceTree = "<group>"; };
 		1C7234E42A9B433A0065512A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1C7234E62A9B518C0065512A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1C7234E82A9B73A00065512A /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
@@ -122,7 +141,7 @@
 		1C7234F42A9B9A010065512A /* WeekCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarViewModel.swift; sourceTree = "<group>"; };
 		1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinitePagingView.swift; sourceTree = "<group>"; };
 		1C7234F82A9CE94E0065512A /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
-		1C7234FA2A9CEAF50065512A /* SCColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCColor.swift; sourceTree = "<group>"; };
+		1C7234FA2A9CEAF50065512A /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		1C7234FC2A9CEE840065512A /* DetectOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectOrientation.swift; sourceTree = "<group>"; };
 		1CF3D6062A90A4BE005B6E71 /* StampCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StampCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CF3D60B2A90A4BE005B6E71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -195,6 +214,8 @@
 		1C56388F2AAE1F2C00694F44 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C5639062AC86E3500694F44 /* WidgetKit.framework */,
+				1C5639082AC86E3500694F44 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -221,6 +242,7 @@
 			children = (
 				1C5638DC2ABC767800694F44 /* ColorDebugView.swift */,
 				1C5638E72ABF386900694F44 /* PlaygroundView.swift */,
+				1C56391D2AC9A72A00694F44 /* FontView.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -256,6 +278,7 @@
 			children = (
 				1CF3D6172A90A4BF005B6E71 /* Info.plist */,
 				1C7234E62A9B518C0065512A /* Localizable.strings */,
+				1C5638F92AC8625C00694F44 /* RunningCat-Regular.otf */,
 				1CF3D60D2A90A4BF005B6E71 /* Assets.xcassets */,
 				1CF3D6142A90A4BF005B6E71 /* StampCal.xcdatamodeld */,
 				1CF3D61F2A91192E005B6E71 /* Data */,
@@ -368,7 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				1CF3D62B2A911B18005B6E71 /* Utils.swift */,
-				1C7234FA2A9CEAF50065512A /* SCColor.swift */,
+				1C7234FA2A9CEAF50065512A /* Color+Extensions.swift */,
 				1C5638632AA853CE00694F44 /* Array+Extensions.swift */,
 				1C7234EE2A9B79380065512A /* Calendar+Extensions.swift */,
 				1C56386B2AA8DC0B00694F44 /* Date+Extensions.swift */,
@@ -387,6 +410,7 @@
 				1CF3D6022A90A4BE005B6E71 /* Sources */,
 				1CF3D6032A90A4BE005B6E71 /* Frameworks */,
 				1CF3D6042A90A4BE005B6E71 /* Resources */,
+				1C56391A2AC86E3600694F44 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -409,7 +433,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "Studio Kyome";
 				TargetAttributes = {
 					1CF3D6052A90A4BE005B6E71 = {
@@ -443,6 +467,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C5639002AC86D3100694F44 /* RunningCat-Regular.otf in Resources */,
 				1CF3D6112A90A4BF005B6E71 /* Preview Assets.xcassets in Resources */,
 				1C7234E72A9B518C0065512A /* Localizable.strings in Resources */,
 				1CF3D60E2A90A4BF005B6E71 /* Assets.xcassets in Resources */,
@@ -474,7 +499,7 @@
 				1C5638CD2AB3504000694F44 /* SquareButtonStyle.swift in Sources */,
 				1C7234F52A9B9A010065512A /* WeekCalendarViewModel.swift in Sources */,
 				1C5638DD2ABC767800694F44 /* ColorDebugView.swift in Sources */,
-				1C7234FB2A9CEAF50065512A /* SCColor.swift in Sources */,
+				1C7234FB2A9CEAF50065512A /* Color+Extensions.swift in Sources */,
 				1C7234E52A9B433A0065512A /* MainView.swift in Sources */,
 				1C5638E12ABECE2A00694F44 /* StampPickerModifier.swift in Sources */,
 				1C56385B2AA5C67600694F44 /* Week.swift in Sources */,
@@ -511,6 +536,7 @@
 				1C5638872AADBFBD00694F44 /* AddNewStampViewModel.swift in Sources */,
 				1C5638F82AC1DAB200694F44 /* OverlappingHStack.swift in Sources */,
 				1C7234EF2A9B79380065512A /* Calendar+Extensions.swift in Sources */,
+				1C56391E2AC9A72A00694F44 /* FontView.swift in Sources */,
 				1C5638DF2ABECA6300694F44 /* StampPickerView.swift in Sources */,
 				1C5638752AAB568D00694F44 /* Stamp.swift in Sources */,
 			);
@@ -523,6 +549,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -555,6 +582,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -583,6 +611,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -615,6 +644,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -636,6 +666,7 @@
 		1CF3D61B2A90A4BF005B6E71 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -644,6 +675,8 @@
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StampCal/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -665,6 +698,7 @@
 		1CF3D61C2A90A4BF005B6E71 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -673,6 +707,8 @@
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StampCal/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

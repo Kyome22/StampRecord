@@ -33,7 +33,7 @@ struct EditStampView<EVM: EditStampViewModel>: View {
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
-            .background(SCColor.toolbarBackground)
+            .background(Color(.toolbarBackground))
             // Body
             VStack(spacing: 24) {
                 Button {
@@ -69,7 +69,7 @@ struct EditStampView<EVM: EditStampViewModel>: View {
             }
             .padding(24)
         }
-        .background(SCColor.cellBackground)
+        .background(Color(.cellBackground))
         .presentationDetents([.medium])
         .onTapGesture {
             focusedField = nil

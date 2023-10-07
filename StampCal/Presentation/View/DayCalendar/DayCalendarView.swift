@@ -41,7 +41,7 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
                 }
             )
         }
-        .background(SCColor.appBackground)
+        .background(Color(.appBackground))
     }
 }
 

@@ -19,10 +19,10 @@ struct MonthView: View {
                     Text(shortWeekdays[i])
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 8)
-                        .foregroundColor(SCColor.weekday(i))
-                        .background(SCColor.cellHighlightWeek)
+                        .foregroundColor(Color.weekday(i))
+                        .background(Color(.cellHighlightWeek))
                         .cornerRadius(8)
-                        .shadow(color: SCColor.shadow, radius: 2, x: 0, y: 3)
+                        .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
                 }
             }
             ForEach(days.chunked(by: 7)) { chunk in
@@ -31,10 +31,10 @@ struct MonthView: View {
                         VStack(spacing: 0) {
                             if day.inMonth {
                                 Text(day.text)
-                                    .foregroundColor(SCColor.weekday(day.weekday, day.isToday))
+                                    .foregroundColor(Color.weekday(day.weekday, day.isToday))
                                     .frame(maxWidth: .infinity)
                                     .padding(.vertical, 4)
-                                    .background(SCColor.highlight(day.isToday))
+                                    .background(Color.highlight(day.isToday))
                                 VStack {
                                     Text("😃")
                                         .font(.title2)
@@ -45,9 +45,9 @@ struct MonthView: View {
                             }
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                        .background(SCColor.cellBackground)
+                        .background(Color(.cellBackground))
                         .cornerRadius(8)
-                        .shadow(color: SCColor.shadow, radius: 2, x: 0, y: 3)
+                        .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
                         .opacity(day.inMonth ? 1.0 : 0.3)
                     }
                 }

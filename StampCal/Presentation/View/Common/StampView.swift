@@ -34,11 +34,11 @@ struct StampView: View {
             Image("stamp.base")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(SCColor.cellBlue)
+                .foregroundColor(Color(.cellBlue))
             Text(summary)
                 .font(.system(size: ratio * 30, weight: .semibold))
                 .lineLimit(1)
-                .foregroundColor(SCColor.cellBlue)
+                .foregroundColor(Color(.cellBlue))
                 .background {
                     GeometryReader { geometry in
                         Color.clear.preference(

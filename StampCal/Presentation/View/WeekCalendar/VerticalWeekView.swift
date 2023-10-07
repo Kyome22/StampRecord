@@ -19,16 +19,16 @@ struct VerticalWeekView: View {
                     Text(shortWeekdays[day.weekday])
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 8)
-                        .foregroundColor(SCColor.weekday(day.weekday))
-                        .background(SCColor.cellHighlightWeek)
+                        .foregroundColor(Color.weekday(day.weekday))
+                        .background(Color(.cellHighlightWeek))
                         .cornerRadius(8)
-                        .shadow(color: SCColor.shadow, radius: 2, x: 0, y: 3)
+                        .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
                     VStack {
                         Text(day.text)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 4)
-                            .foregroundColor(SCColor.weekday(day.weekday, day.isToday))
-                            .background(SCColor.highlight(day.isToday))
+                            .foregroundColor(Color.weekday(day.weekday, day.isToday))
+                            .background(Color.highlight(day.isToday))
                         VStack(spacing: 0) {
                             Text("😃")
                                 .font(.title)
@@ -36,9 +36,9 @@ struct VerticalWeekView: View {
                         .padding(.vertical, 4)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                    .background(SCColor.cellBackground)
+                    .background(Color(.cellBackground))
                     .cornerRadius(8)
-                    .shadow(color: SCColor.shadow, radius: 2, x: 0, y: 3)
+                    .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
                 }
             }
         }

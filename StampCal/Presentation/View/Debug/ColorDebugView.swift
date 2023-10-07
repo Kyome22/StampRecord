@@ -13,15 +13,15 @@ struct ColorDebugView: View {
 
     init() {
         colors = [
-            SCColor.accent,
-            SCColor.appBackground,
-            SCColor.cellBackground,
-            SCColor.cellBorder,
-            SCColor.cellHighlightStrong,
-            SCColor.cellHighlightWeek,
-            SCColor.delete,
-            SCColor.cellBlue,
-            SCColor.cellRed
+            Color(.appAccent),
+            Color(.appBackground),
+            Color(.cellBackground),
+            Color(.cellBorder),
+            Color(.cellHighlightStrong),
+            Color(.cellHighlightWeek),
+            Color(.delete),
+            Color(.cellBlue),
+            Color(.cellRed)
         ]
     }
 

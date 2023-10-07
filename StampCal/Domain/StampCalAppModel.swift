@@ -7,6 +7,7 @@
 */
 
 import Foundation
+import ActivityKit
 
 protocol StampCalAppModel: ObservableObject {
     associatedtype SR: StampRepository
@@ -21,7 +22,7 @@ final class StampCalAppModelImpl: StampCalAppModel {
     typealias SR = StampRepositoryImpl
     typealias LR = LogRepositoryImpl
 
-    @Published var tabSelection: Tabs = .weekCalendar
+    @Published var tabSelection: Tabs = .dayCalendar
 
     let stampRepository = SR()
     let logRepository = LR()

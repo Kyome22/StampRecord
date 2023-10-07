@@ -32,7 +32,7 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                 }
             )
         }
-        .background(SCColor.appBackground)
+        .background(Color(.appBackground))
     }
 }
 

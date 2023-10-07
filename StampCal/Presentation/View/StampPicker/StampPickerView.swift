@@ -46,9 +46,9 @@ struct StampPickerView: View {
                 }
                 .padding(8)
             }
-            .background(SCColor.appBackground)
+            .background(Color(.appBackground))
             Divider()
-                .overlay(SCColor.cellBorder)
+                .overlay(Color(.cellBorder))
             HStack(spacing: 8) {
                 Picker(selection: $stampOrderBy) {
                     ForEach(StampOrderBy.allCases) { orderBy in

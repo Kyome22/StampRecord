@@ -46,7 +46,7 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                 }
             )
         }
-        .background(SCColor.appBackground)
+        .background(Color(.appBackground))
     }
 }
 

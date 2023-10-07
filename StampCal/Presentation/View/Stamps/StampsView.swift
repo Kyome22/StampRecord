@@ -34,7 +34,7 @@ struct StampsView<SVM: StampsViewModel>: View {
                 .padding(.vertical, 16)
                 Divider()
             }
-            .background(SCColor.toolbarBackground)
+            .background(Color(.toolbarBackground))
             // Body
             ScrollView(.vertical) {
                 LazyVGrid(columns: columns, spacing: 16) {
@@ -45,7 +45,7 @@ struct StampsView<SVM: StampsViewModel>: View {
                 .padding(24)
             }
         }
-        .background(SCColor.appBackground)
+        .background(Color(.appBackground))
         .sheet(
             isPresented: $viewModel.showingSheet,
             onDismiss: {
@@ -121,7 +121,7 @@ struct StampsView<SVM: StampsViewModel>: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     .aspectRatio(1.66, contentMode: .fill)
                 Divider()
-                    .overlay(SCColor.cellBorder)
+                    .overlay(Color(.cellBorder))
                     .padding(.horizontal, 8)
                 Text(stamp.summary)
                     .lineLimit(1)
@@ -132,7 +132,7 @@ struct StampsView<SVM: StampsViewModel>: View {
             .aspectRatio(1, contentMode: .fill)
         }
         .buttonStyle(.cell)
-        .shadow(color: SCColor.shadow, radius: 3, x: 0, y: 3)
+        .shadow(color: Color(.shadow), radius: 3, x: 0, y: 3)
     }
 }
 

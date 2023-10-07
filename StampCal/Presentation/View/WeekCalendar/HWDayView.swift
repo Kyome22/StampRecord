@@ -20,22 +20,22 @@ struct HWDayView: View {
             wrapText(maxKey: "MMM", key: shortWeekday)
                 .frame(maxHeight: .infinity)
                 .padding(.horizontal, 4)
-                .foregroundColor(SCColor.weekday(day.weekday))
-                .background(SCColor.cellBackground)
+                .foregroundColor(Color.weekday(day.weekday))
+                .background(Color(.cellBackground))
                 .cornerRadius(8)
-                .shadow(color: SCColor.shadow, radius: 2, x: 0, y: 3)
+                .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
             HStack(spacing: 0) {
                 wrapText(maxKey: "88", key: day.text)
                     .frame(maxHeight: .infinity)
                     .padding(.horizontal, 4)
-                    .foregroundColor(SCColor.weekday(day.weekday, day.isToday))
+                    .foregroundColor(Color.weekday(day.weekday, day.isToday))
                     .background {
                         RoundedRectangle(cornerRadius: 8)
-                            .fill(SCColor.highlight(day.isToday))
+                            .fill(Color.highlight(day.isToday))
                     }
                     .padding(4)
                 Divider()
-                    .overlay(SCColor.cellBorder)
+                    .overlay(Color(.cellBorder))
                     .padding(.vertical, 4)
                 if let log = day.log {
                     OverlappingHStack(alignment: .leading, spacing: 4) {
@@ -50,15 +50,15 @@ struct HWDayView: View {
                     Spacer()
                 }
                 Divider()
-                    .overlay(SCColor.cellBorder)
+                    .overlay(Color(.cellBorder))
                     .padding(.vertical, 4)
                 stampButton
                     .padding(.horizontal, 4)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-            .background(SCColor.cellBackground)
+            .background(Color(.cellBackground))
             .cornerRadius(8)
-            .shadow(color: SCColor.shadow, radius: 2, x: 0, y: 3)
+            .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
         }
     }
 

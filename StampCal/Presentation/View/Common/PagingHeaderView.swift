@@ -39,7 +39,7 @@ struct PagingHeaderView: View {
             .padding(.vertical, 16)
             Divider()
         }
-        .background(SCColor.toolbarBackground)
+        .background(Color(.toolbarBackground))
     }
 }
 

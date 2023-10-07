@@ -25,7 +25,7 @@ struct PlaygroundView: View {
                 .renderingMode(.template)
                 .resizable()
                 .frame(width: 160, height: 160)
-                .foregroundColor(SCColor.cellBlue)
+                .foregroundColor(Color(.cellBlue))
             Image(systemName: "arrowshape.right.fill")
                 .font(.largeTitle)
             StampView(emoji: emoji, summary: summary)

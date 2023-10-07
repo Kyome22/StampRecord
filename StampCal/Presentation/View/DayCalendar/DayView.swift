@@ -22,23 +22,23 @@ struct DayView: View {
                 .font(.title2)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
-                .foregroundColor(SCColor.weekday(day.weekday))
-                .background(SCColor.cellBackground)
+                .foregroundColor(Color.weekday(day.weekday))
+                .background(Color(.cellBackground))
                 .cornerRadius(8)
-                .shadow(color: SCColor.shadow, radius: 3, x: 0, y: 3)
+                .shadow(color: Color(.shadow), radius: 3, x: 0, y: 3)
             VStack(spacing: 0) {
                 Text(day.text)
                     .font(.title2)
                     .frame(maxWidth: .infinity)
                     .padding(4)
-                    .foregroundColor(SCColor.weekday(day.weekday, day.isToday))
+                    .foregroundColor(Color.weekday(day.weekday, day.isToday))
                     .background {
                         RoundedRectangle(cornerRadius: 8)
-                            .fill(SCColor.highlight(day.isToday))
+                            .fill(Color.highlight(day.isToday))
                     }
                     .padding(4)
                 Divider()
-                    .overlay(SCColor.cellBorder)
+                    .overlay(Color(.cellBorder))
                     .padding(.horizontal, 8)
                 ScrollView(.vertical, showsIndicators: false) {
                     if let log = day.log {
@@ -53,7 +53,7 @@ struct DayView: View {
                     }
                 }
                 Divider()
-                    .overlay(SCColor.cellBorder)
+                    .overlay(Color(.cellBorder))
                     .padding(.horizontal, 8)
                 HStack {
                     Spacer()
@@ -64,9 +64,9 @@ struct DayView: View {
                 .padding(.vertical, 8)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-            .background(SCColor.cellBackground)
+            .background(Color(.cellBackground))
             .cornerRadius(8)
-            .shadow(color: SCColor.shadow, radius: 3, x: 0, y: 3)
+            .shadow(color: Color(.shadow), radius: 3, x: 0, y: 3)
         }
         .padding(24)
     }

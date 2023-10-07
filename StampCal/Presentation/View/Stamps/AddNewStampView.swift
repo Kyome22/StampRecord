@@ -33,7 +33,7 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
-            .background(SCColor.toolbarBackground)
+            .background(Color(.toolbarBackground))
             // Body
             VStack(spacing: 24) {
                 Button {
@@ -62,7 +62,7 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
             }
             .padding(24)
         }
-        .background(SCColor.cellBackground)
+        .background(Color(.cellBackground))
         .presentationDetents([.medium])
         .onTapGesture {
             focusedField = nil

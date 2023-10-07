@@ -15,13 +15,13 @@ struct DeleteButtonStyle: ButtonStyle {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.vertical, 8)
             .padding(.horizontal, 16)
-            .foregroundColor(SCColor.delete)
-            .background(SCColor.delete.opacity(configuration.isPressed ? 0.12 : 0.0))
+            .foregroundColor(Color(.delete))
+            .background(Color(.delete).opacity(configuration.isPressed ? 0.12 : 0.0))
             .cornerRadius(8)
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .overlay {
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(SCColor.delete, lineWidth: 1)
+                    .stroke(Color(.delete), lineWidth: 1)
             }
     }
 }

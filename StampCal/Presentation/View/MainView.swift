@@ -39,13 +39,13 @@ struct MainView<SAM: StampCalAppModel>: View {
                         Label("month", systemImage: "calendar")
                     }
                     .tag(Tabs.monthCalendar)
-                ColorDebugView()
+               FontView()
                     .tabItem {
                         Label("settings", systemImage: "gearshape")
                     }
                     .tag(Tabs.settings)
             }
-            .toolbarBackground(SCColor.toolbarBackground, for: .tabBar)
+            .toolbarBackground(Color(.toolbarBackground), for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
         }
         .onAppear {
