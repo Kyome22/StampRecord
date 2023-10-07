@@ -14,13 +14,14 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            PagingHeaderView(
+            CalendarHeaderView(
                 title: $viewModel.title,
-                pageBackwardHandler: {
-                    viewModel.paging(with: .backward)
-                },
-                pageForwardHandler: {
-                    viewModel.paging(with: .forward)
+                daySelected: .constant(true),
+                jumpTodayHandler: {
+
+                }, 
+                addStampHandler: {
+
                 }
             )
             InfinitePagingView(

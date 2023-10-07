@@ -13,13 +13,14 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            PagingHeaderView(
+            CalendarHeaderView(
                 title: $viewModel.title,
-                pageBackwardHandler: {
-                    viewModel.paging(with: .backward)
+                daySelected: .constant(true),
+                jumpTodayHandler: {
+
                 },
-                pageForwardHandler: {
-                    viewModel.paging(with: .forward)
+                addStampHandler: {
+
                 }
             )
             InfinitePagingView(

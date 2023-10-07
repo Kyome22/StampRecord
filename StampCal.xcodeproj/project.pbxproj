@@ -19,7 +19,7 @@
 		1C5638712AAB55A200694F44 /* StampsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638702AAB55A200694F44 /* StampsView.swift */; };
 		1C5638732AAB561A00694F44 /* StampsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638722AAB561A00694F44 /* StampsViewModel.swift */; };
 		1C5638752AAB568D00694F44 /* Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638742AAB568D00694F44 /* Stamp.swift */; };
-		1C5638772AAB6D3D00694F44 /* PagingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638762AAB6D3D00694F44 /* PagingHeaderView.swift */; };
+		1C5638772AAB6D3D00694F44 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638762AAB6D3D00694F44 /* CalendarHeaderView.swift */; };
 		1C5638792AADA10A00694F44 /* AddNewStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638782AADA10A00694F44 /* AddNewStampView.swift */; };
 		1C5638872AADBFBD00694F44 /* AddNewStampViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638862AADBFBD00694F44 /* AddNewStampViewModel.swift */; };
 		1C5638892AADF46600694F44 /* SelectEmojiButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638882AADF46600694F44 /* SelectEmojiButtonStyle.swift */; };
@@ -99,7 +99,7 @@
 		1C5638702AAB55A200694F44 /* StampsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsView.swift; sourceTree = "<group>"; };
 		1C5638722AAB561A00694F44 /* StampsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsViewModel.swift; sourceTree = "<group>"; };
 		1C5638742AAB568D00694F44 /* Stamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stamp.swift; sourceTree = "<group>"; };
-		1C5638762AAB6D3D00694F44 /* PagingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingHeaderView.swift; sourceTree = "<group>"; };
+		1C5638762AAB6D3D00694F44 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		1C5638782AADA10A00694F44 /* AddNewStampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStampView.swift; sourceTree = "<group>"; };
 		1C5638862AADBFBD00694F44 /* AddNewStampViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStampViewModel.swift; sourceTree = "<group>"; };
 		1C5638882AADF46600694F44 /* SelectEmojiButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEmojiButtonStyle.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 				1C7234FC2A9CEE840065512A /* DetectOrientation.swift */,
 				1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */,
 				1C5638F72AC1DAB200694F44 /* OverlappingHStack.swift */,
-				1C5638762AAB6D3D00694F44 /* PagingHeaderView.swift */,
+				1C5638762AAB6D3D00694F44 /* CalendarHeaderView.swift */,
 				1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */,
 				1C5638CC2AB3504000694F44 /* SquareButtonStyle.swift */,
 				1C5638D92AB8901B00694F44 /* StampButtonStyle.swift */,
@@ -516,7 +516,7 @@
 				1C56386E2AAB530E00694F44 /* VerticalWeekView.swift in Sources */,
 				1CF3D6282A911A6B005B6E71 /* StampCalAppModel.swift in Sources */,
 				1CF3D61E2A9110E6005B6E71 /* StampCalApp.swift in Sources */,
-				1C5638772AAB6D3D00694F44 /* PagingHeaderView.swift in Sources */,
+				1C5638772AAB6D3D00694F44 /* CalendarHeaderView.swift in Sources */,
 				1C7234FD2A9CEE840065512A /* DetectOrientation.swift in Sources */,
 				1C5638DA2AB8901B00694F44 /* StampButtonStyle.swift in Sources */,
 				1C7234EB2A9B73BA0065512A /* WeekCalendarView.swift in Sources */,

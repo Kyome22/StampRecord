@@ -1,5 +1,5 @@
 /*
- PagingHeaderView.swift
+ CalendarHeaderView.swift
  StampCal
 
  Created by Takuto Nakamura on 2023/09/08.
@@ -8,18 +8,19 @@
 
 import SwiftUI
 
-struct PagingHeaderView: View {
+struct CalendarHeaderView: View {
     @Binding var title: String
-    let pageBackwardHandler: () -> Void
-    let pageForwardHandler: () -> Void
+    @Binding var daySelected: Bool
+    let jumpTodayHandler: () -> Void
+    let addStampHandler: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
             HeaderHStack {
                 Button {
-                    pageBackwardHandler()
+                    jumpTodayHandler()
                 } label: {
-                    Text(Image(systemName: "chevron.left"))
+                    Text(Image(systemName: "arrow.uturn.right"))
                         .font(.title2)
                 }
                 .buttonStyle(.square)
@@ -28,12 +29,13 @@ struct PagingHeaderView: View {
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                 Button {
-                    pageForwardHandler()
+                    addStampHandler()
                 } label: {
-                    Text(Image(systemName: "chevron.right"))
+                    Text(Image(.stamp))
                         .font(.title2)
                 }
                 .buttonStyle(.square)
+                .disabled(!daySelected)
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
@@ -43,10 +45,11 @@ struct PagingHeaderView: View {
     }
 }
 
-struct HeaderView_Previews: PreviewProvider {
+struct CalendarHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        PagingHeaderView(title: .constant(""),
-                         pageBackwardHandler: {},
-                         pageForwardHandler: {})
+        CalendarHeaderView(title: .constant(""),
+                           daySelected: .constant(true),
+                           jumpTodayHandler: {},
+                           addStampHandler: {})
     }
 }
