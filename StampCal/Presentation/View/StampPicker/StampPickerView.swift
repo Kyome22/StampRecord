@@ -14,6 +14,7 @@ struct StampPickerView: View {
     @State var stampOrderIn: StampOrderIn = .ascending
     let selectStampHandler: (Stamp) -> Void
     let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 8), count: 3)
+    let cellWidth: CGFloat = 84
 
     init(stamps: [Stamp], selectStampHandler: @escaping (Stamp) -> Void) {
         _stamps = State(initialValue: stamps)
@@ -23,32 +24,6 @@ struct StampPickerView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            ScrollView(.vertical, showsIndicators: true) {
-                LazyVGrid(columns: columns, spacing: 8) {
-                    ForEach(stamps) { stamp in
-                        Button {
-                            selectStampHandler(stamp)
-                        } label: {
-                            VStack(spacing: 4) {
-                                Text(stamp.emoji)
-                                    .font(.system(size: 40))
-                                Text(stamp.summary)
-                                    .font(.system(size: 20))
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.05)
-                                    .truncationMode(.tail)
-                            }
-                            .frame(width: 64, height: 64)
-                            .padding(4)
-                        }
-                        .buttonStyle(.cell)
-                    }
-                }
-                .padding(8)
-            }
-            .background(Color(.appBackground))
-            Divider()
-                .overlay(Color(.cellBorder))
             HStack(spacing: 8) {
                 Picker(selection: $stampOrderBy) {
                     ForEach(StampOrderBy.allCases) { orderBy in
@@ -74,8 +49,36 @@ struct StampPickerView: View {
             .onChange(of: stampOrderIn) { _ in
                 sortStamps()
             }
+            Divider()
+                .overlay(Color(.cellBorder))
+            ScrollView(.vertical, showsIndicators: true) {
+                LazyVGrid(columns: columns, spacing: 8) {
+                    ForEach(stamps) { stamp in
+                        Button {
+                            selectStampHandler(stamp)
+                        } label: {
+                            VStack(spacing: 4) {
+                                Text(stamp.emoji)
+                                    .font(.system(size: 40))
+                                Text(stamp.summary)
+                                    .font(.system(size: 20))
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.05)
+                                    .truncationMode(.tail)
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .aspectRatio(1, contentMode: .fill)
+                            .padding(4)
+                        }
+                        .buttonStyle(.cell)
+                    }
+                }
+                .padding(8)
+            }
+            .frame(height: (cellWidth * 3.5) + (8 * 4))
+            .background(Color(.appBackground))
         }
-        .frame(width: 248, height: 280) // width = (3 * 72) + (4 * 8) = 248
+        .frame(width: (cellWidth * 3) + (8 * 4))
     }
 
     func sortStamps() {

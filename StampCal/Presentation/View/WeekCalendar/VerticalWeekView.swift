@@ -9,45 +9,37 @@
 import SwiftUI
 
 struct VerticalWeekView: View {
+    @Binding var selectedDayID: UUID?
     let shortWeekdays: [String]
     let days: [Day]
+    let removeStampHandler: (Day, Int) -> Void
 
     var body: some View {
         HStack(spacing: 16) {
             ForEach(days) { day in
-                VStack(spacing: 16) {
-                    Text(shortWeekdays[day.weekday])
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 8)
-                        .foregroundColor(Color.weekday(day.weekday))
-                        .background(Color(.cellHighlightWeek))
-                        .cornerRadius(8)
-                        .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
-                    VStack {
-                        Text(day.text)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 4)
-                            .foregroundColor(Color.weekday(day.weekday, day.isToday))
-                            .background(Color.highlight(day.isToday))
-                        VStack(spacing: 0) {
-                            Text("😃")
-                                .font(.title)
-                        }
-                        .padding(.vertical, 4)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                    .background(Color(.cellBackground))
-                    .cornerRadius(8)
-                    .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
-                }
+                VWDayView(
+                    isSelected: Binding<Bool>(
+                        get: { selectedDayID == day.id },
+                        set: { _ in }
+                    ),
+                    shortWeekday: shortWeekdays[day.weekday],
+                    day: day,
+                    selectHandler: {
+                        selectedDayID = day.id
+                    },
+                    removeStampHandler: removeStampHandler
+                )
             }
         }
-        .padding(24)
+        .padding(16)
     }
 }
 
 struct VerticalWeekView_Previews: PreviewProvider {
     static var previews: some View {
-        VerticalWeekView(shortWeekdays: [], days: [])
+        VerticalWeekView(selectedDayID: .constant(nil),
+                         shortWeekdays: [],
+                         days: [],
+                         removeStampHandler: { _, _ in })
     }
 }

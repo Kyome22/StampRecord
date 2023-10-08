@@ -16,10 +16,11 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
             CalendarHeaderView(
                 title: $viewModel.title,
                 daySelected: .constant(true),
-                jumpTodayHandler: {
+                showStampPicker: .constant(false),
+                resetHandler: {
 
                 },
-                addStampHandler: {
+                selectStampHandler: { stamp in
 
                 }
             )

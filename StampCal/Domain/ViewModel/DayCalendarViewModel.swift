@@ -14,12 +14,16 @@ protocol DayCalendarViewModel: ObservableObject {
 
     var title: String { get set }
     var dayList: [Day] { get set }
+    var selectedDayID: UUID? { get set }
+    var showStampPicker: Bool { get set }
     var shortWeekdays: [String] { get }
 
     init(_ stampRepository: SR, _ logRepository: LR)
 
+    func setDayList()
+    func reloadLog()
     func paging(with pageDirection: PageDirection)
-    func putStamp(day: Day, stamp: Stamp)
+    func putStamp(stamp: Stamp)
     func removeStamp(day: Day, index: Int)
 }
 
@@ -30,26 +34,20 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
 
     @Published var title: String = ""
     @Published var dayList: [Day] = []
+    @Published var selectedDayID: UUID? = nil
+    @Published var showStampPicker: Bool = false
 
     let shortWeekdays: [String]
     private let calendar = Calendar.current
     private let stampRepository: SR
     private let logRepository: LR
+    private var notFirstOnAppear: Bool = false
 
     init(_ stampRepository: SR, _ logRepository: LR) {
         shortWeekdays = calendar.shortWeekdaySymbols
         self.stampRepository = stampRepository
         self.logRepository = logRepository
-        let now = Date.now
-        let day = Day(date: now,
-                      isToday: true,
-                      text: calendar.dayText(of: now),
-                      weekday: calendar.weekday(of: now),
-                      log: logRepository.getLog(of: now))
-        dayList.append(day)
-        dayList.insert(getYesterday(of: now), at: 0)
-        dayList.append(getTommorow(of: now))
-        title = now.title
+        setDayList()
     }
 
     private func getYesterday(of date: Date) -> Day {
@@ -70,6 +68,31 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
                    log: logRepository.getLog(of: tommorow))
     }
 
+    func setDayList() {
+        dayList.removeAll()
+        let now = Date.now
+        let day = Day(date: now,
+                      isToday: true,
+                      text: calendar.dayText(of: now),
+                      weekday: calendar.weekday(of: now),
+                      log: logRepository.getLog(of: now))
+        dayList.append(day)
+        dayList.insert(getYesterday(of: now), at: 0)
+        dayList.append(getTommorow(of: now))
+        title = now.title
+        selectedDayID = dayList[1].id
+    }
+
+    func reloadLog() {
+        if notFirstOnAppear {
+            dayList.indices.forEach { i in
+                dayList[i].log = logRepository.getLog(of: dayList[i].date)
+            }
+        } else {
+            notFirstOnAppear = true
+        }
+    }
+
     func paging(with pageDirection: PageDirection) {
         switch pageDirection {
         case .backward:
@@ -84,9 +107,14 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
             }
         }
         title = dayList[1].date?.title ?? "?"
+        selectedDayID = dayList[1].id
     }
 
-    func putStamp(day: Day, stamp: Stamp) {
+    func putStamp(stamp: Stamp) {
+        guard let index = dayList.firstIndex(where: { $0.id == selectedDayID }) else {
+            return
+        }
+        let day = dayList[index]
         if var log = day.log {
             log.stamps.append(stamp)
             logRepository.updateLog(log)
@@ -94,9 +122,7 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
             let log = Log(date: date, stamps: [stamp])
             logRepository.updateLog(log)
         }
-        if let index = dayList.firstIndex(of: day) {
-            dayList[index].log = logRepository.getLog(of: day.date)
-        }
+        dayList[index].log = logRepository.getLog(of: day.date)
     }
 
     func removeStamp(day: Day, index: Int) {
@@ -118,6 +144,8 @@ extension PreviewMock {
 
         @Published var title: String = ""
         @Published var dayList: [Day] = []
+        @Published var selectedDayID: UUID? = nil
+        @Published var showStampPicker: Bool = false
 
         let shortWeekdays: [String]
 
@@ -137,8 +165,10 @@ extension PreviewMock {
             title = now.title
         }
 
+        func setDayList() {}
+        func reloadLog() {}
         func paging(with pageDirection: PageDirection) {}
-        func putStamp(day: Day, stamp: Stamp) {}
+        func putStamp(stamp: Stamp) {}
         func removeStamp(day: Day, index: Int) {}
     }
 }

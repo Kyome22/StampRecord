@@ -9,15 +9,25 @@
 import SwiftUI
 
 struct DayView: View {
-    @State var showStampPicker: Bool = false
+    let columns: [GridItem]
     let shortWeekdays: [String]
     let day: Day
-    let putStampHandler: (Day, Stamp) -> Void
     let removeStampHandler: (Day, Int) -> Void
-    let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 8), count: 3)
+
+    init(
+        isPhone: Bool,
+        shortWeekdays: [String],
+        day: Day,
+        removeStampHandler: @escaping (Day, Int) -> Void
+    ) {
+        self.columns = Array(repeating: .init(.flexible(), spacing: 8), count: isPhone ? 3 : 5)
+        self.shortWeekdays = shortWeekdays
+        self.day = day
+        self.removeStampHandler = removeStampHandler
+    }
 
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 16) {
             Text(shortWeekdays[day.weekday])
                 .font(.title2)
                 .frame(maxWidth: .infinity)
@@ -33,7 +43,7 @@ struct DayView: View {
                     .padding(4)
                     .foregroundColor(Color.weekday(day.weekday, day.isToday))
                     .background {
-                        RoundedRectangle(cornerRadius: 8)
+                        RoundedRectangle(cornerRadius: 6)
                             .fill(Color.highlight(day.isToday))
                     }
                     .padding(4)
@@ -52,49 +62,21 @@ struct DayView: View {
                         .padding(8)
                     }
                 }
-                Divider()
-                    .overlay(Color(.cellBorder))
-                    .padding(.horizontal, 8)
-                HStack {
-                    Spacer()
-                    stampButton
-                    Spacer()
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 8)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(Color(.cellBackground))
             .cornerRadius(8)
             .shadow(color: Color(.shadow), radius: 3, x: 0, y: 3)
         }
-        .padding(24)
-    }
-
-    var stampButton: some View {
-        Button {
-            showStampPicker = true
-        } label: {
-            Image(.stamp)
-        }
-        .buttonStyle(.stamp)
-        .stampPicker(
-            isPresented: $showStampPicker,
-            stamps: Stamp.dummy,
-            selectStampHandler: { stamp in
-                putStampHandler(day, stamp)
-                showStampPicker = false
-            },
-            attachmentAnchor: .point(.center)
-        )
+        .padding(16)
     }
 }
 
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView(shortWeekdays: [],
+        DayView(isPhone: true,
+                shortWeekdays: [],
                 day: Day(text: "", weekday: 0),
-                putStampHandler: { _, _ in },
                 removeStampHandler: { _, _ in })
     }
 }

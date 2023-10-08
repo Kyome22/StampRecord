@@ -10,17 +10,23 @@ import SwiftUI
 
 struct DayCalendarView<DVM: DayCalendarViewModel>: View {
     @StateObject var viewModel: DVM
+    @Binding var isPhone: Bool
 
     var body: some View {
         VStack(spacing: 0) {
             CalendarHeaderView(
                 title: $viewModel.title,
-                daySelected: .constant(true),
-                jumpTodayHandler: {
-                    
+                daySelected: Binding<Bool>(
+                    get: { viewModel.selectedDayID != nil },
+                    set: { _ in}
+                ),
+                showStampPicker: $viewModel.showStampPicker,
+                resetHandler: {
+                    viewModel.setDayList()
                 },
-                addStampHandler: {
-
+                selectStampHandler: { stamp in
+                    viewModel.putStamp(stamp: stamp)
+                    viewModel.showStampPicker = false
                 }
             )
             InfinitePagingView(
@@ -30,11 +36,9 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
                 },
                 content: { day in
                     DayView(
+                        isPhone: isPhone,
                         shortWeekdays: viewModel.shortWeekdays,
                         day: day,
-                        putStampHandler: { day, stamp in
-                            viewModel.putStamp(day: day, stamp: stamp)
-                        },
                         removeStampHandler: { day, index in
                             viewModel.removeStamp(day: day, index: index)
                         }
@@ -43,11 +47,15 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
             )
         }
         .background(Color(.appBackground))
+        .onAppear {
+            viewModel.reloadLog()
+        }
     }
 }
 
 struct DayCalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        DayCalendarView(viewModel: PreviewMock.DayCalendarViewModelMock())
+        DayCalendarView(viewModel: PreviewMock.DayCalendarViewModelMock(),
+                        isPhone: .constant(true))
     }
 }

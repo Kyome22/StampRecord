@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C4FEE552AD28D43002266A9 /* OverlappingVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */; };
 		1C5638592AA5A01500694F44 /* HorizontalWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638582AA5A01500694F44 /* HorizontalWeekView.swift */; };
 		1C56385B2AA5C67600694F44 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56385A2AA5C67600694F44 /* Week.swift */; };
 		1C56385D2AA8133D00694F44 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56385C2AA8133D00694F44 /* Month.swift */; };
@@ -87,6 +88,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlappingVStack.swift; sourceTree = "<group>"; };
 		1C5638582AA5A01500694F44 /* HorizontalWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalWeekView.swift; sourceTree = "<group>"; };
 		1C56385A2AA5C67600694F44 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		1C56385C2AA8133D00694F44 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				1C7234FC2A9CEE840065512A /* DetectOrientation.swift */,
 				1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */,
 				1C5638F72AC1DAB200694F44 /* OverlappingHStack.swift */,
+				1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */,
 				1C5638762AAB6D3D00694F44 /* CalendarHeaderView.swift */,
 				1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */,
 				1C5638CC2AB3504000694F44 /* SquareButtonStyle.swift */,
@@ -488,6 +491,7 @@
 				1C5638682AA8B5C700694F44 /* DayView.swift in Sources */,
 				1CF3D6132A90A4BF005B6E71 /* Persistence.swift in Sources */,
 				1C5638792AADA10A00694F44 /* AddNewStampView.swift in Sources */,
+				1C4FEE552AD28D43002266A9 /* OverlappingVStack.swift in Sources */,
 				1C5638EC2AC0718600694F44 /* InnerCellButtonStyle.swift in Sources */,
 				1C5638D12AB6ECE800694F44 /* StampRepository.swift in Sources */,
 				1C5638C92AB0C8D000694F44 /* HeaderHStack.swift in Sources */,

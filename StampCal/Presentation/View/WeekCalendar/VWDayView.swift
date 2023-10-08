@@ -9,13 +9,64 @@
 import SwiftUI
 
 struct VWDayView: View {
+    @Binding var isSelected: Bool
+    let shortWeekday: String
+    let day: Day
+    let selectHandler: () -> Void
+    let removeStampHandler: (Day, Int) -> Void
+
     var body: some View {
-        Text("Hello, World!")
+        VStack(spacing: 16) {
+            Text(shortWeekday)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 8)
+                .foregroundColor(Color.weekday(day.weekday))
+                .background(Color(.cellBackground))
+                .cornerRadius(8)
+                .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
+            VStack(spacing: 0) {
+                Text(day.text)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 4)
+                    .foregroundColor(Color.weekday(day.weekday, day.isToday))
+                    .background {
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(Color.highlight(day.isToday))
+                    }
+                    .padding(4)
+                Divider()
+                    .overlay(Color(.cellBorder))
+                    .padding(.horizontal, 4)
+                if let log = day.log {
+                    OverlappingVStack(alignment: .top, spacing: 4) {
+                        ForEach(log.stamps.indices, id: \.self) { index in
+                            Text(log.stamps[index].emoji)
+                                .font(.largeTitle)
+                                .padding(4)
+                        }
+                    }
+                    .padding(4)
+                } else {
+                    Spacer()
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .background(isSelected ? Color(.cellHighlight) : Color(.cellBackground))
+            .cornerRadius(8)
+            .onTapGesture {
+                selectHandler()
+            }
+            .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
+        }
     }
 }
 
 struct VWDayView_Previews: PreviewProvider {
     static var previews: some View {
-        VWDayView()
+        VWDayView(isSelected: .constant(false),
+                  shortWeekday: "",
+                  day: Day(text: "", weekday: 0),
+                  selectHandler: {},
+                  removeStampHandler: { _, _ in })
     }
 }

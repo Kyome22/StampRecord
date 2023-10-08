@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct HWDayView: View {
-    @State var showStampPicker: Bool = false
+    @Binding var isSelected: Bool
     let shortWeekday: String
     let day: Day
-    let putStampHandler: (Day, Stamp) -> Void
+    let selectHandler: () -> Void
     let removeStampHandler: (Day, Int) -> Void
 
     var body: some View {
@@ -30,7 +30,7 @@ struct HWDayView: View {
                     .padding(.horizontal, 4)
                     .foregroundColor(Color.weekday(day.weekday, day.isToday))
                     .background {
-                        RoundedRectangle(cornerRadius: 8)
+                        RoundedRectangle(cornerRadius: 6)
                             .fill(Color.highlight(day.isToday))
                     }
                     .padding(4)
@@ -49,43 +49,24 @@ struct HWDayView: View {
                 } else {
                     Spacer()
                 }
-                Divider()
-                    .overlay(Color(.cellBorder))
-                    .padding(.vertical, 4)
-                stampButton
-                    .padding(.horizontal, 4)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-            .background(Color(.cellBackground))
+            .background(isSelected ? Color(.cellHighlight) : Color(.cellBackground))
             .cornerRadius(8)
+            .onTapGesture {
+                selectHandler()
+            }
             .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
         }
-    }
-
-    var stampButton: some View {
-        Button {
-            showStampPicker = true
-        } label: {
-            Image(.stamp)
-        }
-        .buttonStyle(.stamp)
-        .stampPicker(
-            isPresented: $showStampPicker,
-            stamps: Stamp.dummy,
-            selectStampHandler: { stamp in
-                putStampHandler(day, stamp)
-                showStampPicker = false
-            },
-            attachmentAnchor: .point(.center)
-        )
     }
 }
 
 struct HWDayView_Previews: PreviewProvider {
     static var previews: some View {
-        HWDayView(shortWeekday: "",
+        HWDayView(isSelected: .constant(false),
+                  shortWeekday: "",
                   day: Day(text: "", weekday: 0),
-                  putStampHandler: { _, _ in },
+                  selectHandler: {},
                   removeStampHandler: { _, _ in })
     }
 }

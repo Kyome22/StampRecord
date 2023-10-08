@@ -103,6 +103,11 @@ struct Stamp: Identifiable, Equatable, CustomStringConvertible {
         Stamp(emoji: "🏆", summary: "優勝", createdDate: Date(timeIntervalSince1970: 1691852400.0)),
         Stamp(emoji: "🧩", summary: "パズル", createdDate: Date(timeIntervalSince1970: 1691938800.0)),
         Stamp(emoji: "🏊‍♀️", summary: "水泳", createdDate: Date(timeIntervalSince1970: 1692025200.0)),
-        Stamp(emoji: "🎸", summary: "ギターの練習", createdDate: Date(timeIntervalSince1970: 1692111600.0))
+        Stamp(emoji: "🎸", summary: "ギターの練習", createdDate: Date(timeIntervalSince1970: 1692211600.0)),
+        Stamp(emoji: "🫶", summary: "a", createdDate: Date(timeIntervalSince1970: 1692311600.0)),
+        Stamp(emoji: "🤲", summary: "b", createdDate: Date(timeIntervalSince1970: 1692411600.0)),
+        Stamp(emoji: "👍", summary: "c", createdDate: Date(timeIntervalSince1970: 1692511600.0)),
+        Stamp(emoji: "🫷", summary: "d", createdDate: Date(timeIntervalSince1970: 1692611600.0)),
+        Stamp(emoji: "🫸", summary: "e", createdDate: Date(timeIntervalSince1970: 1692711600.0))
     ]
 }

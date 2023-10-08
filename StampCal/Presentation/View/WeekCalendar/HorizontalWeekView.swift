@@ -9,31 +9,37 @@
 import SwiftUI
 
 struct HorizontalWeekView: View {
+    @Binding var selectedDayID: UUID?
     let shortWeekdays: [String]
     let days: [Day]
-    let putStampHandler: (Day, Stamp) -> Void
     let removeStampHandler: (Day, Int) -> Void
 
     var body: some View {
         VStack(spacing: 16) {
             ForEach(days) { day in
                 HWDayView(
+                    isSelected: Binding<Bool>(
+                        get: { selectedDayID == day.id },
+                        set: { _ in }
+                    ),
                     shortWeekday: shortWeekdays[day.weekday],
                     day: day,
-                    putStampHandler: putStampHandler,
+                    selectHandler: {
+                        selectedDayID = day.id
+                    },
                     removeStampHandler: removeStampHandler
                 )
             }
         }
-        .padding(24)
+        .padding(16)
     }
 }
 
 struct HorizontalWeekView_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalWeekView(shortWeekdays: [],
+        HorizontalWeekView(selectedDayID: .constant(nil),
+                           shortWeekdays: [],
                            days: [],
-                           putStampHandler: { _, _ in },
                            removeStampHandler: { _, _ in })
     }
 }

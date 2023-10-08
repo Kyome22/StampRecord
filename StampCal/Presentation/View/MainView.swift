@@ -20,20 +20,26 @@ struct MainView<SAM: StampCalAppModel>: View {
                         Label("stamps", image: "stamp.fill")
                     }
                     .tag(Tabs.stamps)
-                DayCalendarView(viewModel: DayCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository))
-                    .tabItem {
-                        Label("day", image: "calendar.day")
+                DayCalendarView(
+                    viewModel: DayCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
+                    isPhone: $isPhone
+                )
+                .tabItem {
+                    Label("day", image: "calendar.day")
+                }
+                .tag(Tabs.dayCalendar)
+                WeekCalendarView(
+                    viewModel: WeekCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
+                    isPhone: $isPhone
+                )
+                .tabItem {
+                    if isPhone {
+                        Label("week", image: "calendar.week.horizontal")
+                    } else {
+                        Label("week", image: "calendar.week.vertical")
                     }
-                    .tag(Tabs.dayCalendar)
-                WeekCalendarView(viewModel: WeekCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository), isPhone: $isPhone)
-                    .tabItem {
-                        if isPhone {
-                            Label("week", image: "calendar.week.horizontal")
-                        } else {
-                            Label("week", image: "calendar.week.vertical")
-                        }
-                    }
-                    .tag(Tabs.weekCalendar)
+                }
+                .tag(Tabs.weekCalendar)
                 MonthCalendarView(viewModel: MonthCalendarViewModelImpl())
                     .tabItem {
                         Label("month", systemImage: "calendar")

@@ -16,12 +16,17 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
         VStack(spacing: 0) {
             CalendarHeaderView(
                 title: $viewModel.title,
-                daySelected: .constant(true),
-                jumpTodayHandler: {
-
+                daySelected: Binding<Bool>(
+                    get: { viewModel.selectedDayID != nil },
+                    set: { _ in }
+                ),
+                showStampPicker: $viewModel.showStampPicker,
+                resetHandler: {
+                    viewModel.setWeekList()
                 }, 
-                addStampHandler: {
-
+                selectStampHandler: { stamp in
+                    viewModel.putStamp(stamp: stamp)
+                    viewModel.showStampPicker = false
                 }
             )
             InfinitePagingView(
@@ -32,22 +37,30 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                 content: { week in
                     if isPhone {
                         HorizontalWeekView(
+                            selectedDayID: $viewModel.selectedDayID,
                             shortWeekdays: viewModel.shortWeekdays,
                             days: week.days,
-                            putStampHandler: { day, stamp in
-                                viewModel.putStamp(day: day, stamp: stamp)
-                            },
                             removeStampHandler: { day, index in
                                 viewModel.removeStamp(day: day, index: index)
                             }
                         )
                     } else {
-                        VerticalWeekView(shortWeekdays: viewModel.shortWeekdays, days: week.days)
+                        VerticalWeekView(
+                            selectedDayID: $viewModel.selectedDayID,
+                            shortWeekdays: viewModel.shortWeekdays,
+                            days: week.days,
+                            removeStampHandler: { day, index in
+                                viewModel.removeStamp(day: day, index: index)
+                            }
+                        )
                     }
                 }
             )
         }
         .background(Color(.appBackground))
+        .onAppear {
+            viewModel.reloadLog()
+        }
     }
 }
 

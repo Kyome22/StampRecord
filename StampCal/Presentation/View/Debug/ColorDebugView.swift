@@ -16,12 +16,12 @@ struct ColorDebugView: View {
             Color(.appAccent),
             Color(.appBackground),
             Color(.cellBackground),
+            Color(.cellHighlight),
             Color(.cellBorder),
-            Color(.cellHighlightStrong),
-            Color(.cellHighlightWeek),
             Color(.delete),
             Color(.cellBlue),
-            Color(.cellRed)
+            Color(.cellRed),
+            Color(.shadow)
         ]
     }
 
