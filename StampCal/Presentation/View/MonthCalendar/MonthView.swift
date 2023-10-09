@@ -9,56 +9,88 @@
 import SwiftUI
 
 struct MonthView: View {
+    @Binding var selectedDayID: UUID?
+    let isPhone: Bool
+    let orientation: DeviceOrientation
+    let spacing: CGFloat
     let shortWeekdays: [String]
     let days: [Day]
+    let removeStampHandler: (Day, Int) -> Void
+
+    init(
+        selectedDayID: Binding<UUID?>,
+        isPhone: Bool,
+        orientation: DeviceOrientation,
+        shortWeekdays: [String],
+        days: [Day],
+        removeStampHandler: @escaping (Day, Int) -> Void
+    ) {
+        _selectedDayID = selectedDayID
+        self.isPhone = isPhone
+        self.spacing = isPhone ? 8 : 16
+        self.orientation = orientation
+        self.shortWeekdays = shortWeekdays
+        self.days = days
+        self.removeStampHandler = removeStampHandler
+    }
 
     var body: some View {
-        VStack(spacing: 8) {
-            HStack(spacing: 8) {
-                ForEach(0 ..< 7, id: \.self) { i in
-                    Text(shortWeekdays[i])
+        VStack(spacing: spacing) {
+            HStack(spacing: spacing) {
+                ForEach(shortWeekdays.indices, id: \.self) { index in
+                    Text(shortWeekdays[index])
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 8)
-                        .foregroundColor(Color.weekday(i))
+                        .foregroundColor(Color.weekday(index))
                         .background(Color(.cellBackground))
                         .cornerRadius(8)
                         .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
                 }
             }
             ForEach(days.chunked(by: 7)) { chunk in
-                HStack(spacing: 8) {
+                HStack(spacing: spacing) {
                     ForEach(chunk.elements) { day in
-                        VStack(spacing: 0) {
-                            if day.inMonth {
-                                Text(day.text)
-                                    .foregroundColor(Color.weekday(day.weekday, day.isToday))
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.vertical, 4)
-                                    .background(Color.highlight(day.isToday))
-                                VStack {
-                                    Text("😃")
-                                        .font(.title2)
-                                }
-                                .padding(.vertical, 4)
-                            } else {
-                                EmptyView()
-                            }
+                        if day.inMonth {
+                            MDayView(
+                                isSelected: Binding<Bool>(
+                                    get: { selectedDayID == day.id },
+                                    set: { _ in }
+                                ),
+                                isPhone: isPhone,
+                                orientation: orientation,
+                                day: day,
+                                selectHandler: {
+                                    selectedDayID = day.id
+                                },
+                                removeStampHandler: removeStampHandler
+                            )
+                        } else {
+                            phantomDayView
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                        .background(Color(.cellBackground))
-                        .cornerRadius(8)
-                        .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
-                        .opacity(day.inMonth ? 1.0 : 0.3)
                     }
                 }
             }
         }
-        .padding(24)
+        .padding(spacing)
+    }
+
+
+    var phantomDayView: some View {
+        RoundedRectangle(cornerRadius: 8)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .foregroundColor(Color(.cellBackground))
+            .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
+            .opacity(0.3)
     }
 }
 
 struct MonthView_Previews: PreviewProvider {
     static var previews: some View {
-        MonthView(shortWeekdays: [], days: [])
+        MonthView(selectedDayID: .constant(nil),
+                  isPhone: true,
+                  orientation: .portrait,
+                  shortWeekdays: [],
+                  days: [],
+                  removeStampHandler: { _, _ in })
     }
 }

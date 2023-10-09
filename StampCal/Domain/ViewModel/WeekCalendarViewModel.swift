@@ -104,9 +104,11 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
         if notFirstOnAppear {
             weekList.indices.forEach { i in
                 weekList[i].days.indices.forEach { j in
-                    weekList[i].days[j].log = logRepository.getLog(of: weekList[i].days[j].date)
+                    let date = weekList[i].days[j].date
+                    weekList[i].days[j].log = logRepository.getLog(of: date)
                 }
             }
+            selectedDayID = nil
         } else {
             notFirstOnAppear = true
         }
@@ -191,8 +193,8 @@ extension PreviewMock {
                 }
                 let week = Week(title: now.title, days: days)
                 weekList.append(week)
-                title = now.title
             }
+            title = now.title
         }
 
         func setWeekList() {}

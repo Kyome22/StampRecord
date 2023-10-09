@@ -10,13 +10,13 @@ import SwiftUI
 
 struct DayCalendarView<DVM: DayCalendarViewModel>: View {
     @StateObject var viewModel: DVM
-    @Binding var isPhone: Bool
+    let isPhone: Bool
 
     var body: some View {
         VStack(spacing: 0) {
             CalendarHeaderView(
                 title: $viewModel.title,
-                daySelected: Binding<Bool>(
+                isDaySelected: Binding<Bool>(
                     get: { viewModel.selectedDayID != nil },
                     set: { _ in}
                 ),
@@ -56,6 +56,6 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
 struct DayCalendarView_Previews: PreviewProvider {
     static var previews: some View {
         DayCalendarView(viewModel: PreviewMock.DayCalendarViewModelMock(),
-                        isPhone: .constant(true))
+                        isPhone: true)
     }
 }

@@ -36,7 +36,7 @@ struct DayStampCardView: View {
             Button(role: .destructive) {
                 removeStampHandler()
             } label: {
-                Text("removeStamp")
+                Text("removeStamp\(stamp.emoji)")
             }
         }
     }

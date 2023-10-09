@@ -21,27 +21,23 @@ struct OverlappingVStack: Layout {
         return subviews.map { $0.sizeThatFits(.unspecified).width }.max() ?? .zero
     }
 
-    private func maxHeight(subviews: Subviews) -> CGFloat {
-        return subviews.map { $0.sizeThatFits(.unspecified).height }.max() ?? .zero
-    }
-
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
-        return CGSize(width: maxWidth(subviews: subviews),
-                      height: proposal.replacingUnspecifiedDimensions().height)
+        let dimensions = proposal.replacingUnspecifiedDimensions()
+        return CGSize(width: min(maxWidth(subviews: subviews), dimensions.width),
+                      height: dimensions.height)
     }
 
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
         if subviews.isEmpty { return }
-        let mw = maxWidth(subviews: subviews)
-        let mh = maxHeight(subviews: subviews)
-        let idealHeight = mh * CGFloat(subviews.count) + spacing * CGFloat(subviews.count - 1)
+        let mw = min(maxWidth(subviews: subviews), bounds.width)
+        let idealHeight = mw * CGFloat(subviews.count) + spacing * CGFloat(subviews.count - 1)
         if bounds.height < idealHeight {
-            let h = (bounds.height - mh) / CGFloat(subviews.count - 1)
-            var point = CGPoint(x: bounds.midX, y: bounds.minY + 0.5 * mh)
+            let h = (bounds.height - mw) / CGFloat(subviews.count - 1)
+            var point = CGPoint(x: bounds.midX, y: bounds.minY + 0.5 * mw)
             subviews.indices.forEach { index in
                 subviews[index].place(at: point, 
                                       anchor: .center,
-                                      proposal: ProposedViewSize(width: mw, height: mh))
+                                      proposal: ProposedViewSize(width: mw, height: mw))
                 point.y += h
             }
         } else {
@@ -57,8 +53,8 @@ struct OverlappingVStack: Layout {
             subviews.indices.forEach { index in
                 subviews[index].place(at: point,
                                       anchor: .top,
-                                      proposal: ProposedViewSize(width: mw, height: mh))
-                point.y += mh
+                                      proposal: ProposedViewSize(width: mw, height: mw))
+                point.y += mw
                 if index < subviews.count - 1 {
                     point.y += spacing
                 }

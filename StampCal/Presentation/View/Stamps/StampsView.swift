@@ -10,7 +10,15 @@ import SwiftUI
 
 struct StampsView<SVM: StampsViewModel>: View {
     @StateObject var viewModel: SVM
-    private let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 16), count: 3)
+    let columns: [GridItem]
+
+    init(
+        viewModel: @autoclosure @escaping () -> SVM,
+        isPhone: Bool
+    ) {
+        _viewModel = StateObject(wrappedValue: viewModel())
+        self.columns = Array(repeating: .init(.flexible(), spacing: 16), count: isPhone ? 3 : 5)
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -117,16 +125,18 @@ struct StampsView<SVM: StampsViewModel>: View {
         } label: {
             VStack(spacing: 0) {
                 Text(String(stamp.emoji))
-                    .font(.largeTitle)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    .font(.system(size: 200))
+                    .minimumScaleFactor(0.01)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .aspectRatio(1.66, contentMode: .fill)
                 Divider()
                     .overlay(Color(.cellBorder))
                     .padding(.horizontal, 8)
                 Text(stamp.summary)
+                    .font(.caption)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    .minimumScaleFactor(0.05)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding(4)
             }
             .aspectRatio(1, contentMode: .fill)
@@ -138,6 +148,7 @@ struct StampsView<SVM: StampsViewModel>: View {
 
 struct StampsView_Previews: PreviewProvider {
     static var previews: some View {
-        StampsView(viewModel: PreviewMock.StampsViewModelMock())
+        StampsView(viewModel: PreviewMock.StampsViewModelMock(),
+                   isPhone: true)
     }
 }

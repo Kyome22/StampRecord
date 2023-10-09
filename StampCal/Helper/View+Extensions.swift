@@ -21,7 +21,11 @@ extension View {
             .fixedSize()
     }
 
-    func onRotate(_ orientation: Binding<UIDeviceOrientation>) -> some View {
-        return modifier(DetectOrientation(orientation: orientation))
+    func onJudgeDevice(_ isPhone: Binding<Bool>) -> some View {
+        return modifier(JudgeDeviceModifier(isPhone: isPhone))
+    }
+
+    func onJudgeOrientation(_ orientation: Binding<DeviceOrientation>) -> some View {
+        return modifier(JudgeOrientationModifier(orientation: orientation))
     }
 }

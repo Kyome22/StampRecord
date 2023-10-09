@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CalendarHeaderView: View {
     @Binding var title: String
-    @Binding var daySelected: Bool
+    @Binding var isDaySelected: Bool
     @Binding var showStampPicker: Bool
     let resetHandler: () -> Void
     let selectStampHandler: (Stamp) -> Void
@@ -36,7 +36,7 @@ struct CalendarHeaderView: View {
                         .font(.title2)
                 }
                 .buttonStyle(.square)
-                .disabled(!daySelected)
+                .disabled(!isDaySelected)
                 .stampPicker(
                     isPresented: $showStampPicker,
                     stamps: Stamp.dummy,
@@ -58,7 +58,7 @@ struct CalendarHeaderView: View {
 struct CalendarHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         CalendarHeaderView(title: .constant(""),
-                           daySelected: .constant(true),
+                           isDaySelected: .constant(true),
                            showStampPicker: .constant(false),
                            resetHandler: {},
                            selectStampHandler: { _ in })

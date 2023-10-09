@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1C4FEE552AD28D43002266A9 /* OverlappingVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */; };
+		1C4FEE572AD2D658002266A9 /* MDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE562AD2D658002266A9 /* MDayView.swift */; };
+		1C4FEE592AD2F0BD002266A9 /* StampCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE582AD2F0BD002266A9 /* StampCardView.swift */; };
+		1C4FEE5B2AD2FFE4002266A9 /* JudgeDeviceModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE5A2AD2FFE4002266A9 /* JudgeDeviceModifier.swift */; };
 		1C5638592AA5A01500694F44 /* HorizontalWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638582AA5A01500694F44 /* HorizontalWeekView.swift */; };
 		1C56385B2AA5C67600694F44 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56385A2AA5C67600694F44 /* Week.swift */; };
 		1C56385D2AA8133D00694F44 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56385C2AA8133D00694F44 /* Month.swift */; };
@@ -63,7 +66,7 @@
 		1C7234F72A9CE35B0065512A /* InfinitePagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */; };
 		1C7234F92A9CE94E0065512A /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234F82A9CE94E0065512A /* View+Extensions.swift */; };
 		1C7234FB2A9CEAF50065512A /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234FA2A9CEAF50065512A /* Color+Extensions.swift */; };
-		1C7234FD2A9CEE840065512A /* DetectOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234FC2A9CEE840065512A /* DetectOrientation.swift */; };
+		1C7234FD2A9CEE840065512A /* JudgeOrientationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7234FC2A9CEE840065512A /* JudgeOrientationModifier.swift */; };
 		1CF3D60C2A90A4BE005B6E71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF3D60B2A90A4BE005B6E71 /* ContentView.swift */; };
 		1CF3D60E2A90A4BF005B6E71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CF3D60D2A90A4BF005B6E71 /* Assets.xcassets */; };
 		1CF3D6112A90A4BF005B6E71 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CF3D6102A90A4BF005B6E71 /* Preview Assets.xcassets */; };
@@ -89,6 +92,9 @@
 
 /* Begin PBXFileReference section */
 		1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlappingVStack.swift; sourceTree = "<group>"; };
+		1C4FEE562AD2D658002266A9 /* MDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDayView.swift; sourceTree = "<group>"; };
+		1C4FEE582AD2F0BD002266A9 /* StampCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampCardView.swift; sourceTree = "<group>"; };
+		1C4FEE5A2AD2FFE4002266A9 /* JudgeDeviceModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JudgeDeviceModifier.swift; sourceTree = "<group>"; };
 		1C5638582AA5A01500694F44 /* HorizontalWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalWeekView.swift; sourceTree = "<group>"; };
 		1C56385A2AA5C67600694F44 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		1C56385C2AA8133D00694F44 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
@@ -144,7 +150,7 @@
 		1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinitePagingView.swift; sourceTree = "<group>"; };
 		1C7234F82A9CE94E0065512A /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		1C7234FA2A9CEAF50065512A /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
-		1C7234FC2A9CEE840065512A /* DetectOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectOrientation.swift; sourceTree = "<group>"; };
+		1C7234FC2A9CEE840065512A /* JudgeOrientationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JudgeOrientationModifier.swift; sourceTree = "<group>"; };
 		1CF3D6062A90A4BE005B6E71 /* StampCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StampCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CF3D60B2A90A4BE005B6E71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1CF3D60D2A90A4BF005B6E71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -170,6 +176,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C4FEE5E2AD3DCCC002266A9 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				1C4FEE5A2AD2FFE4002266A9 /* JudgeDeviceModifier.swift */,
+				1C7234FC2A9CEE840065512A /* JudgeOrientationModifier.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
+		1C4FEE5F2AD3DD0D002266A9 /* Layout&Style */ = {
+			isa = PBXGroup;
+			children = (
+				1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */,
+				1C5638F72AC1DAB200694F44 /* OverlappingHStack.swift */,
+				1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */,
+				1C5638CC2AB3504000694F44 /* SquareButtonStyle.swift */,
+				1C5638D92AB8901B00694F44 /* StampButtonStyle.swift */,
+				1C5638E32ABF090F00694F44 /* CellButtonStyle.swift */,
+				1C5638EB2AC0718600694F44 /* InnerCellButtonStyle.swift */,
+			);
+			path = "Layout&Style";
+			sourceTree = "<group>";
+		};
 		1C5638602AA84E5800694F44 /* WeekCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +216,7 @@
 			children = (
 				1C7234E82A9B73A00065512A /* MonthCalendarView.swift */,
 				1C56385E2AA8187700694F44 /* MonthView.swift */,
+				1C4FEE562AD2D658002266A9 /* MDayView.swift */,
 			);
 			path = MonthCalendar;
 			sourceTree = "<group>";
@@ -225,17 +255,10 @@
 		1C5638D22AB7340F00694F44 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				1C7234FC2A9CEE840065512A /* DetectOrientation.swift */,
-				1C5638C82AB0C8D000694F44 /* HeaderHStack.swift */,
-				1C5638F72AC1DAB200694F44 /* OverlappingHStack.swift */,
-				1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */,
 				1C5638762AAB6D3D00694F44 /* CalendarHeaderView.swift */,
 				1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */,
-				1C5638CC2AB3504000694F44 /* SquareButtonStyle.swift */,
-				1C5638D92AB8901B00694F44 /* StampButtonStyle.swift */,
-				1C5638E32ABF090F00694F44 /* CellButtonStyle.swift */,
-				1C5638EB2AC0718600694F44 /* InnerCellButtonStyle.swift */,
 				1C5638E92AC06CCC00694F44 /* StampView.swift */,
+				1C4FEE582AD2F0BD002266A9 /* StampCardView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -379,6 +402,8 @@
 			children = (
 				1CF3D60B2A90A4BE005B6E71 /* ContentView.swift */,
 				1C7234E42A9B433A0065512A /* MainView.swift */,
+				1C4FEE5F2AD3DD0D002266A9 /* Layout&Style */,
+				1C4FEE5E2AD3DCCC002266A9 /* Modifier */,
 				1C5638D22AB7340F00694F44 /* Common */,
 				1C5638E22ABF080D00694F44 /* StampPicker */,
 				1C56386F2AAB556900694F44 /* Stamps */,
@@ -495,7 +520,9 @@
 				1C5638EC2AC0718600694F44 /* InnerCellButtonStyle.swift in Sources */,
 				1C5638D12AB6ECE800694F44 /* StampRepository.swift in Sources */,
 				1C5638C92AB0C8D000694F44 /* HeaderHStack.swift in Sources */,
+				1C4FEE572AD2D658002266A9 /* MDayView.swift in Sources */,
 				1C5638E42ABF090F00694F44 /* CellButtonStyle.swift in Sources */,
+				1C4FEE592AD2F0BD002266A9 /* StampCardView.swift in Sources */,
 				1C56385D2AA8133D00694F44 /* Month.swift in Sources */,
 				1C7234F32A9B8ED20065512A /* MonthCalendarViewModel.swift in Sources */,
 				1C5638F02AC0AB6000694F44 /* HWDayView.swift in Sources */,
@@ -521,9 +548,10 @@
 				1CF3D6282A911A6B005B6E71 /* StampCalAppModel.swift in Sources */,
 				1CF3D61E2A9110E6005B6E71 /* StampCalApp.swift in Sources */,
 				1C5638772AAB6D3D00694F44 /* CalendarHeaderView.swift in Sources */,
-				1C7234FD2A9CEE840065512A /* DetectOrientation.swift in Sources */,
+				1C7234FD2A9CEE840065512A /* JudgeOrientationModifier.swift in Sources */,
 				1C5638DA2AB8901B00694F44 /* StampButtonStyle.swift in Sources */,
 				1C7234EB2A9B73BA0065512A /* WeekCalendarView.swift in Sources */,
+				1C4FEE5B2AD2FFE4002266A9 /* JudgeDeviceModifier.swift in Sources */,
 				1C5638732AAB561A00694F44 /* StampsViewModel.swift in Sources */,
 				1C5638F22AC0AB6F00694F44 /* VWDayView.swift in Sources */,
 				1C5638EA2AC06CCC00694F44 /* StampView.swift in Sources */,

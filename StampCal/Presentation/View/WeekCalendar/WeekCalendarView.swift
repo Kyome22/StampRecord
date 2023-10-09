@@ -10,13 +10,13 @@ import SwiftUI
 
 struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
     @StateObject var viewModel: WVM
-    @Binding var isPhone: Bool
+    let isPhone: Bool
 
     var body: some View {
         VStack(spacing: 0) {
             CalendarHeaderView(
                 title: $viewModel.title,
-                daySelected: Binding<Bool>(
+                isDaySelected: Binding<Bool>(
                     get: { viewModel.selectedDayID != nil },
                     set: { _ in }
                 ),
@@ -67,6 +67,6 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
 struct WeekCalendarView_Previews: PreviewProvider {
     static var previews: some View {
         WeekCalendarView(viewModel: PreviewMock.WeekCalendarViewModelMock(),
-                         isPhone: .constant(true))
+                         isPhone: true)
     }
 }

@@ -11,18 +11,22 @@ import SwiftUI
 struct MainView<SAM: StampCalAppModel>: View {
     @EnvironmentObject private var appModel: SAM
     @State var isPhone: Bool = true
+    @State var orientation: DeviceOrientation = .portrait
 
     var body: some View {
         TabView(selection: $appModel.tabSelection) {
             Group {
-                StampsView(viewModel: StampsViewModelImpl(appModel.stampRepository))
-                    .tabItem {
-                        Label("stamps", image: "stamp.fill")
-                    }
-                    .tag(Tabs.stamps)
+                StampsView(
+                    viewModel: StampsViewModelImpl(appModel.stampRepository),
+                    isPhone: isPhone
+                )
+                .tabItem {
+                    Label("stamps", image: "stamp.fill")
+                }
+                .tag(Tabs.stamps)
                 DayCalendarView(
                     viewModel: DayCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
-                    isPhone: $isPhone
+                    isPhone: isPhone
                 )
                 .tabItem {
                     Label("day", image: "calendar.day")
@@ -30,7 +34,7 @@ struct MainView<SAM: StampCalAppModel>: View {
                 .tag(Tabs.dayCalendar)
                 WeekCalendarView(
                     viewModel: WeekCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
-                    isPhone: $isPhone
+                    isPhone: isPhone
                 )
                 .tabItem {
                     if isPhone {
@@ -40,12 +44,16 @@ struct MainView<SAM: StampCalAppModel>: View {
                     }
                 }
                 .tag(Tabs.weekCalendar)
-                MonthCalendarView(viewModel: MonthCalendarViewModelImpl())
-                    .tabItem {
-                        Label("month", systemImage: "calendar")
-                    }
-                    .tag(Tabs.monthCalendar)
-               FontView()
+                MonthCalendarView(
+                    viewModel: MonthCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
+                    isPhone: isPhone,
+                    orientation: orientation
+                )
+                .tabItem {
+                    Label("month", systemImage: "calendar")
+                }
+                .tag(Tabs.monthCalendar)
+                FontView()
                     .tabItem {
                         Label("settings", systemImage: "gearshape")
                     }
@@ -54,14 +62,7 @@ struct MainView<SAM: StampCalAppModel>: View {
             .toolbarBackground(Color(.toolbarBackground), for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
         }
-        .onAppear {
-            judgeDevice()
-        }
-    }
-
-    private func judgeDevice() {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            isPhone = false
-        }
+        .onJudgeDevice($isPhone)
+        .onJudgeOrientation($orientation)
     }
 }

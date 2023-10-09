@@ -15,20 +15,32 @@ struct VerticalWeekView: View {
     let removeStampHandler: (Day, Int) -> Void
 
     var body: some View {
-        HStack(spacing: 16) {
-            ForEach(days) { day in
-                VWDayView(
-                    isSelected: Binding<Bool>(
-                        get: { selectedDayID == day.id },
-                        set: { _ in }
-                    ),
-                    shortWeekday: shortWeekdays[day.weekday],
-                    day: day,
-                    selectHandler: {
-                        selectedDayID = day.id
-                    },
-                    removeStampHandler: removeStampHandler
-                )
+        VStack(spacing: 16) {
+            HStack(spacing: 16) {
+                ForEach(shortWeekdays.indices, id: \.self) { index in
+                    Text(shortWeekdays[index])
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 8)
+                        .foregroundColor(Color.weekday(index))
+                        .background(Color(.cellBackground))
+                        .cornerRadius(8)
+                        .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
+                }
+            }
+            HStack(spacing: 16) {
+                ForEach(days) { day in
+                    VWDayView(
+                        isSelected: Binding<Bool>(
+                            get: { selectedDayID == day.id },
+                            set: { _ in }
+                        ),
+                        day: day,
+                        selectHandler: {
+                            selectedDayID = day.id
+                        },
+                        removeStampHandler: removeStampHandler
+                    )
+                }
             }
         }
         .padding(16)
