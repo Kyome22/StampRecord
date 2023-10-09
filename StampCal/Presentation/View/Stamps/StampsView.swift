@@ -33,7 +33,7 @@ struct StampsView<SVM: StampsViewModel>: View {
                     Button {
                         viewModel.showingSheet = true
                     } label: {
-                        Text(Image(systemName: "plus"))
+                        Text(Image(.stampPlus))
                             .font(.title2)
                     }
                     .buttonStyle(.square)

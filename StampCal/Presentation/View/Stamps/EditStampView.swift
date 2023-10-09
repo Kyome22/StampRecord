@@ -58,11 +58,15 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                     .textFieldStyle(.roundedBorder)
                     .focused($focusedField, equals: .title)
                 }
-                Button {
+                Button(role: .destructive) {
                     viewModel.deleteStamp()
                     dismiss()
                 } label: {
-                    Text("deleteStamp")
+                    Label {
+                        Text("deleteStamp")
+                    } icon: {
+                        Image(.stampFillXmark)
+                    }
                 }
                 .buttonStyle(.delete)
                 Spacer()

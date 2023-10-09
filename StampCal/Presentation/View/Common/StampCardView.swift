@@ -10,12 +10,19 @@ import SwiftUI
 
 struct StampCardView: View {
     @State var showDialog: Bool = false
+    @State var longPressed: Bool = false
     let stamp: Stamp
     let removeStampHandler: () -> Void
+    let longPressHandler: () -> Void
 
     var body: some View {
         Button {
-            showDialog = true
+            if longPressed {
+                longPressHandler()
+                longPressed = false
+            } else {
+                showDialog = true
+            }
         } label: {
             Text(stamp.emoji)
                 .font(.system(size: 200))
@@ -24,16 +31,28 @@ struct StampCardView: View {
                 .containerShape(RoundedRectangle(cornerRadius: 8))
         }
         .buttonStyle(.innerCell)
+        .simultaneousGesture(
+            LongPressGesture().onEnded { _ in
+                longPressed = true
+            }
+        )
         .confirmationDialog("", isPresented: $showDialog, titleVisibility: .hidden) {
             Button(role: .destructive) {
                 removeStampHandler()
             } label: {
-                Text("removeStamp\(stamp.emoji)")
+                Label {
+                    Text("removeStamp\(stamp.emoji)")
+                } icon: {
+                    Image(.stampFillMinus)
+                }
+                .labelStyle(.titleAndIcon)
             }
         }
     }
 }
 
 #Preview {
-    StampCardView(stamp: Stamp(emoji: "", summary: ""), removeStampHandler: {})
+    StampCardView(stamp: Stamp(emoji: "", summary: ""), 
+                  removeStampHandler: {},
+                  longPressHandler: {})
 }

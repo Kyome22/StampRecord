@@ -35,18 +35,30 @@ struct MDayView: View {
                 case .portrait:
                     OverlappingVStack(alignment: .top, spacing: 4) {
                         ForEach(log.stamps.indices, id: \.self) { index in
-                            StampCardView(stamp: log.stamps[index]) {
-                                removeStampHandler(day, index)
-                            }
+                            StampCardView(
+                                stamp: log.stamps[index],
+                                removeStampHandler: {
+                                    removeStampHandler(day, index)
+                                },
+                                longPressHandler: {
+
+                                }
+                            )
                         }
                     }
                     .padding(4)
                 case .landscape:
                     OverlappingHStack(alignment: .leading, spacing: 4) {
                         ForEach(log.stamps.indices, id: \.self) { index in
-                            StampCardView(stamp: log.stamps[index]) {
-                                removeStampHandler(day, index)
-                            }
+                            StampCardView(
+                                stamp: log.stamps[index],
+                                removeStampHandler: {
+                                    removeStampHandler(day, index)
+                                },
+                                longPressHandler: {
+
+                                }
+                            )
                         }
                     }
                     .padding(4)
