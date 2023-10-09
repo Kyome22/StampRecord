@@ -108,10 +108,8 @@ struct PlaygroundView: View {
     }
 }
 
-struct PlaygroundView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlaygroundView()
-    }
+#Preview {
+    PlaygroundView()
 }
 
 struct WidthPreferenceKey: PreferenceKey {

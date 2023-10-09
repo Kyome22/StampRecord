@@ -57,11 +57,9 @@ struct HWDayView: View {
     }
 }
 
-struct HWDayView_Previews: PreviewProvider {
-    static var previews: some View {
-        HWDayView(isSelected: .constant(false),
-                  day: Day(text: "", weekday: 0),
-                  selectHandler: {},
-                  removeStampHandler: { _, _ in })
-    }
+#Preview {
+    HWDayView(isSelected: .constant(false),
+              day: Day(text: "", weekday: 0),
+              selectHandler: {},
+              removeStampHandler: { _, _ in })
 }

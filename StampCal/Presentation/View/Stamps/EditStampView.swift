@@ -89,8 +89,6 @@ struct EditStampView<EVM: EditStampViewModel>: View {
     }
 }
 
-struct EditStampView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditStampView(viewModel: PreviewMock.EditStampViewModelMock())
-    }
+#Preview {
+    EditStampView(viewModel: PreviewMock.EditStampViewModelMock())
 }

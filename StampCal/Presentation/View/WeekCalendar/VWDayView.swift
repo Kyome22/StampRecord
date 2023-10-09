@@ -57,11 +57,9 @@ struct VWDayView: View {
     }
 }
 
-struct VWDayView_Previews: PreviewProvider {
-    static var previews: some View {
-        VWDayView(isSelected: .constant(false),
-                  day: Day(text: "", weekday: 0),
-                  selectHandler: {},
-                  removeStampHandler: { _, _ in })
-    }
+#Preview {
+    VWDayView(isSelected: .constant(false),
+              day: Day(text: "", weekday: 0),
+              selectHandler: {},
+              removeStampHandler: { _, _ in })
 }

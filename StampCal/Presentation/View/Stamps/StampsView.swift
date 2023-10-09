@@ -146,9 +146,7 @@ struct StampsView<SVM: StampsViewModel>: View {
     }
 }
 
-struct StampsView_Previews: PreviewProvider {
-    static var previews: some View {
-        StampsView(viewModel: PreviewMock.StampsViewModelMock(),
-                   isPhone: true)
-    }
+#Preview {
+    StampsView(viewModel: PreviewMock.StampsViewModelMock(),
+               isPhone: true)
 }

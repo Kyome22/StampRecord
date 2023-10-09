@@ -95,8 +95,6 @@ struct StampPickerView: View {
     }
 }
 
-struct StampPickerView_Previews: PreviewProvider {
-    static var previews: some View {
-        StampPickerView(stamps: [], selectStampHandler: { _ in })
-    }
+#Preview {
+    StampPickerView(stamps: [], selectStampHandler: { _ in })
 }

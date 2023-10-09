@@ -47,11 +47,9 @@ struct HorizontalWeekView: View {
     }
 }
 
-struct HorizontalWeekView_Previews: PreviewProvider {
-    static var previews: some View {
-        HorizontalWeekView(selectedDayID: .constant(nil),
-                           shortWeekdays: [],
-                           days: [],
-                           removeStampHandler: { _, _ in })
-    }
+#Preview {
+    HorizontalWeekView(selectedDayID: .constant(nil),
+                       shortWeekdays: [],
+                       days: [],
+                       removeStampHandler: { _, _ in })
 }

@@ -53,9 +53,7 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
     }
 }
 
-struct DayCalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        DayCalendarView(viewModel: PreviewMock.DayCalendarViewModelMock(),
-                        isPhone: true)
-    }
+#Preview {
+    DayCalendarView(viewModel: PreviewMock.DayCalendarViewModelMock(),
+                    isPhone: true)
 }

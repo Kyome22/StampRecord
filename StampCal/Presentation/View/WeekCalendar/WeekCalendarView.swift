@@ -64,9 +64,7 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
     }
 }
 
-struct WeekCalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        WeekCalendarView(viewModel: PreviewMock.WeekCalendarViewModelMock(),
-                         isPhone: true)
-    }
+#Preview {
+    WeekCalendarView(viewModel: PreviewMock.WeekCalendarViewModelMock(),
+                     isPhone: true)
 }

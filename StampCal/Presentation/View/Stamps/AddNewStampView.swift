@@ -78,8 +78,6 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
     }
 }
 
-struct AddNewStampView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddNewStampView(viewModel: PreviewMock.AddNewStampViewModelMock())
-    }
+#Preview {
+    AddNewStampView(viewModel: PreviewMock.AddNewStampViewModelMock())
 }

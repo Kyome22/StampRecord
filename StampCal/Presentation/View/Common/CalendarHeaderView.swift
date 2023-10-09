@@ -55,12 +55,10 @@ struct CalendarHeaderView: View {
     }
 }
 
-struct CalendarHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarHeaderView(title: .constant(""),
-                           isDaySelected: .constant(true),
-                           showStampPicker: .constant(false),
-                           resetHandler: {},
-                           selectStampHandler: { _ in })
-    }
+#Preview {
+    CalendarHeaderView(title: .constant(""),
+                       isDaySelected: .constant(true),
+                       showStampPicker: .constant(false),
+                       resetHandler: {},
+                       selectStampHandler: { _ in })
 }

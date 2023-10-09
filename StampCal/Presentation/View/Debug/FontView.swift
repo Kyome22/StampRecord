@@ -51,8 +51,6 @@ struct FontView: View {
     }
 }
 
-struct FontView_Previews: PreviewProvider {
-    static var previews: some View {
-        FontView()
-    }
+#Preview {
+    FontView()
 }

@@ -57,8 +57,6 @@ struct StampView: View {
     }
 }
 
-struct StampView_Previews: PreviewProvider {
-    static var previews: some View {
-        StampView(emoji: "🍽️", summary: "皿洗い")
-    }
+#Preview {
+    StampView(emoji: "🍽️", summary: "皿洗い")
 }

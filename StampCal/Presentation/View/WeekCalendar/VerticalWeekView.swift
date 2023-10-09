@@ -47,11 +47,9 @@ struct VerticalWeekView: View {
     }
 }
 
-struct VerticalWeekView_Previews: PreviewProvider {
-    static var previews: some View {
-        VerticalWeekView(selectedDayID: .constant(nil),
-                         shortWeekdays: [],
-                         days: [],
-                         removeStampHandler: { _, _ in })
-    }
+#Preview {
+    VerticalWeekView(selectedDayID: .constant(nil),
+                     shortWeekdays: [],
+                     days: [],
+                     removeStampHandler: { _, _ in })
 }

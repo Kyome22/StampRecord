@@ -56,10 +56,8 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
     }
 }
 
-struct MonthCalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        MonthCalendarView(viewModel: PreviewMock.MonthCalendarViewModelMock(),
-                          isPhone: true,
-                          orientation: .portrait)
-    }
+#Preview {
+    MonthCalendarView(viewModel: PreviewMock.MonthCalendarViewModelMock(),
+                      isPhone: true,
+                      orientation: .portrait)
 }

@@ -72,11 +72,9 @@ struct DayView: View {
     }
 }
 
-struct DayView_Previews: PreviewProvider {
-    static var previews: some View {
-        DayView(isPhone: true,
-                shortWeekdays: [],
-                day: Day(text: "", weekday: 0),
-                removeStampHandler: { _, _ in })
-    }
+#Preview {
+    DayView(isPhone: true,
+            shortWeekdays: [],
+            day: Day(text: "", weekday: 0),
+            removeStampHandler: { _, _ in })
 }

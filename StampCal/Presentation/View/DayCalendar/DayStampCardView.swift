@@ -46,8 +46,7 @@ struct DayStampCardView: View {
     }
 }
 
-struct DayStampCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        DayStampCardView(stamp: Stamp(emoji: "", summary: ""), removeStampHandler: {})
-    }
+#Preview {
+    DayStampCardView(stamp: Stamp(emoji: "", summary: ""),
+                     removeStampHandler: {})
 }

@@ -51,8 +51,6 @@ struct ColorDebugView: View {
     }
 }
 
-struct ColorDebugView_Previews: PreviewProvider {
-    static var previews: some View {
-        ColorDebugView()
-    }
+#Preview {
+    ColorDebugView()
 }

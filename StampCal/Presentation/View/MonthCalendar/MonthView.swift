@@ -84,13 +84,11 @@ struct MonthView: View {
     }
 }
 
-struct MonthView_Previews: PreviewProvider {
-    static var previews: some View {
-        MonthView(selectedDayID: .constant(nil),
-                  isPhone: true,
-                  orientation: .portrait,
-                  shortWeekdays: [],
-                  days: [],
-                  removeStampHandler: { _, _ in })
-    }
+#Preview {
+    MonthView(selectedDayID: .constant(nil),
+              isPhone: true,
+              orientation: .portrait,
+              shortWeekdays: [],
+              days: [],
+              removeStampHandler: { _, _ in })
 }
