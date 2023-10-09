@@ -29,20 +29,9 @@ struct VWDayView: View {
                 .overlay(Color(.cellBorder))
                 .padding(.horizontal, 4)
             if let log = day.log {
-                OverlappingVStack(alignment: .top, spacing: 4) {
-                    ForEach(log.stamps.indices, id: \.self) { index in
-                        StampCardView(
-                            stamp: log.stamps[index],
-                            removeStampHandler: {
-                                removeStampHandler(day, index)
-                            },
-                            longPressHandler: {
-
-                            }
-                        )
-                    }
+                VStackedStamps(stamps: log.stamps) { index in
+                    removeStampHandler(day, index)
                 }
-                .padding(4)
             } else {
                 Spacer()
             }

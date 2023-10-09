@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		1C4FEE552AD28D43002266A9 /* OverlappingVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */; };
 		1C4FEE572AD2D658002266A9 /* MDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE562AD2D658002266A9 /* MDayView.swift */; };
-		1C4FEE592AD2F0BD002266A9 /* StampCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE582AD2F0BD002266A9 /* StampCardView.swift */; };
 		1C4FEE5B2AD2FFE4002266A9 /* JudgeDeviceModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE5A2AD2FFE4002266A9 /* JudgeDeviceModifier.swift */; };
+		1C4FEE612AD45EF2002266A9 /* VStackedStamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE602AD45EF2002266A9 /* VStackedStamps.swift */; };
+		1C4FEE632AD45F81002266A9 /* HStackedStamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE622AD45F81002266A9 /* HStackedStamps.swift */; };
 		1C5638592AA5A01500694F44 /* HorizontalWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638582AA5A01500694F44 /* HorizontalWeekView.swift */; };
 		1C56385B2AA5C67600694F44 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56385A2AA5C67600694F44 /* Week.swift */; };
 		1C56385D2AA8133D00694F44 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56385C2AA8133D00694F44 /* Month.swift */; };
@@ -93,8 +94,9 @@
 /* Begin PBXFileReference section */
 		1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlappingVStack.swift; sourceTree = "<group>"; };
 		1C4FEE562AD2D658002266A9 /* MDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDayView.swift; sourceTree = "<group>"; };
-		1C4FEE582AD2F0BD002266A9 /* StampCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampCardView.swift; sourceTree = "<group>"; };
 		1C4FEE5A2AD2FFE4002266A9 /* JudgeDeviceModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JudgeDeviceModifier.swift; sourceTree = "<group>"; };
+		1C4FEE602AD45EF2002266A9 /* VStackedStamps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStackedStamps.swift; sourceTree = "<group>"; };
+		1C4FEE622AD45F81002266A9 /* HStackedStamps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackedStamps.swift; sourceTree = "<group>"; };
 		1C5638582AA5A01500694F44 /* HorizontalWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalWeekView.swift; sourceTree = "<group>"; };
 		1C56385A2AA5C67600694F44 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		1C56385C2AA8133D00694F44 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
@@ -258,7 +260,8 @@
 				1C5638762AAB6D3D00694F44 /* CalendarHeaderView.swift */,
 				1C7234F62A9CE35B0065512A /* InfinitePagingView.swift */,
 				1C5638E92AC06CCC00694F44 /* StampView.swift */,
-				1C4FEE582AD2F0BD002266A9 /* StampCardView.swift */,
+				1C4FEE602AD45EF2002266A9 /* VStackedStamps.swift */,
+				1C4FEE622AD45F81002266A9 /* HStackedStamps.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -522,7 +525,6 @@
 				1C5638C92AB0C8D000694F44 /* HeaderHStack.swift in Sources */,
 				1C4FEE572AD2D658002266A9 /* MDayView.swift in Sources */,
 				1C5638E42ABF090F00694F44 /* CellButtonStyle.swift in Sources */,
-				1C4FEE592AD2F0BD002266A9 /* StampCardView.swift in Sources */,
 				1C56385D2AA8133D00694F44 /* Month.swift in Sources */,
 				1C7234F32A9B8ED20065512A /* MonthCalendarViewModel.swift in Sources */,
 				1C5638F02AC0AB6000694F44 /* HWDayView.swift in Sources */,
@@ -555,12 +557,14 @@
 				1C5638732AAB561A00694F44 /* StampsViewModel.swift in Sources */,
 				1C5638F22AC0AB6F00694F44 /* VWDayView.swift in Sources */,
 				1C5638EA2AC06CCC00694F44 /* StampView.swift in Sources */,
+				1C4FEE632AD45F81002266A9 /* HStackedStamps.swift in Sources */,
 				1C5638642AA853CE00694F44 /* Array+Extensions.swift in Sources */,
 				1C5638EE2AC07A3600694F44 /* DayStampCardView.swift in Sources */,
 				1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */,
 				1C5638CB2AB1F4DF00694F44 /* StampOrder.swift in Sources */,
 				1C56386A2AA8B5E400694F44 /* DayCalendarViewModel.swift in Sources */,
 				1C5638892AADF46600694F44 /* SelectEmojiButtonStyle.swift in Sources */,
+				1C4FEE612AD45EF2002266A9 /* VStackedStamps.swift in Sources */,
 				1C7234ED2A9B73C90065512A /* DayCalendarView.swift in Sources */,
 				1CF3D6162A90A4BF005B6E71 /* StampCal.xcdatamodeld in Sources */,
 				1C5638C32AB0B8F900694F44 /* EditStampView.swift in Sources */,

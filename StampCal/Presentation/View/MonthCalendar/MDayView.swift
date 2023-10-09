@@ -33,35 +33,13 @@ struct MDayView: View {
             if let log = day.log {
                 switch orientation {
                 case .portrait:
-                    OverlappingVStack(alignment: .top, spacing: 4) {
-                        ForEach(log.stamps.indices, id: \.self) { index in
-                            StampCardView(
-                                stamp: log.stamps[index],
-                                removeStampHandler: {
-                                    removeStampHandler(day, index)
-                                },
-                                longPressHandler: {
-
-                                }
-                            )
-                        }
+                    VStackedStamps(stamps: log.stamps) { index in
+                        removeStampHandler(day, index)
                     }
-                    .padding(4)
                 case .landscape:
-                    OverlappingHStack(alignment: .leading, spacing: 4) {
-                        ForEach(log.stamps.indices, id: \.self) { index in
-                            StampCardView(
-                                stamp: log.stamps[index],
-                                removeStampHandler: {
-                                    removeStampHandler(day, index)
-                                },
-                                longPressHandler: {
-
-                                }
-                            )
-                        }
+                    HStackedStamps(stamps: log.stamps) { index in
+                        removeStampHandler(day, index)
                     }
-                    .padding(4)
                 }
             } else {
                 Spacer()
