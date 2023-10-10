@@ -28,7 +28,7 @@ struct Stamp: Identifiable, Equatable, CustomStringConvertible {
     }
 
     static let dummy: [Self] = [
-        Stamp(emoji: "💪", summary: "筋トレ筋トレ筋トレ", createdDate: Date(timeIntervalSince1970: 1690815600.0)),
+        Stamp(emoji: "💪", summary: "筋トレ", createdDate: Date(timeIntervalSince1970: 1690815600.0)),
         Stamp(emoji: "🍽️", summary: "皿洗い", createdDate: Date(timeIntervalSince1970: 1690902000.0)),
         Stamp(emoji: "🎹", summary: "ピアノの練習", createdDate: Date(timeIntervalSince1970: 1690988400.0)),
         Stamp(emoji: "🏃", summary: "運動", createdDate: Date(timeIntervalSince1970: 1691074800.0)),
@@ -43,11 +43,6 @@ struct Stamp: Identifiable, Equatable, CustomStringConvertible {
         Stamp(emoji: "🏆", summary: "優勝", createdDate: Date(timeIntervalSince1970: 1691852400.0)),
         Stamp(emoji: "🧩", summary: "パズル", createdDate: Date(timeIntervalSince1970: 1691938800.0)),
         Stamp(emoji: "🏊‍♀️", summary: "水泳", createdDate: Date(timeIntervalSince1970: 1692025200.0)),
-        Stamp(emoji: "🎸", summary: "ギターの練習", createdDate: Date(timeIntervalSince1970: 1692211600.0)),
-        Stamp(emoji: "🫶", summary: "a", createdDate: Date(timeIntervalSince1970: 1692311600.0)),
-        Stamp(emoji: "🤲", summary: "b", createdDate: Date(timeIntervalSince1970: 1692411600.0)),
-        Stamp(emoji: "👍", summary: "c", createdDate: Date(timeIntervalSince1970: 1692511600.0)),
-        Stamp(emoji: "🫷", summary: "d", createdDate: Date(timeIntervalSince1970: 1692611600.0)),
-        Stamp(emoji: "🫸", summary: "e", createdDate: Date(timeIntervalSince1970: 1692711600.0))
+        Stamp(emoji: "🎸", summary: "ギターの練習", createdDate: Date(timeIntervalSince1970: 1692211600.0))
     ]
 }
