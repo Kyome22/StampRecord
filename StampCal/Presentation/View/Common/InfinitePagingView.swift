@@ -24,6 +24,7 @@ enum PageDirection {
 
 struct Page<T: Hashable>: Hashable, Identifiable {
     var id = UUID()
+    var index: Int
     var object: T
 }
 
@@ -31,9 +32,8 @@ struct InfinitePagingView<T: Hashable, Content: View>: View {
     @Binding var objects: [T]
     @State var title: String = ""
     @State var pages: [Page<T>]
-    @State var selection: UUID
-    @State var selectionChanged: Bool = false
-    @State var updated: Bool = false
+    @State var selection: Page<T>
+    @State var previousPage: Page<T>
     private let pagingHandler: (PageDirection) -> Void
     private let content: (T) -> Content
 
@@ -44,9 +44,10 @@ struct InfinitePagingView<T: Hashable, Content: View>: View {
     ) {
         assert(objects.wrappedValue.count == 3, "objects.count must be 3.")
         _objects = objects
-        let pages = objects.wrappedValue.map { Page(object: $0) }
+        let pages = (0 ..< 3).map { Page(index: $0, object: objects.wrappedValue[$0]) }
         _pages = State(initialValue: pages)
-        _selection = State(initialValue: pages[1].id)
+        _selection = State(initialValue: pages[1])
+        _previousPage = State(initialValue: pages[1])
         self.pagingHandler = pagingHandler
         self.content = content
     }
@@ -55,46 +56,31 @@ struct InfinitePagingView<T: Hashable, Content: View>: View {
         TabView(selection: $selection) {
             ForEach(pages) { page in
                 content(page.object)
-                    .tag(page.id)
+                    .tag(page)
                     .onDisappear {
-                        update(previousPage: page)
+                        pagingIfNeeded()
                     }
             }
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-        .onChange(of: selection) { _ in
-            if updated {
-                updated = false
-            } else {
-                selectionChanged = true
-            }
-        }
         .onChange(of: objects) { _ in
             updatePages()
         }
     }
 
-    private func update(previousPage: Page<T>) {
-        guard selectionChanged else { return }
-        selectionChanged = false
-        updated = true
-
-        let previousIndex = pages.firstIndex(of: previousPage)!
-        let currentIndex = pages.firstIndex(where: { $0.id == selection })!
-        let diff = currentIndex - previousIndex
-
-        if diff == -1 {
+    private func pagingIfNeeded() {
+        if selection.index < previousPage.index {
             pagingHandler(.backward)
-        }
-        if diff == 1 {
+        } else if previousPage.index < selection.index {
             pagingHandler(.forward)
         }
     }
 
     private func updatePages() {
         pages = zip(pages, objects).map { (page, object) in
-            return Page(id: page.id, object: object)
+            return Page(id: page.id, index: page.index, object: object)
         }
-        selection = pages[1].id
+        selection = pages[1]
+        previousPage = selection
     }
 }
