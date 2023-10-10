@@ -55,7 +55,7 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                             set: { viewModel.summary = String($0.prefix(20)).trimmingCharacters(in: .whitespaces) }
                         )
                     )
-                    .textFieldStyle(.roundedBorder)
+                    .textFieldStyle(.summary)
                     .focused($focusedField, equals: .title)
                 }
                 Button(role: .destructive) {

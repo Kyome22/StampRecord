@@ -55,7 +55,7 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
                             set: { viewModel.summary = String($0.prefix(20)).trimmingCharacters(in: .whitespaces) }
                         )
                     )
-                    .textFieldStyle(.roundedBorder)
+                    .textFieldStyle(.summary)
                     .focused($focusedField, equals: .title)
                 }
                 Spacer()
