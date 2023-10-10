@@ -25,7 +25,8 @@
 "unableSaveStamp" = "Unable to Overwrite and Save Stamp";
 "overlappedErrorMessage" = "This emoji is already used.";
 
-"remove%@%@" = "Remove %@ %@";
+"remove" = "Remove";
+"removeStamp" = "Remove Stamp";
 
 "sort" = "Sort";
 "sortBy" = "Sort By";

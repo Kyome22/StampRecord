@@ -54,7 +54,7 @@ struct DayView: View {
                     if let log = day.log {
                         LazyVGrid(columns: columns, spacing: 8) {
                             ForEach(log.stamps.indices, id: \.self) { index in
-                                DayStampCardView(stamp: log.stamps[index]) {
+                                stampCardView(stamp: log.stamps[index]) {
                                     removeStampHandler(day, index)
                                 }
                             }
@@ -69,6 +69,33 @@ struct DayView: View {
             .shadow(color: Color(.shadow), radius: 3, x: 0, y: 3)
         }
         .padding(16)
+    }
+
+    func stampCardView(stamp: Stamp, removeStampHandler: @escaping () -> Void) -> some View {
+        VStack(spacing: 4) {
+            Text(stamp.emoji)
+                .font(.system(size: 200))
+                .minimumScaleFactor(0.01)
+            Text(stamp.summary)
+                .font(.caption)
+                .lineLimit(1)
+                .minimumScaleFactor(0.05)
+        }
+        .frame(maxWidth: .infinity)
+        .aspectRatio(1, contentMode: .fit)
+        .padding(8)
+        .containerShape(RoundedRectangle(cornerRadius: 8))
+        .contextMenu {
+            Button(role: .destructive) {
+                removeStampHandler()
+            } label: {
+                Label {
+                    Text("remove")
+                } icon: {
+                    Image(.stampFillMinus)
+                }
+            }
+        }
     }
 }
 

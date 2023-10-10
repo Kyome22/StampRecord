@@ -23,14 +23,16 @@ struct VStackedStamps: View {
         }
         .padding(4)
         .contextMenu {
-            ForEach(stamps.indices, id: \.self) { index in
-                Button(role: .destructive) {
-                    removeStampHandler(index)
-                } label: {
-                    Label {
-                        Text("\(stamps[index].emoji) \(stamps[index].summary)")
-                    } icon: {
-                        Image(.stampFillMinus)
+            Section("removeStamp") {
+                ForEach(stamps.indices, id: \.self) { index in
+                    Button(role: .destructive) {
+                        removeStampHandler(index)
+                    } label: {
+                        Label {
+                            Text("\(stamps[index].emoji) \(stamps[index].summary)")
+                        } icon: {
+                            Image(.stampFillMinus)
+                        }
                     }
                 }
             }
