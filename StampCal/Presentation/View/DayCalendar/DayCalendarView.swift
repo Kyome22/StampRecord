@@ -21,8 +21,12 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
                     set: { _ in}
                 ),
                 showStampPicker: $viewModel.showStampPicker,
+                stamps: $viewModel.stamps,
                 resetHandler: {
                     viewModel.setDayList()
+                },
+                loadStampsHandler: {
+                    viewModel.loadStamps()
                 },
                 selectStampHandler: { stamp in
                     viewModel.putStamp(stamp: stamp)

@@ -2,86 +2,72 @@
  ContentView.swift
  StampCal
 
- Created by Takuto Nakamura on 2023/08/19.
+ Created by Takuto Nakamura on 2023/08/27.
  Copyright © 2023 Studio Kyome. All rights reserved.
 */
 
 import SwiftUI
-import CoreData
 
-struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+struct ContentView<SAM: StampCalAppModel>: View {
+    @EnvironmentObject private var appModel: SAM
+    @State var isPhone: Bool = true
+    @State var orientation: DeviceOrientation = .portrait
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+        TabView(selection: $appModel.tabSelection) {
+            Group {
+                StampsView(
+                    viewModel: StampsViewModelImpl(appModel.stampRepository),
+                    isPhone: isPhone
+                )
+                .tabItem {
+                    Label("stamps", image: "stamp.fill")
+                }
+                .tag(Tabs.stamps)
+                DayCalendarView(
+                    viewModel: DayCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
+                    isPhone: isPhone
+                )
+                .tabItem {
+                    Label("day", image: "calendar.day")
+                }
+                .tag(Tabs.dayCalendar)
+                WeekCalendarView(
+                    viewModel: WeekCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
+                    isPhone: isPhone
+                )
+                .tabItem {
+                    if isPhone {
+                        Label("week", image: "calendar.week.horizontal")
+                    } else {
+                        Label("week", image: "calendar.week.vertical")
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                .tag(Tabs.weekCalendar)
+                MonthCalendarView(
+                    viewModel: MonthCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
+                    isPhone: isPhone,
+                    orientation: orientation
+                )
+                .tabItem {
+                    Label("month", systemImage: "calendar")
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                .tag(Tabs.monthCalendar)
+                DebugView()
+                    .tabItem {
+                        Label("settings", systemImage: "gearshape")
                     }
-                }
+                    .tag(Tabs.settings)
             }
-            Text("Select an item")
+            .toolbarBackground(Color(.toolbarBackground), for: .tabBar)
+            .toolbarBackground(.visible, for: .tabBar)
         }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+        .onJudgeDevice($isPhone)
+        .onJudgeOrientation($orientation)
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
 #Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    ContentView<PreviewMock.StampCalAppModelMock>()
+        .environmentObject(PreviewMock.StampCalAppModelMock())
 }

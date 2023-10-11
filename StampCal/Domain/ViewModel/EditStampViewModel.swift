@@ -16,8 +16,8 @@ protocol EditStampViewModel: ObservableObject {
     var disabledDone: Bool { get }
 
     init(original: Stamp,
-         updateStampHandler: @escaping (String, Stamp) -> Bool,
-         deleteStampHandler: @escaping (String) -> Void)
+         updateStampHandler: @escaping (Stamp, String, String) -> Bool,
+         deleteStampHandler: @escaping (Stamp) -> Void)
 
     func updateStamp() -> Bool
     func deleteStamp()
@@ -30,8 +30,8 @@ final class EditStampViewModelImpl: EditStampViewModel {
     @Published var showOverlappedError: Bool = false
 
     private let original: Stamp
-    private let updateStampHandler: (String, Stamp) -> Bool
-    private let deleteStampHandler: (String) -> Void
+    private let updateStampHandler: (Stamp, String, String) -> Bool
+    private let deleteStampHandler: (Stamp) -> Void
 
     var disabledDone: Bool {
         if emoji.isEmpty || summary.isEmpty {
@@ -45,8 +45,8 @@ final class EditStampViewModelImpl: EditStampViewModel {
 
     init(
         original: Stamp,
-        updateStampHandler: @escaping (String, Stamp) -> Bool,
-        deleteStampHandler: @escaping (String) -> Void
+        updateStampHandler: @escaping (Stamp, String, String) -> Bool,
+        deleteStampHandler: @escaping (Stamp) -> Void
     ) {
         self.original = original
         self.updateStampHandler = updateStampHandler
@@ -56,14 +56,13 @@ final class EditStampViewModelImpl: EditStampViewModel {
     }
 
     func updateStamp() -> Bool {
-        let stamp = Stamp(emoji: emoji, summary: summary, createdDate: original.createdDate)
-        let result = updateStampHandler(original.id, stamp)
+        let result = updateStampHandler(original, emoji, summary)
         showOverlappedError = !result
         return result
     }
 
     func deleteStamp() {
-        deleteStampHandler(original.id)
+        deleteStampHandler(original)
     }
 }
 
@@ -77,8 +76,8 @@ extension PreviewMock {
         let disabledDone: Bool = false
 
         init(original: Stamp,
-             updateStampHandler: @escaping (String, Stamp) -> Bool,
-             deleteStampHandler: @escaping (String) -> Void) {}
+             updateStampHandler: @escaping (Stamp, String, String) -> Bool,
+             deleteStampHandler: @escaping (Stamp) -> Void) {}
         init() {}
 
         func updateStamp() -> Bool { return true }

@@ -7,54 +7,122 @@
 */
 
 import Foundation
+import CoreData
 
 protocol StampRepository: AnyObject {
     var stamps: [Stamp] { get }
-    func addStamp(_ stamp: Stamp) -> Bool
-    func updateStamp(_ id: String, _ stamp: Stamp) -> Bool
-    func deleteStamp(_ id: String)
+
+    init(context: NSManagedObjectContext)
+
+    func addStamp(_ emoji: String, _ summary: String) -> Bool
+    func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) -> Bool
+    func deleteStamp(_ stamp: Stamp)
 }
 
 final class StampRepositoryImpl: StampRepository {
-    private var _stamps = [Stamp]()
+    private let context: NSManagedObjectContext
+    private var managedStamps = [ManagedStamp]()
 
-    init() {
-        _stamps = Stamp.dummy
+    init(context: NSManagedObjectContext) {
+        self.context = context
+        do {
+            try fetchManagedStamps()
+        } catch {
+            logput(error.localizedDescription)
+        }
     }
 
     var stamps: [Stamp] {
-        return _stamps
+        return managedStamps.compactMap { managedStamp in
+            guard let emoji = managedStamp.emoji,
+                  let summary = managedStamp.summary,
+                  let createdDate = managedStamp.createdDate else {
+                return nil
+            }
+            return Stamp(emoji: emoji, summary: summary, createdDate: createdDate)
+        }
     }
 
-    func addStamp(_ stamp: Stamp) -> Bool {
-        if stamps.contains(where: { $0.id == stamp.id }) {
+    private func fetchManagedStamps() throws {
+        managedStamps = try context.fetch(ManagedStamp.fetchRequest())
+    }
+
+    func addStamp(_ emoji: String, _ summary: String) -> Bool {
+        if stamps.contains(where: { $0.emoji == emoji }) {
             return false
         }
-        _stamps.append(stamp)
-        return true
-    }
-
-    func updateStamp(_ id: String, _ stamp: Stamp) -> Bool {
-        guard let index = stamps.firstIndex(where: { $0.id == id }) else {
+        let newStamp = ManagedStamp(context: context)
+        newStamp.emoji = emoji
+        newStamp.summary = summary
+        newStamp.createdDate = Date.now
+        do {
+            try context.save()
+            try fetchManagedStamps()
+            return true
+        } catch {
+            logput(error.localizedDescription)
             return false
         }
-        _stamps[index] = stamp
-        return true
     }
 
-    func deleteStamp(_ id: String) {
-        if let index = stamps.firstIndex(where: { $0.id == id }) {
-            _stamps.remove(at: index)
+    func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) -> Bool {
+        guard let index = managedStamps.firstIndex(where: { $0.emoji == stamp.emoji }) else {
+            return false
+        }
+        managedStamps[index].emoji = emoji
+        managedStamps[index].summary = summary
+        do {
+            try context.save()
+            try fetchManagedStamps()
+            return true
+        } catch {
+            logput(error.localizedDescription)
+            return false
         }
     }
+
+    func deleteStamp(_ stamp: Stamp) {
+        guard let index = managedStamps.firstIndex(where: { $0.emoji == stamp.emoji }) else {
+            return
+        }
+        context.delete(managedStamps[index])
+        do {
+            try context.save()
+            try fetchManagedStamps()
+        } catch {
+            logput(error.localizedDescription)
+        }
+    }
+
+    //  private func cleanManagedStamps() {
+    //      var flag: Bool = false
+    //      managedStamps.forEach { managedStamp in
+    //          if managedStamp.emoji == nil || managedStamp.summary == nil || managedStamp.createdDate == nil {
+    //              flag = true
+    //              context.delete(managedStamp)
+    //          }
+    //      }
+    //      if flag {
+    //          do {
+    //              try context.save()
+    //              try fetchManagedStamps()
+    //          } catch {
+    //              logput(error.localizedDescription)
+    //          }
+    //      }
+    //  }
 }
 
 // MARK: - Preview Mock
 extension PreviewMock {
     final class StampRepositoryMock: StampRepository {
         let stamps: [Stamp] = []
-        func addStamp(_ stamp: Stamp) -> Bool { return true }
-        func updateStamp(_ id: String, _ stamp: Stamp) -> Bool { return true }
-        func deleteStamp(_ id: String) {}
+
+        init(context: NSManagedObjectContext) {}
+        init() {}
+
+        func addStamp(_ emoji: String, _ summary: String) -> Bool { return true }
+        func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) -> Bool { return true }
+        func deleteStamp(_ stamp: Stamp) {}
     }
 }

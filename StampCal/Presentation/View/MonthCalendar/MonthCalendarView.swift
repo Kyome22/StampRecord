@@ -22,8 +22,12 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                     set: { _ in }
                 ),
                 showStampPicker: $viewModel.showStampPicker,
+                stamps: $viewModel.stamps,
                 resetHandler: {
                     viewModel.setMonthList()
+                },
+                loadStampsHandler: {
+                    viewModel.loadStamps()
                 },
                 selectStampHandler: { stamp in
                     viewModel.putStamp(stamp: stamp)

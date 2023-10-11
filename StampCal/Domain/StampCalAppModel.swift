@@ -8,12 +8,14 @@
 
 import Foundation
 import ActivityKit
+import CoreData
 
 protocol StampCalAppModel: ObservableObject {
     associatedtype SR: StampRepository
     associatedtype LR: LogRepository
 
     var tabSelection: Tabs { get set }
+    var coreDataRepository: CoreDataRepository { get }
     var stampRepository: SR { get }
     var logRepository: LR { get }
 }
@@ -24,10 +26,13 @@ final class StampCalAppModelImpl: StampCalAppModel {
 
     @Published var tabSelection: Tabs = .dayCalendar
 
-    let stampRepository = SR()
+    let coreDataRepository = CoreDataRepository.preview
+    let stampRepository: SR
     let logRepository = LR()
 
-    init() {}
+    init() {
+        stampRepository = SR(context: coreDataRepository.container.viewContext)
+    }
 }
 
 // MARK: - Preview Mock
@@ -38,6 +43,7 @@ extension PreviewMock {
 
         @Published var tabSelection: Tabs = .dayCalendar
 
+        let coreDataRepository = CoreDataRepository.preview
         let stampRepository = SR()
         let logRepository = LR()
     }

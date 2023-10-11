@@ -15,7 +15,7 @@ protocol AddNewStampViewModel: ObservableObject {
     var showEmojiPicker: Bool { get set }
     var showOverlappedError: Bool { get set }
 
-    init(addStampHandler: @escaping (Stamp) -> Bool)
+    init(addStampHandler: @escaping (String, String) -> Bool)
 
     func addNewStamp() -> Bool
 }
@@ -26,9 +26,9 @@ final class AddNewStampViewModelImpl: AddNewStampViewModel {
     @Published var showEmojiPicker: Bool = false
     @Published var showOverlappedError: Bool = false
 
-    private let addStampHandler: (Stamp) -> Bool
+    private let addStampHandler: (String, String) -> Bool
 
-    init(addStampHandler: @escaping (Stamp) -> Bool) {
+    init(addStampHandler: @escaping (String, String) -> Bool) {
         self.addStampHandler = addStampHandler
 
         let categories: [EmojiCategory] = [.animalsAndNature, .foodAndDrink, .activity, .objects]
@@ -36,8 +36,7 @@ final class AddNewStampViewModelImpl: AddNewStampViewModel {
     }
 
     func addNewStamp() -> Bool {
-        let stamp = Stamp(emoji: emoji, summary: summary)
-        let result = addStampHandler(stamp)
+        let result = addStampHandler(emoji, summary)
         showOverlappedError = !result
         return result
     }
@@ -51,7 +50,7 @@ extension PreviewMock {
         @Published var showEmojiPicker: Bool = false
         @Published var showOverlappedError: Bool = false
 
-        init(addStampHandler: @escaping (Stamp) -> Bool) {}
+        init(addStampHandler: @escaping (String, String) -> Bool) {}
         init() {}
 
         func addNewStamp() -> Bool { return true }

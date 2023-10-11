@@ -22,7 +22,6 @@ struct StampsView<SVM: StampsViewModel>: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // Header
             VStack(spacing: 0) {
                 HeaderHStack {
                     sortMenu
@@ -43,7 +42,6 @@ struct StampsView<SVM: StampsViewModel>: View {
                 Divider()
             }
             .background(Color(.toolbarBackground))
-            // Body
             ScrollView(.vertical) {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(viewModel.stamps) { stamp in
@@ -63,17 +61,17 @@ struct StampsView<SVM: StampsViewModel>: View {
                 if let stamp = viewModel.targetStamp {
                     EditStampView(viewModel: EditStampViewModelImpl(
                         original: stamp,
-                        updateStampHandler: { id, stamp in
-                            return viewModel.updateStamp(id, stamp)
+                        updateStampHandler: { stamp, emoji, summary in
+                            return viewModel.updateStamp(stamp, emoji, summary)
                         },
-                        deleteStampHandler: { id in
-                            viewModel.deleteStamp(id)
+                        deleteStampHandler: { stamp in
+                            viewModel.deleteStamp(stamp)
                         }
                     ))
                 } else {
                     AddNewStampView(viewModel: AddNewStampViewModelImpl(
-                        addStampHandler: { stamp in
-                            return viewModel.addNewStamp(stamp)
+                        addStampHandler: { emoji, summary in
+                            return viewModel.addNewStamp(emoji, summary)
                         }
                     ))
                 }

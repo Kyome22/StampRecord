@@ -20,3 +20,21 @@ extension Array {
         }
     }
 }
+
+extension Array where Element == Stamp {
+    func sorted(
+        by stampOrderBy: StampOrderBy = .createdDate,
+        in stampOrderIn: StampOrderIn = .ascending
+    ) -> [Stamp] {
+        switch (stampOrderBy, stampOrderIn) {
+        case (.createdDate, .ascending):
+            return sorted { $0.createdDate < $1.createdDate }
+        case (.createdDate, .descending):
+            return sorted { $0.createdDate > $1.createdDate }
+        case (.summary, .ascending):
+            return sorted { $0.summary < $1.summary }
+        case (.summary, .descending):
+            return sorted { $0.summary > $1.summary }
+        }
+    }
+}

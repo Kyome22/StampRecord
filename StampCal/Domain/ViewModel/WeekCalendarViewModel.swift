@@ -16,12 +16,14 @@ protocol WeekCalendarViewModel: ObservableObject {
     var weekList: [Week] { get set }
     var selectedDayID: UUID? { get set }
     var showStampPicker: Bool { get set }
+    var stamps: [Stamp] { get set }
     var shortWeekdays: [String] { get }
 
     init(_ stampRepository: SR, _ logRepository: LR)
 
     func setWeekList()
     func reloadLog()
+    func loadStamps()
     func paging(with pageDirection: PageDirection)
     func putStamp(stamp: Stamp)
     func removeStamp(day: Day, index: Int)
@@ -36,6 +38,7 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
     @Published var weekList: [Week] = []
     @Published var selectedDayID: UUID? = nil
     @Published var showStampPicker: Bool = false
+    @Published var stamps: [Stamp] = []
 
     let shortWeekdays: [String]
     private let calendar = Calendar.current
@@ -114,6 +117,10 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
         }
     }
 
+    func loadStamps() {
+        stamps = stampRepository.stamps
+    }
+
     func paging(with pageDirection: PageDirection) {
         switch pageDirection {
         case .backward:
@@ -171,6 +178,7 @@ extension PreviewMock {
         @Published var weekList: [Week] = []
         @Published var selectedDayID: UUID? = nil
         @Published var showStampPicker: Bool = false
+        @Published var stamps: [Stamp] = []
 
         let shortWeekdays: [String]
 
@@ -199,6 +207,7 @@ extension PreviewMock {
 
         func setWeekList() {}
         func reloadLog() {}
+        func loadStamps() {}
         func paging(with pageDirection: PageDirection) {}
         func putStamp(stamp: Stamp) {}
         func removeStamp(day: Day, index: Int) {}

@@ -12,7 +12,9 @@ struct CalendarHeaderView: View {
     @Binding var title: String
     @Binding var isDaySelected: Bool
     @Binding var showStampPicker: Bool
+    @Binding var stamps: [Stamp]
     let resetHandler: () -> Void
+    let loadStampsHandler: () -> Void
     let selectStampHandler: (Stamp) -> Void
 
     var body: some View {
@@ -30,6 +32,7 @@ struct CalendarHeaderView: View {
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                 Button {
+                    loadStampsHandler()
                     showStampPicker = true
                 } label: {
                     Text(Image(.stamp))
@@ -39,7 +42,7 @@ struct CalendarHeaderView: View {
                 .disabled(!isDaySelected)
                 .stampPicker(
                     isPresented: $showStampPicker,
-                    stamps: Stamp.dummy,
+                    stamps: stamps,
                     selectStampHandler: { stamp in
                         selectStampHandler(stamp)
                     },
@@ -59,6 +62,8 @@ struct CalendarHeaderView: View {
     CalendarHeaderView(title: .constant(""),
                        isDaySelected: .constant(true),
                        showStampPicker: .constant(false),
+                       stamps: .constant([]),
                        resetHandler: {},
+                       loadStampsHandler: {},
                        selectStampHandler: { _ in })
 }

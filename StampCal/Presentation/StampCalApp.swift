@@ -14,9 +14,8 @@ struct StampCalApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView<StampCalAppModelImpl>()
+            ContentView<StampCalAppModelImpl>()
                 .environmentObject(appModel)
-            // .environment(\.managedObjectContext, appModel.persistenceController.container.viewContext)
         }
     }
 }

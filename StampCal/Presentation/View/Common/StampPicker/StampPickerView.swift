@@ -19,7 +19,6 @@ struct StampPickerView: View {
     init(stamps: [Stamp], selectStampHandler: @escaping (Stamp) -> Void) {
         _stamps = State(initialValue: stamps)
         self.selectStampHandler = selectStampHandler
-        sortStamps()
     }
 
     var body: some View {
@@ -43,17 +42,11 @@ struct StampPickerView: View {
                 .pickerStyle(.segmented)
             }
             .padding(8)
-            .onChange(of: stampOrderBy) { _ in
-                sortStamps()
-            }
-            .onChange(of: stampOrderIn) { _ in
-                sortStamps()
-            }
             Divider()
                 .overlay(Color(.cellBorder))
             ScrollView(.vertical, showsIndicators: true) {
                 LazyVGrid(columns: columns, spacing: 8) {
-                    ForEach(stamps) { stamp in
+                    ForEach(stamps.sorted(by: stampOrderBy, in: stampOrderIn)) { stamp in
                         Button {
                             selectStampHandler(stamp)
                         } label: {
@@ -79,19 +72,6 @@ struct StampPickerView: View {
             .background(Color(.appBackground))
         }
         .frame(width: (cellWidth * 3) + (8 * 4))
-    }
-
-    func sortStamps() {
-        switch (stampOrderBy, stampOrderIn) {
-        case (.createdDate, .ascending):
-            stamps.sort { $0.createdDate < $1.createdDate }
-        case (.createdDate, .descending):
-            stamps.sort { $0.createdDate > $1.createdDate }
-        case (.summary, .ascending):
-            stamps.sort { $0.summary < $1.summary }
-        case (.summary, .descending):
-            stamps.sort { $0.summary > $1.summary }
-        }
     }
 }
 

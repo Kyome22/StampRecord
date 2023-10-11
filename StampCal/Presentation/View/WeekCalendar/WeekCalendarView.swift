@@ -21,9 +21,13 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                     set: { _ in }
                 ),
                 showStampPicker: $viewModel.showStampPicker,
+                stamps: $viewModel.stamps,
                 resetHandler: {
                     viewModel.setWeekList()
-                }, 
+                },
+                loadStampsHandler: {
+                    viewModel.loadStamps()
+                },
                 selectStampHandler: { stamp in
                     viewModel.putStamp(stamp: stamp)
                     viewModel.showStampPicker = false
