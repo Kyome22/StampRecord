@@ -9,22 +9,20 @@
 import Foundation
 
 struct Stamp: Identifiable, Equatable, CustomStringConvertible {
+    var id: UUID
     var emoji: String
     var summary: String
     var createdDate: Date
-    var id: String
 
     var description: String {
         return "emoji: \(emoji), summary: \(summary), createdDate: \(createdDate.timeIntervalSince1970)"
     }
 
-    init(emoji: String, summary: String, createdDate: Date = .now) {
+    init(id: UUID = UUID(), emoji: String, summary: String, createdDate: Date = .now) {
+        self.id = id
         self.emoji = emoji
         self.summary = summary
         self.createdDate = createdDate
-        self.id = emoji.unicodeScalars
-            .map { String(format: "%X", $0.value) }
-            .joined(separator: "-")
     }
 }
 

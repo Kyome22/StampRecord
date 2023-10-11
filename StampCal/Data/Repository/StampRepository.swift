@@ -34,12 +34,13 @@ final class StampRepositoryImpl: StampRepository {
 
     var stamps: [Stamp] {
         return managedStamps.compactMap { managedStamp in
-            guard let emoji = managedStamp.emoji,
+            guard let id = managedStamp.id,
+                  let emoji = managedStamp.emoji,
                   let summary = managedStamp.summary,
                   let createdDate = managedStamp.createdDate else {
                 return nil
             }
-            return Stamp(emoji: emoji, summary: summary, createdDate: createdDate)
+            return Stamp(id: id, emoji: emoji, summary: summary, createdDate: createdDate)
         }
     }
 
@@ -52,6 +53,7 @@ final class StampRepositoryImpl: StampRepository {
             return false
         }
         let newStamp = ManagedStamp(context: context)
+        newStamp.id = UUID()
         newStamp.emoji = emoji
         newStamp.summary = summary
         newStamp.createdDate = Date.now
@@ -66,7 +68,7 @@ final class StampRepositoryImpl: StampRepository {
     }
 
     func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) -> Bool {
-        guard let index = managedStamps.firstIndex(where: { $0.emoji == stamp.emoji }) else {
+        guard let index = managedStamps.firstIndex(where: { $0.id == stamp.id }) else {
             return false
         }
         managedStamps[index].emoji = emoji
@@ -82,7 +84,7 @@ final class StampRepositoryImpl: StampRepository {
     }
 
     func deleteStamp(_ stamp: Stamp) {
-        guard let index = managedStamps.firstIndex(where: { $0.emoji == stamp.emoji }) else {
+        guard let index = managedStamps.firstIndex(where: { $0.id == stamp.id }) else {
             return
         }
         context.delete(managedStamps[index])

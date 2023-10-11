@@ -3,6 +3,7 @@
     <entity name="ManagedStamp" representedClassName="ManagedStamp" syncable="YES" codeGenerationType="class">
         <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="emoji" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="summary" optional="YES" attributeType="String"/>
     </entity>
 </model>
