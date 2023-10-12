@@ -46,8 +46,10 @@ extension Calendar {
         return component(.day, from: date).description
     }
 
-    func weekday(of date: Date?) -> Int {
-        guard let date else { return 0 }
-        return component(.weekday, from: date) - 1
+    func weekday(of date: Date?) -> Weekday {
+        guard let date, let weekday = Weekday(rawValue: component(.weekday, from: date) - 1) else {
+            return .sunday
+        }
+        return weekday
     }
 }

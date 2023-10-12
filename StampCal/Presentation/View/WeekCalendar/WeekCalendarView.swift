@@ -39,7 +39,7 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                     if isPhone {
                         HorizontalWeekView(
                             selectedDayID: $viewModel.selectedDayID,
-                            shortWeekdays: viewModel.shortWeekdays,
+                            weekdays: viewModel.weekStartsAt.weekdays,
                             days: week.days,
                             removeStampHandler: { day, index in
                                 viewModel.removeStamp(day: day, index: index)
@@ -48,7 +48,7 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                     } else {
                         VerticalWeekView(
                             selectedDayID: $viewModel.selectedDayID,
-                            shortWeekdays: viewModel.shortWeekdays,
+                            weekdays: viewModel.weekStartsAt.weekdays,
                             days: week.days,
                             removeStampHandler: { day, index in
                                 viewModel.removeStamp(day: day, index: index)

@@ -59,7 +59,7 @@ struct MDayView: View {
     MDayView(isSelected: .constant(false),
              isPhone: true,
              orientation: .portrait,
-             day: Day(text: "", weekday: 0),
+             day: Day(text: "", weekday: .sunday),
              selectHandler: {},
              removeStampHandler: { _, _ in })
 }

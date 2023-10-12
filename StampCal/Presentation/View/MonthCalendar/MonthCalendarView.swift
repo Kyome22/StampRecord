@@ -41,7 +41,7 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                         selectedDayID: $viewModel.selectedDayID,
                         isPhone: isPhone,
                         orientation: orientation,
-                        shortWeekdays: viewModel.shortWeekdays,
+                        weekdays: viewModel.weekStartsAt.weekdays,
                         days: month.days,
                         removeStampHandler: { day, index in
                             viewModel.removeStamp(day: day, index: index)

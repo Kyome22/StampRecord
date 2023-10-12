@@ -10,18 +10,18 @@ import SwiftUI
 
 struct VerticalWeekView: View {
     @Binding var selectedDayID: UUID?
-    let shortWeekdays: [String]
+    let weekdays: [Weekday]
     let days: [Day]
     let removeStampHandler: (Day, Int) -> Void
 
     var body: some View {
         VStack(spacing: 16) {
             HStack(spacing: 16) {
-                ForEach(shortWeekdays.indices, id: \.self) { index in
-                    Text(shortWeekdays[index])
+                ForEach(weekdays) { weekday in
+                    Text(weekday.shortLabel)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 8)
-                        .foregroundColor(Color.weekday(index))
+                        .foregroundColor(Color.weekday(weekday))
                         .background(Color(.cellBackground))
                         .cornerRadius(8)
                         .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
@@ -49,7 +49,7 @@ struct VerticalWeekView: View {
 
 #Preview {
     VerticalWeekView(selectedDayID: .constant(nil),
-                     shortWeekdays: [],
+                     weekdays: Weekday.allCasesFromSunday,
                      days: [],
                      removeStampHandler: { _, _ in })
 }

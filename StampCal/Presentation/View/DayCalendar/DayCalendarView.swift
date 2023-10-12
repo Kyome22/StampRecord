@@ -38,7 +38,6 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
                 content: { day in
                     DayView(
                         isPhone: isPhone,
-                        shortWeekdays: viewModel.shortWeekdays,
                         day: day,
                         removeStampHandler: { day, index in
                             viewModel.removeStamp(day: day, index: index)

@@ -6,7 +6,7 @@
  Copyright © 2023 Studio Kyome. All rights reserved.
 */
 
-import Foundation
+import SwiftUI
 import Combine
 
 protocol MonthCalendarViewModel: ObservableObject {
@@ -18,7 +18,7 @@ protocol MonthCalendarViewModel: ObservableObject {
     var selectedDayID: UUID? { get set }
     var showStampPicker: Bool { get set }
     var stamps: [Stamp] { get set }
-    var shortWeekdays: [String] { get }
+    var weekStartsAt: WeekStartsAt { get set }
 
     init(_ stampRepository: SR, _ logRepository: LR)
 
@@ -38,15 +38,16 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
     @Published var selectedDayID: UUID? = nil
     @Published var showStampPicker: Bool = false
     @Published var stamps: [Stamp] = []
+    @AppStorage("weekStartsAt") var weekStartsAt: WeekStartsAt = .sunday
 
-    let shortWeekdays: [String]
+    private let _shortWeekdays: [String]
     private let calendar = Calendar.current
     private let stampRepository: SR
     private let logRepository: LR
     private var cancellables = Set<AnyCancellable>()
 
     init(_ stampRepository: SR, _ logRepository: LR) {
-        shortWeekdays = calendar.shortWeekdaySymbols
+        _shortWeekdays = calendar.shortWeekdaySymbols
         self.stampRepository = stampRepository
         self.logRepository = logRepository
 
@@ -186,16 +187,11 @@ extension PreviewMock {
         @Published var selectedDayID: UUID? = nil
         @Published var showStampPicker: Bool = false
         @Published var stamps: [Stamp] = []
+        @Published var weekStartsAt: WeekStartsAt = .sunday
 
-        let shortWeekdays: [String]
-
-        init(_ stampRepository: SR, _ logRepository: LR) {
-            shortWeekdays = []
-        }
-
+        init(_ stampRepository: SR, _ logRepository: LR) {}
         init() {
             let calendar = Calendar.current
-            shortWeekdays = calendar.shortWeekdaySymbols
             let now = Date.now
             if let startOfMonth = calendar.startOfMonth(for: now) {
                 let days = (0 ..< 30).map { i in

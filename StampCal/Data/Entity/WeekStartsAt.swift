@@ -20,4 +20,11 @@ enum WeekStartsAt: Int, CaseIterable, Identifiable {
         case .monday: return "monday"
         }
     }
+
+    var weekdays: [Weekday] {
+        switch self {
+        case .sunday: return Weekday.allCasesFromSunday
+        case .monday: return Weekday.allCasesFromMonday
+        }
+    }
 }

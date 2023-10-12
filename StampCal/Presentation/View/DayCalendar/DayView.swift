@@ -10,25 +10,22 @@ import SwiftUI
 
 struct DayView: View {
     let columns: [GridItem]
-    let shortWeekdays: [String]
     let day: Day
     let removeStampHandler: (Day, Int) -> Void
 
     init(
         isPhone: Bool,
-        shortWeekdays: [String],
         day: Day,
         removeStampHandler: @escaping (Day, Int) -> Void
     ) {
         self.columns = Array(repeating: .init(.flexible(), spacing: 8), count: isPhone ? 3 : 5)
-        self.shortWeekdays = shortWeekdays
         self.day = day
         self.removeStampHandler = removeStampHandler
     }
 
     var body: some View {
         VStack(spacing: 16) {
-            Text(shortWeekdays[day.weekday])
+            Text(day.weekday.shortLabel)
                 .font(.title2)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
@@ -101,7 +98,6 @@ struct DayView: View {
 
 #Preview {
     DayView(isPhone: true,
-            shortWeekdays: [],
-            day: Day(text: "", weekday: 0),
+            day: Day(text: "", weekday: .sunday),
             removeStampHandler: { _, _ in })
 }

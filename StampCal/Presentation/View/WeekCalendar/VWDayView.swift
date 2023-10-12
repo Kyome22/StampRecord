@@ -48,7 +48,7 @@ struct VWDayView: View {
 
 #Preview {
     VWDayView(isSelected: .constant(false),
-              day: Day(text: "", weekday: 0),
+              day: Day(text: "", weekday: .sunday),
               selectHandler: {},
               removeStampHandler: { _, _ in })
 }

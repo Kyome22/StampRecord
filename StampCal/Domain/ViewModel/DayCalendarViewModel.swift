@@ -18,7 +18,6 @@ protocol DayCalendarViewModel: ObservableObject {
     var selectedDayID: UUID? { get set }
     var showStampPicker: Bool { get set }
     var stamps: [Stamp] { get set }
-    var shortWeekdays: [String] { get }
 
     init(_ stampRepository: SR, _ logRepository: LR)
 
@@ -39,14 +38,12 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
     @Published var showStampPicker: Bool = false
     @Published var stamps: [Stamp] = []
 
-    let shortWeekdays: [String]
     private let calendar = Calendar.current
     private let stampRepository: SR
     private let logRepository: LR
     private var cancellables = Set<AnyCancellable>()
 
     init(_ stampRepository: SR, _ logRepository: LR) {
-        shortWeekdays = calendar.shortWeekdaySymbols
         self.stampRepository = stampRepository
         self.logRepository = logRepository
 
@@ -159,15 +156,9 @@ extension PreviewMock {
         @Published var showStampPicker: Bool = false
         @Published var stamps: [Stamp] = []
 
-        let shortWeekdays: [String]
-
-        init(_ stampRepository: SR, _ logRepository: LR) {
-            shortWeekdays = []
-        }
-
+        init(_ stampRepository: SR, _ logRepository: LR) {}
         init() {
             let calendar = Calendar.current
-            shortWeekdays = calendar.shortWeekdaySymbols
             let now = Date.now
             let day = Day(date: now,
                           isToday: true,

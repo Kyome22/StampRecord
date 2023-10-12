@@ -14,7 +14,7 @@ struct Day: Hashable, Identifiable {
     var inMonth: Bool = false
     var isToday: Bool = false
     var text: String
-    var weekday: Int
+    var weekday: Weekday
     var log: Log?
 
     func hash(into hasher: inout Hasher) {

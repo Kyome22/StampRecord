@@ -13,7 +13,7 @@ struct MonthView: View {
     let isPhone: Bool
     let orientation: DeviceOrientation
     let spacing: CGFloat
-    let shortWeekdays: [String]
+    let weekdays: [Weekday]
     let days: [Day]
     let removeStampHandler: (Day, Int) -> Void
 
@@ -21,7 +21,7 @@ struct MonthView: View {
         selectedDayID: Binding<UUID?>,
         isPhone: Bool,
         orientation: DeviceOrientation,
-        shortWeekdays: [String],
+        weekdays: [Weekday],
         days: [Day],
         removeStampHandler: @escaping (Day, Int) -> Void
     ) {
@@ -29,7 +29,7 @@ struct MonthView: View {
         self.isPhone = isPhone
         self.spacing = isPhone ? 8 : 16
         self.orientation = orientation
-        self.shortWeekdays = shortWeekdays
+        self.weekdays = weekdays
         self.days = days
         self.removeStampHandler = removeStampHandler
     }
@@ -37,11 +37,11 @@ struct MonthView: View {
     var body: some View {
         VStack(spacing: spacing) {
             HStack(spacing: spacing) {
-                ForEach(shortWeekdays.indices, id: \.self) { index in
-                    Text(shortWeekdays[index])
+                ForEach(weekdays) { weekday in
+                    Text(weekday.shortLabel)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 8)
-                        .foregroundColor(Color.weekday(index))
+                        .foregroundColor(Color.weekday(weekday))
                         .background(Color(.cellBackground))
                         .cornerRadius(8)
                         .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
@@ -88,7 +88,7 @@ struct MonthView: View {
     MonthView(selectedDayID: .constant(nil),
               isPhone: true,
               orientation: .portrait,
-              shortWeekdays: [],
+              weekdays: Weekday.allCasesFromSunday,
               days: [],
               removeStampHandler: { _, _ in })
 }
