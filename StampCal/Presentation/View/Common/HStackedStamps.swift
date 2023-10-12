@@ -29,7 +29,7 @@ struct HStackedStamps: View {
                         removeStampHandler(index)
                     } label: {
                         Label {
-                            Text("\(stamps[index].emoji) \(stamps[index].summary)")
+                            Text(verbatim: "\(stamps[index].emoji) \(stamps[index].summary)")
                         } icon: {
                             Image(.stampFillMinus)
                         }
