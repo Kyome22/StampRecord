@@ -13,7 +13,7 @@ struct ColorDebugView: View {
 
     init() {
         colors = [
-            Color(.appAccent),
+            Color.accentColor,
             Color(.appBackground),
             Color(.cellBackground),
             Color(.cellHighlight),

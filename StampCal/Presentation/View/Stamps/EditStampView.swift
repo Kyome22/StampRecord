@@ -57,8 +57,7 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                     .focused($focusedField, equals: .title)
                 }
                 Button(role: .destructive) {
-                    viewModel.deleteStamp()
-                    dismiss()
+                    viewModel.showDeleteConfirmation = true
                 } label: {
                     Label {
                         Text("deleteStamp")
@@ -67,6 +66,19 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                     }
                 }
                 .buttonStyle(.delete)
+                .confirmationDialog(
+                    "deleteMessage",
+                    isPresented: $viewModel.showDeleteConfirmation,
+                    titleVisibility: .visible,
+                    actions: {
+                        Button(role: .destructive) {
+                            viewModel.deleteStamp()
+                            dismiss()
+                        } label: {
+                            Text("deleteStamp")
+                        }
+                    }
+                )
                 Spacer()
             }
             .padding(24)

@@ -13,6 +13,7 @@ protocol EditStampViewModel: ObservableObject {
     var summary: String { get set }
     var showEmojiPicker: Bool { get set }
     var showOverlappedError: Bool { get set }
+    var showDeleteConfirmation: Bool { get set }
     var disabledDone: Bool { get }
 
     init(original: Stamp,
@@ -28,6 +29,7 @@ final class EditStampViewModelImpl: EditStampViewModel {
     @Published var summary: String = ""
     @Published var showEmojiPicker: Bool = false
     @Published var showOverlappedError: Bool = false
+    @Published var showDeleteConfirmation: Bool = false
 
     private let original: Stamp
     private let updateStampHandler: (Stamp, String, String) -> Bool
@@ -73,6 +75,7 @@ extension PreviewMock {
         @Published var summary: String = ""
         @Published var showEmojiPicker: Bool = false
         @Published var showOverlappedError: Bool = false
+        @Published var showDeleteConfirmation: Bool = false
         let disabledDone: Bool = false
 
         init(original: Stamp,

@@ -39,7 +39,7 @@ final class LogRepositoryImpl: LogRepository {
         self.context = context
         stampsPublisher
             .sink { [weak self] stamps in
-                self?.stamps = stamps
+                self?.updateStamps(stamps)
             }
             .store(in: &cancellables)
         do {
@@ -54,13 +54,36 @@ final class LogRepositoryImpl: LogRepository {
         logsSubject.send()
     }
 
+    private func clearDeletedStamps() {
+        managedLogs.forEach { managedLog in
+            if let _stamps = managedLog.stamps {
+                managedLog.stamps = _stamps.filter { id in stamps.contains(where: { $0.id == id }) }
+            }
+        }
+        do {
+            try context.save()
+            try fetchManagedLogs()
+        } catch {
+            logput(error.localizedDescription)
+        }
+    }
+
+    private func updateStamps(_ stamps: [Stamp]) {
+        let isDeleted: Bool = stamps.count < self.stamps.count
+        self.stamps = stamps
+        if isDeleted {
+            clearDeletedStamps()
+        }
+    }
+
     func getLog(of date: Date?) -> Log? {
         guard let managedLog = managedLogs.first(where: { calendar.isEqual(a: date, b: $0.date) }),
-              let date = managedLog.date,
+              let _date = managedLog.date,
               let ids = managedLog.stamps else {
             return nil
         }
-        return Log(date: date, stamps: stamps.filter { ids.contains($0.id) })
+        let _stamps = ids.compactMap { id in stamps.first(where: { $0.id == id }) }
+        return Log(date: _date, stamps: _stamps)
     }
 
     func updateLog(_ log: Log) {

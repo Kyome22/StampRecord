@@ -43,7 +43,6 @@
 		1C5638D42AB73C1300694F44 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D32AB73C1300694F44 /* Log.swift */; };
 		1C5638D62AB73D0D00694F44 /* LogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D52AB73D0D00694F44 /* LogRepository.swift */; };
 		1C5638D82AB8881500694F44 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D72AB8881500694F44 /* Tabs.swift */; };
-		1C5638DA2AB8901B00694F44 /* StampButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D92AB8901B00694F44 /* StampButtonStyle.swift */; };
 		1C5638DD2ABC767800694F44 /* ColorDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638DC2ABC767800694F44 /* ColorDebugView.swift */; };
 		1C5638DF2ABECA6300694F44 /* StampPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638DE2ABECA6300694F44 /* StampPickerView.swift */; };
 		1C5638E12ABECE2A00694F44 /* StampPickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638E02ABECE2A00694F44 /* StampPickerModifier.swift */; };
@@ -123,7 +122,6 @@
 		1C5638D32AB73C1300694F44 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		1C5638D52AB73D0D00694F44 /* LogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRepository.swift; sourceTree = "<group>"; };
 		1C5638D72AB8881500694F44 /* Tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
-		1C5638D92AB8901B00694F44 /* StampButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampButtonStyle.swift; sourceTree = "<group>"; };
 		1C5638DC2ABC767800694F44 /* ColorDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDebugView.swift; sourceTree = "<group>"; };
 		1C5638DE2ABECA6300694F44 /* StampPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampPickerView.swift; sourceTree = "<group>"; };
 		1C5638E02ABECE2A00694F44 /* StampPickerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampPickerModifier.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				1C5638F72AC1DAB200694F44 /* OverlappingHStack.swift */,
 				1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */,
 				1C5638CC2AB3504000694F44 /* SquareButtonStyle.swift */,
-				1C5638D92AB8901B00694F44 /* StampButtonStyle.swift */,
 				1C5638882AADF46600694F44 /* SelectEmojiButtonStyle.swift */,
 				1C5638CE2AB6BE2400694F44 /* DeleteButtonStyle.swift */,
 				1C5638E32ABF090F00694F44 /* CellButtonStyle.swift */,
@@ -533,7 +530,6 @@
 				1CF3D61E2A9110E6005B6E71 /* StampCalApp.swift in Sources */,
 				1C5638772AAB6D3D00694F44 /* CalendarHeaderView.swift in Sources */,
 				1C7234FD2A9CEE840065512A /* JudgeOrientationModifier.swift in Sources */,
-				1C5638DA2AB8901B00694F44 /* StampButtonStyle.swift in Sources */,
 				1C7234EB2A9B73BA0065512A /* WeekCalendarView.swift in Sources */,
 				1C4FEE5B2AD2FFE4002266A9 /* JudgeDeviceModifier.swift in Sources */,
 				1C5638732AAB561A00694F44 /* StampsViewModel.swift in Sources */,

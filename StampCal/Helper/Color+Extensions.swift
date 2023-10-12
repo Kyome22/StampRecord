@@ -20,7 +20,7 @@ extension Color {
 
     static func highlight(_ isToday: Bool) -> Color {
         if isToday {
-            return Color(.appAccent)
+            return Color.accentColor
         } else {
             return Color.clear
         }

@@ -18,6 +18,7 @@
 "add" = "Add";
 "done" = "Done";
 "deleteStamp" = "Delete Stamp";
+"deleteMessage" = "Deleting a stamp will remove it from all records on your calendar.";
 "newStamp" = "New Stamp";
 "editStamp" = "Edit Stamp";
 "selectEmoji" = "Select an Emoji.";
