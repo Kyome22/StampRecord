@@ -37,13 +37,27 @@ struct CoreDataRepository {
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "StampCal")
         if inMemory {
-            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+            guard let desctiption = container.persistentStoreDescriptions.first else {
+                fatalError("Failed to retrive a persistent store description.")
+            }
+            desctiption.url = URL(fileURLWithPath: "/dev/null")
+            desctiption.setOption(NSNumber(booleanLiteral: true),
+                                  forKey: NSPersistentHistoryTrackingKey)
+            desctiption.setOption(NSNumber(booleanLiteral: true),
+                                  forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+
         }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         container.viewContext.automaticallyMergesChangesFromParent = true
+        do {
+            try container.viewContext.setQueryGenerationFrom(.current)
+        } catch {
+            assertionFailure("Failed to pin viewContext to the current generation:\(error)")
+        }
     }
 }

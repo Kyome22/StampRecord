@@ -26,7 +26,7 @@ final class StampCalAppModelImpl: StampCalAppModel {
 
     @Published var tabSelection: Tabs = .dayCalendar
 
-    let coreDataRepository = CoreDataRepository.preview
+    let coreDataRepository = CoreDataRepository.shared
     let stampRepository: SR
     let logRepository: LR
 
