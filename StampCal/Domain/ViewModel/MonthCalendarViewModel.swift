@@ -38,16 +38,14 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
     @Published var selectedDayID: UUID? = nil
     @Published var showStampPicker: Bool = false
     @Published var stamps: [Stamp] = []
-    @AppStorage("weekStartsAt") var weekStartsAt: WeekStartsAt = .sunday
+    @AppStorage(.weekStartsAt) var weekStartsAt: WeekStartsAt = .sunday
 
-    private let _shortWeekdays: [String]
     private let calendar = Calendar.current
     private let stampRepository: SR
     private let logRepository: LR
     private var cancellables = Set<AnyCancellable>()
 
     init(_ stampRepository: SR, _ logRepository: LR) {
-        _shortWeekdays = calendar.shortWeekdaySymbols
         self.stampRepository = stampRepository
         self.logRepository = logRepository
 
@@ -97,13 +95,15 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
         var days = [Day]()
         if let daysInMonth = calendar.daysInMonth(for: targetDate),
            let startOfMonth = calendar.startOfMonth(for: targetDate),
-           let endOfMonth = calendar.endOfMonth(for: targetDate) {
-            let startOrdinal = calendar.component(.weekday, from: startOfMonth)
-            let endOrdinal = calendar.component(.weekday, from: endOfMonth)
-            days = (1 - startOrdinal ..< daysInMonth + 7 - endOrdinal).map { i in
-                let date = calendar.date(byAdding: .day, value: i, to: startOfMonth)
+           let endOfMonth = calendar.endOfMonth(for: targetDate),
+           let startOfWeek = calendar.startOfWeek(for: startOfMonth, with: weekStartsAt),
+           let endOfWeek = calendar.endOfWeek(for: endOfMonth, with: weekStartsAt) {
+            let total = calendar.daysBetween(from: startOfWeek, to: endOfWeek)
+            days = (0 ... total).map { i in
+                let date = calendar.date(byAdding: .day, value: i, to: startOfWeek)
+                let diff = calendar.daysBetween(from: startOfMonth, to: date)
                 return Day(date: date,
-                           inMonth: (0 ..< daysInMonth).contains(i),
+                           inMonth: (0 ..< daysInMonth).contains(diff),
                            isToday: calendar.isEqual(a: date, b: now),
                            text: calendar.dayText(of: date),
                            weekday: calendar.weekday(of: date),

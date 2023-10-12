@@ -26,14 +26,23 @@ extension Calendar {
         return range(of: .day, in: .month, for: date)?.count
     }
 
-    func startOfWeek(for date: Date) -> Date? {
-        let weekday = component(.weekday, from: date)
-        return self.date(byAdding: .day, value: 1 - weekday, to: date)
+    func daysBetween(from a: Date?, to b: Date?) -> Int {
+        guard let a, let b, let day = dateComponents([.day], from: a, to: b).day else {
+            return -1
+        }
+        return day
     }
 
-    func endOfWeek(for date: Date) -> Date? {
+    func startOfWeek(for date: Date, with weekStartsAt: WeekStartsAt) -> Date? {
         let weekday = component(.weekday, from: date)
-        return self.date(byAdding: .day, value: 7 - weekday, to: date)
+        let offset: Int = (weekStartsAt.ref - weekday) % 7 - 6
+        return self.date(byAdding: .day, value: offset, to: date)
+    }
+
+    func endOfWeek(for date: Date, with weekStartsAt: WeekStartsAt) -> Date? {
+        let weekday = component(.weekday, from: date)
+        let offset: Int = (weekStartsAt.ref - weekday) % 7
+        return self.date(byAdding: .day, value: offset, to: date)
     }
 
     func isEqual(a: Date?, b: Date?) -> Bool {

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage("weekStartsAt") var weekStartsAt: WeekStartsAt = .sunday
+    @AppStorage(.weekStartsAt) var weekStartsAt: WeekStartsAt = .sunday
 
     var body: some View {
         NavigationView {

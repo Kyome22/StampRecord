@@ -19,6 +19,7 @@
 		1C4FEE872AD7E0A3002266A9 /* WeekStartsAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE862AD7E0A3002266A9 /* WeekStartsAt.swift */; };
 		1C4FEE892AD81AD8002266A9 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE882AD81AD8002266A9 /* Weekday.swift */; };
 		1C4FEE932AD8345D002266A9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1C4FEE922AD8345D002266A9 /* Localizable.xcstrings */; };
+		1C4FEE952AD8534D002266A9 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE942AD8534D002266A9 /* String+Extensions.swift */; };
 		1C5638592AA5A01500694F44 /* HorizontalWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638582AA5A01500694F44 /* HorizontalWeekView.swift */; };
 		1C56385B2AA5C67600694F44 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56385A2AA5C67600694F44 /* Week.swift */; };
 		1C56385D2AA8133D00694F44 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56385C2AA8133D00694F44 /* Month.swift */; };
@@ -104,6 +105,7 @@
 		1C4FEE862AD7E0A3002266A9 /* WeekStartsAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStartsAt.swift; sourceTree = "<group>"; };
 		1C4FEE882AD81AD8002266A9 /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		1C4FEE922AD8345D002266A9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		1C4FEE942AD8534D002266A9 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		1C5638582AA5A01500694F44 /* HorizontalWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalWeekView.swift; sourceTree = "<group>"; };
 		1C56385A2AA5C67600694F44 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		1C56385C2AA8133D00694F44 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
@@ -421,10 +423,11 @@
 			isa = PBXGroup;
 			children = (
 				1CF3D62B2A911B18005B6E71 /* Utils.swift */,
-				1C7234FA2A9CEAF50065512A /* Color+Extensions.swift */,
+				1C4FEE942AD8534D002266A9 /* String+Extensions.swift */,
 				1C5638632AA853CE00694F44 /* Array+Extensions.swift */,
 				1C7234EE2A9B79380065512A /* Calendar+Extensions.swift */,
 				1C56386B2AA8DC0B00694F44 /* Date+Extensions.swift */,
+				1C7234FA2A9CEAF50065512A /* Color+Extensions.swift */,
 				1C7234F82A9CE94E0065512A /* View+Extensions.swift */,
 			);
 			path = Helper;
@@ -533,6 +536,7 @@
 				1C5638CD2AB3504000694F44 /* SquareButtonStyle.swift in Sources */,
 				1C7234F52A9B9A010065512A /* WeekCalendarViewModel.swift in Sources */,
 				1C5638DD2ABC767800694F44 /* ColorDebugView.swift in Sources */,
+				1C4FEE952AD8534D002266A9 /* String+Extensions.swift in Sources */,
 				1C7234FB2A9CEAF50065512A /* Color+Extensions.swift in Sources */,
 				1C7234E52A9B433A0065512A /* ContentView.swift in Sources */,
 				1C5638E12ABECE2A00694F44 /* StampPickerModifier.swift in Sources */,

@@ -38,7 +38,7 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
     @Published var selectedDayID: UUID? = nil
     @Published var showStampPicker: Bool = false
     @Published var stamps: [Stamp] = []
-    @AppStorage("weekStartsAt") var weekStartsAt: WeekStartsAt = .sunday
+    @AppStorage(.weekStartsAt) var weekStartsAt: WeekStartsAt = .sunday
 
     private let calendar = Calendar.current
     private let stampRepository: SR
@@ -75,7 +75,7 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
     }
 
     private func getPreviousWeek(of date: Date) -> Date? {
-        if let endOfWeek = calendar.endOfWeek(for: date),
+        if let endOfWeek = calendar.endOfWeek(for: date, with: weekStartsAt),
            let previousDate = calendar.date(byAdding: .day, value: -7, to: endOfWeek) {
             return previousDate
         }
@@ -83,7 +83,7 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
     }
 
     private func getNextWeek(of date: Date) -> Date? {
-        if let endOfWeek = calendar.endOfWeek(for: date),
+        if let endOfWeek = calendar.endOfWeek(for: date, with: weekStartsAt),
            let nextDate = calendar.date(byAdding: .day, value: 7, to: endOfWeek) {
             return nextDate
         }
@@ -94,13 +94,13 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
         let now = Date.now
         var days = [Day]()
         if let daysInMonth = calendar.daysInMonth(for: targetDate),
-           let startOfMonth = calendar.startOfMonth(for: targetDate) {
-            let day = calendar.component(.day, from: targetDate)
-            let weekday = calendar.component(.weekday, from: targetDate)
-            days = (day - weekday ..< day + 7 - weekday).map { i in
-                let date = calendar.date(byAdding: .day, value: i, to: startOfMonth)
+           let startOfMonth = calendar.startOfMonth(for: targetDate),
+           let startOfWeek = calendar.startOfWeek(for: targetDate, with: weekStartsAt) {
+            days = (0 ..< 7).map { i in
+                let date = calendar.date(byAdding: .day, value: i, to: startOfWeek)
+                let diff = calendar.daysBetween(from: startOfMonth, to: date)
                 return Day(date: date,
-                           inMonth: (0 ..< daysInMonth).contains(i),
+                           inMonth: (0 ..< daysInMonth).contains(diff),
                            isToday: calendar.isEqual(a: date, b: now),
                            text: calendar.dayText(of: date),
                            weekday: calendar.weekday(of: date),

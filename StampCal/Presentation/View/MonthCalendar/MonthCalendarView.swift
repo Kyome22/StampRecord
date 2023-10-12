@@ -49,6 +49,9 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                     )
                 }
             )
+            .onChange(of: viewModel.weekStartsAt) { _ in
+                viewModel.setMonthList()
+            }
         }
         .background(Color(.appBackground))
     }

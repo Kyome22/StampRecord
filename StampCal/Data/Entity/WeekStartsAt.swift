@@ -9,8 +9,8 @@
 import SwiftUI
 
 enum WeekStartsAt: Int, CaseIterable, Identifiable {
-    case sunday
-    case monday
+    case sunday = 7
+    case monday = 8
 
     var id: Int { rawValue }
 
@@ -27,4 +27,6 @@ enum WeekStartsAt: Int, CaseIterable, Identifiable {
         case .monday: return Weekday.allCasesFromMonday
         }
     }
+
+    var ref: Int { rawValue }
 }
