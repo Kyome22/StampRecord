@@ -7,6 +7,7 @@
 */
 
 import Foundation
+import Combine
 
 protocol WeekCalendarViewModel: ObservableObject {
     associatedtype SR: StampRepository
@@ -22,8 +23,6 @@ protocol WeekCalendarViewModel: ObservableObject {
     init(_ stampRepository: SR, _ logRepository: LR)
 
     func setWeekList()
-    func reloadLog()
-    func loadStamps()
     func paging(with pageDirection: PageDirection)
     func putStamp(stamp: Stamp)
     func removeStamp(day: Day, index: Int)
@@ -44,13 +43,36 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
     private let calendar = Calendar.current
     private let stampRepository: SR
     private let logRepository: LR
-    private var notFirstOnAppear: Bool = false
+    private var cancellables = Set<AnyCancellable>()
 
     init(_ stampRepository: SR, _ logRepository: LR) {
         shortWeekdays = calendar.shortWeekdaySymbols
         self.stampRepository = stampRepository
         self.logRepository = logRepository
+
+        stampRepository.stampsPublisher
+            .sink { [weak self] stamps in
+                self?.stamps = stamps
+            }
+            .store(in: &cancellables)
+
+        logRepository.logsPublisher
+            .sink { [weak self] _ in
+                self?.loadLog()
+            }
+            .store(in: &cancellables)
+
         setWeekList()
+    }
+
+    private func loadLog() {
+        weekList.indices.forEach { i in
+            weekList[i].days.indices.forEach { j in
+                let date = weekList[i].days[j].date
+                weekList[i].days[j].log = logRepository.getLog(of: date)
+            }
+        }
+        selectedDayID = nil
     }
 
     private func getPreviousWeek(of date: Date) -> Date? {
@@ -101,24 +123,6 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
         }
         title = weekList[1].title
         selectedDayID = nil
-    }
-
-    func reloadLog() {
-        if notFirstOnAppear {
-            weekList.indices.forEach { i in
-                weekList[i].days.indices.forEach { j in
-                    let date = weekList[i].days[j].date
-                    weekList[i].days[j].log = logRepository.getLog(of: date)
-                }
-            }
-            selectedDayID = nil
-        } else {
-            notFirstOnAppear = true
-        }
-    }
-
-    func loadStamps() {
-        stamps = stampRepository.stamps
     }
 
     func paging(with pageDirection: PageDirection) {
@@ -206,8 +210,6 @@ extension PreviewMock {
         }
 
         func setWeekList() {}
-        func reloadLog() {}
-        func loadStamps() {}
         func paging(with pageDirection: PageDirection) {}
         func putStamp(stamp: Stamp) {}
         func removeStamp(day: Day, index: Int) {}

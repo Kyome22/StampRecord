@@ -36,8 +36,8 @@ extension Calendar {
         return self.date(byAdding: .day, value: 7 - weekday, to: date)
     }
 
-    func isEqual(a: Date?, b: Date) -> Bool {
-        guard let a else { return false }
+    func isEqual(a: Date?, b: Date?) -> Bool {
+        guard let a, let b else { return false }
         return isDate(a, inSameDayAs: b)
     }
 

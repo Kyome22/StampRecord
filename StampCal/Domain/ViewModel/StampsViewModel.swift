@@ -7,6 +7,7 @@
 */
 
 import Foundation
+import Combine
 
 protocol StampsViewModel: ObservableObject {
     associatedtype SR: StampRepository
@@ -15,7 +16,7 @@ protocol StampsViewModel: ObservableObject {
     var stampOrderIn: StampOrderIn { get set }
     var stamps: [Stamp] { get set }
     var showingSheet: Bool { get set }
-    var targetStamp: Stamp? { get set }
+    var selectedStamp: Stamp? { get set }
 
     init(_ stampRepository: SR)
 
@@ -32,14 +33,20 @@ final class StampsViewModelImpl<SR: StampRepository>: StampsViewModel {
     @Published var stampOrderIn: StampOrderIn = .ascending
     @Published var stamps: [Stamp] = []
     @Published var showingSheet: Bool = false
-    @Published var targetStamp: Stamp? = nil
+    @Published var selectedStamp: Stamp? = nil
 
     private let stampRepository: SR
+    private var cancellables = Set<AnyCancellable>()
 
     init(_ stampRepository: SR) {
         self.stampRepository = stampRepository
-        stamps = stampRepository.stamps
-        sortStamps()
+
+        stampRepository.stampsPublisher
+            .sink { [weak self] stamps in
+                guard let self else { return }
+                self.stamps = stamps.sorted(by: stampOrderBy, in: stampOrderIn)
+            }
+            .store(in: &cancellables)
     }
 
     func sortStamps() {
@@ -47,23 +54,15 @@ final class StampsViewModelImpl<SR: StampRepository>: StampsViewModel {
     }
 
     func addNewStamp(_ emoji: String, _ summary: String) -> Bool {
-        guard stampRepository.addStamp(emoji, summary) else { return false }
-        stamps = stampRepository.stamps
-        sortStamps()
-        return true
+        return stampRepository.addStamp(emoji, summary)
     }
 
     func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) -> Bool {
-        guard stampRepository.updateStamp(stamp, emoji, summary) else { return false }
-        stamps = stampRepository.stamps
-        sortStamps()
-        return true
+        return stampRepository.updateStamp(stamp, emoji, summary)
     }
 
     func deleteStamp(_ stamp: Stamp) {
         stampRepository.deleteStamp(stamp)
-        stamps = stampRepository.stamps
-        sortStamps()
     }
 }
 
@@ -76,7 +75,7 @@ extension PreviewMock {
         @Published var stampOrderIn: StampOrderIn = .ascending
         @Published var stamps: [Stamp] = []
         @Published var showingSheet: Bool = false
-        @Published var targetStamp: Stamp? = nil
+        @Published var selectedStamp: Stamp? = nil
 
         init(_ stampRepository: SR) {}
         init() {}

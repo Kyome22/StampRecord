@@ -7,6 +7,7 @@
 */
 
 import Foundation
+import Combine
 
 protocol DayCalendarViewModel: ObservableObject {
     associatedtype SR: StampRepository
@@ -22,8 +23,6 @@ protocol DayCalendarViewModel: ObservableObject {
     init(_ stampRepository: SR, _ logRepository: LR)
 
     func setDayList()
-    func reloadLog()
-    func loadStamps()
     func paging(with pageDirection: PageDirection)
     func putStamp(stamp: Stamp)
     func removeStamp(day: Day, index: Int)
@@ -44,13 +43,32 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
     private let calendar = Calendar.current
     private let stampRepository: SR
     private let logRepository: LR
-    private var notFirstOnAppear: Bool = false
+    private var cancellables = Set<AnyCancellable>()
 
     init(_ stampRepository: SR, _ logRepository: LR) {
         shortWeekdays = calendar.shortWeekdaySymbols
         self.stampRepository = stampRepository
         self.logRepository = logRepository
+
+        stampRepository.stampsPublisher
+            .sink { [weak self] stamps in
+                self?.stamps = stamps
+            }
+            .store(in: &cancellables)
+
+        logRepository.logsPublisher
+            .sink { [weak self] _ in
+                self?.loadLog()
+            }
+            .store(in: &cancellables)
+
         setDayList()
+    }
+
+    private func loadLog() {
+        dayList.indices.forEach { i in
+            dayList[i].log = logRepository.getLog(of: dayList[i].date)
+        }
     }
 
     private func getYesterday(of date: Date) -> Day {
@@ -84,20 +102,6 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
         dayList.append(getTommorow(of: now))
         title = now.title
         selectedDayID = dayList[1].id
-    }
-
-    func reloadLog() {
-        if notFirstOnAppear {
-            dayList.indices.forEach { i in
-                dayList[i].log = logRepository.getLog(of: dayList[i].date)
-            }
-        } else {
-            notFirstOnAppear = true
-        }
-    }
-
-    func loadStamps() {
-        stamps = stampRepository.stamps
     }
 
     func paging(with pageDirection: PageDirection) {
@@ -174,8 +178,6 @@ extension PreviewMock {
         }
 
         func setDayList() {}
-        func reloadLog() {}
-        func loadStamps() {}
         func paging(with pageDirection: PageDirection) {}
         func putStamp(stamp: Stamp) {}
         func removeStamp(day: Day, index: Int) {}

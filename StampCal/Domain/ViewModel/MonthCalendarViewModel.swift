@@ -7,6 +7,7 @@
 */
 
 import Foundation
+import Combine
 
 protocol MonthCalendarViewModel: ObservableObject {
     associatedtype SR: StampRepository
@@ -22,8 +23,6 @@ protocol MonthCalendarViewModel: ObservableObject {
     init(_ stampRepository: SR, _ logRepository: LR)
 
     func setMonthList()
-    func reloadLog()
-    func loadStamps()
     func paging(with pageDirection: PageDirection)
     func putStamp(stamp: Stamp)
     func removeStamp(day: Day, index: Int)
@@ -44,13 +43,36 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
     private let calendar = Calendar.current
     private let stampRepository: SR
     private let logRepository: LR
-    private var notFirstOnAppear: Bool = false
+    private var cancellables = Set<AnyCancellable>()
 
     init(_ stampRepository: SR, _ logRepository: LR) {
         shortWeekdays = calendar.shortWeekdaySymbols
         self.stampRepository = stampRepository
         self.logRepository = logRepository
+
+        stampRepository.stampsPublisher
+            .sink { [weak self] stamps in
+                self?.stamps = stamps
+            }
+            .store(in: &cancellables)
+
+        logRepository.logsPublisher
+            .sink { [weak self] _ in
+                self?.loadLog()
+            }
+            .store(in: &cancellables)
+
         setMonthList()
+    }
+
+    private func loadLog() {
+        monthList.indices.forEach { i in
+            monthList[i].days.indices.forEach { j in
+                let date = monthList[i].days[j].date
+                monthList[i].days[j].log = logRepository.getLog(of: date)
+            }
+        }
+        selectedDayID = nil
     }
 
     private func getPreviousMonth(of date: Date) -> Date? {
@@ -102,24 +124,6 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
         }
         title = monthList[1].title
         selectedDayID = nil
-    }
-
-    func reloadLog() {
-        if notFirstOnAppear {
-            monthList.indices.forEach { i in
-                monthList[i].days.indices.forEach { j in
-                    let date = monthList[i].days[j].date
-                    monthList[i].days[j].log = logRepository.getLog(of: date)
-                }
-            }
-            selectedDayID = nil
-        } else {
-            notFirstOnAppear = true
-        }
-    }
-
-    func loadStamps() {
-        stamps = stampRepository.stamps
     }
 
     func paging(with pageDirection: PageDirection) {
@@ -209,8 +213,6 @@ extension PreviewMock {
         }
 
         func setMonthList() {}
-        func reloadLog() {}
-        func loadStamps() {}
         func paging(with pageDirection: PageDirection) {}
         func putStamp(stamp: Stamp) {}
         func removeStamp(day: Day, index: Int) {}

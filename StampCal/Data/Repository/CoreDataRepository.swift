@@ -19,6 +19,7 @@ struct CoreDataRepository {
 
         Stamp.dummy.forEach { stamp in
             let managedStamp = ManagedStamp(context: context)
+            managedStamp.id = stamp.id
             managedStamp.emoji = stamp.emoji
             managedStamp.summary = stamp.summary
             managedStamp.createdDate = stamp.createdDate

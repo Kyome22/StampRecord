@@ -7,10 +7,11 @@
 */
 
 import Foundation
+import Combine
 import CoreData
 
 protocol StampRepository: AnyObject {
-    var stamps: [Stamp] { get }
+    var stampsPublisher: AnyPublisher<[Stamp], Never> { get }
 
     init(context: NSManagedObjectContext)
 
@@ -23,6 +24,11 @@ final class StampRepositoryImpl: StampRepository {
     private let context: NSManagedObjectContext
     private var managedStamps = [ManagedStamp]()
 
+    private let stampsSubject = CurrentValueSubject<[Stamp], Never>([])
+    var stampsPublisher: AnyPublisher<[Stamp], Never> {
+        stampsSubject.eraseToAnyPublisher()
+    }
+
     init(context: NSManagedObjectContext) {
         self.context = context
         do {
@@ -32,8 +38,9 @@ final class StampRepositoryImpl: StampRepository {
         }
     }
 
-    var stamps: [Stamp] {
-        return managedStamps.compactMap { managedStamp in
+    private func fetchManagedStamps() throws {
+        managedStamps = try context.fetch(ManagedStamp.fetchRequest())
+        stampsSubject.value = managedStamps.compactMap { managedStamp in
             guard let id = managedStamp.id,
                   let emoji = managedStamp.emoji,
                   let summary = managedStamp.summary,
@@ -44,12 +51,8 @@ final class StampRepositoryImpl: StampRepository {
         }
     }
 
-    private func fetchManagedStamps() throws {
-        managedStamps = try context.fetch(ManagedStamp.fetchRequest())
-    }
-
     func addStamp(_ emoji: String, _ summary: String) -> Bool {
-        if stamps.contains(where: { $0.emoji == emoji }) {
+        if managedStamps.contains(where: { $0.emoji == emoji }) {
             return false
         }
         let newStamp = ManagedStamp(context: context)
@@ -118,7 +121,9 @@ final class StampRepositoryImpl: StampRepository {
 // MARK: - Preview Mock
 extension PreviewMock {
     final class StampRepositoryMock: StampRepository {
-        let stamps: [Stamp] = []
+        var stampsPublisher: AnyPublisher<[Stamp], Never> {
+            Just([]).eraseToAnyPublisher()
+        }
 
         init(context: NSManagedObjectContext) {}
         init() {}

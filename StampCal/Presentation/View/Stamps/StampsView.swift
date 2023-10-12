@@ -55,10 +55,10 @@ struct StampsView<SVM: StampsViewModel>: View {
         .sheet(
             isPresented: $viewModel.showingSheet,
             onDismiss: {
-                viewModel.targetStamp = nil
+                viewModel.selectedStamp = nil
             },
             content: {
-                if let stamp = viewModel.targetStamp {
+                if let stamp = viewModel.selectedStamp {
                     EditStampView(viewModel: EditStampViewModelImpl(
                         original: stamp,
                         updateStampHandler: { stamp, emoji, summary in
@@ -118,7 +118,7 @@ struct StampsView<SVM: StampsViewModel>: View {
 
     private func stampCard(_ stamp: Stamp) -> some View {
         Button {
-            viewModel.targetStamp = stamp
+            viewModel.selectedStamp = stamp
             viewModel.showingSheet = true
         } label: {
             VStack(spacing: 0) {

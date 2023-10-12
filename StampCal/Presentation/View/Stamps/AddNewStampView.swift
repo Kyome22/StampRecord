@@ -16,7 +16,6 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // Header
             HeaderHStack {
                 Button("cancel") {
                     dismiss()
@@ -34,7 +33,6 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
             .background(Color(.toolbarBackground))
-            // Body
             VStack(spacing: 24) {
                 Button {
                     viewModel.showEmojiPicker = true

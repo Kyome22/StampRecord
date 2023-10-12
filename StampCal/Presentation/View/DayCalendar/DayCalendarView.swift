@@ -25,9 +25,6 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
                 resetHandler: {
                     viewModel.setDayList()
                 },
-                loadStampsHandler: {
-                    viewModel.loadStamps()
-                },
                 selectStampHandler: { stamp in
                     viewModel.putStamp(stamp: stamp)
                     viewModel.showStampPicker = false
@@ -51,9 +48,6 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
             )
         }
         .background(Color(.appBackground))
-        .onAppear {
-            viewModel.reloadLog()
-        }
     }
 }
 

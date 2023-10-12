@@ -25,9 +25,6 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                 resetHandler: {
                     viewModel.setWeekList()
                 },
-                loadStampsHandler: {
-                    viewModel.loadStamps()
-                },
                 selectStampHandler: { stamp in
                     viewModel.putStamp(stamp: stamp)
                     viewModel.showStampPicker = false
@@ -62,9 +59,6 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
             )
         }
         .background(Color(.appBackground))
-        .onAppear {
-            viewModel.reloadLog()
-        }
     }
 }
 

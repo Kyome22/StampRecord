@@ -26,9 +26,6 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                 resetHandler: {
                     viewModel.setMonthList()
                 },
-                loadStampsHandler: {
-                    viewModel.loadStamps()
-                },
                 selectStampHandler: { stamp in
                     viewModel.putStamp(stamp: stamp)
                     viewModel.showStampPicker = false
@@ -54,9 +51,6 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
             )
         }
         .background(Color(.appBackground))
-        .onAppear {
-            viewModel.reloadLog()
-        }
     }
 }
 

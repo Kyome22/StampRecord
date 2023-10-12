@@ -28,10 +28,12 @@ final class StampCalAppModelImpl: StampCalAppModel {
 
     let coreDataRepository = CoreDataRepository.preview
     let stampRepository: SR
-    let logRepository = LR()
+    let logRepository: LR
 
     init() {
         stampRepository = SR(context: coreDataRepository.container.viewContext)
+        logRepository = LR(context: coreDataRepository.container.viewContext,
+                           stampsPublisher: stampRepository.stampsPublisher)
     }
 }
 
