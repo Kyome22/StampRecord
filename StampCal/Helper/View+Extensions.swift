@@ -28,4 +28,8 @@ extension View {
     func onJudgeOrientation(_ orientation: Binding<DeviceOrientation>) -> some View {
         return modifier(JudgeOrientationModifier(orientation: orientation))
     }
+
+    func backable() -> some View {
+        return modifier(BackableModifier())
+    }
 }

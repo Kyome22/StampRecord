@@ -10,31 +10,34 @@ import SwiftUI
 
 struct SettingsView: View {
     @AppStorage(.weekStartsAt) var weekStartsAt: WeekStartsAt = .sunday
+#if DEBUG
+    @State var showDebugDialog: Bool = false
+#endif
 
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    Picker(selection: $weekStartsAt) {
-                        ForEach(WeekStartsAt.allCases) { weekStartsAt in
-                            Text(weekStartsAt.label)
-                                .tag(weekStartsAt)
-                        }
-                    } label: {
-                        Text("weekStartsAt")
+        VStack {
+            List {
+                Picker(selection: $weekStartsAt) {
+                    ForEach(WeekStartsAt.allCases) { weekStartsAt in
+                        Text(weekStartsAt.label)
+                            .tag(weekStartsAt)
                     }
-#if DEBUG
-                    NavigationLink {
-                        ColorDebugView()
-                            .navigationTitle("debug")
-                    } label: {
-                         Label("debug", systemImage: "ladybug")
-                    }
-#endif
+                } label: {
+                    Text("weekStartsAt")
                 }
+#if DEBUG
+                Button {
+                    showDebugDialog = true
+                } label: {
+                    Label("debug", systemImage: "ladybug")
+                }
+                .fullScreenCover(isPresented: $showDebugDialog) {
+                    ColorDebugView()
+                        .backable()
+                }
+#endif
             }
         }
-        .toolbar(.hidden, for: .navigationBar)
     }
 }
 
