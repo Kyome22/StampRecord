@@ -15,6 +15,8 @@
 		1C4FEE652AD50076002266A9 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE642AD50076002266A9 /* DebugView.swift */; };
 		1C4FEE692AD54780002266A9 /* SummaryTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE682AD54780002266A9 /* SummaryTextFieldStyle.swift */; };
 		1C4FEE812AD6D410002266A9 /* Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE802AD6D410002266A9 /* Stamp.swift */; };
+		1C4FEE852AD7DFDC002266A9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE842AD7DFDC002266A9 /* SettingsView.swift */; };
+		1C4FEE872AD7E0A3002266A9 /* WeekStartsAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE862AD7E0A3002266A9 /* WeekStartsAt.swift */; };
 		1C5638592AA5A01500694F44 /* HorizontalWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638582AA5A01500694F44 /* HorizontalWeekView.swift */; };
 		1C56385B2AA5C67600694F44 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56385A2AA5C67600694F44 /* Week.swift */; };
 		1C56385D2AA8133D00694F44 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56385C2AA8133D00694F44 /* Month.swift */; };
@@ -96,6 +98,9 @@
 		1C4FEE642AD50076002266A9 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		1C4FEE682AD54780002266A9 /* SummaryTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTextFieldStyle.swift; sourceTree = "<group>"; };
 		1C4FEE802AD6D410002266A9 /* Stamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stamp.swift; sourceTree = "<group>"; };
+		1C4FEE822AD7D1C7002266A9 /* StampCal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StampCal.entitlements; sourceTree = "<group>"; };
+		1C4FEE842AD7DFDC002266A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1C4FEE862AD7E0A3002266A9 /* WeekStartsAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStartsAt.swift; sourceTree = "<group>"; };
 		1C5638582AA5A01500694F44 /* HorizontalWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalWeekView.swift; sourceTree = "<group>"; };
 		1C56385A2AA5C67600694F44 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		1C56385C2AA8133D00694F44 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
@@ -193,6 +198,14 @@
 				1C4FEE682AD54780002266A9 /* SummaryTextFieldStyle.swift */,
 			);
 			path = "Layout&Style";
+			sourceTree = "<group>";
+		};
+		1C4FEE832AD7DFC7002266A9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1C4FEE842AD7DFDC002266A9 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		1C5638602AA84E5800694F44 /* WeekCalendar */ = {
@@ -297,6 +310,7 @@
 		1CF3D6082A90A4BE005B6E71 /* StampCal */ = {
 			isa = PBXGroup;
 			children = (
+				1C4FEE822AD7D1C7002266A9 /* StampCal.entitlements */,
 				1CF3D6172A90A4BF005B6E71 /* Info.plist */,
 				1C7234E62A9B518C0065512A /* Localizable.strings */,
 				1C5638F92AC8625C00694F44 /* RunningCat-Regular.otf */,
@@ -357,6 +371,7 @@
 				1C56385C2AA8133D00694F44 /* Month.swift */,
 				1C5638C42AB0C45600694F44 /* FocusedField.swift */,
 				1C5638CA2AB1F4DF00694F44 /* StampOrder.swift */,
+				1C4FEE862AD7E0A3002266A9 /* WeekStartsAt.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -393,6 +408,7 @@
 				1C5638622AA84E6900694F44 /* DayCalendar */,
 				1C5638602AA84E5800694F44 /* WeekCalendar */,
 				1C5638612AA84E6200694F44 /* MonthCalendar */,
+				1C4FEE832AD7DFC7002266A9 /* Settings */,
 				1C5638DB2ABC766000694F44 /* Debug */,
 			);
 			path = View;
@@ -492,6 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C4FEE872AD7E0A3002266A9 /* WeekStartsAt.swift in Sources */,
 				1C5638D62AB73D0D00694F44 /* LogRepository.swift in Sources */,
 				1C7234F72A9CE35B0065512A /* InfinitePagingView.swift in Sources */,
 				1C5638D42AB73C1300694F44 /* Log.swift in Sources */,
@@ -537,6 +554,7 @@
 				1C5638F22AC0AB6F00694F44 /* VWDayView.swift in Sources */,
 				1C4FEE632AD45F81002266A9 /* HStackedStamps.swift in Sources */,
 				1C5638642AA853CE00694F44 /* Array+Extensions.swift in Sources */,
+				1C4FEE852AD7DFDC002266A9 /* SettingsView.swift in Sources */,
 				1C7234E92A9B73A00065512A /* MonthCalendarView.swift in Sources */,
 				1C5638CB2AB1F4DF00694F44 /* StampOrder.swift in Sources */,
 				1C56386A2AA8B5E400694F44 /* DayCalendarViewModel.swift in Sources */,
@@ -681,6 +699,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StampCal/StampCal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StampCal/Preview Content\"";
@@ -691,7 +710,6 @@
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -713,6 +731,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StampCal/StampCal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StampCal/Preview Content\"";
@@ -723,7 +742,6 @@
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (

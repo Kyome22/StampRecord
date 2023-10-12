@@ -11,6 +11,7 @@
 "week" = "Week";
 "month" = "Month";
 "settings" = "Settings";
+"debug" = "Debug";
 
 "summary" = "Summary";
 "inputSummary" = "Input summary (required)";
@@ -35,3 +36,7 @@
 "ascending" = "Ascending";
 "descending" = "Descending";
 "createdDate" = "Created Date";
+
+"weekStartsAt" = "Week starts at";
+"sunday" = "Sunday";
+"monday" = "Monday";
