@@ -12,6 +12,16 @@
         }
       }
     },
+    "appInfo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Info"
+          }
+        }
+      }
+    },
     "ascending" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -100,6 +110,26 @@
         }
       }
     },
+    "developer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer"
+          }
+        }
+      }
+    },
+    "developerName" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takuto Nakamura"
+          }
+        }
+      }
+    },
     "done" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -166,6 +196,16 @@
         }
       }
     },
+    "open" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
+          }
+        }
+      }
+    },
     "overlappedErrorMessage" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -173,6 +213,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This emoji is already used."
+          }
+        }
+      }
+    },
+    "productPage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Product Page"
+          }
+        }
+      }
+    },
+    "productPageURL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://kyome.io/stampcal/index.html?lang=en"
           }
         }
       }
@@ -308,6 +369,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unable to Overwrite and Save Stamp"
+          }
+        }
+      }
+    },
+    "version" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
           }
         }
       }

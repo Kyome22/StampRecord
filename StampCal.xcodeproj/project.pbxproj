@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C4AD7F82AD9334A006EC803 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AD7F72AD9334A006EC803 /* SettingsViewModel.swift */; };
 		1C4FEE552AD28D43002266A9 /* OverlappingVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */; };
 		1C4FEE572AD2D658002266A9 /* MDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE562AD2D658002266A9 /* MDayView.swift */; };
 		1C4FEE5B2AD2FFE4002266A9 /* JudgeDeviceModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE5A2AD2FFE4002266A9 /* JudgeDeviceModifier.swift */; };
@@ -93,6 +94,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C4AD7F72AD9334A006EC803 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlappingVStack.swift; sourceTree = "<group>"; };
 		1C4FEE562AD2D658002266A9 /* MDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDayView.swift; sourceTree = "<group>"; };
 		1C4FEE5A2AD2FFE4002266A9 /* JudgeDeviceModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JudgeDeviceModifier.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				1C5638692AA8B5E400694F44 /* DayCalendarViewModel.swift */,
 				1C7234F42A9B9A010065512A /* WeekCalendarViewModel.swift */,
 				1C7234F22A9B8ED20065512A /* MonthCalendarViewModel.swift */,
+				1C4AD7F72AD9334A006EC803 /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				1C5638C32AB0B8F900694F44 /* EditStampView.swift in Sources */,
 				1C4FEE692AD54780002266A9 /* SummaryTextFieldStyle.swift in Sources */,
 				1CF3D62C2A911B18005B6E71 /* Utils.swift in Sources */,
+				1C4AD7F82AD9334A006EC803 /* SettingsViewModel.swift in Sources */,
 				1C5638872AADBFBD00694F44 /* AddNewStampViewModel.swift in Sources */,
 				1C5638F82AC1DAB200694F44 /* OverlappingHStack.swift in Sources */,
 				1C7234EF2A9B79380065512A /* Calendar+Extensions.swift in Sources */,

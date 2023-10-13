@@ -8,30 +8,44 @@
 
 import SwiftUI
 
-struct SettingsView: View {
-    @AppStorage(.weekStartsAt) var weekStartsAt: WeekStartsAt = .sunday
-#if DEBUG
-    @State var showDebugDialog: Bool = false
-#endif
+struct SettingsView<SVM: SettingsViewModel>: View {
+    @StateObject var viewModel: SVM
 
     var body: some View {
         VStack {
             List {
-                Picker(selection: $weekStartsAt) {
-                    ForEach(WeekStartsAt.allCases) { weekStartsAt in
-                        Text(weekStartsAt.label)
-                            .tag(weekStartsAt)
+                Section("settings") {
+                    Picker(selection: $viewModel.weekStartsAt) {
+                        ForEach(WeekStartsAt.allCases) { weekStartsAt in
+                            Text(weekStartsAt.label)
+                                .tag(weekStartsAt)
+                        }
+                    } label: {
+                        Text("weekStartsAt")
                     }
-                } label: {
-                    Text("weekStartsAt")
+                }
+                Section("appInfo") {
+                    LabeledContent("version") {
+                        Text(viewModel.version)
+                    }
+                    LabeledContent("developer") {
+                        Text("developerName")
+                    }
+                    LabeledContent("productPage") {
+                        Button {
+                            viewModel.openProductPage()
+                        } label: {
+                            Text("open")
+                        }
+                    }
                 }
 #if DEBUG
                 Button {
-                    showDebugDialog = true
+                    viewModel.showDebugDialog = true
                 } label: {
                     Label("debug", systemImage: "ladybug")
                 }
-                .fullScreenCover(isPresented: $showDebugDialog) {
+                .fullScreenCover(isPresented: $viewModel.showDebugDialog) {
                     ColorDebugView()
                         .backable()
                 }
@@ -42,5 +56,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(viewModel: PreviewMock.SettingsViewModelMock())
 }

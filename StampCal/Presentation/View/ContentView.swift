@@ -53,7 +53,7 @@ struct ContentView<SAM: StampCalAppModel>: View {
                     Label("month", systemImage: "calendar")
                 }
                 .tag(Tabs.monthCalendar)
-                SettingsView()
+                SettingsView(viewModel: SettingsViewModelImpl())
                     .tabItem {
                         Label("settings", systemImage: "gearshape")
                     }
