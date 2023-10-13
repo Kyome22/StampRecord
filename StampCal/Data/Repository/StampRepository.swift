@@ -71,6 +71,9 @@ final class StampRepositoryImpl: StampRepository {
     }
 
     func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) -> Bool {
+        if managedStamps.contains(where: { $0.emoji == emoji }) {
+            return false
+        }
         guard let index = managedStamps.firstIndex(where: { $0.id == stamp.id }) else {
             return false
         }
