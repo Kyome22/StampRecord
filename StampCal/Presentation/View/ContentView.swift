@@ -23,7 +23,7 @@ struct ContentView<SAM: StampCalAppModel>: View {
                 .tabItem {
                     Label("stamps", image: "stamp.fill")
                 }
-                .tag(Tabs.stamps)
+                .tag(Tab.stamps)
                 DayCalendarView(
                     viewModel: DayCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
                     isPhone: isPhone
@@ -31,7 +31,7 @@ struct ContentView<SAM: StampCalAppModel>: View {
                 .tabItem {
                     Label("day", image: "calendar.day")
                 }
-                .tag(Tabs.dayCalendar)
+                .tag(Tab.dayCalendar)
                 WeekCalendarView(
                     viewModel: WeekCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
                     isPhone: isPhone
@@ -43,7 +43,7 @@ struct ContentView<SAM: StampCalAppModel>: View {
                         Label("week", image: "calendar.week.vertical")
                     }
                 }
-                .tag(Tabs.weekCalendar)
+                .tag(Tab.weekCalendar)
                 MonthCalendarView(
                     viewModel: MonthCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
                     isPhone: isPhone,
@@ -52,12 +52,12 @@ struct ContentView<SAM: StampCalAppModel>: View {
                 .tabItem {
                     Label("month", systemImage: "calendar")
                 }
-                .tag(Tabs.monthCalendar)
+                .tag(Tab.monthCalendar)
                 SettingsView(viewModel: SettingsViewModelImpl())
                     .tabItem {
                         Label("settings", systemImage: "gearshape")
                     }
-                    .tag(Tabs.settings)
+                    .tag(Tab.settings)
             }
             .toolbarBackground(Color(.toolbarBackground), for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)

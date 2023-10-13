@@ -77,6 +77,16 @@
         }
       }
     },
+    "defaultPeriod" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default Period"
+          }
+        }
+      }
+    },
     "deleteMessage" : {
       "extractionState" : "manual",
       "localizations" : {

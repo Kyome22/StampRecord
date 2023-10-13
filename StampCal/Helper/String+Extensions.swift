@@ -10,6 +10,7 @@ import Foundation
 
 extension String {
     static let weekStartsAt = "weekStartsAt"
+    static let defaultPeriod = "defaultPeriod"
 
     var localized: String {
         return NSLocalizedString(self, comment: self)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C4AD7F82AD9334A006EC803 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AD7F72AD9334A006EC803 /* SettingsViewModel.swift */; };
+		1C4AD7FA2AD9729A006EC803 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AD7F92AD9729A006EC803 /* Period.swift */; };
 		1C4FEE552AD28D43002266A9 /* OverlappingVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */; };
 		1C4FEE572AD2D658002266A9 /* MDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE562AD2D658002266A9 /* MDayView.swift */; };
 		1C4FEE5B2AD2FFE4002266A9 /* JudgeDeviceModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FEE5A2AD2FFE4002266A9 /* JudgeDeviceModifier.swift */; };
@@ -49,7 +50,7 @@
 		1C5638D12AB6ECE800694F44 /* StampRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D02AB6ECE800694F44 /* StampRepository.swift */; };
 		1C5638D42AB73C1300694F44 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D32AB73C1300694F44 /* Log.swift */; };
 		1C5638D62AB73D0D00694F44 /* LogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D52AB73D0D00694F44 /* LogRepository.swift */; };
-		1C5638D82AB8881500694F44 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D72AB8881500694F44 /* Tabs.swift */; };
+		1C5638D82AB8881500694F44 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638D72AB8881500694F44 /* Tab.swift */; };
 		1C5638DD2ABC767800694F44 /* ColorDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638DC2ABC767800694F44 /* ColorDebugView.swift */; };
 		1C5638DF2ABECA6300694F44 /* StampPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638DE2ABECA6300694F44 /* StampPickerView.swift */; };
 		1C5638E12ABECE2A00694F44 /* StampPickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5638E02ABECE2A00694F44 /* StampPickerModifier.swift */; };
@@ -95,6 +96,7 @@
 
 /* Begin PBXFileReference section */
 		1C4AD7F72AD9334A006EC803 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		1C4AD7F92AD9729A006EC803 /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		1C4FEE542AD28D43002266A9 /* OverlappingVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlappingVStack.swift; sourceTree = "<group>"; };
 		1C4FEE562AD2D658002266A9 /* MDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDayView.swift; sourceTree = "<group>"; };
 		1C4FEE5A2AD2FFE4002266A9 /* JudgeDeviceModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JudgeDeviceModifier.swift; sourceTree = "<group>"; };
@@ -135,7 +137,7 @@
 		1C5638D02AB6ECE800694F44 /* StampRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRepository.swift; sourceTree = "<group>"; };
 		1C5638D32AB73C1300694F44 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		1C5638D52AB73D0D00694F44 /* LogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRepository.swift; sourceTree = "<group>"; };
-		1C5638D72AB8881500694F44 /* Tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
+		1C5638D72AB8881500694F44 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		1C5638DC2ABC767800694F44 /* ColorDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDebugView.swift; sourceTree = "<group>"; };
 		1C5638DE2ABECA6300694F44 /* StampPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampPickerView.swift; sourceTree = "<group>"; };
 		1C5638E02ABECE2A00694F44 /* StampPickerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampPickerModifier.swift; sourceTree = "<group>"; };
@@ -372,7 +374,7 @@
 		1CF3D6222A91195B005B6E71 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				1C5638D72AB8881500694F44 /* Tabs.swift */,
+				1C5638D72AB8881500694F44 /* Tab.swift */,
 				1C4FEE802AD6D410002266A9 /* Stamp.swift */,
 				1C5638D32AB73C1300694F44 /* Log.swift */,
 				1C7234F02A9B8EB90065512A /* Day.swift */,
@@ -382,6 +384,7 @@
 				1C5638CA2AB1F4DF00694F44 /* StampOrder.swift */,
 				1C4FEE882AD81AD8002266A9 /* Weekday.swift */,
 				1C4FEE862AD7E0A3002266A9 /* WeekStartsAt.swift */,
+				1C4AD7F92AD9729A006EC803 /* Period.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -554,7 +557,8 @@
 				1C56386C2AA8DC0B00694F44 /* Date+Extensions.swift in Sources */,
 				1C7234F92A9CE94E0065512A /* View+Extensions.swift in Sources */,
 				1C56385F2AA8187700694F44 /* MonthView.swift in Sources */,
-				1C5638D82AB8881500694F44 /* Tabs.swift in Sources */,
+				1C4AD7FA2AD9729A006EC803 /* Period.swift in Sources */,
+				1C5638D82AB8881500694F44 /* Tab.swift in Sources */,
 				1C5638C72AB0C4BE00694F44 /* EditStampViewModel.swift in Sources */,
 				1C56386E2AAB530E00694F44 /* VerticalWeekView.swift in Sources */,
 				1CF3D6282A911A6B005B6E71 /* StampCalAppModel.swift in Sources */,

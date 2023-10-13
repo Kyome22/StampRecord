@@ -12,6 +12,7 @@ import CoreData
 
 protocol StampRepository: AnyObject {
     var stampsPublisher: AnyPublisher<[Stamp], Never> { get }
+    var isEmpty: Bool { get }
 
     init(context: NSManagedObjectContext)
 
@@ -27,6 +28,10 @@ final class StampRepositoryImpl: StampRepository {
     private let stampsSubject = CurrentValueSubject<[Stamp], Never>([])
     var stampsPublisher: AnyPublisher<[Stamp], Never> {
         stampsSubject.eraseToAnyPublisher()
+    }
+
+    var isEmpty: Bool {
+        return stampsSubject.value.isEmpty
     }
 
     init(context: NSManagedObjectContext) {
@@ -127,6 +132,7 @@ extension PreviewMock {
         var stampsPublisher: AnyPublisher<[Stamp], Never> {
             Just([]).eraseToAnyPublisher()
         }
+        var isEmpty: Bool { true }
 
         init(context: NSManagedObjectContext) {}
         init() {}

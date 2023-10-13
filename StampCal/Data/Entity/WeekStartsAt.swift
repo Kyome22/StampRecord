@@ -15,10 +15,7 @@ enum WeekStartsAt: Int, CaseIterable, Identifiable {
     var id: Int { rawValue }
 
     var label: LocalizedStringKey {
-        switch self {
-        case .sunday: return "sunday"
-        case .monday: return "monday"
-        }
+        return LocalizedStringKey(String(describing: self))
     }
 
     var weekdays: [Weekday] {

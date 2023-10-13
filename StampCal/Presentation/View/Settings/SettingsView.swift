@@ -23,6 +23,14 @@ struct SettingsView<SVM: SettingsViewModel>: View {
                     } label: {
                         Text("weekStartsAt")
                     }
+                    Picker(selection: $viewModel.defaultPeriod) {
+                        ForEach(Period.allCases) { period in
+                            Text(period.label)
+                                .tag(period)
+                        }
+                    } label: {
+                        Text("defaultPeriod")
+                    }
                 }
                 Section("appInfo") {
                     LabeledContent("version") {

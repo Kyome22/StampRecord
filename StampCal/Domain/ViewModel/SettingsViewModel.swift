@@ -10,6 +10,7 @@ import SwiftUI
 
 protocol SettingsViewModel: ObservableObject {
     var weekStartsAt: WeekStartsAt { get set }
+    var defaultPeriod: Period { get set }
     var showDebugDialog: Bool { get set }
     var version: String { get }
 
@@ -18,6 +19,7 @@ protocol SettingsViewModel: ObservableObject {
 
 final class SettingsViewModelImpl: SettingsViewModel {
     @AppStorage(.weekStartsAt) var weekStartsAt: WeekStartsAt = .sunday
+    @AppStorage(.defaultPeriod) var defaultPeriod: Period = .day
     @Published var showDebugDialog: Bool = false
 
     let version: String
@@ -37,6 +39,7 @@ final class SettingsViewModelImpl: SettingsViewModel {
 extension PreviewMock {
     final class SettingsViewModelMock: SettingsViewModel {
         @Published var weekStartsAt: WeekStartsAt = .sunday
+        @Published var defaultPeriod: Period = .day
         @Published var showDebugDialog: Bool = false
         let version: String = "0.0"
 
