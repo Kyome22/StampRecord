@@ -42,13 +42,20 @@ struct StampsView<SVM: StampsViewModel>: View {
                 Divider()
             }
             .background(Color(.toolbarBackground))
-            ScrollView(.vertical) {
-                LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(viewModel.stamps) { stamp in
-                        stampCard(stamp)
+            if viewModel.stamps.isEmpty {
+                Text("noStamps")
+                    .font(.title3)
+                    .foregroundColor(Color.cellBackground)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                ScrollView(.vertical) {
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        ForEach(viewModel.stamps) { stamp in
+                            stampCard(stamp)
+                        }
                     }
+                    .padding(24)
                 }
-                .padding(24)
             }
         }
         .background(Color(.appBackground))

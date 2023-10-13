@@ -12,16 +12,6 @@
         }
       }
     },
-    "appInfo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App Info"
-          }
-        }
-      }
-    },
     "ascending" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -206,6 +196,16 @@
         }
       }
     },
+    "noStamps" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Stamps"
+          }
+        }
+      }
+    },
     "open" : {
       "localizations" : {
         "en" : {
@@ -247,9 +247,6 @@
           }
         }
       }
-    },
-    "Push Me" : {
-
     },
     "remove" : {
       "extractionState" : "manual",
@@ -357,6 +354,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sunday"
+          }
+        }
+      }
+    },
+    "support" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support"
           }
         }
       }

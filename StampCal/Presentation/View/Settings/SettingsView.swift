@@ -32,7 +32,7 @@ struct SettingsView<SVM: SettingsViewModel>: View {
                         Text("defaultPeriod")
                     }
                 }
-                Section("appInfo") {
+                Section("support") {
                     LabeledContent("version") {
                         Text(viewModel.version)
                     }

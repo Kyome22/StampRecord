@@ -28,11 +28,12 @@ final class StampCalAppModelImpl: StampCalAppModel {
     @Published var tabSelection: Tab = .dayCalendar
     @AppStorage(.defaultPeriod) var defaultPeriod: Period = .day
 
-    let coreDataRepository = CoreDataRepository.shared
+    let coreDataRepository: CoreDataRepository
     let stampRepository: SR
     let logRepository: LR
 
     init() {
+        coreDataRepository = .shared
         stampRepository = SR(context: coreDataRepository.container.viewContext)
         logRepository = LR(context: coreDataRepository.container.viewContext,
                            stampsPublisher: stampRepository.stampsPublisher)
