@@ -29,6 +29,14 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
                     }
                 }
                 .disabled(viewModel.emoji.isEmpty || viewModel.summary.isEmpty)
+                .alert(
+                    "unableAddStamp",
+                    isPresented: $viewModel.showOverlappedError,
+                    actions: {},
+                    message: {
+                        Text("overlappedErrorMessage")
+                    }
+                )
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
@@ -65,14 +73,6 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
         .onTapGesture {
             focusedField = nil
         }
-        .alert(
-            "unableAddStamp",
-            isPresented: $viewModel.showOverlappedError,
-            actions: {},
-            message: {
-                Text("overlappedErrorMessage")
-            }
-        )
     }
 }
 

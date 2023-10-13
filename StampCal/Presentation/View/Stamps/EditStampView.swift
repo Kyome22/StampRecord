@@ -29,6 +29,14 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                     }
                 }
                 .disabled(viewModel.disabledDone)
+                .alert(
+                    "unableSaveStamp",
+                    isPresented: $viewModel.showOverlappedError,
+                    actions: {},
+                    message: {
+                        Text("overlappedErrorMessage")
+                    }
+                )
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
@@ -88,14 +96,6 @@ struct EditStampView<EVM: EditStampViewModel>: View {
         .onTapGesture {
             focusedField = nil
         }
-        .alert(
-            "unableSaveStamp",
-            isPresented: $viewModel.showOverlappedError,
-            actions: {},
-            message: {
-                Text("overlappedErrorMessage")
-            }
-        )
     }
 }
 
