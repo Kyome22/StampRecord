@@ -54,10 +54,12 @@ struct CoreDataRepository {
         })
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         container.viewContext.automaticallyMergesChangesFromParent = true
-        do {
-            try container.viewContext.setQueryGenerationFrom(.current)
-        } catch {
-            assertionFailure("Failed to pin viewContext to the current generation:\(error)")
+        if !inMemory {
+            do {
+                try container.viewContext.setQueryGenerationFrom(.current)
+            } catch {
+                assertionFailure("Failed to pin viewContext to the current generation:\(error)")
+            }
         }
     }
 }
