@@ -1,6 +1,6 @@
-# StampCal
+# StampRecord
 
-スタンプで実績を記録をするカレンダーアプリ
+スタンプで実績を記録をするアプリ
 
 | ![](./ScreenShot/1_stamps.png) | ![](./ScreenShot/2_edit_stamp.png) | ![](./ScreenShot/3_day_calendar.png) | ![](./ScreenShot/4_week_calendar.png) | ![](./ScreenShot/5_month_calendar.png) |
 | :----------------------------: | :--------------------------------: | :----------------------------------: | :-----------------------------------: | :------------------------------------: |
