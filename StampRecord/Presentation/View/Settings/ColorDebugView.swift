@@ -14,14 +14,14 @@ struct ColorDebugView: View {
     init() {
         colors = [
             Color.accentColor,
-            Color(.appBackground),
-            Color(.cellBackground),
-            Color(.cellHighlight),
-            Color(.cellBorder),
-            Color(.delete),
-            Color(.cellBlue),
-            Color(.cellRed),
-            Color(.shadow)
+            Color.appBackground,
+            Color.cellBackground,
+            Color.cellHighlight,
+            Color.cellBorder,
+            Color.delete,
+            Color.cellBlue,
+            Color.cellRed,
+            Color.shadow
         ]
     }
 

@@ -21,18 +21,18 @@ struct SelectEmojiButtonStyle<Content: View>: ButtonStyle {
                 .padding(8)
                 .overlay(alignment: .trailing) {
                     Rectangle()
-                        .fill(Color(.cellBorder))
+                        .fill(Color.cellBorder)
                         .frame(width: 1)
                 }
             Text("selectEmoji")
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .background(Color(.appBackground).opacity(configuration.isPressed ? 0.5 : 0.0))
+        .background(Color.appBackground.opacity(configuration.isPressed ? 0.5 : 0.0))
         .cornerRadius(8)
         .overlay {
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color(.cellBorder), lineWidth: 1)
+                .stroke(Color.cellBorder, lineWidth: 1)
         }
     }
 }

@@ -22,9 +22,9 @@ struct HorizontalWeekView: View {
                         .frame(maxHeight: .infinity)
                         .padding(.horizontal, 4)
                         .foregroundColor(Color.weekday(weekday))
-                        .background(Color(.cellBackground))
+                        .background(Color.cellBackground)
                         .cornerRadius(8)
-                        .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
+                        .shadow(color: Color.shadow, radius: 2, x: 0, y: 3)
                 }
             }
             VStack(spacing: 16) {

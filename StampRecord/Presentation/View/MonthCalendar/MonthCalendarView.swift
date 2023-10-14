@@ -53,7 +53,7 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                 viewModel.setMonthList()
             }
         }
-        .background(Color(.appBackground))
+        .background(Color.appBackground)
     }
 }
 

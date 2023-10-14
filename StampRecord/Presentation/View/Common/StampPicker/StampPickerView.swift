@@ -43,7 +43,7 @@ struct StampPickerView: View {
             }
             .padding(8)
             Divider()
-                .overlay(Color(.cellBorder))
+                .overlay(Color.cellBorder)
             ScrollView(.vertical, showsIndicators: true) {
                 LazyVGrid(columns: columns, spacing: 8) {
                     ForEach(stamps.sorted(by: stampOrderBy, in: stampOrderIn)) { stamp in
@@ -69,7 +69,7 @@ struct StampPickerView: View {
                 .padding(8)
             }
             .frame(height: (cellWidth * 3.5) + (8 * 4))
-            .background(Color(.appBackground))
+            .background(Color.appBackground)
         }
         .frame(width: (cellWidth * 3) + (8 * 4))
     }

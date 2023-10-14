@@ -13,11 +13,11 @@ struct SummaryTextFieldStyle: TextFieldStyle {
         configuration
             .padding(.vertical, 8)
             .padding(.horizontal, 16)
-            .background(Color(.appBackground))
+            .background(Color.appBackground)
             .cornerRadius(8)
             .overlay {
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color(.cellBorder), lineWidth: 1)
+                    .stroke(Color.cellBorder, lineWidth: 1)
             }
     }
 

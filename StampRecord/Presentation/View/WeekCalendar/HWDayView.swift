@@ -26,7 +26,7 @@ struct HWDayView: View {
                 }
                 .padding(4)
             Divider()
-                .overlay(Color(.cellBorder))
+                .overlay(Color.cellBorder)
                 .padding(.vertical, 4)
             if let log = day.log {
                 HStackedStamps(stamps: log.stamps) { index in
@@ -37,12 +37,12 @@ struct HWDayView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        .background(isSelected ? Color(.cellHighlight) : Color(.cellBackground))
+        .background(isSelected ? Color.cellHighlight : Color.cellBackground)
         .cornerRadius(8)
         .onTapGesture {
             selectHandler()
         }
-        .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
+        .shadow(color: Color.shadow, radius: 2, x: 0, y: 3)
     }
 }
 

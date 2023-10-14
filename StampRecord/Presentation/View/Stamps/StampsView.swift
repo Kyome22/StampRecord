@@ -41,7 +41,7 @@ struct StampsView<SVM: StampsViewModel>: View {
                 .padding(.vertical, 16)
                 Divider()
             }
-            .background(Color(.toolbarBackground))
+            .background(Color.toolbarBackground)
             if viewModel.stamps.isEmpty {
                 Text("noStamps")
                     .font(.title3)
@@ -58,7 +58,7 @@ struct StampsView<SVM: StampsViewModel>: View {
                 }
             }
         }
-        .background(Color(.appBackground))
+        .background(Color.appBackground)
         .sheet(
             isPresented: $viewModel.showingSheet,
             onDismiss: {
@@ -135,7 +135,7 @@ struct StampsView<SVM: StampsViewModel>: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .aspectRatio(1.66, contentMode: .fill)
                 Divider()
-                    .overlay(Color(.cellBorder))
+                    .overlay(Color.cellBorder)
                     .padding(.horizontal, 8)
                 Text(stamp.summary)
                     .font(.caption)
@@ -147,7 +147,7 @@ struct StampsView<SVM: StampsViewModel>: View {
             .aspectRatio(1, contentMode: .fill)
         }
         .buttonStyle(.cell)
-        .shadow(color: Color(.shadow), radius: 3, x: 0, y: 3)
+        .shadow(color: Color.shadow, radius: 3, x: 0, y: 3)
     }
 }
 

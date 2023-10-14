@@ -61,7 +61,7 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                 viewModel.setWeekList()
             }
         }
-        .background(Color(.appBackground))
+        .background(Color.appBackground)
     }
 }
 

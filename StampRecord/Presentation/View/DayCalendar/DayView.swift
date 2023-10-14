@@ -30,9 +30,9 @@ struct DayView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
                 .foregroundColor(Color.weekday(day.weekday))
-                .background(Color(.cellBackground))
+                .background(Color.cellBackground)
                 .cornerRadius(8)
-                .shadow(color: Color(.shadow), radius: 3, x: 0, y: 3)
+                .shadow(color: Color.shadow, radius: 3, x: 0, y: 3)
             VStack(spacing: 0) {
                 Text(day.text)
                     .font(.title2)
@@ -45,7 +45,7 @@ struct DayView: View {
                     }
                     .padding(4)
                 Divider()
-                    .overlay(Color(.cellBorder))
+                    .overlay(Color.cellBorder)
                     .padding(.horizontal, 8)
                 ScrollView(.vertical, showsIndicators: false) {
                     if let log = day.log {
@@ -61,9 +61,9 @@ struct DayView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-            .background(Color(.cellBackground))
+            .background(Color.cellBackground)
             .cornerRadius(8)
-            .shadow(color: Color(.shadow), radius: 3, x: 0, y: 3)
+            .shadow(color: Color.shadow, radius: 3, x: 0, y: 3)
         }
         .padding(16)
     }

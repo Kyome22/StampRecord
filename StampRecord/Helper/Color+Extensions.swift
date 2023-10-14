@@ -10,10 +10,10 @@ import SwiftUI
 
 extension Color {
     static func weekday(_ weekday: Weekday, _ isToday: Bool = false) -> Color {
-        if isToday { return Color(.cellBackground) }
+        if isToday { return Color.cellBackground }
         switch weekday {
-        case .sunday: return Color(.cellRed)
-        case .saturday: return Color(.cellBlue)
+        case .sunday: return Color.cellRed
+        case .saturday: return Color.cellBlue
         default: return Color.primary
         }
     }

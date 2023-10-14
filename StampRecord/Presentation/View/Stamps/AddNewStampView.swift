@@ -40,7 +40,7 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
-            .background(Color(.toolbarBackground))
+            .background(Color.toolbarBackground)
             VStack(spacing: 24) {
                 Button {
                     viewModel.showEmojiPicker = true
@@ -68,7 +68,7 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
             }
             .padding(24)
         }
-        .background(Color(.cellBackground))
+        .background(Color.cellBackground)
         .presentationDetents([.medium])
         .onTapGesture {
             focusedField = nil

@@ -11,7 +11,7 @@ import SwiftUI
 struct InnerCellButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .background(Color(.appBackground).opacity(configuration.isPressed ? 0.7 : 0.0))
+            .background(Color.appBackground.opacity(configuration.isPressed ? 0.7 : 0.0))
             .cornerRadius(8)
     }
 }

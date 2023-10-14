@@ -28,7 +28,7 @@ struct MDayView: View {
                 }
                 .padding(4)
             Divider()
-                .overlay(Color(.cellBorder))
+                .overlay(Color.cellBorder)
                 .padding(.horizontal, 4)
             if let log = day.log {
                 switch orientation {
@@ -46,12 +46,12 @@ struct MDayView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .background(isSelected ? Color(.cellHighlight) : Color(.cellBackground))
+        .background(isSelected ? Color.cellHighlight : Color.cellBackground)
         .cornerRadius(8)
         .onTapGesture {
             selectHandler()
         }
-        .shadow(color: Color(.shadow), radius: 2, x: 0, y: 3)
+        .shadow(color: Color.shadow, radius: 2, x: 0, y: 3)
     }
 }
 

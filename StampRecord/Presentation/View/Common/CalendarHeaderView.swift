@@ -52,7 +52,7 @@ struct CalendarHeaderView: View {
             .padding(.vertical, 16)
             Divider()
         }
-        .background(Color(.toolbarBackground))
+        .background(Color.toolbarBackground)
     }
 }
 

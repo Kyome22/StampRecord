@@ -58,7 +58,7 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                     }
                     .tag(Tab.settings)
             }
-            .toolbarBackground(Color(.toolbarBackground), for: .tabBar)
+            .toolbarBackground(Color.toolbarBackground, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
         }
         .onJudgeDevice($isPhone)
