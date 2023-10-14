@@ -41,28 +41,30 @@ struct EditStampView<EVM: EditStampViewModel>: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
             .background(Color.toolbarBackground)
-            VStack(spacing: 24) {
-                Button {
-                    viewModel.showEmojiPicker = true
-                } label: {
-                    Text(viewModel.emoji)
-                }
-                .buttonStyle(SelectEmojiButtonStyle(transform: { label in
-                    label.emojiPalette(selectedEmoji: $viewModel.emoji,
-                                       isPresented: $viewModel.showEmojiPicker)
-                }))
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("summary")
-                        .font(.headline)
-                    TextField(
-                        "inputSummary",
-                        text: Binding<String>(
-                            get: { viewModel.summary },
-                            set: { viewModel.summary = String($0.prefix(20)).trimmingCharacters(in: .whitespaces) }
+            VStack(spacing: 48) {
+                VStack(spacing: 24) {
+                    Button {
+                        viewModel.showEmojiPicker = true
+                    } label: {
+                        Text(viewModel.emoji)
+                    }
+                    .buttonStyle(SelectEmojiButtonStyle(transform: { label in
+                        label.emojiPalette(selectedEmoji: $viewModel.emoji,
+                                           isPresented: $viewModel.showEmojiPicker)
+                    }))
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text("summary")
+                            .font(.headline)
+                        TextField(
+                            "inputSummary",
+                            text: Binding<String>(
+                                get: { viewModel.summary },
+                                set: { viewModel.summary = String($0.prefix(20)).trimmingCharacters(in: .whitespaces) }
+                            )
                         )
-                    )
-                    .textFieldStyle(.summary)
-                    .focused($focusedField, equals: .title)
+                        .textFieldStyle(.summary)
+                        .focused($focusedField, equals: .title)
+                    }
                 }
                 Button(role: .destructive) {
                     viewModel.showDeleteConfirmation = true
