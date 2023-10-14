@@ -1,0 +1,789 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1CCC69122ADA7AC6003A8F86 /* StampRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69112ADA7AC6003A8F86 /* StampRecordApp.swift */; };
+		1CCC69142ADA7AC6003A8F86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69132ADA7AC6003A8F86 /* ContentView.swift */; };
+		1CCC69162ADA7AC8003A8F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CCC69152ADA7AC8003A8F86 /* Assets.xcassets */; };
+		1CCC69192ADA7AC8003A8F86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CCC69182ADA7AC8003A8F86 /* Preview Assets.xcassets */; };
+		1CCC691E2ADA7AC8003A8F86 /* StampRecord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC691C2ADA7AC8003A8F86 /* StampRecord.xcdatamodeld */; };
+		1CCC69282ADA7B79003A8F86 /* EmojiPalette in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCC69272ADA7B79003A8F86 /* EmojiPalette */; };
+		1CCC692A2ADA7C43003A8F86 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1CCC69292ADA7C43003A8F86 /* Localizable.xcstrings */; };
+		1CCC69442ADA7DC1003A8F86 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69392ADA7DC1003A8F86 /* Month.swift */; };
+		1CCC69452ADA7DC1003A8F86 /* Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC693A2ADA7DC1003A8F86 /* Stamp.swift */; };
+		1CCC69462ADA7DC1003A8F86 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC693B2ADA7DC1003A8F86 /* Tab.swift */; };
+		1CCC69472ADA7DC1003A8F86 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC693C2ADA7DC1003A8F86 /* Week.swift */; };
+		1CCC69482ADA7DC1003A8F86 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC693D2ADA7DC1003A8F86 /* Day.swift */; };
+		1CCC69492ADA7DC1003A8F86 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC693E2ADA7DC1003A8F86 /* Log.swift */; };
+		1CCC694A2ADA7DC1003A8F86 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC693F2ADA7DC1003A8F86 /* Weekday.swift */; };
+		1CCC694B2ADA7DC1003A8F86 /* StampOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69402ADA7DC1003A8F86 /* StampOrder.swift */; };
+		1CCC694C2ADA7DC1003A8F86 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69412ADA7DC1003A8F86 /* Period.swift */; };
+		1CCC694D2ADA7DC1003A8F86 /* FocusedField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69422ADA7DC1003A8F86 /* FocusedField.swift */; };
+		1CCC694E2ADA7DC1003A8F86 /* WeekStartsAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69432ADA7DC1003A8F86 /* WeekStartsAt.swift */; };
+		1CCC69522ADA7E75003A8F86 /* LogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC694F2ADA7E74003A8F86 /* LogRepository.swift */; };
+		1CCC69532ADA7E75003A8F86 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69502ADA7E75003A8F86 /* CoreDataRepository.swift */; };
+		1CCC69542ADA7E75003A8F86 /* StampRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69512ADA7E75003A8F86 /* StampRepository.swift */; };
+		1CCC695C2ADA7E8A003A8F86 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69552ADA7E89003A8F86 /* SettingsViewModel.swift */; };
+		1CCC695D2ADA7E8A003A8F86 /* StampsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69562ADA7E8A003A8F86 /* StampsViewModel.swift */; };
+		1CCC695E2ADA7E8A003A8F86 /* AddNewStampViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69572ADA7E8A003A8F86 /* AddNewStampViewModel.swift */; };
+		1CCC695F2ADA7E8A003A8F86 /* MonthCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69582ADA7E8A003A8F86 /* MonthCalendarViewModel.swift */; };
+		1CCC69602ADA7E8A003A8F86 /* DayCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69592ADA7E8A003A8F86 /* DayCalendarViewModel.swift */; };
+		1CCC69612ADA7E8A003A8F86 /* EditStampViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC695A2ADA7E8A003A8F86 /* EditStampViewModel.swift */; };
+		1CCC69622ADA7E8A003A8F86 /* WeekCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC695B2ADA7E8A003A8F86 /* WeekCalendarViewModel.swift */; };
+		1CCC696F2ADA7EF8003A8F86 /* SummaryTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69662ADA7EF7003A8F86 /* SummaryTextFieldStyle.swift */; };
+		1CCC69702ADA7EF8003A8F86 /* InnerCellButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69672ADA7EF7003A8F86 /* InnerCellButtonStyle.swift */; };
+		1CCC69712ADA7EF8003A8F86 /* CellButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69682ADA7EF7003A8F86 /* CellButtonStyle.swift */; };
+		1CCC69722ADA7EF8003A8F86 /* OverlappingVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69692ADA7EF7003A8F86 /* OverlappingVStack.swift */; };
+		1CCC69732ADA7EF8003A8F86 /* HeaderHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC696A2ADA7EF8003A8F86 /* HeaderHStack.swift */; };
+		1CCC69742ADA7EF8003A8F86 /* OverlappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC696B2ADA7EF8003A8F86 /* OverlappingHStack.swift */; };
+		1CCC69752ADA7EF8003A8F86 /* SelectEmojiButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC696C2ADA7EF8003A8F86 /* SelectEmojiButtonStyle.swift */; };
+		1CCC69762ADA7EF8003A8F86 /* SquareButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC696D2ADA7EF8003A8F86 /* SquareButtonStyle.swift */; };
+		1CCC69772ADA7EF8003A8F86 /* DeleteButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC696E2ADA7EF8003A8F86 /* DeleteButtonStyle.swift */; };
+		1CCC697B2ADA7F09003A8F86 /* JudgeOrientationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69782ADA7F09003A8F86 /* JudgeOrientationModifier.swift */; };
+		1CCC697C2ADA7F09003A8F86 /* JudgeDeviceModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69792ADA7F09003A8F86 /* JudgeDeviceModifier.swift */; };
+		1CCC697D2ADA7F09003A8F86 /* BackableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC697A2ADA7F09003A8F86 /* BackableModifier.swift */; };
+		1CCC69802ADA7F10003A8F86 /* StampPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC697E2ADA7F10003A8F86 /* StampPickerView.swift */; };
+		1CCC69812ADA7F10003A8F86 /* StampPickerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC697F2ADA7F10003A8F86 /* StampPickerModifier.swift */; };
+		1CCC69862ADA7F18003A8F86 /* HStackedStamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69822ADA7F18003A8F86 /* HStackedStamps.swift */; };
+		1CCC69872ADA7F18003A8F86 /* VStackedStamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69832ADA7F18003A8F86 /* VStackedStamps.swift */; };
+		1CCC69882ADA7F18003A8F86 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69842ADA7F18003A8F86 /* CalendarHeaderView.swift */; };
+		1CCC69892ADA7F18003A8F86 /* InfinitePagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69852ADA7F18003A8F86 /* InfinitePagingView.swift */; };
+		1CCC698D2ADA7FA6003A8F86 /* EditStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC698A2ADA7FA6003A8F86 /* EditStampView.swift */; };
+		1CCC698E2ADA7FA6003A8F86 /* StampsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC698B2ADA7FA6003A8F86 /* StampsView.swift */; };
+		1CCC698F2ADA7FA6003A8F86 /* AddNewStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC698C2ADA7FA6003A8F86 /* AddNewStampView.swift */; };
+		1CCC69952ADA7FAD003A8F86 /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69902ADA7FAD003A8F86 /* WeekCalendarView.swift */; };
+		1CCC69962ADA7FAD003A8F86 /* VerticalWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69912ADA7FAD003A8F86 /* VerticalWeekView.swift */; };
+		1CCC69972ADA7FAD003A8F86 /* VWDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69922ADA7FAD003A8F86 /* VWDayView.swift */; };
+		1CCC69982ADA7FAD003A8F86 /* HWDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69932ADA7FAD003A8F86 /* HWDayView.swift */; };
+		1CCC69992ADA7FAD003A8F86 /* HorizontalWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69942ADA7FAD003A8F86 /* HorizontalWeekView.swift */; };
+		1CCC699C2ADA7FB5003A8F86 /* ColorDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC699A2ADA7FB5003A8F86 /* ColorDebugView.swift */; };
+		1CCC699D2ADA7FB5003A8F86 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC699B2ADA7FB5003A8F86 /* SettingsView.swift */; };
+		1CCC69A12ADA7FBD003A8F86 /* MDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC699E2ADA7FBD003A8F86 /* MDayView.swift */; };
+		1CCC69A22ADA7FBD003A8F86 /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC699F2ADA7FBD003A8F86 /* MonthCalendarView.swift */; };
+		1CCC69A32ADA7FBD003A8F86 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69A02ADA7FBD003A8F86 /* MonthView.swift */; };
+		1CCC69A62ADA7FC4003A8F86 /* DayCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69A42ADA7FC4003A8F86 /* DayCalendarView.swift */; };
+		1CCC69A72ADA7FC4003A8F86 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69A52ADA7FC4003A8F86 /* DayView.swift */; };
+		1CCC69AF2ADA7FF4003A8F86 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69A82ADA7FF3003A8F86 /* String+Extensions.swift */; };
+		1CCC69B02ADA7FF4003A8F86 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69A92ADA7FF4003A8F86 /* Color+Extensions.swift */; };
+		1CCC69B12ADA7FF4003A8F86 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69AA2ADA7FF4003A8F86 /* Array+Extensions.swift */; };
+		1CCC69B22ADA7FF4003A8F86 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69AB2ADA7FF4003A8F86 /* View+Extensions.swift */; };
+		1CCC69B32ADA7FF4003A8F86 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69AC2ADA7FF4003A8F86 /* Date+Extensions.swift */; };
+		1CCC69B42ADA7FF4003A8F86 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69AD2ADA7FF4003A8F86 /* Calendar+Extensions.swift */; };
+		1CCC69B52ADA7FF4003A8F86 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69AE2ADA7FF4003A8F86 /* Utils.swift */; };
+		1CCC69B72ADA8056003A8F86 /* StampRecordAppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69B62ADA8056003A8F86 /* StampRecordAppModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1CCC690E2ADA7AC6003A8F86 /* StampRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StampRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CCC69112ADA7AC6003A8F86 /* StampRecordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRecordApp.swift; sourceTree = "<group>"; };
+		1CCC69132ADA7AC6003A8F86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1CCC69152ADA7AC8003A8F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1CCC69182ADA7AC8003A8F86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1CCC691D2ADA7AC8003A8F86 /* StampRecord.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StampRecord.xcdatamodel; sourceTree = "<group>"; };
+		1CCC691F2ADA7AC8003A8F86 /* StampRecord.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StampRecord.entitlements; sourceTree = "<group>"; };
+		1CCC69202ADA7AC8003A8F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CCC69292ADA7C43003A8F86 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		1CCC69392ADA7DC1003A8F86 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		1CCC693A2ADA7DC1003A8F86 /* Stamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stamp.swift; sourceTree = "<group>"; };
+		1CCC693B2ADA7DC1003A8F86 /* Tab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		1CCC693C2ADA7DC1003A8F86 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		1CCC693D2ADA7DC1003A8F86 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		1CCC693E2ADA7DC1003A8F86 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		1CCC693F2ADA7DC1003A8F86 /* Weekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
+		1CCC69402ADA7DC1003A8F86 /* StampOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampOrder.swift; sourceTree = "<group>"; };
+		1CCC69412ADA7DC1003A8F86 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		1CCC69422ADA7DC1003A8F86 /* FocusedField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusedField.swift; sourceTree = "<group>"; };
+		1CCC69432ADA7DC1003A8F86 /* WeekStartsAt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekStartsAt.swift; sourceTree = "<group>"; };
+		1CCC694F2ADA7E74003A8F86 /* LogRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogRepository.swift; sourceTree = "<group>"; };
+		1CCC69502ADA7E75003A8F86 /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		1CCC69512ADA7E75003A8F86 /* StampRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampRepository.swift; sourceTree = "<group>"; };
+		1CCC69552ADA7E89003A8F86 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		1CCC69562ADA7E8A003A8F86 /* StampsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampsViewModel.swift; sourceTree = "<group>"; };
+		1CCC69572ADA7E8A003A8F86 /* AddNewStampViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewStampViewModel.swift; sourceTree = "<group>"; };
+		1CCC69582ADA7E8A003A8F86 /* MonthCalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCalendarViewModel.swift; sourceTree = "<group>"; };
+		1CCC69592ADA7E8A003A8F86 /* DayCalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCalendarViewModel.swift; sourceTree = "<group>"; };
+		1CCC695A2ADA7E8A003A8F86 /* EditStampViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStampViewModel.swift; sourceTree = "<group>"; };
+		1CCC695B2ADA7E8A003A8F86 /* WeekCalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekCalendarViewModel.swift; sourceTree = "<group>"; };
+		1CCC69662ADA7EF7003A8F86 /* SummaryTextFieldStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryTextFieldStyle.swift; sourceTree = "<group>"; };
+		1CCC69672ADA7EF7003A8F86 /* InnerCellButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InnerCellButtonStyle.swift; sourceTree = "<group>"; };
+		1CCC69682ADA7EF7003A8F86 /* CellButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellButtonStyle.swift; sourceTree = "<group>"; };
+		1CCC69692ADA7EF7003A8F86 /* OverlappingVStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlappingVStack.swift; sourceTree = "<group>"; };
+		1CCC696A2ADA7EF8003A8F86 /* HeaderHStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderHStack.swift; sourceTree = "<group>"; };
+		1CCC696B2ADA7EF8003A8F86 /* OverlappingHStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlappingHStack.swift; sourceTree = "<group>"; };
+		1CCC696C2ADA7EF8003A8F86 /* SelectEmojiButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectEmojiButtonStyle.swift; sourceTree = "<group>"; };
+		1CCC696D2ADA7EF8003A8F86 /* SquareButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareButtonStyle.swift; sourceTree = "<group>"; };
+		1CCC696E2ADA7EF8003A8F86 /* DeleteButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteButtonStyle.swift; sourceTree = "<group>"; };
+		1CCC69782ADA7F09003A8F86 /* JudgeOrientationModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JudgeOrientationModifier.swift; sourceTree = "<group>"; };
+		1CCC69792ADA7F09003A8F86 /* JudgeDeviceModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JudgeDeviceModifier.swift; sourceTree = "<group>"; };
+		1CCC697A2ADA7F09003A8F86 /* BackableModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackableModifier.swift; sourceTree = "<group>"; };
+		1CCC697E2ADA7F10003A8F86 /* StampPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampPickerView.swift; sourceTree = "<group>"; };
+		1CCC697F2ADA7F10003A8F86 /* StampPickerModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampPickerModifier.swift; sourceTree = "<group>"; };
+		1CCC69822ADA7F18003A8F86 /* HStackedStamps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HStackedStamps.swift; sourceTree = "<group>"; };
+		1CCC69832ADA7F18003A8F86 /* VStackedStamps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VStackedStamps.swift; sourceTree = "<group>"; };
+		1CCC69842ADA7F18003A8F86 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
+		1CCC69852ADA7F18003A8F86 /* InfinitePagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfinitePagingView.swift; sourceTree = "<group>"; };
+		1CCC698A2ADA7FA6003A8F86 /* EditStampView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStampView.swift; sourceTree = "<group>"; };
+		1CCC698B2ADA7FA6003A8F86 /* StampsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampsView.swift; sourceTree = "<group>"; };
+		1CCC698C2ADA7FA6003A8F86 /* AddNewStampView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewStampView.swift; sourceTree = "<group>"; };
+		1CCC69902ADA7FAD003A8F86 /* WeekCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
+		1CCC69912ADA7FAD003A8F86 /* VerticalWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalWeekView.swift; sourceTree = "<group>"; };
+		1CCC69922ADA7FAD003A8F86 /* VWDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VWDayView.swift; sourceTree = "<group>"; };
+		1CCC69932ADA7FAD003A8F86 /* HWDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HWDayView.swift; sourceTree = "<group>"; };
+		1CCC69942ADA7FAD003A8F86 /* HorizontalWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalWeekView.swift; sourceTree = "<group>"; };
+		1CCC699A2ADA7FB5003A8F86 /* ColorDebugView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDebugView.swift; sourceTree = "<group>"; };
+		1CCC699B2ADA7FB5003A8F86 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1CCC699E2ADA7FBD003A8F86 /* MDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDayView.swift; sourceTree = "<group>"; };
+		1CCC699F2ADA7FBD003A8F86 /* MonthCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
+		1CCC69A02ADA7FBD003A8F86 /* MonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		1CCC69A42ADA7FC4003A8F86 /* DayCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCalendarView.swift; sourceTree = "<group>"; };
+		1CCC69A52ADA7FC4003A8F86 /* DayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		1CCC69A82ADA7FF3003A8F86 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		1CCC69A92ADA7FF4003A8F86 /* Color+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		1CCC69AA2ADA7FF4003A8F86 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		1CCC69AB2ADA7FF4003A8F86 /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		1CCC69AC2ADA7FF4003A8F86 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		1CCC69AD2ADA7FF4003A8F86 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
+		1CCC69AE2ADA7FF4003A8F86 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		1CCC69B62ADA8056003A8F86 /* StampRecordAppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRecordAppModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1CCC690B2ADA7AC6003A8F86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CCC69282ADA7B79003A8F86 /* EmojiPalette in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1CCC69052ADA7AC6003A8F86 = {
+			isa = PBXGroup;
+			children = (
+				1CCC69102ADA7AC6003A8F86 /* StampRecord */,
+				1CCC690F2ADA7AC6003A8F86 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1CCC690F2ADA7AC6003A8F86 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC690E2ADA7AC6003A8F86 /* StampRecord.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1CCC69102ADA7AC6003A8F86 /* StampRecord */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC691F2ADA7AC8003A8F86 /* StampRecord.entitlements */,
+				1CCC69202ADA7AC8003A8F86 /* Info.plist */,
+				1CCC69292ADA7C43003A8F86 /* Localizable.xcstrings */,
+				1CCC69152ADA7AC8003A8F86 /* Assets.xcassets */,
+				1CCC691C2ADA7AC8003A8F86 /* StampRecord.xcdatamodeld */,
+				1CCC692B2ADA7CEE003A8F86 /* Data */,
+				1CCC692D2ADA7CFC003A8F86 /* Domain */,
+				1CCC692C2ADA7CF5003A8F86 /* Presentation */,
+				1CCC69302ADA7D1B003A8F86 /* Helper */,
+				1CCC69172ADA7AC8003A8F86 /* Preview Content */,
+			);
+			path = StampRecord;
+			sourceTree = "<group>";
+		};
+		1CCC69172ADA7AC8003A8F86 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69182ADA7AC8003A8F86 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1CCC692B2ADA7CEE003A8F86 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC692E2ADA7D04003A8F86 /* Entity */,
+				1CCC692F2ADA7D0A003A8F86 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1CCC692C2ADA7CF5003A8F86 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69112ADA7AC6003A8F86 /* StampRecordApp.swift */,
+				1CCC69322ADA7D29003A8F86 /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		1CCC692D2ADA7CFC003A8F86 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69B62ADA8056003A8F86 /* StampRecordAppModel.swift */,
+				1CCC69312ADA7D22003A8F86 /* ViewModel */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		1CCC692E2ADA7D04003A8F86 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC693B2ADA7DC1003A8F86 /* Tab.swift */,
+				1CCC693A2ADA7DC1003A8F86 /* Stamp.swift */,
+				1CCC693E2ADA7DC1003A8F86 /* Log.swift */,
+				1CCC693D2ADA7DC1003A8F86 /* Day.swift */,
+				1CCC693C2ADA7DC1003A8F86 /* Week.swift */,
+				1CCC69392ADA7DC1003A8F86 /* Month.swift */,
+				1CCC69422ADA7DC1003A8F86 /* FocusedField.swift */,
+				1CCC69402ADA7DC1003A8F86 /* StampOrder.swift */,
+				1CCC693F2ADA7DC1003A8F86 /* Weekday.swift */,
+				1CCC69432ADA7DC1003A8F86 /* WeekStartsAt.swift */,
+				1CCC69412ADA7DC1003A8F86 /* Period.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		1CCC692F2ADA7D0A003A8F86 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69502ADA7E75003A8F86 /* CoreDataRepository.swift */,
+				1CCC69512ADA7E75003A8F86 /* StampRepository.swift */,
+				1CCC694F2ADA7E74003A8F86 /* LogRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		1CCC69302ADA7D1B003A8F86 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69AE2ADA7FF4003A8F86 /* Utils.swift */,
+				1CCC69A82ADA7FF3003A8F86 /* String+Extensions.swift */,
+				1CCC69AA2ADA7FF4003A8F86 /* Array+Extensions.swift */,
+				1CCC69AD2ADA7FF4003A8F86 /* Calendar+Extensions.swift */,
+				1CCC69AC2ADA7FF4003A8F86 /* Date+Extensions.swift */,
+				1CCC69A92ADA7FF4003A8F86 /* Color+Extensions.swift */,
+				1CCC69AB2ADA7FF4003A8F86 /* View+Extensions.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		1CCC69312ADA7D22003A8F86 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69562ADA7E8A003A8F86 /* StampsViewModel.swift */,
+				1CCC69572ADA7E8A003A8F86 /* AddNewStampViewModel.swift */,
+				1CCC695A2ADA7E8A003A8F86 /* EditStampViewModel.swift */,
+				1CCC69592ADA7E8A003A8F86 /* DayCalendarViewModel.swift */,
+				1CCC695B2ADA7E8A003A8F86 /* WeekCalendarViewModel.swift */,
+				1CCC69582ADA7E8A003A8F86 /* MonthCalendarViewModel.swift */,
+				1CCC69552ADA7E89003A8F86 /* SettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1CCC69322ADA7D29003A8F86 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69132ADA7AC6003A8F86 /* ContentView.swift */,
+				1CCC69332ADA7D35003A8F86 /* Common */,
+				1CCC69342ADA7D3F003A8F86 /* Stamps */,
+				1CCC69352ADA7D45003A8F86 /* DayCalendar */,
+				1CCC69362ADA7D4D003A8F86 /* WeekCalendar */,
+				1CCC69372ADA7D53003A8F86 /* MonthCalendar */,
+				1CCC69382ADA7D5B003A8F86 /* Settings */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1CCC69332ADA7D35003A8F86 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69632ADA7EB5003A8F86 /* Layout&Style */,
+				1CCC69642ADA7EC4003A8F86 /* Modifier */,
+				1CCC69652ADA7ED2003A8F86 /* StampPicker */,
+				1CCC69842ADA7F18003A8F86 /* CalendarHeaderView.swift */,
+				1CCC69852ADA7F18003A8F86 /* InfinitePagingView.swift */,
+				1CCC69822ADA7F18003A8F86 /* HStackedStamps.swift */,
+				1CCC69832ADA7F18003A8F86 /* VStackedStamps.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1CCC69342ADA7D3F003A8F86 /* Stamps */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC698B2ADA7FA6003A8F86 /* StampsView.swift */,
+				1CCC698C2ADA7FA6003A8F86 /* AddNewStampView.swift */,
+				1CCC698A2ADA7FA6003A8F86 /* EditStampView.swift */,
+			);
+			path = Stamps;
+			sourceTree = "<group>";
+		};
+		1CCC69352ADA7D45003A8F86 /* DayCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69A42ADA7FC4003A8F86 /* DayCalendarView.swift */,
+				1CCC69A52ADA7FC4003A8F86 /* DayView.swift */,
+			);
+			path = DayCalendar;
+			sourceTree = "<group>";
+		};
+		1CCC69362ADA7D4D003A8F86 /* WeekCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69902ADA7FAD003A8F86 /* WeekCalendarView.swift */,
+				1CCC69942ADA7FAD003A8F86 /* HorizontalWeekView.swift */,
+				1CCC69932ADA7FAD003A8F86 /* HWDayView.swift */,
+				1CCC69912ADA7FAD003A8F86 /* VerticalWeekView.swift */,
+				1CCC69922ADA7FAD003A8F86 /* VWDayView.swift */,
+			);
+			path = WeekCalendar;
+			sourceTree = "<group>";
+		};
+		1CCC69372ADA7D53003A8F86 /* MonthCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC699F2ADA7FBD003A8F86 /* MonthCalendarView.swift */,
+				1CCC69A02ADA7FBD003A8F86 /* MonthView.swift */,
+				1CCC699E2ADA7FBD003A8F86 /* MDayView.swift */,
+			);
+			path = MonthCalendar;
+			sourceTree = "<group>";
+		};
+		1CCC69382ADA7D5B003A8F86 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC699B2ADA7FB5003A8F86 /* SettingsView.swift */,
+				1CCC699A2ADA7FB5003A8F86 /* ColorDebugView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		1CCC69632ADA7EB5003A8F86 /* Layout&Style */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC696A2ADA7EF8003A8F86 /* HeaderHStack.swift */,
+				1CCC696B2ADA7EF8003A8F86 /* OverlappingHStack.swift */,
+				1CCC69692ADA7EF7003A8F86 /* OverlappingVStack.swift */,
+				1CCC696D2ADA7EF8003A8F86 /* SquareButtonStyle.swift */,
+				1CCC696C2ADA7EF8003A8F86 /* SelectEmojiButtonStyle.swift */,
+				1CCC696E2ADA7EF8003A8F86 /* DeleteButtonStyle.swift */,
+				1CCC69682ADA7EF7003A8F86 /* CellButtonStyle.swift */,
+				1CCC69672ADA7EF7003A8F86 /* InnerCellButtonStyle.swift */,
+				1CCC69662ADA7EF7003A8F86 /* SummaryTextFieldStyle.swift */,
+			);
+			path = "Layout&Style";
+			sourceTree = "<group>";
+		};
+		1CCC69642ADA7EC4003A8F86 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69792ADA7F09003A8F86 /* JudgeDeviceModifier.swift */,
+				1CCC69782ADA7F09003A8F86 /* JudgeOrientationModifier.swift */,
+				1CCC697A2ADA7F09003A8F86 /* BackableModifier.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
+		1CCC69652ADA7ED2003A8F86 /* StampPicker */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC697E2ADA7F10003A8F86 /* StampPickerView.swift */,
+				1CCC697F2ADA7F10003A8F86 /* StampPickerModifier.swift */,
+			);
+			path = StampPicker;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1CCC690D2ADA7AC6003A8F86 /* StampRecord */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CCC69232ADA7AC8003A8F86 /* Build configuration list for PBXNativeTarget "StampRecord" */;
+			buildPhases = (
+				1CCC690A2ADA7AC6003A8F86 /* Sources */,
+				1CCC690B2ADA7AC6003A8F86 /* Frameworks */,
+				1CCC690C2ADA7AC6003A8F86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StampRecord;
+			packageProductDependencies = (
+				1CCC69272ADA7B79003A8F86 /* EmojiPalette */,
+			);
+			productName = StampRecord;
+			productReference = 1CCC690E2ADA7AC6003A8F86 /* StampRecord.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1CCC69062ADA7AC6003A8F86 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					1CCC690D2ADA7AC6003A8F86 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 1CCC69092ADA7AC6003A8F86 /* Build configuration list for PBXProject "StampRecord" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1CCC69052ADA7AC6003A8F86;
+			packageReferences = (
+				1CCC69262ADA7B79003A8F86 /* XCRemoteSwiftPackageReference "EmojiPalette" */,
+			);
+			productRefGroup = 1CCC690F2ADA7AC6003A8F86 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1CCC690D2ADA7AC6003A8F86 /* StampRecord */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1CCC690C2ADA7AC6003A8F86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CCC69192ADA7AC8003A8F86 /* Preview Assets.xcassets in Resources */,
+				1CCC69162ADA7AC8003A8F86 /* Assets.xcassets in Resources */,
+				1CCC692A2ADA7C43003A8F86 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1CCC690A2ADA7AC6003A8F86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CCC69702ADA7EF8003A8F86 /* InnerCellButtonStyle.swift in Sources */,
+				1CCC69442ADA7DC1003A8F86 /* Month.swift in Sources */,
+				1CCC695D2ADA7E8A003A8F86 /* StampsViewModel.swift in Sources */,
+				1CCC691E2ADA7AC8003A8F86 /* StampRecord.xcdatamodeld in Sources */,
+				1CCC69872ADA7F18003A8F86 /* VStackedStamps.swift in Sources */,
+				1CCC698F2ADA7FA6003A8F86 /* AddNewStampView.swift in Sources */,
+				1CCC69492ADA7DC1003A8F86 /* Log.swift in Sources */,
+				1CCC69722ADA7EF8003A8F86 /* OverlappingVStack.swift in Sources */,
+				1CCC69732ADA7EF8003A8F86 /* HeaderHStack.swift in Sources */,
+				1CCC69B32ADA7FF4003A8F86 /* Date+Extensions.swift in Sources */,
+				1CCC69482ADA7DC1003A8F86 /* Day.swift in Sources */,
+				1CCC69752ADA7EF8003A8F86 /* SelectEmojiButtonStyle.swift in Sources */,
+				1CCC69A62ADA7FC4003A8F86 /* DayCalendarView.swift in Sources */,
+				1CCC69A32ADA7FBD003A8F86 /* MonthView.swift in Sources */,
+				1CCC69772ADA7EF8003A8F86 /* DeleteButtonStyle.swift in Sources */,
+				1CCC694B2ADA7DC1003A8F86 /* StampOrder.swift in Sources */,
+				1CCC69B22ADA7FF4003A8F86 /* View+Extensions.swift in Sources */,
+				1CCC69962ADA7FAD003A8F86 /* VerticalWeekView.swift in Sources */,
+				1CCC694E2ADA7DC1003A8F86 /* WeekStartsAt.swift in Sources */,
+				1CCC69532ADA7E75003A8F86 /* CoreDataRepository.swift in Sources */,
+				1CCC69972ADA7FAD003A8F86 /* VWDayView.swift in Sources */,
+				1CCC69622ADA7E8A003A8F86 /* WeekCalendarViewModel.swift in Sources */,
+				1CCC69992ADA7FAD003A8F86 /* HorizontalWeekView.swift in Sources */,
+				1CCC69B42ADA7FF4003A8F86 /* Calendar+Extensions.swift in Sources */,
+				1CCC69A22ADA7FBD003A8F86 /* MonthCalendarView.swift in Sources */,
+				1CCC698D2ADA7FA6003A8F86 /* EditStampView.swift in Sources */,
+				1CCC69522ADA7E75003A8F86 /* LogRepository.swift in Sources */,
+				1CCC69AF2ADA7FF4003A8F86 /* String+Extensions.swift in Sources */,
+				1CCC69882ADA7F18003A8F86 /* CalendarHeaderView.swift in Sources */,
+				1CCC695E2ADA7E8A003A8F86 /* AddNewStampViewModel.swift in Sources */,
+				1CCC69472ADA7DC1003A8F86 /* Week.swift in Sources */,
+				1CCC69802ADA7F10003A8F86 /* StampPickerView.swift in Sources */,
+				1CCC699D2ADA7FB5003A8F86 /* SettingsView.swift in Sources */,
+				1CCC69862ADA7F18003A8F86 /* HStackedStamps.swift in Sources */,
+				1CCC69B12ADA7FF4003A8F86 /* Array+Extensions.swift in Sources */,
+				1CCC69762ADA7EF8003A8F86 /* SquareButtonStyle.swift in Sources */,
+				1CCC69892ADA7F18003A8F86 /* InfinitePagingView.swift in Sources */,
+				1CCC69142ADA7AC6003A8F86 /* ContentView.swift in Sources */,
+				1CCC694A2ADA7DC1003A8F86 /* Weekday.swift in Sources */,
+				1CCC69602ADA7E8A003A8F86 /* DayCalendarViewModel.swift in Sources */,
+				1CCC697D2ADA7F09003A8F86 /* BackableModifier.swift in Sources */,
+				1CCC69982ADA7FAD003A8F86 /* HWDayView.swift in Sources */,
+				1CCC69A72ADA7FC4003A8F86 /* DayView.swift in Sources */,
+				1CCC697C2ADA7F09003A8F86 /* JudgeDeviceModifier.swift in Sources */,
+				1CCC697B2ADA7F09003A8F86 /* JudgeOrientationModifier.swift in Sources */,
+				1CCC69462ADA7DC1003A8F86 /* Tab.swift in Sources */,
+				1CCC69542ADA7E75003A8F86 /* StampRepository.swift in Sources */,
+				1CCC696F2ADA7EF8003A8F86 /* SummaryTextFieldStyle.swift in Sources */,
+				1CCC69712ADA7EF8003A8F86 /* CellButtonStyle.swift in Sources */,
+				1CCC698E2ADA7FA6003A8F86 /* StampsView.swift in Sources */,
+				1CCC69B02ADA7FF4003A8F86 /* Color+Extensions.swift in Sources */,
+				1CCC69612ADA7E8A003A8F86 /* EditStampViewModel.swift in Sources */,
+				1CCC694D2ADA7DC1003A8F86 /* FocusedField.swift in Sources */,
+				1CCC695F2ADA7E8A003A8F86 /* MonthCalendarViewModel.swift in Sources */,
+				1CCC69742ADA7EF8003A8F86 /* OverlappingHStack.swift in Sources */,
+				1CCC69B52ADA7FF4003A8F86 /* Utils.swift in Sources */,
+				1CCC69952ADA7FAD003A8F86 /* WeekCalendarView.swift in Sources */,
+				1CCC699C2ADA7FB5003A8F86 /* ColorDebugView.swift in Sources */,
+				1CCC69122ADA7AC6003A8F86 /* StampRecordApp.swift in Sources */,
+				1CCC69812ADA7F10003A8F86 /* StampPickerModifier.swift in Sources */,
+				1CCC694C2ADA7DC1003A8F86 /* Period.swift in Sources */,
+				1CCC69452ADA7DC1003A8F86 /* Stamp.swift in Sources */,
+				1CCC69B72ADA8056003A8F86 /* StampRecordAppModel.swift in Sources */,
+				1CCC69A12ADA7FBD003A8F86 /* MDayView.swift in Sources */,
+				1CCC695C2ADA7E8A003A8F86 /* SettingsViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1CCC69212ADA7AC8003A8F86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1CCC69222ADA7AC8003A8F86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1CCC69242ADA7AC8003A8F86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StampRecord/StampRecord.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEVELOPMENT_ASSET_PATHS = "\"StampRecord/Preview Content\"";
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StampRecord/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.StampRecord;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1CCC69252ADA7AC8003A8F86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StampRecord/StampRecord.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEVELOPMENT_ASSET_PATHS = "\"StampRecord/Preview Content\"";
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StampRecord/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.StampRecord;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1CCC69092ADA7AC6003A8F86 /* Build configuration list for PBXProject "StampRecord" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CCC69212ADA7AC8003A8F86 /* Debug */,
+				1CCC69222ADA7AC8003A8F86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1CCC69232ADA7AC8003A8F86 /* Build configuration list for PBXNativeTarget "StampRecord" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CCC69242ADA7AC8003A8F86 /* Debug */,
+				1CCC69252ADA7AC8003A8F86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1CCC69262ADA7B79003A8F86 /* XCRemoteSwiftPackageReference "EmojiPalette" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kyome22/EmojiPalette.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1CCC69272ADA7B79003A8F86 /* EmojiPalette */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CCC69262ADA7B79003A8F86 /* XCRemoteSwiftPackageReference "EmojiPalette" */;
+			productName = EmojiPalette;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		1CCC691C2ADA7AC8003A8F86 /* StampRecord.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1CCC691D2ADA7AC8003A8F86 /* StampRecord.xcdatamodel */,
+			);
+			currentVersion = 1CCC691D2ADA7AC8003A8F86 /* StampRecord.xcdatamodel */;
+			path = StampRecord.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1CCC69062ADA7AC6003A8F86 /* Project object */;
+}
