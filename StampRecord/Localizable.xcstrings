@@ -8,6 +8,12 @@
             "state" : "translated",
             "value" : "Add"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加"
+          }
         }
       }
     },
@@ -19,6 +25,12 @@
             "state" : "translated",
             "value" : "Ascending"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "昇順"
+          }
         }
       }
     },
@@ -28,6 +40,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancel"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
           }
         }
       }
@@ -40,6 +58,12 @@
             "state" : "translated",
             "value" : "Created Date"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "作成日"
+          }
         }
       }
     },
@@ -49,6 +73,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Day"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日"
           }
         }
       }
@@ -60,6 +90,12 @@
             "state" : "translated",
             "value" : "Debug"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバッグ"
+          }
         }
       }
     },
@@ -69,6 +105,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Default Period"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デフォルトの期間"
           }
         }
       }
@@ -80,6 +122,12 @@
             "state" : "translated",
             "value" : "Deleting a stamp will remove it from all records on your calendar."
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタンプを削除すると、カレンダー上のすべてのレコードからスタンプが削除されます。"
+          }
         }
       }
     },
@@ -89,6 +137,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete Stamp"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタンプを削除"
           }
         }
       }
@@ -101,6 +155,12 @@
             "state" : "translated",
             "value" : "Descending"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "降順"
+          }
         }
       }
     },
@@ -111,12 +171,24 @@
             "state" : "translated",
             "value" : "Developer"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開発者"
+          }
         }
       }
     },
     "developerName" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takuto Nakamura"
+          }
+        },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Takuto Nakamura"
@@ -131,6 +203,12 @@
             "state" : "translated",
             "value" : "Done"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了"
+          }
         }
       }
     },
@@ -141,6 +219,12 @@
             "state" : "translated",
             "value" : "Edit Stamp"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタンプを編集"
+          }
         }
       }
     },
@@ -150,6 +234,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Input summary (required)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "概要を入力（必須）"
           }
         }
       }
@@ -162,6 +252,12 @@
             "state" : "translated",
             "value" : "Monday"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "月曜日"
+          }
         }
       }
     },
@@ -171,6 +267,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Month"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "月"
           }
         }
       }
@@ -182,6 +284,12 @@
             "state" : "translated",
             "value" : "New Stamp"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新規スタンプ"
+          }
         }
       }
     },
@@ -191,6 +299,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No Stamps"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタンプなし"
           }
         }
       }
@@ -202,6 +316,12 @@
             "state" : "translated",
             "value" : "Open"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開く"
+          }
         }
       }
     },
@@ -212,6 +332,12 @@
             "state" : "translated",
             "value" : "This emoji is already used."
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この絵文字はすでに使われています。"
+          }
         }
       }
     },
@@ -221,6 +347,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Product Page"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロダクトページ"
           }
         }
       }
@@ -233,6 +365,12 @@
             "state" : "translated",
             "value" : "https://kyome.io/stamprecord/index.html?lang=en"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://kyome.io/stamprecord/index.html?lang=ja"
+          }
         }
       }
     },
@@ -242,6 +380,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Remove"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取り消す"
           }
         }
       }
@@ -253,6 +397,12 @@
             "state" : "translated",
             "value" : "Remove Stamp"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタンプを取り消す"
+          }
         }
       }
     },
@@ -263,6 +413,12 @@
             "state" : "translated",
             "value" : "Select an Emoji"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "絵文字を選択"
+          }
         }
       }
     },
@@ -272,6 +428,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
           }
         }
       }
@@ -284,6 +446,12 @@
             "state" : "translated",
             "value" : "Sort"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "整列"
+          }
         }
       }
     },
@@ -294,6 +462,12 @@
             "state" : "translated",
             "value" : "Sort By"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "項目"
+          }
         }
       }
     },
@@ -302,7 +476,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "sortIn"
+            "value" : "Sort In"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "並び順"
           }
         }
       }
@@ -314,6 +494,12 @@
             "state" : "translated",
             "value" : "Stamps"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタンプ"
+          }
         }
       }
     },
@@ -323,6 +509,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Summary"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "概要"
           }
         }
       }
@@ -335,6 +527,12 @@
             "state" : "translated",
             "value" : "Sunday"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日曜日"
+          }
         }
       }
     },
@@ -344,6 +542,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Support"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サポート"
           }
         }
       }
@@ -355,6 +559,12 @@
             "state" : "translated",
             "value" : "Unable to Add Stamp"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタンプを追加できません"
+          }
         }
       }
     },
@@ -364,6 +574,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unable to Overwrite and Save Stamp"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタンプの上書きと保存ができません"
           }
         }
       }
@@ -375,6 +591,12 @@
             "state" : "translated",
             "value" : "Version"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バージョン"
+          }
         }
       }
     },
@@ -385,6 +607,12 @@
             "state" : "translated",
             "value" : "Week"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "週"
+          }
         }
       }
     },
@@ -394,6 +622,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Week Starts at"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "週のはじまり"
           }
         }
       }
