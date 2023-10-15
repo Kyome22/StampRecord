@@ -155,8 +155,6 @@ extension PreviewMock {
         @Published var selectedDayID: UUID? = nil
         @Published var showStampPicker: Bool = false
         @Published var stamps: [Stamp] = []
-        @Published var showErrorAlert: Bool = false
-        @Published var srError: SRError? = nil
 
         init(_ stampRepository: SR, _ logRepository: LR) {}
         init() {
