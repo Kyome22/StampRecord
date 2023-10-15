@@ -29,7 +29,7 @@ final class SettingsViewModelImpl: SettingsViewModel {
     }
 
     func openProductPage() {
-        if let url = URL(string: "productPageURL".localized) {
+        if let url = URL(string: String(localized: "productPageURL")) {
             UIApplication.shared.open(url)
         }
     }

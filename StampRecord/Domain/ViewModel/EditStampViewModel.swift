@@ -12,28 +12,30 @@ protocol EditStampViewModel: ObservableObject {
     var emoji: String { get set }
     var summary: String { get set }
     var showEmojiPicker: Bool { get set }
-    var showOverlappedError: Bool { get set }
     var showDeleteConfirmation: Bool { get set }
+    var showErrorAlert: Bool { get set }
+    var srError: SRError? { get set }
     var disabledDone: Bool { get }
 
     init(original: Stamp,
-         updateStampHandler: @escaping (Stamp, String, String) -> Bool,
-         deleteStampHandler: @escaping (Stamp) -> Void)
+         updateStampHandler: @escaping (Stamp, String, String) throws -> Void,
+         deleteStampHandler: @escaping (Stamp) throws -> Void)
 
-    func updateStamp() -> Bool
-    func deleteStamp()
+    func updateStamp(callback: @escaping () -> Void)
+    func deleteStamp(callback: @escaping () -> Void)
 }
 
 final class EditStampViewModelImpl: EditStampViewModel {
     @Published var emoji: String = ""
     @Published var summary: String = ""
     @Published var showEmojiPicker: Bool = false
-    @Published var showOverlappedError: Bool = false
     @Published var showDeleteConfirmation: Bool = false
+    @Published var showErrorAlert: Bool = false
+    @Published var srError: SRError? = nil
 
     private let original: Stamp
-    private let updateStampHandler: (Stamp, String, String) -> Bool
-    private let deleteStampHandler: (Stamp) -> Void
+    private let updateStampHandler: (Stamp, String, String) throws -> Void
+    private let deleteStampHandler: (Stamp) throws -> Void
 
     var disabledDone: Bool {
         if emoji.isEmpty || summary.isEmpty {
@@ -47,8 +49,8 @@ final class EditStampViewModelImpl: EditStampViewModel {
 
     init(
         original: Stamp,
-        updateStampHandler: @escaping (Stamp, String, String) -> Bool,
-        deleteStampHandler: @escaping (Stamp) -> Void
+        updateStampHandler: @escaping (Stamp, String, String) throws -> Void,
+        deleteStampHandler: @escaping (Stamp) throws -> Void
     ) {
         self.original = original
         self.updateStampHandler = updateStampHandler
@@ -57,14 +59,24 @@ final class EditStampViewModelImpl: EditStampViewModel {
         summary = original.summary
     }
 
-    func updateStamp() -> Bool {
-        let result = updateStampHandler(original, emoji, summary)
-        showOverlappedError = !result
-        return result
+    func updateStamp(callback: @escaping () -> Void) {
+        do {
+            try updateStampHandler(original, emoji, summary)
+            callback()
+        } catch let error as SRError {
+            srError = error
+            showErrorAlert = true
+        } catch {}
     }
 
-    func deleteStamp() {
-        deleteStampHandler(original)
+    func deleteStamp(callback: @escaping () -> Void) {
+        do {
+            try deleteStampHandler(original)
+            callback()
+        } catch let error as SRError {
+            srError = error
+            showErrorAlert = true
+        } catch {}
     }
 }
 
@@ -74,16 +86,17 @@ extension PreviewMock {
         @Published var emoji: String = ""
         @Published var summary: String = ""
         @Published var showEmojiPicker: Bool = false
-        @Published var showOverlappedError: Bool = false
         @Published var showDeleteConfirmation: Bool = false
+        @Published var showErrorAlert: Bool = false
+        @Published var srError: SRError? = nil
         let disabledDone: Bool = false
 
         init(original: Stamp,
-             updateStampHandler: @escaping (Stamp, String, String) -> Bool,
-             deleteStampHandler: @escaping (Stamp) -> Void) {}
+             updateStampHandler: @escaping (Stamp, String, String) throws -> Void,
+             deleteStampHandler: @escaping (Stamp) throws -> Void) {}
         init() {}
 
-        func updateStamp() -> Bool { return true }
-        func deleteStamp() {}
+        func updateStamp(callback: @escaping () -> Void) {}
+        func deleteStamp(callback: @escaping () -> Void) {}
     }
 }

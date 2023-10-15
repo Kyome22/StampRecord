@@ -26,7 +26,7 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
                     viewModel.setDayList()
                 },
                 selectStampHandler: { stamp in
-                    viewModel.putStamp(stamp: stamp)
+                    try viewModel.putStamp(stamp: stamp)
                     viewModel.showStampPicker = false
                 }
             )
@@ -40,7 +40,7 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
                         isPhone: isPhone,
                         day: day,
                         removeStampHandler: { day, index in
-                            viewModel.removeStamp(day: day, index: index)
+                            try viewModel.removeStamp(day: day, index: index)
                         }
                     )
                 }

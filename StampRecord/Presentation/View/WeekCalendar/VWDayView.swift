@@ -12,7 +12,7 @@ struct VWDayView: View {
     @Binding var isSelected: Bool
     let day: Day
     let selectHandler: () -> Void
-    let removeStampHandler: (Day, Int) -> Void
+    let removeStampHandler: (Day, Int) throws -> Void
 
     var body: some View {
         VStack(spacing: 0) {
@@ -30,7 +30,7 @@ struct VWDayView: View {
                 .padding(.horizontal, 4)
             if let log = day.log {
                 VStackedStamps(stamps: log.stamps) { index in
-                    removeStampHandler(day, index)
+                    try removeStampHandler(day, index)
                 }
             } else {
                 Spacer()

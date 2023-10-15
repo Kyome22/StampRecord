@@ -16,9 +16,9 @@ protocol StampRepository: AnyObject {
 
     init(context: NSManagedObjectContext)
 
-    func addStamp(_ emoji: String, _ summary: String) -> Bool
-    func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) -> Bool
-    func deleteStamp(_ stamp: Stamp)
+    func addStamp(_ emoji: String, _ summary: String) throws
+    func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) throws
+    func deleteStamp(_ stamp: Stamp) throws
 }
 
 final class StampRepositoryImpl: StampRepository {
@@ -44,7 +44,12 @@ final class StampRepositoryImpl: StampRepository {
     }
 
     private func fetchManagedStamps() throws {
-        managedStamps = try context.fetch(ManagedStamp.fetchRequest())
+        do {
+            managedStamps = try context.fetch(ManagedStamp.fetchRequest())
+        } catch {
+            logput(error.localizedDescription)
+            throw SRError.database(.failedFetchData)
+        }
         stampsSubject.value = managedStamps.compactMap { managedStamp in
             guard let id = managedStamp.id,
                   let emoji = managedStamp.emoji,
@@ -56,75 +61,56 @@ final class StampRepositoryImpl: StampRepository {
         }
     }
 
-    func addStamp(_ emoji: String, _ summary: String) -> Bool {
+    private func save() throws {
+        do {
+            try context.save()
+        } catch {
+            logput(error.localizedDescription)
+            throw SRError.database(.failedUpdateDB)
+        }
+    }
+
+    func addStamp(_ emoji: String, _ summary: String) throws {
         if managedStamps.contains(where: { $0.emoji == emoji }) {
-            return false
+            throw SRError.stamp(.emojiOverrapping, .add)
+        }
+        guard summary.count <= 20 else {
+            throw SRError.stamp(.summaryExceeds, .add)
         }
         let newStamp = ManagedStamp(context: context)
         newStamp.id = UUID()
         newStamp.emoji = emoji
         newStamp.summary = summary
         newStamp.createdDate = Date.now
-        do {
-            try context.save()
-            try fetchManagedStamps()
-            return true
-        } catch {
-            logput(error.localizedDescription)
-            return false
-        }
+        try save()
+        try fetchManagedStamps()
     }
 
-    func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) -> Bool {
+    func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) throws {
         guard let index = managedStamps.firstIndex(where: { $0.id == stamp.id }) else {
-            return false
+            throw SRError.stamp(.notFoundDataID, .edit)
         }
         if managedStamps[index].emoji != emoji,
            managedStamps.contains(where: { $0.emoji == emoji }) {
-            return false
+            throw SRError.stamp(.emojiOverrapping, .edit)
+        }
+        guard summary.count <= 20 else {
+            throw SRError.stamp(.summaryExceeds, .edit)
         }
         managedStamps[index].emoji = emoji
         managedStamps[index].summary = summary
-        do {
-            try context.save()
-            try fetchManagedStamps()
-            return true
-        } catch {
-            logput(error.localizedDescription)
-            return false
-        }
+        try save()
+        try fetchManagedStamps()
     }
 
-    func deleteStamp(_ stamp: Stamp) {
+    func deleteStamp(_ stamp: Stamp) throws {
         guard let index = managedStamps.firstIndex(where: { $0.id == stamp.id }) else {
-            return
+            throw SRError.stamp(.notFoundDataID, .delete)
         }
         context.delete(managedStamps[index])
-        do {
-            try context.save()
-            try fetchManagedStamps()
-        } catch {
-            logput(error.localizedDescription)
-        }
+        try save()
+        try fetchManagedStamps()
     }
-
-    //  private func cleanManagedStamps() {
-    //      var flag: Bool = false
-    //      managedStamps.forEach { managedStamp in
-    //          if managedStamp.emoji == nil || managedStamp.summary == nil || managedStamp.createdDate == nil {
-    //              flag = true
-    //              context.delete(managedStamp)
-    //          }
-    //      }
-    //      if flag {
-    //          do {
-    //              try context.save()
-    //              try fetchManagedStamps()
-    //          } catch {
-    //              logput(error.localizedDescription)
-    //          }
-    //      }
-    //  }
 }
 
 // MARK: - Preview Mock
@@ -138,8 +124,8 @@ extension PreviewMock {
         init(context: NSManagedObjectContext) {}
         init() {}
 
-        func addStamp(_ emoji: String, _ summary: String) -> Bool { return true }
-        func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) -> Bool { return true }
-        func deleteStamp(_ stamp: Stamp) {}
+        func addStamp(_ emoji: String, _ summary: String) throws {}
+        func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) throws {}
+        func deleteStamp(_ stamp: Stamp) throws {}
     }
 }

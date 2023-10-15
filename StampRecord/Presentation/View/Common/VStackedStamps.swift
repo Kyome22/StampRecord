@@ -9,8 +9,10 @@ StampRecord
 import SwiftUI
 
 struct VStackedStamps: View {
+    @State var showErrorAlert: Bool = false
+    @State var srError: SRError? = nil
     let stamps: [Stamp]
-    let removeStampHandler: (Int) -> Void
+    let removeStampHandler: (Int) throws -> Void
 
     var body: some View {
         OverlappingVStack(alignment: .top, spacing: 4) {
@@ -26,7 +28,12 @@ struct VStackedStamps: View {
             Section("removeStamp") {
                 ForEach(stamps.indices, id: \.self) { index in
                     Button(role: .destructive) {
-                        removeStampHandler(index)
+                        do {
+                            try removeStampHandler(index)
+                        } catch let error as SRError {
+                            srError = error
+                            showErrorAlert = true
+                        } catch {}
                     } label: {
                         Label {
                             Text(verbatim: "\(stamps[index].emoji) \(stamps[index].summary)")
@@ -37,6 +44,7 @@ struct VStackedStamps: View {
                 }
             }
         }
+        .alertSRError(isPresented: $showErrorAlert, srError: srError)
     }
 }
 

@@ -12,10 +12,6 @@ extension String {
     static let weekStartsAt = "weekStartsAt"
     static let defaultPeriod = "defaultPeriod"
 
-    var localized: String {
-        return NSLocalizedString(self, comment: self)
-    }
-
     var bundleString: String {
         guard let str = Bundle.main.object(forInfoDictionaryKey: self) as? String else {
             fatalError("bundleString key is not found.")

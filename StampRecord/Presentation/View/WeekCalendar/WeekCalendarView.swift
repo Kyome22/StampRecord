@@ -26,7 +26,7 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                     viewModel.setWeekList()
                 },
                 selectStampHandler: { stamp in
-                    viewModel.putStamp(stamp: stamp)
+                    try viewModel.putStamp(stamp: stamp)
                     viewModel.showStampPicker = false
                 }
             )
@@ -42,7 +42,7 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                             weekdays: viewModel.weekStartsAt.weekdays,
                             days: week.days,
                             removeStampHandler: { day, index in
-                                viewModel.removeStamp(day: day, index: index)
+                                try viewModel.removeStamp(day: day, index: index)
                             }
                         )
                     } else {
@@ -51,7 +51,7 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                             weekdays: viewModel.weekStartsAt.weekdays,
                             days: week.days,
                             removeStampHandler: { day, index in
-                                viewModel.removeStamp(day: day, index: index)
+                                try viewModel.removeStamp(day: day, index: index)
                             }
                         )
                     }

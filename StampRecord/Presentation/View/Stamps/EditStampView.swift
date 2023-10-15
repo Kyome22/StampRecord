@@ -24,19 +24,11 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                 Button("done") {
-                    if viewModel.updateStamp() {
+                    viewModel.updateStamp {
                         dismiss()
                     }
                 }
                 .disabled(viewModel.disabledDone)
-                .alert(
-                    "unableSaveStamp",
-                    isPresented: $viewModel.showOverlappedError,
-                    actions: {},
-                    message: {
-                        Text("overlappedErrorMessage")
-                    }
-                )
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
@@ -55,15 +47,9 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                     VStack(alignment: .leading, spacing: 16) {
                         Text("summary")
                             .font(.headline)
-                        TextField(
-                            "inputSummary",
-                            text: Binding<String>(
-                                get: { viewModel.summary },
-                                set: { viewModel.summary = String($0.prefix(20)).trimmingCharacters(in: .whitespaces) }
-                            )
-                        )
-                        .textFieldStyle(.summary)
-                        .focused($focusedField, equals: .title)
+                        TextField("inputSummary", text: $viewModel.summary)
+                            .textFieldStyle(.summary)
+                            .focused($focusedField, equals: .title)
                     }
                 }
                 Button(role: .destructive) {
@@ -82,8 +68,9 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                     titleVisibility: .visible,
                     actions: {
                         Button(role: .destructive) {
-                            viewModel.deleteStamp()
-                            dismiss()
+                            viewModel.deleteStamp {
+                                dismiss()
+                            }
                         } label: {
                             Text("deleteStamp")
                         }
@@ -98,6 +85,8 @@ struct EditStampView<EVM: EditStampViewModel>: View {
         .onTapGesture {
             focusedField = nil
         }
+        .alertSRError(isPresented: $viewModel.showErrorAlert,
+                      srError: viewModel.srError)
     }
 }
 

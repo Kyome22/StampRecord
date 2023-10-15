@@ -76,6 +76,7 @@
 		1CCC69B42ADA7FF4003A8F86 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69AD2ADA7FF4003A8F86 /* Calendar+Extensions.swift */; };
 		1CCC69B52ADA7FF4003A8F86 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69AE2ADA7FF4003A8F86 /* Utils.swift */; };
 		1CCC69B72ADA8056003A8F86 /* StampRecordAppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69B62ADA8056003A8F86 /* StampRecordAppModel.swift */; };
+		1CCC69B92ADB8FDA003A8F86 /* SRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69B82ADB8FDA003A8F86 /* SRError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +151,7 @@
 		1CCC69AD2ADA7FF4003A8F86 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		1CCC69AE2ADA7FF4003A8F86 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1CCC69B62ADA8056003A8F86 /* StampRecordAppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRecordAppModel.swift; sourceTree = "<group>"; };
+		1CCC69B82ADB8FDA003A8F86 /* SRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 		1CCC692E2ADA7D04003A8F86 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				1CCC69B82ADB8FDA003A8F86 /* SRError.swift */,
 				1CCC693B2ADA7DC1003A8F86 /* Tab.swift */,
 				1CCC693A2ADA7DC1003A8F86 /* Stamp.swift */,
 				1CCC693E2ADA7DC1003A8F86 /* Log.swift */,
@@ -504,6 +507,7 @@
 				1CCC69992ADA7FAD003A8F86 /* HorizontalWeekView.swift in Sources */,
 				1CCC69B42ADA7FF4003A8F86 /* Calendar+Extensions.swift in Sources */,
 				1CCC69A22ADA7FBD003A8F86 /* MonthCalendarView.swift in Sources */,
+				1CCC69B92ADB8FDA003A8F86 /* SRError.swift in Sources */,
 				1CCC698D2ADA7FA6003A8F86 /* EditStampView.swift in Sources */,
 				1CCC69522ADA7E75003A8F86 /* LogRepository.swift in Sources */,
 				1CCC69AF2ADA7FF4003A8F86 /* String+Extensions.swift in Sources */,

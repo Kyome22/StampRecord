@@ -14,7 +14,7 @@ struct MDayView: View {
     let orientation: DeviceOrientation
     let day: Day
     let selectHandler: () -> Void
-    let removeStampHandler: (Day, Int) -> Void
+    let removeStampHandler: (Day, Int) throws -> Void
 
     var body: some View {
         VStack(spacing: 0) {
@@ -34,11 +34,11 @@ struct MDayView: View {
                 switch orientation {
                 case .portrait:
                     VStackedStamps(stamps: log.stamps) { index in
-                        removeStampHandler(day, index)
+                        try removeStampHandler(day, index)
                     }
                 case .landscape:
                     HStackedStamps(stamps: log.stamps) { index in
-                        removeStampHandler(day, index)
+                        try removeStampHandler(day, index)
                     }
                 }
             } else {

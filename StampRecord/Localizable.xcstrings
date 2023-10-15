@@ -228,6 +228,90 @@
         }
       }
     },
+    "emojiOverlappingErrorMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This emoji is already used."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この絵文字はすでに使われています。"
+          }
+        }
+      }
+    },
+    "empty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空っぽ"
+          }
+        }
+      }
+    },
+    "failedDBErrorMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please review your iCloud settings and your device's network connection."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloudの設定と端末のネットワーク接続を確認してください。"
+          }
+        }
+      }
+    },
+    "failedFetchDataErrorTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to fetch data."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データの取得に失敗しました。"
+          }
+        }
+      }
+    },
+    "failedUpdateDBErrorTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to update the database."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データベースの更新に失敗しました。"
+          }
+        }
+      }
+    },
     "inputSummary" : {
       "localizations" : {
         "en" : {
@@ -309,6 +393,23 @@
         }
       }
     },
+    "notFoundDataIDErrorMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The data ID to be updated could not be found."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新対象のデータIDが見つかりませんでした。"
+          }
+        }
+      }
+    },
     "open" : {
       "localizations" : {
         "en" : {
@@ -321,22 +422,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開く"
-          }
-        }
-      }
-    },
-    "overlappedErrorMessage" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This emoji is already used."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "この絵文字はすでに使われています。"
           }
         }
       }
@@ -519,6 +604,23 @@
         }
       }
     },
+    "summaryExceedsErrorMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summary must be 20 characters or less."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "概要は20文字以内にしてください。"
+          }
+        }
+      }
+    },
     "sunday" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -564,6 +666,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スタンプを追加できません"
+          }
+        }
+      }
+    },
+    "unableDeleteStamp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to Delete Stamp"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタンプを削除できません"
           }
         }
       }

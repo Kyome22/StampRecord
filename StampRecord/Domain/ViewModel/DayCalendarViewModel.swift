@@ -23,8 +23,8 @@ protocol DayCalendarViewModel: ObservableObject {
 
     func setDayList()
     func paging(with pageDirection: PageDirection)
-    func putStamp(stamp: Stamp)
-    func removeStamp(day: Day, index: Int)
+    func putStamp(stamp: Stamp) throws
+    func removeStamp(day: Day, index: Int) throws
 }
 
 final class DayCalendarViewModelImpl<SR: StampRepository,
@@ -118,25 +118,25 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
         selectedDayID = dayList[1].id
     }
 
-    func putStamp(stamp: Stamp) {
+    func putStamp(stamp: Stamp) throws {
         guard let index = dayList.firstIndex(where: { $0.id == selectedDayID }) else {
             return
         }
         let day = dayList[index]
         if var log = day.log {
             log.stamps.append(stamp)
-            logRepository.updateLog(log)
+            try logRepository.updateLog(log)
         } else if let date = day.date {
             let log = Log(date: date, stamps: [stamp])
-            logRepository.updateLog(log)
+            try logRepository.updateLog(log)
         }
         dayList[index].log = logRepository.getLog(of: day.date)
     }
 
-    func removeStamp(day: Day, index: Int) {
+    func removeStamp(day: Day, index: Int) throws {
         if var log = day.log {
             log.stamps.remove(at: index)
-            logRepository.updateLog(log)
+            try logRepository.updateLog(log)
         }
         if let index = dayList.firstIndex(of: day) {
             dayList[index].log = logRepository.getLog(of: day.date)
@@ -155,6 +155,8 @@ extension PreviewMock {
         @Published var selectedDayID: UUID? = nil
         @Published var showStampPicker: Bool = false
         @Published var stamps: [Stamp] = []
+        @Published var showErrorAlert: Bool = false
+        @Published var srError: SRError? = nil
 
         init(_ stampRepository: SR, _ logRepository: LR) {}
         init() {

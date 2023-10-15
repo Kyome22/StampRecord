@@ -9,14 +9,16 @@ StampRecord
 import SwiftUI
 
 struct DayView: View {
+    @State var showErrorAlert: Bool = false
+    @State var srError: SRError? = nil
     let columns: [GridItem]
     let day: Day
-    let removeStampHandler: (Day, Int) -> Void
+    let removeStampHandler: (Day, Int) throws -> Void
 
     init(
         isPhone: Bool,
         day: Day,
-        removeStampHandler: @escaping (Day, Int) -> Void
+        removeStampHandler: @escaping (Day, Int) throws -> Void
     ) {
         self.columns = Array(repeating: .init(.flexible(), spacing: 8), count: isPhone ? 3 : 5)
         self.day = day
@@ -52,7 +54,7 @@ struct DayView: View {
                         LazyVGrid(columns: columns, spacing: 8) {
                             ForEach(log.stamps.indices, id: \.self) { index in
                                 stampCardView(stamp: log.stamps[index]) {
-                                    removeStampHandler(day, index)
+                                    try removeStampHandler(day, index)
                                 }
                             }
                         }
@@ -68,7 +70,7 @@ struct DayView: View {
         .padding(16)
     }
 
-    func stampCardView(stamp: Stamp, removeStampHandler: @escaping () -> Void) -> some View {
+    func stampCardView(stamp: Stamp, removeStampHandler: @escaping () throws -> Void) -> some View {
         VStack(spacing: 4) {
             Text(stamp.emoji)
                 .font(.system(size: 200))
@@ -84,7 +86,12 @@ struct DayView: View {
         .containerShape(RoundedRectangle(cornerRadius: 8))
         .contextMenu {
             Button(role: .destructive) {
-                removeStampHandler()
+                do {
+                    try removeStampHandler()
+                } catch let error as SRError {
+                    srError = error
+                    showErrorAlert = true
+                } catch {}
             } label: {
                 Label {
                     Text("remove")
@@ -93,6 +100,7 @@ struct DayView: View {
                 }
             }
         }
+        .alertSRError(isPresented: $showErrorAlert, srError: srError)
     }
 }
 

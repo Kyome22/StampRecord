@@ -12,7 +12,7 @@ struct VerticalWeekView: View {
     @Binding var selectedDayID: UUID?
     let weekdays: [Weekday]
     let days: [Day]
-    let removeStampHandler: (Day, Int) -> Void
+    let removeStampHandler: (Day, Int) throws -> Void
 
     var body: some View {
         VStack(spacing: 16) {

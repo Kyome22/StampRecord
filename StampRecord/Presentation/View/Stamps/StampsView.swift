@@ -69,16 +69,16 @@ struct StampsView<SVM: StampsViewModel>: View {
                     EditStampView(viewModel: EditStampViewModelImpl(
                         original: stamp,
                         updateStampHandler: { stamp, emoji, summary in
-                            return viewModel.updateStamp(stamp, emoji, summary)
+                            try viewModel.updateStamp(stamp, emoji, summary)
                         },
                         deleteStampHandler: { stamp in
-                            viewModel.deleteStamp(stamp)
+                            try viewModel.deleteStamp(stamp)
                         }
                     ))
                 } else {
                     AddNewStampView(viewModel: AddNewStampViewModelImpl(
                         addStampHandler: { emoji, summary in
-                            return viewModel.addNewStamp(emoji, summary)
+                            try viewModel.addNewStamp(emoji, summary)
                         }
                     ))
                 }

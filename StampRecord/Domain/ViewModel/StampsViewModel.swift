@@ -21,9 +21,9 @@ protocol StampsViewModel: ObservableObject {
     init(_ stampRepository: SR)
 
     func sortStamps()
-    func addNewStamp(_ emoji: String, _ summary: String) -> Bool
-    func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) -> Bool
-    func deleteStamp(_ stamp: Stamp)
+    func addNewStamp(_ emoji: String, _ summary: String) throws
+    func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) throws
+    func deleteStamp(_ stamp: Stamp) throws
 }
 
 final class StampsViewModelImpl<SR: StampRepository>: StampsViewModel {
@@ -53,16 +53,16 @@ final class StampsViewModelImpl<SR: StampRepository>: StampsViewModel {
         stamps = stamps.sorted(by: stampOrderBy, in: stampOrderIn)
     }
 
-    func addNewStamp(_ emoji: String, _ summary: String) -> Bool {
-        return stampRepository.addStamp(emoji, summary)
+    func addNewStamp(_ emoji: String, _ summary: String) throws {
+        try stampRepository.addStamp(emoji, summary)
     }
 
-    func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) -> Bool {
-        return stampRepository.updateStamp(stamp, emoji, summary)
+    func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) throws {
+        try stampRepository.updateStamp(stamp, emoji, summary)
     }
 
-    func deleteStamp(_ stamp: Stamp) {
-        stampRepository.deleteStamp(stamp)
+    func deleteStamp(_ stamp: Stamp) throws {
+        try stampRepository.deleteStamp(stamp)
     }
 }
 
@@ -81,8 +81,8 @@ extension PreviewMock {
         init() {}
 
         func sortStamps() {}
-        func addNewStamp(_ emoji: String, _ summary: String) -> Bool { return true }
-        func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) -> Bool { return true }
-        func deleteStamp(_ stamp: Stamp) {}
+        func addNewStamp(_ emoji: String, _ summary: String) throws {}
+        func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) throws {}
+        func deleteStamp(_ stamp: Stamp) throws {}
     }
 }

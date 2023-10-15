@@ -24,8 +24,8 @@ protocol MonthCalendarViewModel: ObservableObject {
 
     func setMonthList()
     func paging(with pageDirection: PageDirection)
-    func putStamp(stamp: Stamp)
-    func removeStamp(day: Day, index: Int)
+    func putStamp(stamp: Stamp) throws
+    func removeStamp(day: Day, index: Int) throws
 }
 
 final class MonthCalendarViewModelImpl<SR: StampRepository,
@@ -147,7 +147,7 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
         selectedDayID = nil
     }
 
-    func putStamp(stamp: Stamp) {
+    func putStamp(stamp: Stamp) throws {
         guard let i = monthList.firstIndex(where: { $0.days.contains { $0.id == selectedDayID } }),
               let j = monthList[i].days.firstIndex(where: { $0.id == selectedDayID }) else {
             return
@@ -155,18 +155,18 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
         let day = monthList[i].days[j]
         if var log = day.log {
             log.stamps.append(stamp)
-            logRepository.updateLog(log)
+            try logRepository.updateLog(log)
         } else if let date = day.date {
             let log = Log(date: date, stamps: [stamp])
-            logRepository.updateLog(log)
+            try logRepository.updateLog(log)
         }
         monthList[i].days[j].log = logRepository.getLog(of: day.date)
     }
 
-    func removeStamp(day: Day, index: Int) {
+    func removeStamp(day: Day, index: Int) throws {
         if var log = day.log {
             log.stamps.remove(at: index)
-            logRepository.updateLog(log)
+            try logRepository.updateLog(log)
         }
         if let i = monthList.firstIndex(where: { $0.days.contains(day) }),
            let j = monthList[i].days.firstIndex(of: day) {
@@ -209,7 +209,7 @@ extension PreviewMock {
 
         func setMonthList() {}
         func paging(with pageDirection: PageDirection) {}
-        func putStamp(stamp: Stamp) {}
-        func removeStamp(day: Day, index: Int) {}
+        func putStamp(stamp: Stamp) throws {}
+        func removeStamp(day: Day, index: Int) throws {}
     }
 }

@@ -27,7 +27,7 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                     viewModel.setMonthList()
                 },
                 selectStampHandler: { stamp in
-                    viewModel.putStamp(stamp: stamp)
+                    try viewModel.putStamp(stamp: stamp)
                     viewModel.showStampPicker = false
                 }
             )
@@ -44,7 +44,7 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                         weekdays: viewModel.weekStartsAt.weekdays,
                         days: month.days,
                         removeStampHandler: { day, index in
-                            viewModel.removeStamp(day: day, index: index)
+                            try viewModel.removeStamp(day: day, index: index)
                         }
                     )
                 }

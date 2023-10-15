@@ -17,7 +17,7 @@ protocol LogRepository: AnyObject {
          stampsPublisher: AnyPublisher<[Stamp], Never>)
 
     func getLog(of date: Date?) -> Log?
-    func updateLog(_ log: Log)
+    func updateLog(_ log: Log) throws
 }
 
 final class LogRepositoryImpl: LogRepository {
@@ -50,8 +50,22 @@ final class LogRepositoryImpl: LogRepository {
     }
 
     private func fetchManagedLogs() throws {
-        managedLogs = try context.fetch(ManagedLog.fetchRequest())
+        do {
+            managedLogs = try context.fetch(ManagedLog.fetchRequest())
+        } catch {
+            logput(error.localizedDescription)
+            throw SRError.database(.failedFetchData)
+        }
         logsSubject.send()
+    }
+
+    private func save() throws {
+        do {
+            try context.save()
+        } catch {
+            logput(error.localizedDescription)
+            throw SRError.database(.failedUpdateDB)
+        }
     }
 
     private func clearDeletedStamps() {
@@ -61,7 +75,7 @@ final class LogRepositoryImpl: LogRepository {
             }
         }
         do {
-            try context.save()
+            try save()
             try fetchManagedLogs()
         } catch {
             logput(error.localizedDescription)
@@ -86,7 +100,7 @@ final class LogRepositoryImpl: LogRepository {
         return Log(date: _date, stamps: _stamps)
     }
 
-    func updateLog(_ log: Log) {
+    func updateLog(_ log: Log) throws {
         let index = managedLogs.firstIndex { managedLog in
             calendar.isEqual(a: log.date, b: managedLog.date)
         }
@@ -103,12 +117,8 @@ final class LogRepositoryImpl: LogRepository {
                 newLog.stamps = log.stamps.map { $0.id }
             }
         }
-        do {
-            try context.save()
-            try fetchManagedLogs()
-        } catch {
-            logput(error.localizedDescription)
-        }
+        try save()
+        try fetchManagedLogs()
     }
 }
 
@@ -124,6 +134,6 @@ extension PreviewMock {
         init() {}
 
         func getLog(of date: Date?) -> Log? { return nil }
-        func updateLog(_ log: Log) {}
+        func updateLog(_ log: Log) throws {}
     }
 }

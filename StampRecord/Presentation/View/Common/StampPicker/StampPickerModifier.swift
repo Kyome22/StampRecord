@@ -11,14 +11,14 @@ import SwiftUI
 struct StampPickerModifier: ViewModifier {
     @Binding var isPresented: Bool
     let stamps: [Stamp]
-    let selectStampHandler: (Stamp) -> Void
+    let selectStampHandler: (Stamp) throws -> Void
     let attachmentAnchor: PopoverAttachmentAnchor
     let arrowEdge: Edge
 
     init(
         isPresented: Binding<Bool>,
         stamps: [Stamp],
-        selectStampHandler: @escaping (Stamp) -> Void,
+        selectStampHandler: @escaping (Stamp) throws -> Void,
         attachmentAnchor: PopoverAttachmentAnchor = .rect(.bounds),
         arrowEdge: Edge = .top
     ) {
@@ -45,7 +45,7 @@ extension View {
     func stampPicker(
         isPresented: Binding<Bool>,
         stamps: [Stamp],
-        selectStampHandler: @escaping (Stamp) -> Void,
+        selectStampHandler: @escaping (Stamp) throws -> Void,
         attachmentAnchor: PopoverAttachmentAnchor = .rect(.bounds),
         arrowEdge: Edge = .top
     ) -> some View {

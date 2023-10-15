@@ -14,7 +14,7 @@ struct CalendarHeaderView: View {
     @Binding var showStampPicker: Bool
     @Binding var stamps: [Stamp]
     let resetHandler: () -> Void
-    let selectStampHandler: (Stamp) -> Void
+    let selectStampHandler: (Stamp) throws -> Void
 
     var body: some View {
         VStack(spacing: 0) {
@@ -41,9 +41,7 @@ struct CalendarHeaderView: View {
                 .stampPicker(
                     isPresented: $showStampPicker,
                     stamps: stamps,
-                    selectStampHandler: { stamp in
-                        selectStampHandler(stamp)
-                    },
+                    selectStampHandler: selectStampHandler,
                     attachmentAnchor: .point(.bottom),
                     arrowEdge: .top
                 )

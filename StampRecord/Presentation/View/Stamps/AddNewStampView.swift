@@ -24,19 +24,11 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                 Button("add") {
-                    if viewModel.addNewStamp() {
+                    viewModel.addNewStamp {
                         dismiss()
                     }
                 }
                 .disabled(viewModel.emoji.isEmpty || viewModel.summary.isEmpty)
-                .alert(
-                    "unableAddStamp",
-                    isPresented: $viewModel.showOverlappedError,
-                    actions: {},
-                    message: {
-                        Text("overlappedErrorMessage")
-                    }
-                )
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
@@ -54,15 +46,9 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
                 VStack(alignment: .leading, spacing: 16) {
                     Text("summary")
                         .font(.headline)
-                    TextField(
-                        "inputSummary",
-                        text: Binding<String>(
-                            get: { viewModel.summary },
-                            set: { viewModel.summary = String($0.prefix(20)).trimmingCharacters(in: .whitespaces) }
-                        )
-                    )
-                    .textFieldStyle(.summary)
-                    .focused($focusedField, equals: .title)
+                    TextField("inputSummary", text: $viewModel.summary)
+                        .textFieldStyle(.summary)
+                        .focused($focusedField, equals: .title)
                 }
                 Spacer()
             }
@@ -73,6 +59,8 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
         .onTapGesture {
             focusedField = nil
         }
+        .alertSRError(isPresented: $viewModel.showErrorAlert,
+                      srError: viewModel.srError)
     }
 }
 

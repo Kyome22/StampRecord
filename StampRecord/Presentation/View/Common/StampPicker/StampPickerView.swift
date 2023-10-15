@@ -12,11 +12,14 @@ struct StampPickerView: View {
     @State var stamps: [Stamp]
     @State var stampOrderBy: StampOrderBy = .createdDate
     @State var stampOrderIn: StampOrderIn = .ascending
-    let selectStampHandler: (Stamp) -> Void
+    @State var showErrorAlert: Bool = false
+    @State var srError: SRError? = nil
+
+    let selectStampHandler: (Stamp) throws -> Void
     let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 8), count: 3)
     let cellWidth: CGFloat = 84
 
-    init(stamps: [Stamp], selectStampHandler: @escaping (Stamp) -> Void) {
+    init(stamps: [Stamp], selectStampHandler: @escaping (Stamp) throws -> Void) {
         _stamps = State(initialValue: stamps)
         self.selectStampHandler = selectStampHandler
     }
@@ -48,7 +51,12 @@ struct StampPickerView: View {
                 LazyVGrid(columns: columns, spacing: 8) {
                     ForEach(stamps.sorted(by: stampOrderBy, in: stampOrderIn)) { stamp in
                         Button {
-                            selectStampHandler(stamp)
+                            do {
+                                try selectStampHandler(stamp)
+                            } catch let error as SRError {
+                                srError = error
+                                showErrorAlert = true
+                            } catch {}
                         } label: {
                             VStack(spacing: 4) {
                                 Text(stamp.emoji)
@@ -64,6 +72,7 @@ struct StampPickerView: View {
                             .padding(4)
                         }
                         .buttonStyle(.cell)
+                        .alertSRError(isPresented: $showErrorAlert, srError: srError)
                     }
                 }
                 .padding(8)

@@ -9,10 +9,7 @@ StampRecord
 import SwiftUI
 
 extension View {
-    func wrapText(
-        maxKey: String,
-        key: String
-    ) -> some View {
+    func wrapText(maxKey: String, key: String) -> some View {
         return Text(maxKey)
             .hidden()
             .overlay(alignment: .center) {
@@ -31,5 +28,16 @@ extension View {
 
     func backable() -> some View {
         return modifier(BackableModifier())
+    }
+
+    func alertSRError(isPresented: Binding<Bool>, srError: SRError?) -> some View {
+        return alert(
+            srError?.title ?? "empty",
+            isPresented: isPresented,
+            actions: {},
+            message: {
+                Text(srError?.message ?? "empty")
+            }
+        )
     }
 }

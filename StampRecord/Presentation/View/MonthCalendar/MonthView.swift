@@ -15,7 +15,7 @@ struct MonthView: View {
     let spacing: CGFloat
     let weekdays: [Weekday]
     let days: [Day]
-    let removeStampHandler: (Day, Int) -> Void
+    let removeStampHandler: (Day, Int) throws -> Void
 
     init(
         selectedDayID: Binding<UUID?>,
@@ -23,7 +23,7 @@ struct MonthView: View {
         orientation: DeviceOrientation,
         weekdays: [Weekday],
         days: [Day],
-        removeStampHandler: @escaping (Day, Int) -> Void
+        removeStampHandler: @escaping (Day, Int) throws -> Void
     ) {
         _selectedDayID = selectedDayID
         self.isPhone = isPhone
