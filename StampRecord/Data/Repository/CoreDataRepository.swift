@@ -13,7 +13,7 @@ struct CoreDataRepository {
 
     static let shared = CoreDataRepository()
 
-    static var preview: CoreDataRepository = {
+    static var mock: CoreDataRepository = {
         let result = Self(inMemory: true)
         let context = result.container.viewContext
 

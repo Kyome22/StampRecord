@@ -32,7 +32,9 @@ final class StampRecordAppModelImpl: StampRecordAppModel {
     let logRepository: LR
 
     init() {
-        coreDataRepository = .shared
+        let isTesting = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+
+        coreDataRepository = isTesting ? .mock : .shared
         stampRepository = SR(context: coreDataRepository.container.viewContext)
         logRepository = LR(context: coreDataRepository.container.viewContext,
                            stampsPublisher: stampRepository.stampsPublisher)
@@ -54,7 +56,7 @@ extension PreviewMock {
         @Published var tabSelection: Tab = .dayCalendar
         @Published var defaultPeriod: Period = .day
 
-        let coreDataRepository = CoreDataRepository.preview
+        let coreDataRepository = CoreDataRepository.mock
         let stampRepository = SR()
         let logRepository = LR()
     }
