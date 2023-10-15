@@ -71,7 +71,6 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
                 weekList[i].days[j].log = logRepository.getLog(of: date)
             }
         }
-        selectedDayID = nil
     }
 
     private func getPreviousWeek(of date: Date) -> Date? {

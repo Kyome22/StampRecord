@@ -54,6 +54,9 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
             }
         }
         .background(Color.appBackground)
+        .onAppear {
+            viewModel.selectedDayID = nil
+        }
     }
 }
 

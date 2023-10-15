@@ -71,7 +71,6 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
                 monthList[i].days[j].log = logRepository.getLog(of: date)
             }
         }
-        selectedDayID = nil
     }
 
     private func getPreviousMonth(of date: Date) -> Date? {

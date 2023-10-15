@@ -62,6 +62,9 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
             }
         }
         .background(Color.appBackground)
+        .onAppear {
+            viewModel.selectedDayID = nil
+        }
     }
 }
 
