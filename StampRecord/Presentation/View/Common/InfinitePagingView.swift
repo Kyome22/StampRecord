@@ -30,7 +30,6 @@ struct Page<T: Hashable>: Hashable, Identifiable {
 
 struct InfinitePagingView<T: Hashable, Content: View>: View {
     @Binding var objects: [T]
-    @State var title: String = ""
     @State var pages: [Page<T>]
     @State var selection: Page<T>
     @State var previousPage: Page<T>
