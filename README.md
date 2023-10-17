@@ -1,4 +1,4 @@
-# StampRecord
+# <img src="Design/rounded-icon.png" alt="logo" width="25px" height="25px" /> StampRecord
 
 スタンプで実績を記録をするアプリ
 
