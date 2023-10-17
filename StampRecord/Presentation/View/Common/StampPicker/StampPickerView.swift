@@ -78,9 +78,9 @@ struct StampPickerView: View {
                 .padding(8)
             }
             .frame(height: (cellWidth * 3.5) + (8 * 4))
-            .background(Color.appBackground)
         }
         .frame(width: (cellWidth * 3) + (8 * 4))
+        .background(Color.appBackground)
     }
 }
 
