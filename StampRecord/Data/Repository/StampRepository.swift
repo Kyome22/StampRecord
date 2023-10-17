@@ -14,7 +14,7 @@ protocol StampRepository: AnyObject {
     var stampsPublisher: AnyPublisher<[Stamp], Never> { get }
     var isEmpty: Bool { get }
 
-    init(context: NSManagedObjectContext)
+    init(context: ManagedObjectContext)
 
     func addStamp(_ emoji: String, _ summary: String) throws
     func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) throws
@@ -22,7 +22,7 @@ protocol StampRepository: AnyObject {
 }
 
 final class StampRepositoryImpl: StampRepository {
-    private let context: NSManagedObjectContext
+    private let context: ManagedObjectContext
     private var managedStamps = [ManagedStamp]()
 
     private let stampsSubject = CurrentValueSubject<[Stamp], Never>([])
@@ -34,7 +34,7 @@ final class StampRepositoryImpl: StampRepository {
         return stampsSubject.value.isEmpty
     }
 
-    init(context: NSManagedObjectContext) {
+    init(context: ManagedObjectContext) {
         self.context = context
         do {
             try fetchManagedStamps()
@@ -77,7 +77,7 @@ final class StampRepositoryImpl: StampRepository {
         guard summary.count <= 20 else {
             throw SRError.stamp(.summaryExceeds, .add)
         }
-        let newStamp = ManagedStamp(context: context)
+        let newStamp: ManagedStamp = context.makeObject()
         newStamp.id = UUID()
         newStamp.emoji = emoji
         newStamp.summary = summary
@@ -121,7 +121,7 @@ extension PreviewMock {
         }
         var isEmpty: Bool { true }
 
-        init(context: NSManagedObjectContext) {}
+        init(context: ManagedObjectContext) {}
         init() {}
 
         func addStamp(_ emoji: String, _ summary: String) throws {}

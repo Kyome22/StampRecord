@@ -35,9 +35,9 @@ final class StampRecordAppModelImpl: StampRecordAppModel {
         let isTesting = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
 
         coreDataRepository = isTesting ? .mock : .shared
-        stampRepository = SR(context: coreDataRepository.container.viewContext)
-        logRepository = LR(context: coreDataRepository.container.viewContext,
-                           stampsPublisher: stampRepository.stampsPublisher)
+        let context = ManagedObjectContextImpl(context: coreDataRepository.container.viewContext)
+        stampRepository = SR(context: context)
+        logRepository = LR(context: context, stampsPublisher: stampRepository.stampsPublisher)
 
         if stampRepository.isEmpty {
             tabSelection = .stamps

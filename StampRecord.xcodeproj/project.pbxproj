@@ -77,7 +77,20 @@
 		1CCC69B52ADA7FF4003A8F86 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69AE2ADA7FF4003A8F86 /* Utils.swift */; };
 		1CCC69B72ADA8056003A8F86 /* StampRecordAppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69B62ADA8056003A8F86 /* StampRecordAppModel.swift */; };
 		1CCC69B92ADB8FDA003A8F86 /* SRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69B82ADB8FDA003A8F86 /* SRError.swift */; };
+		1CCC69C32ADE711C003A8F86 /* StampRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69C22ADE711C003A8F86 /* StampRepositoryTests.swift */; };
+		1CCC69CA2ADE75FC003A8F86 /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69C92ADE75FC003A8F86 /* ManagedObjectContext.swift */; };
+		1CCC69CC2ADEDA45003A8F86 /* ManagedObjectContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69CB2ADEDA45003A8F86 /* ManagedObjectContextMock.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1CCC69C42ADE711C003A8F86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1CCC69062ADA7AC6003A8F86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1CCC690D2ADA7AC6003A8F86;
+			remoteInfo = StampRecord;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1CCC690E2ADA7AC6003A8F86 /* StampRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StampRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +165,10 @@
 		1CCC69AE2ADA7FF4003A8F86 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1CCC69B62ADA8056003A8F86 /* StampRecordAppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRecordAppModel.swift; sourceTree = "<group>"; };
 		1CCC69B82ADB8FDA003A8F86 /* SRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRError.swift; sourceTree = "<group>"; };
+		1CCC69C02ADE711C003A8F86 /* StampRecordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StampRecordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CCC69C22ADE711C003A8F86 /* StampRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRepositoryTests.swift; sourceTree = "<group>"; };
+		1CCC69C92ADE75FC003A8F86 /* ManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
+		1CCC69CB2ADEDA45003A8F86 /* ManagedObjectContextMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +180,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1CCC69BD2ADE711C003A8F86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -170,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				1CCC69102ADA7AC6003A8F86 /* StampRecord */,
+				1CCC69C12ADE711C003A8F86 /* StampRecordTests */,
 				1CCC690F2ADA7AC6003A8F86 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -178,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				1CCC690E2ADA7AC6003A8F86 /* StampRecord.app */,
+				1CCC69C02ADE711C003A8F86 /* StampRecordTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -256,6 +282,7 @@
 		1CCC692F2ADA7D0A003A8F86 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				1CCC69C92ADE75FC003A8F86 /* ManagedObjectContext.swift */,
 				1CCC69502ADA7E75003A8F86 /* CoreDataRepository.swift */,
 				1CCC69512ADA7E75003A8F86 /* StampRepository.swift */,
 				1CCC694F2ADA7E74003A8F86 /* LogRepository.swift */,
@@ -404,6 +431,23 @@
 			path = StampPicker;
 			sourceTree = "<group>";
 		};
+		1CCC69C12ADE711C003A8F86 /* StampRecordTests */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69CD2ADEDA50003A8F86 /* Mock */,
+				1CCC69C22ADE711C003A8F86 /* StampRepositoryTests.swift */,
+			);
+			path = StampRecordTests;
+			sourceTree = "<group>";
+		};
+		1CCC69CD2ADEDA50003A8F86 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69CB2ADEDA45003A8F86 /* ManagedObjectContextMock.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -427,6 +471,24 @@
 			productReference = 1CCC690E2ADA7AC6003A8F86 /* StampRecord.app */;
 			productType = "com.apple.product-type.application";
 		};
+		1CCC69BF2ADE711C003A8F86 /* StampRecordTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CCC69C82ADE711C003A8F86 /* Build configuration list for PBXNativeTarget "StampRecordTests" */;
+			buildPhases = (
+				1CCC69BC2ADE711C003A8F86 /* Sources */,
+				1CCC69BD2ADE711C003A8F86 /* Frameworks */,
+				1CCC69BE2ADE711C003A8F86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1CCC69C52ADE711C003A8F86 /* PBXTargetDependency */,
+			);
+			name = StampRecordTests;
+			productName = StampRecordTests;
+			productReference = 1CCC69C02ADE711C003A8F86 /* StampRecordTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -439,6 +501,10 @@
 				TargetAttributes = {
 					1CCC690D2ADA7AC6003A8F86 = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					1CCC69BF2ADE711C003A8F86 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 1CCC690D2ADA7AC6003A8F86;
 					};
 				};
 			};
@@ -460,6 +526,7 @@
 			projectRoot = "";
 			targets = (
 				1CCC690D2ADA7AC6003A8F86 /* StampRecord */,
+				1CCC69BF2ADE711C003A8F86 /* StampRecordTests */,
 			);
 		};
 /* End PBXProject section */
@@ -472,6 +539,13 @@
 				1CCC69192ADA7AC8003A8F86 /* Preview Assets.xcassets in Resources */,
 				1CCC69162ADA7AC8003A8F86 /* Assets.xcassets in Resources */,
 				1CCC692A2ADA7C43003A8F86 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1CCC69BE2ADE711C003A8F86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +600,7 @@
 				1CCC697D2ADA7F09003A8F86 /* BackableModifier.swift in Sources */,
 				1CCC69982ADA7FAD003A8F86 /* HWDayView.swift in Sources */,
 				1CCC69A72ADA7FC4003A8F86 /* DayView.swift in Sources */,
+				1CCC69CA2ADE75FC003A8F86 /* ManagedObjectContext.swift in Sources */,
 				1CCC697C2ADA7F09003A8F86 /* JudgeDeviceModifier.swift in Sources */,
 				1CCC697B2ADA7F09003A8F86 /* JudgeOrientationModifier.swift in Sources */,
 				1CCC69462ADA7DC1003A8F86 /* Tab.swift in Sources */,
@@ -551,7 +626,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1CCC69BC2ADE711C003A8F86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CCC69CC2ADEDA45003A8F86 /* ManagedObjectContextMock.swift in Sources */,
+				1CCC69C32ADE711C003A8F86 /* StampRepositoryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1CCC69C52ADE711C003A8F86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1CCC690D2ADA7AC6003A8F86 /* StampRecord */;
+			targetProxy = 1CCC69C42ADE711C003A8F86 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1CCC69212ADA7AC8003A8F86 /* Debug */ = {
@@ -698,6 +790,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.StampRecord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -729,9 +824,54 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.StampRecord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1CCC69C62ADE711C003A8F86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.StampRecordTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StampRecord.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StampRecord";
+			};
+			name = Debug;
+		};
+		1CCC69C72ADE711C003A8F86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.StampRecordTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StampRecord.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StampRecord";
 			};
 			name = Release;
 		};
@@ -752,6 +892,15 @@
 			buildConfigurations = (
 				1CCC69242ADA7AC8003A8F86 /* Debug */,
 				1CCC69252ADA7AC8003A8F86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1CCC69C82ADE711C003A8F86 /* Build configuration list for PBXNativeTarget "StampRecordTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CCC69C62ADE711C003A8F86 /* Debug */,
+				1CCC69C72ADE711C003A8F86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

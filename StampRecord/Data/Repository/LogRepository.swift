@@ -13,7 +13,7 @@ import CoreData
 protocol LogRepository: AnyObject {
     var logsPublisher: AnyPublisher<Void, Never> { get }
 
-    init(context: NSManagedObjectContext,
+    init(context: ManagedObjectContext,
          stampsPublisher: AnyPublisher<[Stamp], Never>)
 
     func getLog(of date: Date?) -> Log?
@@ -21,7 +21,7 @@ protocol LogRepository: AnyObject {
 }
 
 final class LogRepositoryImpl: LogRepository {
-    private let context: NSManagedObjectContext
+    private let context: ManagedObjectContext
     private let calendar = Calendar.current
     private var managedLogs = [ManagedLog]()
     private var stamps = [Stamp]()
@@ -33,7 +33,7 @@ final class LogRepositoryImpl: LogRepository {
     }
 
     init(
-        context: NSManagedObjectContext,
+        context: ManagedObjectContext,
         stampsPublisher: AnyPublisher<[Stamp], Never>
     ) {
         self.context = context
@@ -112,7 +112,7 @@ final class LogRepositoryImpl: LogRepository {
             }
         } else {
             if !log.stamps.isEmpty {
-                let newLog = ManagedLog(context: context)
+                let newLog: ManagedLog = context.makeObject()
                 newLog.date = log.date
                 newLog.stamps = log.stamps.map { $0.id }
             }
@@ -129,7 +129,7 @@ extension PreviewMock {
             Just(()).eraseToAnyPublisher()
         }
 
-        init(context: NSManagedObjectContext,
+        init(context: ManagedObjectContext,
              stampsPublisher: AnyPublisher<[Stamp], Never>) {}
         init() {}
 
