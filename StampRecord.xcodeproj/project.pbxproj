@@ -80,6 +80,7 @@
 		1CCC69C32ADE711C003A8F86 /* StampRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69C22ADE711C003A8F86 /* StampRepositoryTests.swift */; };
 		1CCC69CA2ADE75FC003A8F86 /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69C92ADE75FC003A8F86 /* ManagedObjectContext.swift */; };
 		1CCC69CC2ADEDA45003A8F86 /* ManagedObjectContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69CB2ADEDA45003A8F86 /* ManagedObjectContextMock.swift */; };
+		1CCC69CF2ADEDF69003A8F86 /* LogRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69CE2ADEDF69003A8F86 /* LogRepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,7 @@
 		1CCC69C22ADE711C003A8F86 /* StampRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRepositoryTests.swift; sourceTree = "<group>"; };
 		1CCC69C92ADE75FC003A8F86 /* ManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
 		1CCC69CB2ADEDA45003A8F86 /* ManagedObjectContextMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextMock.swift; sourceTree = "<group>"; };
+		1CCC69CE2ADEDF69003A8F86 /* LogRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -436,6 +438,7 @@
 			children = (
 				1CCC69CD2ADEDA50003A8F86 /* Mock */,
 				1CCC69C22ADE711C003A8F86 /* StampRepositoryTests.swift */,
+				1CCC69CE2ADEDF69003A8F86 /* LogRepositoryTests.swift */,
 			);
 			path = StampRecordTests;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 			files = (
 				1CCC69CC2ADEDA45003A8F86 /* ManagedObjectContextMock.swift in Sources */,
 				1CCC69C32ADE711C003A8F86 /* StampRepositoryTests.swift in Sources */,
+				1CCC69CF2ADEDF69003A8F86 /* LogRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

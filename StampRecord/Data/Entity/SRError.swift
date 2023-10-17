@@ -61,8 +61,27 @@ enum SRError: Error {
         }
     }
 
+    enum LogError: Error {
+        case skipToUpdate
+
+        var title: LocalizedStringKey {
+            switch self {
+            case .skipToUpdate:
+                return "skipToUpdate"
+            }
+        }
+
+        var message: LocalizedStringKey {
+            switch self {
+            case .skipToUpdate:
+                return "skipToUpdateErrorMessage"
+            }
+        }
+    }
+
     case database(_ databaseError: DatabaseError)
     case stamp(_ stampError: StampError, _ context: StampContext)
+    case log(_ logError: LogError)
 
     var title: LocalizedStringKey {
         switch self {
@@ -70,6 +89,8 @@ enum SRError: Error {
             return error.title
         case .stamp(_, let context):
             return context.title
+        case .log(let error):
+            return error.title
         }
     }
 
@@ -78,6 +99,8 @@ enum SRError: Error {
         case .database(let error):
             return error.message
         case .stamp(let error, _):
+            return error.message
+        case .log(let error):
             return error.message
         }
     }

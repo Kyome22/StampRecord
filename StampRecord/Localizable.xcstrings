@@ -523,6 +523,40 @@
         }
       }
     },
+    "skipToUpdate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip to Update Log"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記録の更新をスキップしました"
+          }
+        }
+      }
+    },
+    "skipToUpdateErrorMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are no stamps in the log."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記録にスタンプがありません。"
+          }
+        }
+      }
+    },
     "sort" : {
       "extractionState" : "manual",
       "localizations" : {

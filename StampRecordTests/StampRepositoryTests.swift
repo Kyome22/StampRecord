@@ -1,13 +1,12 @@
-//
-//  StampRepositoryTests.swift
-//  StampRecordTests
-//
-//  Created by Takuto Nakamura on 2023/10/17.
-//
+/*
+ StampRepositoryTests.swift
+ StampRecordTests
+
+ Created by Takuto Nakamura on 2023/10/18.
+*/
 
 @testable import StampRecord
 import XCTest
-import CoreData
 import Combine
 
 final class StampRepositoryTests: XCTestCase {

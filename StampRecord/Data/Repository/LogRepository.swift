@@ -70,8 +70,13 @@ final class LogRepositoryImpl: LogRepository {
 
     private func clearDeletedStamps() {
         managedLogs.forEach { managedLog in
-            if let _stamps = managedLog.stamps {
-                managedLog.stamps = _stamps.filter { id in stamps.contains(where: { $0.id == id }) }
+            if var _stamps = managedLog.stamps {
+                _stamps = _stamps.filter { id in stamps.contains(where: { $0.id == id }) }
+                if _stamps.isEmpty {
+                    context.delete(managedLog)
+                } else {
+                    managedLog.stamps = _stamps
+                }
             }
         }
         do {
@@ -111,7 +116,9 @@ final class LogRepositoryImpl: LogRepository {
                 managedLogs[index].stamps = log.stamps.map { $0.id }
             }
         } else {
-            if !log.stamps.isEmpty {
+            if log.stamps.isEmpty {
+                throw SRError.log(.skipToUpdate)
+            } else {
                 let newLog: ManagedLog = context.makeObject()
                 newLog.date = log.date
                 newLog.stamps = log.stamps.map { $0.id }
