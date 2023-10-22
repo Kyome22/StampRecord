@@ -20,10 +20,10 @@
 
 ## 動作環境/実装環境
 
-- iOS/iPadOS 16.4+
+- iOS/iPadOS 17.0+
 - macOS 13+
 - Xcode 15.0+
-- Swift 5+
+- Swift 5.9+
 - Full SwiftUI（UIKit を使わない）
 
 ## 機能
