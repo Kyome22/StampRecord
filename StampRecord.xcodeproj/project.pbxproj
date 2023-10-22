@@ -81,9 +81,10 @@
 		1CCC69CC2ADEDA45003A8F86 /* ManagedObjectContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69CB2ADEDA45003A8F86 /* ManagedObjectContextMock.swift */; };
 		1CCC69CF2ADEDF69003A8F86 /* LogRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69CE2ADEDF69003A8F86 /* LogRepositoryTests.swift */; };
 		1CCC69D72ADF67AE003A8F86 /* StampRecordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69D62ADF67AE003A8F86 /* StampRecordUITests.swift */; };
-		1CE66BA02AE4FF5D00AC612D /* InfinitePaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE66B9F2AE4FF5D00AC612D /* InfinitePaging */; };
 		1CE66BA32AE50FC300AC612D /* XCUIElement+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE66BA22AE50FC300AC612D /* XCUIElement+Extensions.swift */; };
 		1CE66BA52AE52AA600AC612D /* ProcessInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE66BA42AE52AA600AC612D /* ProcessInfo+Extensions.swift */; };
+		1CE66BA82AE5499C00AC612D /* InfinitePaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE66BA72AE5499C00AC612D /* InfinitePaging */; };
+		1CE66BAB2AE54C3E00AC612D /* InfinitePaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE66BAA2AE54C3E00AC612D /* InfinitePaging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,8 +193,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CE66BA02AE4FF5D00AC612D /* InfinitePaging in Frameworks */,
+				1CE66BA82AE5499C00AC612D /* InfinitePaging in Frameworks */,
 				1CCC69282ADA7B79003A8F86 /* EmojiPalette in Frameworks */,
+				1CE66BAB2AE54C3E00AC612D /* InfinitePaging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,7 +505,8 @@
 			name = StampRecord;
 			packageProductDependencies = (
 				1CCC69272ADA7B79003A8F86 /* EmojiPalette */,
-				1CE66B9F2AE4FF5D00AC612D /* InfinitePaging */,
+				1CE66BA72AE5499C00AC612D /* InfinitePaging */,
+				1CE66BAA2AE54C3E00AC612D /* InfinitePaging */,
 			);
 			productName = StampRecord;
 			productReference = 1CCC690E2ADA7AC6003A8F86 /* StampRecord.app */;
@@ -580,7 +583,7 @@
 			mainGroup = 1CCC69052ADA7AC6003A8F86;
 			packageReferences = (
 				1CCC69262ADA7B79003A8F86 /* XCRemoteSwiftPackageReference "EmojiPalette" */,
-				1CE66B9E2AE4FF5D00AC612D /* XCRemoteSwiftPackageReference "InfinitePaging" */,
+				1CE66BA92AE54C3E00AC612D /* XCRemoteSwiftPackageReference "InfinitePaging" */,
 			);
 			productRefGroup = 1CCC690F2ADA7AC6003A8F86 /* Products */;
 			projectDirPath = "";
@@ -1049,12 +1052,12 @@
 				version = 0.4.1;
 			};
 		};
-		1CE66B9E2AE4FF5D00AC612D /* XCRemoteSwiftPackageReference "InfinitePaging" */ = {
+		1CE66BA92AE54C3E00AC612D /* XCRemoteSwiftPackageReference "InfinitePaging" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Kyome22/InfinitePaging.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.1.0;
+				version = 0.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1065,9 +1068,13 @@
 			package = 1CCC69262ADA7B79003A8F86 /* XCRemoteSwiftPackageReference "EmojiPalette" */;
 			productName = EmojiPalette;
 		};
-		1CE66B9F2AE4FF5D00AC612D /* InfinitePaging */ = {
+		1CE66BA72AE5499C00AC612D /* InfinitePaging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1CE66B9E2AE4FF5D00AC612D /* XCRemoteSwiftPackageReference "InfinitePaging" */;
+			productName = InfinitePaging;
+		};
+		1CE66BAA2AE54C3E00AC612D /* InfinitePaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CE66BA92AE54C3E00AC612D /* XCRemoteSwiftPackageReference "InfinitePaging" */;
 			productName = InfinitePaging;
 		};
 /* End XCSwiftPackageProductDependency section */
