@@ -33,8 +33,7 @@ final class StampRecordAppModelImpl: StampRecordAppModel {
 
     init() {
         let isTesting = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
-
-        coreDataRepository = isTesting ? .mock : .shared
+        coreDataRepository = isTesting ? .init(inMemory: true) : .shared
         let context = ManagedObjectContextImpl(context: coreDataRepository.container.viewContext)
         stampRepository = SR(context: context)
         logRepository = LR(context: context, stampsPublisher: stampRepository.stampsPublisher)

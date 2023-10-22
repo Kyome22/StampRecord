@@ -7,6 +7,7 @@ StampRecord
 */
 
 import SwiftUI
+import InfinitePaging
 
 struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
     @StateObject var viewModel: WVM
@@ -57,7 +58,7 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                     }
                 }
             )
-            .onChange(of: viewModel.weekStartsAt) { _ in
+            .onChange(of: viewModel.weekStartsAt) { _, _ in
                 viewModel.setWeekList()
             }
         }

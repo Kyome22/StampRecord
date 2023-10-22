@@ -8,6 +8,7 @@ StampRecord
 
 import SwiftUI
 import Combine
+import InfinitePaging
 
 protocol MonthCalendarViewModel: ObservableObject {
     associatedtype SR: StampRepository
@@ -129,15 +130,15 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
     func paging(with pageDirection: PageDirection) {
         switch pageDirection {
         case .backward:
-            let days = monthList[pageDirection.baseIndex].days
-            if let baseDate = days.first(where: { $0.inMonth })?.date,
+            if let days = monthList.first?.days,
+               let baseDate = days.first(where: { $0.inMonth })?.date,
                let date = getPreviousMonth(of: baseDate) {
                 monthList.insert(Month(title: date.title, days: getDays(of: date)), at: 0)
                 monthList.removeLast()
             }
         case .forward:
-            let days = monthList[pageDirection.baseIndex].days
-            if let baseDate = days.first(where: { $0.inMonth })?.date,
+            if let days = monthList.last?.days,
+               let baseDate = days.first(where: { $0.inMonth })?.date,
                let date = getNextMonth(of: baseDate) {
                 monthList.append(Month(title: date.title, days: getDays(of: date)))
                 monthList.removeFirst()

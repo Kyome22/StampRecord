@@ -7,13 +7,14 @@ StampRecord
 */
 
 import Foundation
+import InfinitePaging
 
-struct Week: Hashable, Identifiable {
+struct Week: Pageable {
     var id = UUID()
     var title: String
     var days: [Day]
 
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(id)
+//    }
 }

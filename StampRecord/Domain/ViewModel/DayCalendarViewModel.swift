@@ -8,6 +8,7 @@ StampRecord
 
 import Foundation
 import Combine
+import InfinitePaging
 
 protocol DayCalendarViewModel: ObservableObject {
     associatedtype SR: StampRepository
@@ -104,12 +105,12 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
     func paging(with pageDirection: PageDirection) {
         switch pageDirection {
         case .backward:
-            if let baseDate = dayList[pageDirection.baseIndex].date {
+            if let baseDate = dayList.first?.date {
                 dayList.insert(getYesterday(of: baseDate), at: 0)
                 dayList.removeLast()
             }
         case .forward:
-            if let baseDate = dayList[pageDirection.baseIndex].date {
+            if let baseDate = dayList.last?.date {
                 dayList.append(getTommorow(of: baseDate))
                 dayList.removeFirst()
             }

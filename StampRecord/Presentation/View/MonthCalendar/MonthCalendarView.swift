@@ -7,6 +7,7 @@ StampRecord
 */
 
 import SwiftUI
+import InfinitePaging
 
 struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
     @StateObject var viewModel: MVM
@@ -49,7 +50,7 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                     )
                 }
             )
-            .onChange(of: viewModel.weekStartsAt) { _ in
+            .onChange(of: viewModel.weekStartsAt) { _, _ in
                 viewModel.setMonthList()
             }
         }

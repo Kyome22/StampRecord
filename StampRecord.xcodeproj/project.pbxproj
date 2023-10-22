@@ -52,7 +52,6 @@
 		1CCC69862ADA7F18003A8F86 /* HStackedStamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69822ADA7F18003A8F86 /* HStackedStamps.swift */; };
 		1CCC69872ADA7F18003A8F86 /* VStackedStamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69832ADA7F18003A8F86 /* VStackedStamps.swift */; };
 		1CCC69882ADA7F18003A8F86 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69842ADA7F18003A8F86 /* CalendarHeaderView.swift */; };
-		1CCC69892ADA7F18003A8F86 /* InfinitePagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69852ADA7F18003A8F86 /* InfinitePagingView.swift */; };
 		1CCC698D2ADA7FA6003A8F86 /* EditStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC698A2ADA7FA6003A8F86 /* EditStampView.swift */; };
 		1CCC698E2ADA7FA6003A8F86 /* StampsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC698B2ADA7FA6003A8F86 /* StampsView.swift */; };
 		1CCC698F2ADA7FA6003A8F86 /* AddNewStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC698C2ADA7FA6003A8F86 /* AddNewStampView.swift */; };
@@ -81,10 +80,19 @@
 		1CCC69CA2ADE75FC003A8F86 /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69C92ADE75FC003A8F86 /* ManagedObjectContext.swift */; };
 		1CCC69CC2ADEDA45003A8F86 /* ManagedObjectContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69CB2ADEDA45003A8F86 /* ManagedObjectContextMock.swift */; };
 		1CCC69CF2ADEDF69003A8F86 /* LogRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69CE2ADEDF69003A8F86 /* LogRepositoryTests.swift */; };
+		1CCC69D72ADF67AE003A8F86 /* StampRecordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69D62ADF67AE003A8F86 /* StampRecordUITests.swift */; };
+		1CE66BA02AE4FF5D00AC612D /* InfinitePaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE66B9F2AE4FF5D00AC612D /* InfinitePaging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		1CCC69C42ADE711C003A8F86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1CCC69062ADA7AC6003A8F86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1CCC690D2ADA7AC6003A8F86;
+			remoteInfo = StampRecord;
+		};
+		1CCC69DA2ADF67AE003A8F86 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1CCC69062ADA7AC6003A8F86 /* Project object */;
 			proxyType = 1;
@@ -141,7 +149,6 @@
 		1CCC69822ADA7F18003A8F86 /* HStackedStamps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HStackedStamps.swift; sourceTree = "<group>"; };
 		1CCC69832ADA7F18003A8F86 /* VStackedStamps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VStackedStamps.swift; sourceTree = "<group>"; };
 		1CCC69842ADA7F18003A8F86 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
-		1CCC69852ADA7F18003A8F86 /* InfinitePagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfinitePagingView.swift; sourceTree = "<group>"; };
 		1CCC698A2ADA7FA6003A8F86 /* EditStampView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStampView.swift; sourceTree = "<group>"; };
 		1CCC698B2ADA7FA6003A8F86 /* StampsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampsView.swift; sourceTree = "<group>"; };
 		1CCC698C2ADA7FA6003A8F86 /* AddNewStampView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewStampView.swift; sourceTree = "<group>"; };
@@ -171,6 +178,8 @@
 		1CCC69C92ADE75FC003A8F86 /* ManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
 		1CCC69CB2ADEDA45003A8F86 /* ManagedObjectContextMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextMock.swift; sourceTree = "<group>"; };
 		1CCC69CE2ADEDF69003A8F86 /* LogRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRepositoryTests.swift; sourceTree = "<group>"; };
+		1CCC69D42ADF67AE003A8F86 /* StampRecordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StampRecordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CCC69D62ADF67AE003A8F86 /* StampRecordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRecordUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,11 +187,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CE66BA02AE4FF5D00AC612D /* InfinitePaging in Frameworks */,
 				1CCC69282ADA7B79003A8F86 /* EmojiPalette in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1CCC69BD2ADE711C003A8F86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1CCC69D12ADF67AE003A8F86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -197,6 +214,7 @@
 			children = (
 				1CCC69102ADA7AC6003A8F86 /* StampRecord */,
 				1CCC69C12ADE711C003A8F86 /* StampRecordTests */,
+				1CCC69D52ADF67AE003A8F86 /* StampRecordUITests */,
 				1CCC690F2ADA7AC6003A8F86 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -206,6 +224,7 @@
 			children = (
 				1CCC690E2ADA7AC6003A8F86 /* StampRecord.app */,
 				1CCC69C02ADE711C003A8F86 /* StampRecordTests.xctest */,
+				1CCC69D42ADF67AE003A8F86 /* StampRecordUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -341,7 +360,6 @@
 				1CCC69642ADA7EC4003A8F86 /* Modifier */,
 				1CCC69652ADA7ED2003A8F86 /* StampPicker */,
 				1CCC69842ADA7F18003A8F86 /* CalendarHeaderView.swift */,
-				1CCC69852ADA7F18003A8F86 /* InfinitePagingView.swift */,
 				1CCC69822ADA7F18003A8F86 /* HStackedStamps.swift */,
 				1CCC69832ADA7F18003A8F86 /* VStackedStamps.swift */,
 			);
@@ -451,6 +469,14 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		1CCC69D52ADF67AE003A8F86 /* StampRecordUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1CCC69D62ADF67AE003A8F86 /* StampRecordUITests.swift */,
+			);
+			path = StampRecordUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -469,6 +495,7 @@
 			name = StampRecord;
 			packageProductDependencies = (
 				1CCC69272ADA7B79003A8F86 /* EmojiPalette */,
+				1CE66B9F2AE4FF5D00AC612D /* InfinitePaging */,
 			);
 			productName = StampRecord;
 			productReference = 1CCC690E2ADA7AC6003A8F86 /* StampRecord.app */;
@@ -492,6 +519,24 @@
 			productReference = 1CCC69C02ADE711C003A8F86 /* StampRecordTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		1CCC69D32ADF67AE003A8F86 /* StampRecordUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CCC69DE2ADF67AE003A8F86 /* Build configuration list for PBXNativeTarget "StampRecordUITests" */;
+			buildPhases = (
+				1CCC69D02ADF67AE003A8F86 /* Sources */,
+				1CCC69D12ADF67AE003A8F86 /* Frameworks */,
+				1CCC69D22ADF67AE003A8F86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1CCC69DB2ADF67AE003A8F86 /* PBXTargetDependency */,
+			);
+			name = StampRecordUITests;
+			productName = StampRecordUITests;
+			productReference = 1CCC69D42ADF67AE003A8F86 /* StampRecordUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -509,6 +554,10 @@
 						CreatedOnToolsVersion = 15.0;
 						TestTargetID = 1CCC690D2ADA7AC6003A8F86;
 					};
+					1CCC69D32ADF67AE003A8F86 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 1CCC690D2ADA7AC6003A8F86;
+					};
 				};
 			};
 			buildConfigurationList = 1CCC69092ADA7AC6003A8F86 /* Build configuration list for PBXProject "StampRecord" */;
@@ -523,6 +572,7 @@
 			mainGroup = 1CCC69052ADA7AC6003A8F86;
 			packageReferences = (
 				1CCC69262ADA7B79003A8F86 /* XCRemoteSwiftPackageReference "EmojiPalette" */,
+				1CE66B9E2AE4FF5D00AC612D /* XCRemoteSwiftPackageReference "InfinitePaging" */,
 			);
 			productRefGroup = 1CCC690F2ADA7AC6003A8F86 /* Products */;
 			projectDirPath = "";
@@ -530,6 +580,7 @@
 			targets = (
 				1CCC690D2ADA7AC6003A8F86 /* StampRecord */,
 				1CCC69BF2ADE711C003A8F86 /* StampRecordTests */,
+				1CCC69D32ADF67AE003A8F86 /* StampRecordUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -546,6 +597,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1CCC69BE2ADE711C003A8F86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1CCC69D22ADF67AE003A8F86 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -596,7 +654,6 @@
 				1CCC69862ADA7F18003A8F86 /* HStackedStamps.swift in Sources */,
 				1CCC69B12ADA7FF4003A8F86 /* Array+Extensions.swift in Sources */,
 				1CCC69762ADA7EF8003A8F86 /* SquareButtonStyle.swift in Sources */,
-				1CCC69892ADA7F18003A8F86 /* InfinitePagingView.swift in Sources */,
 				1CCC69142ADA7AC6003A8F86 /* ContentView.swift in Sources */,
 				1CCC694A2ADA7DC1003A8F86 /* Weekday.swift in Sources */,
 				1CCC69602ADA7E8A003A8F86 /* DayCalendarViewModel.swift in Sources */,
@@ -639,6 +696,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1CCC69D02ADF67AE003A8F86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CCC69D72ADF67AE003A8F86 /* StampRecordUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -646,6 +711,11 @@
 			isa = PBXTargetDependency;
 			target = 1CCC690D2ADA7AC6003A8F86 /* StampRecord */;
 			targetProxy = 1CCC69C42ADE711C003A8F86 /* PBXContainerItemProxy */;
+		};
+		1CCC69DB2ADF67AE003A8F86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1CCC690D2ADA7AC6003A8F86 /* StampRecord */;
+			targetProxy = 1CCC69DA2ADF67AE003A8F86 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -702,7 +772,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -759,7 +829,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -879,6 +949,46 @@
 			};
 			name = Release;
 		};
+		1CCC69DC2ADF67AE003A8F86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.StampRecordUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StampRecord;
+			};
+			name = Debug;
+		};
+		1CCC69DD2ADF67AE003A8F86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.StampRecordUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StampRecord;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -909,6 +1019,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		1CCC69DE2ADF67AE003A8F86 /* Build configuration list for PBXNativeTarget "StampRecordUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CCC69DC2ADF67AE003A8F86 /* Debug */,
+				1CCC69DD2ADF67AE003A8F86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -920,6 +1039,14 @@
 				version = 0.4.1;
 			};
 		};
+		1CE66B9E2AE4FF5D00AC612D /* XCRemoteSwiftPackageReference "InfinitePaging" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kyome22/InfinitePaging.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -927,6 +1054,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1CCC69262ADA7B79003A8F86 /* XCRemoteSwiftPackageReference "EmojiPalette" */;
 			productName = EmojiPalette;
+		};
+		1CE66B9F2AE4FF5D00AC612D /* InfinitePaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CE66B9E2AE4FF5D00AC612D /* XCRemoteSwiftPackageReference "InfinitePaging" */;
+			productName = InfinitePaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 

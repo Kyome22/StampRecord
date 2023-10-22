@@ -8,6 +8,15 @@
         "revision" : "b55483497941bdc6c0afdcf27b619e7243340b99",
         "version" : "0.4.1"
       }
+    },
+    {
+      "identity" : "infinitepaging",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kyome22/InfinitePaging.git",
+      "state" : {
+        "revision" : "990b82d3b9f609f5512e47f290dd6e085f48265f",
+        "version" : "0.1.0"
+      }
     }
   ],
   "version" : 2

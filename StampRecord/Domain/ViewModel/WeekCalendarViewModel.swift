@@ -8,6 +8,7 @@ StampRecord
 
 import SwiftUI
 import Combine
+import InfinitePaging
 
 protocol WeekCalendarViewModel: ObservableObject {
     associatedtype SR: StampRepository
@@ -126,13 +127,15 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
     func paging(with pageDirection: PageDirection) {
         switch pageDirection {
         case .backward:
-            if let baseDate = weekList[pageDirection.baseIndex].days.first?.date,
+            if let days = weekList.first?.days,
+               let baseDate = days.first?.date,
                let date = getPreviousWeek(of: baseDate) {
                 weekList.insert(Week(title: date.title, days: getDays(of: date)), at: 0)
                 weekList.removeLast()
             }
         case .forward:
-            if let baseDate = weekList[pageDirection.baseIndex].days.first?.date,
+            if let days = weekList.last?.days,
+               let baseDate = days.first?.date,
                let date = getNextWeek(of: baseDate) {
                 weekList.append(Week(title: date.title, days: getDays(of: date)))
                 weekList.removeFirst()

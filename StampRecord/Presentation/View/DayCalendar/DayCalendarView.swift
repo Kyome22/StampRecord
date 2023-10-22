@@ -7,6 +7,7 @@ StampRecord
 */
 
 import SwiftUI
+import InfinitePaging
 
 struct DayCalendarView<DVM: DayCalendarViewModel>: View {
     @StateObject var viewModel: DVM
