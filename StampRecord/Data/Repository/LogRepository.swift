@@ -42,6 +42,7 @@ final class LogRepositoryImpl: LogRepository {
                 self?.updateStamps(stamps)
             }
             .store(in: &cancellables)
+
         do {
             try fetchManagedLogs()
         } catch {
@@ -92,6 +93,8 @@ final class LogRepositoryImpl: LogRepository {
         self.stamps = stamps
         if isDeleted {
             clearDeletedStamps()
+        } else {
+            logsSubject.send()
         }
     }
 
