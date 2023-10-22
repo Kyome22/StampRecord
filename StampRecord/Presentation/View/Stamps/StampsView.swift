@@ -36,6 +36,7 @@ struct StampsView<SVM: StampsViewModel>: View {
                             .font(.title2)
                     }
                     .buttonStyle(.square)
+                    .accessibilityIdentifier("StampsView_PlusButton")
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 16)
@@ -148,6 +149,7 @@ struct StampsView<SVM: StampsViewModel>: View {
         }
         .buttonStyle(.cell)
         .shadow(color: Color.shadow, radius: 3, x: 0, y: 3)
+        .accessibilityIdentifier("StampsView_Card_\(stamp.summary)")
     }
 }
 

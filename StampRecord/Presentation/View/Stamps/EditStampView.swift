@@ -29,6 +29,7 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                     }
                 }
                 .disabled(viewModel.disabledDone)
+                .accessibilityIdentifier("EditStamp_DoneButton")
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
@@ -44,12 +45,14 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                         label.emojiPalette(selectedEmoji: $viewModel.emoji,
                                            isPresented: $viewModel.showEmojiPicker)
                     }))
+                    .accessibilityIdentifier("EditStamp_EmojiButton")
                     VStack(alignment: .leading, spacing: 16) {
                         Text("summary")
                             .font(.headline)
                         TextField("inputSummary", text: $viewModel.summary)
                             .textFieldStyle(.summary)
                             .focused($focusedField, equals: .title)
+                            .accessibilityIdentifier("EditStamp_SummaryTextField")
                     }
                 }
                 Button(role: .destructive) {
@@ -62,6 +65,7 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                     }
                 }
                 .buttonStyle(.delete)
+                .accessibilityIdentifier("EditStamp_DeleteButton")
                 .confirmationDialog(
                     "deleteMessage",
                     isPresented: $viewModel.showDeleteConfirmation,
@@ -74,6 +78,7 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                         } label: {
                             Text("deleteStamp")
                         }
+                        .accessibilityIdentifier("EditStamp_ConfirmButton")
                     }
                 )
                 Spacer()

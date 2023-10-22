@@ -9,16 +9,26 @@ StampRecord
 import SwiftUI
 
 struct SummaryTextFieldStyle: TextFieldStyle {
+    let isUITesting = ProcessInfo.isUITesting
+
     func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-            .padding(.vertical, 8)
-            .padding(.horizontal, 16)
-            .background(Color.appBackground)
-            .cornerRadius(8)
-            .overlay {
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.cellBorder, lineWidth: 1)
-            }
+        if isUITesting {
+            configuration
+                .padding(.vertical, 8)
+                .padding(.horizontal, 16)
+                .background(Color.appBackground)
+                .cornerRadius(8)
+        } else {
+            configuration
+                .padding(.vertical, 8)
+                .padding(.horizontal, 16)
+                .background(Color.appBackground)
+                .cornerRadius(8)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.cellBorder, lineWidth: 1)
+                }
+        }
     }
 
 }

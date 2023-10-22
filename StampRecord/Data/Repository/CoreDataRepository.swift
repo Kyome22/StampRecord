@@ -37,10 +37,11 @@ struct CoreDataRepository {
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "StampRecord")
         if inMemory {
-            guard let desctiption = container.persistentStoreDescriptions.first else {
+            guard let description = container.persistentStoreDescriptions.first else {
                 fatalError("Failed to retrive a persistent store description.")
             }
-            desctiption.url = URL(fileURLWithPath: "/dev/null")
+            description.url = URL(fileURLWithPath: "/dev/null")
+//            container.persistentStoreDescriptions = [description]
         }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {

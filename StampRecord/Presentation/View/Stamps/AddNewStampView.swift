@@ -20,6 +20,7 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
                 Button("cancel") {
                     dismiss()
                 }
+                .accessibilityIdentifier("AddNewStamp_CancelButton")
                 Text("newStamp")
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
@@ -28,6 +29,7 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
                         dismiss()
                     }
                 }
+                .accessibilityIdentifier("AddNewStamp_AddButton")
                 .disabled(viewModel.emoji.isEmpty || viewModel.summary.isEmpty)
             }
             .padding(.horizontal, 20)
@@ -43,12 +45,14 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
                     label.emojiPalette(selectedEmoji: $viewModel.emoji,
                                        isPresented: $viewModel.showEmojiPicker)
                 }))
+                .accessibilityIdentifier("AddNewStamp_EmojiButton")
                 VStack(alignment: .leading, spacing: 16) {
                     Text("summary")
                         .font(.headline)
                     TextField("inputSummary", text: $viewModel.summary)
                         .textFieldStyle(.summary)
                         .focused($focusedField, equals: .title)
+                        .accessibilityIdentifier("AddNewStamp_SummaryTextField")
                 }
                 Spacer()
             }

@@ -21,6 +21,7 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                 )
                 .tabItem {
                     Label("stamps", image: "stamp.fill")
+                        .accessibilityIdentifier("Tab_Stamps")
                 }
                 .tag(Tab.stamps)
                 DayCalendarView(
@@ -29,6 +30,7 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                 )
                 .tabItem {
                     Label("day", image: "calendar.day")
+                        .accessibilityIdentifier("Tab_DayCalendar")
                 }
                 .tag(Tab.dayCalendar)
                 WeekCalendarView(
@@ -36,11 +38,14 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                     isPhone: isPhone
                 )
                 .tabItem {
-                    if isPhone {
-                        Label("week", image: "calendar.week.horizontal")
-                    } else {
-                        Label("week", image: "calendar.week.vertical")
+                    Group {
+                        if isPhone {
+                            Label("week", image: "calendar.week.horizontal")
+                        } else {
+                            Label("week", image: "calendar.week.vertical")
+                        }
                     }
+                    .accessibilityIdentifier("Tab_WeekCalendar")
                 }
                 .tag(Tab.weekCalendar)
                 MonthCalendarView(
@@ -50,11 +55,13 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                 )
                 .tabItem {
                     Label("month", systemImage: "calendar")
+                        .accessibilityIdentifier("Tab_MonthCalendar")
                 }
                 .tag(Tab.monthCalendar)
                 SettingsView(viewModel: SettingsViewModelImpl())
                     .tabItem {
                         Label("settings", systemImage: "gearshape")
+                            .accessibilityIdentifier("Tab_Settings")
                     }
                     .tag(Tab.settings)
             }

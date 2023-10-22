@@ -82,6 +82,8 @@
 		1CCC69CF2ADEDF69003A8F86 /* LogRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69CE2ADEDF69003A8F86 /* LogRepositoryTests.swift */; };
 		1CCC69D72ADF67AE003A8F86 /* StampRecordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69D62ADF67AE003A8F86 /* StampRecordUITests.swift */; };
 		1CE66BA02AE4FF5D00AC612D /* InfinitePaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE66B9F2AE4FF5D00AC612D /* InfinitePaging */; };
+		1CE66BA32AE50FC300AC612D /* XCUIElement+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE66BA22AE50FC300AC612D /* XCUIElement+Extensions.swift */; };
+		1CE66BA52AE52AA600AC612D /* ProcessInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE66BA42AE52AA600AC612D /* ProcessInfo+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +182,9 @@
 		1CCC69CE2ADEDF69003A8F86 /* LogRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRepositoryTests.swift; sourceTree = "<group>"; };
 		1CCC69D42ADF67AE003A8F86 /* StampRecordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StampRecordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCC69D62ADF67AE003A8F86 /* StampRecordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRecordUITests.swift; sourceTree = "<group>"; };
+		1CE66BA12AE50C7100AC612D /* StampRecord.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = StampRecord.xctestplan; sourceTree = "<group>"; };
+		1CE66BA22AE50FC300AC612D /* XCUIElement+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Extensions.swift"; sourceTree = "<group>"; };
+		1CE66BA42AE52AA600AC612D /* ProcessInfo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				1CCC69102ADA7AC6003A8F86 /* StampRecord */,
+				1CE66BA12AE50C7100AC612D /* StampRecord.xctestplan */,
 				1CCC69C12ADE711C003A8F86 /* StampRecordTests */,
 				1CCC69D52ADF67AE003A8F86 /* StampRecordUITests */,
 				1CCC690F2ADA7AC6003A8F86 /* Products */,
@@ -315,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				1CCC69AE2ADA7FF4003A8F86 /* Utils.swift */,
+				1CE66BA42AE52AA600AC612D /* ProcessInfo+Extensions.swift */,
 				1CCC69A82ADA7FF3003A8F86 /* String+Extensions.swift */,
 				1CCC69AA2ADA7FF4003A8F86 /* Array+Extensions.swift */,
 				1CCC69AD2ADA7FF4003A8F86 /* Calendar+Extensions.swift */,
@@ -473,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				1CCC69D62ADF67AE003A8F86 /* StampRecordUITests.swift */,
+				1CE66BA22AE50FC300AC612D /* XCUIElement+Extensions.swift */,
 			);
 			path = StampRecordUITests;
 			sourceTree = "<group>";
@@ -632,6 +640,7 @@
 				1CCC69A62ADA7FC4003A8F86 /* DayCalendarView.swift in Sources */,
 				1CCC69A32ADA7FBD003A8F86 /* MonthView.swift in Sources */,
 				1CCC69772ADA7EF8003A8F86 /* DeleteButtonStyle.swift in Sources */,
+				1CE66BA52AE52AA600AC612D /* ProcessInfo+Extensions.swift in Sources */,
 				1CCC694B2ADA7DC1003A8F86 /* StampOrder.swift in Sources */,
 				1CCC69B22ADA7FF4003A8F86 /* View+Extensions.swift in Sources */,
 				1CCC69962ADA7FAD003A8F86 /* VerticalWeekView.swift in Sources */,
@@ -701,6 +710,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CCC69D72ADF67AE003A8F86 /* StampRecordUITests.swift in Sources */,
+				1CE66BA32AE50FC300AC612D /* XCUIElement+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,35 @@
+{
+  "configurations" : [
+    {
+      "id" : "123041F0-A304-45B6-BC4A-EBE88F60AB11",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:StampRecord.xcodeproj",
+      "identifier" : "1CCC690D2ADA7AC6003A8F86",
+      "name" : "StampRecord"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:StampRecord.xcodeproj",
+        "identifier" : "1CCC69BF2ADE711C003A8F86",
+        "name" : "StampRecordTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:StampRecord.xcodeproj",
+        "identifier" : "1CCC69D32ADF67AE003A8F86",
+        "name" : "StampRecordUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
