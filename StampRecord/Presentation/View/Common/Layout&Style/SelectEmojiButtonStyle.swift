@@ -47,10 +47,10 @@ struct SelectEmojiLabel: View {
     }
 }
 
-// extension ButtonStyle {
-//     static func selectEmojiButton<Content: View>(
-//         @ViewBuilder transform: @escaping (SelectEmojiLabel) -> Content
-//     ) -> SelectEmojiButtonStyle<Content> where Self == SelectEmojiButtonStyle<Content> {
-//         return SelectEmojiButtonStyle<Content>(transform: transform)
-//     }
-// }
+extension ButtonStyle {
+    static func selectEmojiButton<Content: View>(
+        @ViewBuilder transform: @escaping (SelectEmojiLabel) -> Content
+    ) -> SelectEmojiButtonStyle<Content> where Self == SelectEmojiButtonStyle<Content> {
+        return SelectEmojiButtonStyle<Content>(transform: transform)
+    }
+}

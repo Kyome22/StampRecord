@@ -41,7 +41,7 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                     } label: {
                         Text(viewModel.emoji)
                     }
-                    .buttonStyle(SelectEmojiButtonStyle(transform: { label in
+                    .buttonStyle(.selectEmojiButton(transform: { label in
                         label.emojiPalette(selectedEmoji: $viewModel.emoji,
                                            isPresented: $viewModel.showEmojiPicker)
                     }))
