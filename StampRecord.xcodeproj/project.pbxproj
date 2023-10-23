@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1CAB3EF12AE62B9900BE23F0 /* DayCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */; };
 		1CAB3EF32AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */; };
+		1CAB3EF62AE63FEF00BE23F0 /* WeekCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */; };
 		1CCC69122ADA7AC6003A8F86 /* StampRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69112ADA7AC6003A8F86 /* StampRecordApp.swift */; };
 		1CCC69142ADA7AC6003A8F86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69132ADA7AC6003A8F86 /* ContentView.swift */; };
 		1CCC69162ADA7AC8003A8F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CCC69152ADA7AC8003A8F86 /* Assets.xcassets */; };
@@ -109,6 +110,7 @@
 /* Begin PBXFileReference section */
 		1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarUITests.swift; sourceTree = "<group>"; };
 		1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarUITests.swift; sourceTree = "<group>"; };
 		1CCC690E2ADA7AC6003A8F86 /* StampRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StampRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCC69112ADA7AC6003A8F86 /* StampRecordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRecordApp.swift; sourceTree = "<group>"; };
 		1CCC69132ADA7AC6003A8F86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 				1CAB3EF42AE6307E00BE23F0 /* Helper */,
 				1CCC69D62ADF67AE003A8F86 /* StampsViewUITests.swift */,
 				1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */,
+				1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */,
 			);
 			path = StampRecordUITests;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
+				ORGANIZATIONNAME = "Studio Kyome";
 				TargetAttributes = {
 					1CCC690D2ADA7AC6003A8F86 = {
 						CreatedOnToolsVersion = 15.0;
@@ -726,6 +730,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CAB3EF62AE63FEF00BE23F0 /* WeekCalendarUITests.swift in Sources */,
 				1CCC69D72ADF67AE003A8F86 /* StampsViewUITests.swift in Sources */,
 				1CE66BA32AE50FC300AC612D /* XCUIElement+Extensions.swift in Sources */,
 				1CAB3EF32AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift in Sources */,

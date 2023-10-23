@@ -1,6 +1,6 @@
 /*
  CoreDataRepository.swift
-StampRecord
+ StampRecord
 
  Created by Takuto Nakamura on 2023/08/19.
  Copyright © 2023 Studio Kyome. All rights reserved.

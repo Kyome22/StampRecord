@@ -1,6 +1,6 @@
 /*
  JudgeOrientationModifier.swift
-StampRecord
+ StampRecord
 
  Created by Takuto Nakamura on 2023/08/29.
  Copyright © 2023 Studio Kyome. All rights reserved.

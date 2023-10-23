@@ -1,6 +1,6 @@
 /*
  Date+Extensions.swift
-StampRecord
+ StampRecord
 
  Created by Takuto Nakamura on 2023/09/07.
  Copyright © 2023 Studio Kyome. All rights reserved.
