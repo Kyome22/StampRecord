@@ -25,6 +25,7 @@ struct VWDayView: View {
                         .fill(Color.highlight(day.isToday))
                 }
                 .padding(4)
+                .accessibilityIdentifier("VWDayView_DayText_\(day.text)")
             Divider()
                 .overlay(Color.cellBorder)
                 .padding(.horizontal, 4)
@@ -32,6 +33,7 @@ struct VWDayView: View {
                 VStackedStamps(stamps: log.stamps) { index in
                     try removeStampHandler(day, index)
                 }
+                .accessibilityIdentifier("VWDayView_VStackedStamps_\(day.text)")
             } else {
                 Spacer()
             }

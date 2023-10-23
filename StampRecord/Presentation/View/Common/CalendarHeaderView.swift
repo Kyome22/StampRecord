@@ -37,7 +37,7 @@ struct CalendarHeaderView: View {
                         .font(.title2)
                 }
                 .buttonStyle(.square)
-                .accessibilityIdentifier("CalendaarHeaderView_StampButton")
+                .accessibilityIdentifier("CalendarHeaderView_StampButton")
                 .disabled(!isDaySelected)
                 .stampPicker(
                     isPresented: $showStampPicker,

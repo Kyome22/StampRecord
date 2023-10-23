@@ -25,6 +25,7 @@ struct HWDayView: View {
                         .fill(Color.highlight(day.isToday))
                 }
                 .padding(4)
+                .accessibilityIdentifier("HWDayView_DayText_\(day.text)")
             Divider()
                 .overlay(Color.cellBorder)
                 .padding(.vertical, 4)
@@ -32,6 +33,7 @@ struct HWDayView: View {
                 HStackedStamps(stamps: log.stamps) { index in
                     try removeStampHandler(day, index)
                 }
+                .accessibilityIdentifier("HWDayView_HStackedStamps_\(day.text)")
             } else {
                 Spacer()
             }

@@ -41,6 +41,7 @@ struct VStackedStamps: View {
                             Image(.stampFillMinus)
                         }
                     }
+                    .accessibilityIdentifier("VStackedStamps_RemoveButton_\(stamps[index].summary)")
                 }
             }
         }

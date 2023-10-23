@@ -41,6 +41,7 @@ struct HStackedStamps: View {
                             Image(.stampFillMinus)
                         }
                     }
+                    .accessibilityIdentifier("HStackedStamps_RemoveButton_\(stamps[index].summary)")
                 }
             }
         }

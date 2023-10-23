@@ -41,7 +41,7 @@ final class DayCalendarUITests: XCTestCase {
 
         app.buttons["Tab_DayCalendar"].tap()
 
-        app.buttons["CalendaarHeaderView_StampButton"].tap()
+        app.buttons["CalendarHeaderView_StampButton"].tap()
         app.popovers.scrollViews.buttons["StampPickerView_Smile"].tap()
 
         let stampCard = app.staticTexts["DayView_StampCard_Smile"]
