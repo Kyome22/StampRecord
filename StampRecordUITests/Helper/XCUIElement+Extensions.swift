@@ -3,7 +3,6 @@
  StampRecord
 
  Created by Takuto Nakamura on 2023/10/22.
- 
 */
 
 import XCTest

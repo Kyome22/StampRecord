@@ -41,7 +41,6 @@ struct CoreDataRepository {
                 fatalError("Failed to retrive a persistent store description.")
             }
             description.url = URL(fileURLWithPath: "/dev/null")
-//            container.persistentStoreDescriptions = [description]
         }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {

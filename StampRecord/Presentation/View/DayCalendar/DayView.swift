@@ -75,6 +75,7 @@ struct DayView: View {
             Text(stamp.emoji)
                 .font(.system(size: 200))
                 .minimumScaleFactor(0.01)
+                .accessibilityIdentifier("DayView_StampCard_\(stamp.summary)")
             Text(stamp.summary)
                 .font(.caption)
                 .lineLimit(1)
@@ -99,6 +100,7 @@ struct DayView: View {
                     Image(.stampFillMinus)
                 }
             }
+            .accessibilityIdentifier("DayView_RemoveButton_\(stamp.summary)")
         }
         .alertSRError(isPresented: $showErrorAlert, srError: srError)
     }

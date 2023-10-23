@@ -13,8 +13,4 @@ struct Week: Pageable {
     var id = UUID()
     var title: String
     var days: [Day]
-
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(id)
-//    }
 }

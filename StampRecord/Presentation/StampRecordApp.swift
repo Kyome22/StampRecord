@@ -1,9 +1,9 @@
-//
-//  StampRecordApp.swift
-//  StampRecord
-//
-//  Created by Takuto Nakamura on 2023/10/14.
-//
+/*
+ StampRecordApp.swift
+ StampRecord
+
+ Created by Takuto Nakamura on 2023/10/14.
+*/
 
 import SwiftUI
 

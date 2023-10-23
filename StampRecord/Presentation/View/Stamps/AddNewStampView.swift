@@ -51,8 +51,8 @@ struct AddNewStampView<AVM: AddNewStampViewModel>: View {
                         .font(.headline)
                     TextField("inputSummary", text: $viewModel.summary)
                         .textFieldStyle(.summary)
-                        .focused($focusedField, equals: .title)
                         .accessibilityIdentifier("AddNewStamp_SummaryTextField")
+                        .focused($focusedField, equals: .title)
                 }
                 Spacer()
             }

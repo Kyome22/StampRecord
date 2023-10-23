@@ -148,8 +148,8 @@ struct StampsView<SVM: StampsViewModel>: View {
             .aspectRatio(1, contentMode: .fill)
         }
         .buttonStyle(.cell)
-        .shadow(color: Color.shadow, radius: 3, x: 0, y: 3)
         .accessibilityIdentifier("StampsView_Card_\(stamp.summary)")
+        .shadow(color: Color.shadow, radius: 3, x: 0, y: 3)
     }
 }
 

@@ -28,8 +28,8 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                         dismiss()
                     }
                 }
-                .disabled(viewModel.disabledDone)
                 .accessibilityIdentifier("EditStamp_DoneButton")
+                .disabled(viewModel.disabledDone)
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
@@ -51,8 +51,8 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                             .font(.headline)
                         TextField("inputSummary", text: $viewModel.summary)
                             .textFieldStyle(.summary)
-                            .focused($focusedField, equals: .title)
                             .accessibilityIdentifier("EditStamp_SummaryTextField")
+                            .focused($focusedField, equals: .title)
                     }
                 }
                 Button(role: .destructive) {

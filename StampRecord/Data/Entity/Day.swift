@@ -17,8 +17,4 @@ struct Day: Pageable {
     var text: String
     var weekday: Weekday
     var log: Log?
-
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(id)
-//    }
 }

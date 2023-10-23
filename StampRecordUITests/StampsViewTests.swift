@@ -1,23 +1,28 @@
-//
-//  StampRecordUITests.swift
-//  StampRecordUITests
-//
-//  Created by Takuto Nakamura on 2023/10/18.
-//
+/*
+ StampsViewTests.swift
+ StampRecordUITests
+
+ Created by Takuto Nakamura on 2023/10/18.
+*/
 
 import XCTest
 
-final class StampRecordUITests: XCTestCase {
-    override func setUpWithError() throws {
+final class StampsViewTests: XCTestCase {
+    let app = XCUIApplication()
+
+    override func setUp() {
         continueAfterFailure = false
+        app.launchEnvironment = ["EXEC_UITEST": "true"]
+        app.launch()
+    }
+
+    override func tearDown() {
+        app.terminate()
     }
 
     func test_addNewStamp() throws {
-        let app = XCUIApplication()
-        app.launchEnvironment = ["EXEC_UITEST": "true"]
-        app.launch()
-
         app.buttons["Tab_Stamps"].tap()
+
         app.buttons["StampsView_PlusButton"].tap()
         app.buttons["AddNewStamp_EmojiButton"]
             .wait(until: \.exists)
@@ -26,11 +31,7 @@ final class StampRecordUITests: XCTestCase {
         app.popovers.collectionViews.buttons["😀"].tap()
 
         // Close Popover
-        let tabTitleFrame = app.staticTexts["Stamps"].frame
-        let point = CGPoint(x: tabTitleFrame.midX, y: tabTitleFrame.midY)
-        let normalized = app.coordinate(withNormalizedOffset: .zero)
-        let coordinate = normalized.withOffset(CGVector(dx: point.x, dy: point.y))
-        coordinate.tap()
+        app.coordinate(of: app.staticTexts["Stamps"]).tap()
 
         let field = app.textFields["AddNewStamp_SummaryTextField"]
         field.tap()
@@ -38,17 +39,11 @@ final class StampRecordUITests: XCTestCase {
         app.buttons["AddNewStamp_AddButton"].tap()
         let smileCard = app.buttons["StampsView_Card_Smile"].wait(until: \.exists)
         XCTAssertTrue(smileCard.exists)
-        app.terminate()
     }
 
     func test_editStamp() throws {
-        let app = XCUIApplication()
-        app.launchEnvironment = ["EXEC_UITEST": "true"]
-        app.launch()
-
         app.buttons["Tab_Stamps"].tap()
 
-        // Add
         app.buttons["StampsView_PlusButton"].tap()
         app.buttons["AddNewStamp_EmojiButton"]
             .wait(until: \.exists)
@@ -57,17 +52,13 @@ final class StampRecordUITests: XCTestCase {
         app.popovers.collectionViews.buttons["😀"].tap()
 
         // Close Popover
-        let tabTitleFrame = app.staticTexts["Stamps"].frame
-        let point = CGPoint(x: tabTitleFrame.midX, y: tabTitleFrame.midY)
-        let normalized = app.coordinate(withNormalizedOffset: .zero)
-        let coordinate = normalized.withOffset(CGVector(dx: point.x, dy: point.y))
+        let coordinate = app.coordinate(of: app.staticTexts["Stamps"])
         coordinate.tap()
 
         let field1 = app.textFields["AddNewStamp_SummaryTextField"]
         field1.tap()
         field1.typeText("Smile\n")
         app.buttons["AddNewStamp_AddButton"].tap()
-
         app.buttons["StampsView_Card_Smile"]
             .wait(until: \.exists)
             .wait(until: \.isHittable)
@@ -91,17 +82,11 @@ final class StampRecordUITests: XCTestCase {
 
         let angelCard = app.buttons["StampsView_Card_Angel"].wait(until: \.exists)
         XCTAssertTrue(angelCard.exists)
-        app.terminate()
     }
 
     func test_deleteStamp() throws {
-        let app = XCUIApplication()
-        app.launchEnvironment = ["EXEC_UITEST": "true"]
-        app.launch()
-
         app.buttons["Tab_Stamps"].tap()
 
-        // Add
         app.buttons["StampsView_PlusButton"].tap()
         app.buttons["AddNewStamp_EmojiButton"]
             .wait(until: \.exists)
@@ -110,17 +95,13 @@ final class StampRecordUITests: XCTestCase {
         app.popovers.collectionViews.buttons["😀"].tap()
 
         // Close Popover
-        let tabTitleFrame = app.staticTexts["Stamps"].frame
-        let point = CGPoint(x: tabTitleFrame.midX, y: tabTitleFrame.midY)
-        let normalized = app.coordinate(withNormalizedOffset: .zero)
-        let coordinate = normalized.withOffset(CGVector(dx: point.x, dy: point.y))
+        let coordinate = app.coordinate(of: app.staticTexts["Stamps"])
         coordinate.tap()
 
         let field1 = app.textFields["AddNewStamp_SummaryTextField"]
         field1.tap()
         field1.typeText("Smile\n")
         app.buttons["AddNewStamp_AddButton"].tap()
-
         app.buttons["StampsView_Card_Smile"]
             .wait(until: \.exists)
             .wait(until: \.isHittable)
@@ -135,6 +116,5 @@ final class StampRecordUITests: XCTestCase {
         let smileCard = app.buttons["StampsView_Card_Smile"]
             .wait(until: \.exists, matches: false)
         XCTAssertFalse(smileCard.exists)
-        app.terminate()
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CAB3EF12AE62B9900BE23F0 /* DayCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */; };
+		1CAB3EF32AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */; };
 		1CCC69122ADA7AC6003A8F86 /* StampRecordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69112ADA7AC6003A8F86 /* StampRecordApp.swift */; };
 		1CCC69142ADA7AC6003A8F86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69132ADA7AC6003A8F86 /* ContentView.swift */; };
 		1CCC69162ADA7AC8003A8F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CCC69152ADA7AC8003A8F86 /* Assets.xcassets */; };
@@ -80,7 +82,7 @@
 		1CCC69CA2ADE75FC003A8F86 /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69C92ADE75FC003A8F86 /* ManagedObjectContext.swift */; };
 		1CCC69CC2ADEDA45003A8F86 /* ManagedObjectContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69CB2ADEDA45003A8F86 /* ManagedObjectContextMock.swift */; };
 		1CCC69CF2ADEDF69003A8F86 /* LogRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69CE2ADEDF69003A8F86 /* LogRepositoryTests.swift */; };
-		1CCC69D72ADF67AE003A8F86 /* StampRecordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69D62ADF67AE003A8F86 /* StampRecordUITests.swift */; };
+		1CCC69D72ADF67AE003A8F86 /* StampsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCC69D62ADF67AE003A8F86 /* StampsViewTests.swift */; };
 		1CE66BA32AE50FC300AC612D /* XCUIElement+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE66BA22AE50FC300AC612D /* XCUIElement+Extensions.swift */; };
 		1CE66BA52AE52AA600AC612D /* ProcessInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE66BA42AE52AA600AC612D /* ProcessInfo+Extensions.swift */; };
 		1CE66BA82AE5499C00AC612D /* InfinitePaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE66BA72AE5499C00AC612D /* InfinitePaging */; };
@@ -105,6 +107,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarUITests.swift; sourceTree = "<group>"; };
+		1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		1CCC690E2ADA7AC6003A8F86 /* StampRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StampRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCC69112ADA7AC6003A8F86 /* StampRecordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRecordApp.swift; sourceTree = "<group>"; };
 		1CCC69132ADA7AC6003A8F86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -182,7 +186,7 @@
 		1CCC69CB2ADEDA45003A8F86 /* ManagedObjectContextMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextMock.swift; sourceTree = "<group>"; };
 		1CCC69CE2ADEDF69003A8F86 /* LogRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRepositoryTests.swift; sourceTree = "<group>"; };
 		1CCC69D42ADF67AE003A8F86 /* StampRecordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StampRecordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CCC69D62ADF67AE003A8F86 /* StampRecordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampRecordUITests.swift; sourceTree = "<group>"; };
+		1CCC69D62ADF67AE003A8F86 /* StampsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsViewTests.swift; sourceTree = "<group>"; };
 		1CE66BA12AE50C7100AC612D /* StampRecord.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = StampRecord.xctestplan; sourceTree = "<group>"; };
 		1CE66BA22AE50FC300AC612D /* XCUIElement+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Extensions.swift"; sourceTree = "<group>"; };
 		1CE66BA42AE52AA600AC612D /* ProcessInfo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+Extensions.swift"; sourceTree = "<group>"; };
@@ -216,6 +220,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CAB3EF42AE6307E00BE23F0 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */,
+				1CE66BA22AE50FC300AC612D /* XCUIElement+Extensions.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		1CCC69052ADA7AC6003A8F86 = {
 			isa = PBXGroup;
 			children = (
@@ -481,8 +494,9 @@
 		1CCC69D52ADF67AE003A8F86 /* StampRecordUITests */ = {
 			isa = PBXGroup;
 			children = (
-				1CCC69D62ADF67AE003A8F86 /* StampRecordUITests.swift */,
-				1CE66BA22AE50FC300AC612D /* XCUIElement+Extensions.swift */,
+				1CAB3EF42AE6307E00BE23F0 /* Helper */,
+				1CCC69D62ADF67AE003A8F86 /* StampsViewTests.swift */,
+				1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */,
 			);
 			path = StampRecordUITests;
 			sourceTree = "<group>";
@@ -712,8 +726,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CCC69D72ADF67AE003A8F86 /* StampRecordUITests.swift in Sources */,
+				1CCC69D72ADF67AE003A8F86 /* StampsViewTests.swift in Sources */,
 				1CE66BA32AE50FC300AC612D /* XCUIElement+Extensions.swift in Sources */,
+				1CAB3EF32AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift in Sources */,
+				1CAB3EF12AE62B9900BE23F0 /* DayCalendarUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
