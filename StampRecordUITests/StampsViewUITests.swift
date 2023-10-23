@@ -1,5 +1,5 @@
 /*
- StampsViewTests.swift
+ StampsViewUITests.swift
  StampRecordUITests
 
  Created by Takuto Nakamura on 2023/10/18.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class StampsViewTests: XCTestCase {
+final class StampsViewUITests: XCTestCase {
     let app = XCUIApplication()
 
     override func setUp() {
