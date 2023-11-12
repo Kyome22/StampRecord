@@ -11,6 +11,7 @@ import InfinitePaging
 
 struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
     @StateObject var viewModel: WVM
+    @Environment(\.scenePhase) var scenePhase
     let isPhone: Bool
 
     var body: some View {
@@ -65,6 +66,11 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
         .background(Color.appBackground)
         .onAppear {
             viewModel.selectedDayID = nil
+        }
+        .onChange(of: scenePhase) { _, newValue in
+            if newValue == .active {
+                viewModel.setToday()
+            }
         }
     }
 }

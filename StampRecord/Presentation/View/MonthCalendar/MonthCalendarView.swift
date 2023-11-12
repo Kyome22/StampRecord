@@ -11,6 +11,7 @@ import InfinitePaging
 
 struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
     @StateObject var viewModel: MVM
+    @Environment(\.scenePhase) var scenePhase
     let isPhone: Bool
     let orientation: DeviceOrientation
 
@@ -57,6 +58,11 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
         .background(Color.appBackground)
         .onAppear {
             viewModel.selectedDayID = nil
+        }
+        .onChange(of: scenePhase) { _, newValue in
+            if newValue == .active {
+                viewModel.setToday()
+            }
         }
     }
 }

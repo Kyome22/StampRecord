@@ -24,6 +24,7 @@ protocol WeekCalendarViewModel: ObservableObject {
     init(_ stampRepository: SR, _ logRepository: LR)
 
     func setWeekList()
+    func setToday()
     func paging(with pageDirection: PageDirection)
     func putStamp(stamp: Stamp) throws
     func removeStamp(day: Day, index: Int) throws
@@ -44,6 +45,7 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
     private let calendar = Calendar.current
     private let stampRepository: SR
     private let logRepository: LR
+    private var today = Date.now
     private var cancellables = Set<AnyCancellable>()
 
     init(_ stampRepository: SR, _ logRepository: LR) {
@@ -91,7 +93,6 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
     }
 
     private func getDays(of targetDate: Date) -> [Day] {
-        let now = Date.now
         var days = [Day]()
         if let daysInMonth = calendar.daysInMonth(for: targetDate),
            let startOfMonth = calendar.startOfMonth(for: targetDate),
@@ -101,7 +102,7 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
                 let diff = calendar.daysBetween(from: startOfMonth, to: date)
                 return Day(date: date,
                            inMonth: (0 ..< daysInMonth).contains(diff),
-                           isToday: calendar.isEqual(a: date, b: now),
+                           isToday: calendar.isEqual(a: date, b: today),
                            text: calendar.dayText(of: date),
                            weekday: calendar.weekday(of: date),
                            log: logRepository.getLog(of: date))
@@ -111,17 +112,29 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
     }
 
     func setWeekList() {
+        today = Date.now
         weekList.removeAll()
-        let now = Date.now
-        weekList.append(Week(title: now.title, days: getDays(of: now)))
-        if let date = getPreviousWeek(of: now) {
+        weekList.append(Week(title: today.title, days: getDays(of: today)))
+        if let date = getPreviousWeek(of: today) {
             weekList.insert(Week(title: date.title, days: getDays(of: date)), at: 0)
         }
-        if let date = getNextWeek(of: now) {
+        if let date = getNextWeek(of: today) {
             weekList.append(Week(title: date.title, days: getDays(of: date)))
         }
         title = weekList[1].title
         selectedDayID = nil
+    }
+
+    func setToday() {
+        let old = today
+        today = Date.now
+        if calendar.isEqual(a: old, b: today) { return }
+        weekList.indices.forEach { i in
+            weekList[i].days.indices.forEach { j in
+                let date = weekList[i].days[j].date
+                weekList[i].days[j].isToday = calendar.isEqual(a: date, b: today)
+            }
+        }
     }
 
     func paging(with pageDirection: PageDirection) {
@@ -143,6 +156,7 @@ final class WeekCalendarViewModelImpl<SR: StampRepository,
         }
         title = weekList[1].title
         selectedDayID = nil
+        setToday()
     }
 
     func putStamp(stamp: Stamp) throws {
@@ -189,23 +203,24 @@ extension PreviewMock {
         init(_ stampRepository: SR, _ logRepository: LR) {}
         init() {
             let calendar = Calendar.current
-            let now = Date.now
-            if let startOfMonth = calendar.startOfMonth(for: now) {
+            let today = Date.now
+            if let startOfMonth = calendar.startOfMonth(for: today) {
                 let days = (0 ..< 7).map { i in
                     let date = calendar.date(byAdding: .day, value: i, to: startOfMonth)
                     return Day(date: date,
                                inMonth: true,
-                               isToday: calendar.isEqual(a: date, b: now),
+                               isToday: calendar.isEqual(a: date, b: today),
                                text: calendar.dayText(of: date),
                                weekday: calendar.weekday(of: date))
                 }
-                let week = Week(title: now.title, days: days)
+                let week = Week(title: today.title, days: days)
                 weekList.append(week)
             }
-            title = now.title
+            title = today.title
         }
 
         func setWeekList() {}
+        func setToday() {}
         func paging(with pageDirection: PageDirection) {}
         func putStamp(stamp: Stamp) throws {}
         func removeStamp(day: Day, index: Int) throws {}

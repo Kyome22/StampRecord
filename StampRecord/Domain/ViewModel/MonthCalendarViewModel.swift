@@ -24,6 +24,7 @@ protocol MonthCalendarViewModel: ObservableObject {
     init(_ stampRepository: SR, _ logRepository: LR)
 
     func setMonthList()
+    func setToday()
     func paging(with pageDirection: PageDirection)
     func putStamp(stamp: Stamp) throws
     func removeStamp(day: Day, index: Int) throws
@@ -44,6 +45,7 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
     private let calendar = Calendar.current
     private let stampRepository: SR
     private let logRepository: LR
+    private var today = Date.now
     private var cancellables = Set<AnyCancellable>()
 
     init(_ stampRepository: SR, _ logRepository: LR) {
@@ -91,7 +93,6 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
     }
 
     private func getDays(of targetDate: Date) -> [Day] {
-        let now = Date.now
         var days = [Day]()
         if let daysInMonth = calendar.daysInMonth(for: targetDate),
            let startOfMonth = calendar.startOfMonth(for: targetDate),
@@ -104,7 +105,7 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
                 let diff = calendar.daysBetween(from: startOfMonth, to: date)
                 return Day(date: date,
                            inMonth: (0 ..< daysInMonth).contains(diff),
-                           isToday: calendar.isEqual(a: date, b: now),
+                           isToday: calendar.isEqual(a: date, b: today),
                            text: calendar.dayText(of: date),
                            weekday: calendar.weekday(of: date),
                            log: logRepository.getLog(of: date))
@@ -114,17 +115,29 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
     }
 
     func setMonthList() {
+        today = Date.now
         monthList.removeAll()
-        let now = Date.now
-        monthList.append(Month(title: now.title, days: getDays(of: now)))
-        if let date = getPreviousMonth(of: now) {
+        monthList.append(Month(title: today.title, days: getDays(of: today)))
+        if let date = getPreviousMonth(of: today) {
             monthList.insert(Month(title: date.title, days: getDays(of: date)), at: 0)
         }
-        if let date = getNextMonth(of: now) {
+        if let date = getNextMonth(of: today) {
             monthList.append(Month(title: date.title, days: getDays(of: date)))
         }
         title = monthList[1].title
         selectedDayID = nil
+    }
+
+    func setToday() {
+        let old = today
+        today = Date.now
+        if calendar.isEqual(a: old, b: today) { return }
+        monthList.indices.forEach { i in
+            monthList[i].days.indices.forEach { j in
+                let date = monthList[i].days[j].date
+                monthList[i].days[j].isToday = calendar.isEqual(a: date, b: today)
+            }
+        }
     }
 
     func paging(with pageDirection: PageDirection) {
@@ -146,6 +159,7 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
         }
         title = monthList[1].title
         selectedDayID = nil
+        setToday()
     }
 
     func putStamp(stamp: Stamp) throws {
@@ -192,23 +206,24 @@ extension PreviewMock {
         init(_ stampRepository: SR, _ logRepository: LR) {}
         init() {
             let calendar = Calendar.current
-            let now = Date.now
-            if let startOfMonth = calendar.startOfMonth(for: now) {
+            let today = Date.now
+            if let startOfMonth = calendar.startOfMonth(for: today) {
                 let days = (0 ..< 30).map { i in
                     let date = calendar.date(byAdding: .day, value: i, to: startOfMonth)
                     return Day(date: date,
                                inMonth: true,
-                               isToday: calendar.isEqual(a: date, b: now),
+                               isToday: calendar.isEqual(a: date, b: today),
                                text: calendar.dayText(of: date),
                                weekday: calendar.weekday(of: date))
                 }
-                let month = Month(title: now.title, days: days)
+                let month = Month(title: today.title, days: days)
                 monthList.append(month)
             }
-            title = now.title
+            title = today.title
         }
 
         func setMonthList() {}
+        func setToday() {}
         func paging(with pageDirection: PageDirection) {}
         func putStamp(stamp: Stamp) throws {}
         func removeStamp(day: Day, index: Int) throws {}
