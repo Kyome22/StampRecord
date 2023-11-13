@@ -21,7 +21,7 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                     isPhone: isPhone
                 )
                 .tabItem {
-                    Label("stamps", image: "stamp.fill")
+                    Label("stamps", image: .stampFill)
                         .accessibilityIdentifier("Tab_Stamps")
                 }
                 .tag(Tab.stamps)
@@ -30,7 +30,7 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                     isPhone: isPhone
                 )
                 .tabItem {
-                    Label("day", image: "calendar.day")
+                    Label("day", image: .calendarDay)
                         .accessibilityIdentifier("Tab_DayCalendar")
                 }
                 .tag(Tab.dayCalendar)
@@ -41,9 +41,9 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                 .tabItem {
                     Group {
                         if isPhone {
-                            Label("week", image: "calendar.week.horizontal")
+                            Label("week", image: .calendarWeekHorizontal)
                         } else {
-                            Label("week", image: "calendar.week.vertical")
+                            Label("week", image: .calendarWeekVertical)
                         }
                     }
                     .accessibilityIdentifier("Tab_WeekCalendar")

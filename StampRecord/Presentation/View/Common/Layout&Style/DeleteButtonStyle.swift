@@ -15,7 +15,7 @@ struct DeleteButtonStyle: ButtonStyle {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.vertical, 8)
             .padding(.horizontal, 16)
-            .foregroundColor(Color.delete)
+            .foregroundStyle(Color.delete)
             .background(Color.delete.opacity(configuration.isPressed ? 0.12 : 0.0))
             .cornerRadius(8)
             .contentShape(RoundedRectangle(cornerRadius: 8))

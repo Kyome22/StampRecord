@@ -17,31 +17,35 @@ struct VStackedStamps: View {
     var body: some View {
         OverlappingVStack(alignment: .top, spacing: 4) {
             ForEach(stamps.indices, id: \.self) { index in
-                Text(stamps[index].emoji)
-                    .font(.system(size: 200))
-                    .minimumScaleFactor(0.01)
-                    .padding(4)
+                if stamps[index].isIncluded {
+                    Text(stamps[index].emoji)
+                        .font(.system(size: 200))
+                        .minimumScaleFactor(0.01)
+                        .padding(4)
+                }
             }
         }
         .padding(4)
         .contextMenu {
             Section("removeStamp") {
                 ForEach(stamps.indices, id: \.self) { index in
-                    Button(role: .destructive) {
-                        do {
-                            try removeStampHandler(index)
-                        } catch let error as SRError {
-                            srError = error
-                            showErrorAlert = true
-                        } catch {}
-                    } label: {
-                        Label {
-                            Text(verbatim: "\(stamps[index].emoji) \(stamps[index].summary)")
-                        } icon: {
-                            Image(.stampFillMinus)
+                    if stamps[index].isIncluded {
+                        Button(role: .destructive) {
+                            do {
+                                try removeStampHandler(index)
+                            } catch let error as SRError {
+                                srError = error
+                                showErrorAlert = true
+                            } catch {}
+                        } label: {
+                            Label {
+                                Text(verbatim: "\(stamps[index].emoji) \(stamps[index].summary)")
+                            } icon: {
+                                Image(.stampFillMinus)
+                            }
                         }
+                        .accessibilityIdentifier("VStackedStamps_RemoveButton_\(stamps[index].summary)")
                     }
-                    .accessibilityIdentifier("VStackedStamps_RemoveButton_\(stamps[index].summary)")
                 }
             }
         }

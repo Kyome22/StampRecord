@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C6242CE2B010FC80063C6AF /* Label+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242CD2B010FC80063C6AF /* Label+Extensions.swift */; };
+		1C6242D32B02002F0063C6AF /* StampFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242D22B02002F0063C6AF /* StampFilterView.swift */; };
+		1C6242D52B0201C50063C6AF /* StampFilterModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242D42B0201C50063C6AF /* StampFilterModifier.swift */; };
+		1C6242D72B020A420063C6AF /* CheckmarkToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242D62B020A420063C6AF /* CheckmarkToggleStyle.swift */; };
+		1C6242D92B0220D50063C6AF /* StampFilterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242D82B0220D50063C6AF /* StampFilterState.swift */; };
 		1CAB3EF12AE62B9900BE23F0 /* DayCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */; };
 		1CAB3EF32AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */; };
 		1CAB3EF62AE63FEF00BE23F0 /* WeekCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */; };
@@ -108,6 +113,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C6242CD2B010FC80063C6AF /* Label+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Extensions.swift"; sourceTree = "<group>"; };
+		1C6242D22B02002F0063C6AF /* StampFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampFilterView.swift; sourceTree = "<group>"; };
+		1C6242D42B0201C50063C6AF /* StampFilterModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampFilterModifier.swift; sourceTree = "<group>"; };
+		1C6242D62B020A420063C6AF /* CheckmarkToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkToggleStyle.swift; sourceTree = "<group>"; };
+		1C6242D82B0220D50063C6AF /* StampFilterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampFilterState.swift; sourceTree = "<group>"; };
 		1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarUITests.swift; sourceTree = "<group>"; };
 		1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarUITests.swift; sourceTree = "<group>"; };
@@ -222,6 +232,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C6242D12B0200100063C6AF /* StampFilter */ = {
+			isa = PBXGroup;
+			children = (
+				1C6242D22B02002F0063C6AF /* StampFilterView.swift */,
+				1C6242D42B0201C50063C6AF /* StampFilterModifier.swift */,
+			);
+			path = StampFilter;
+			sourceTree = "<group>";
+		};
 		1CAB3EF42AE6307E00BE23F0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +335,7 @@
 				1CCC69392ADA7DC1003A8F86 /* Month.swift */,
 				1CCC69422ADA7DC1003A8F86 /* FocusedField.swift */,
 				1CCC69402ADA7DC1003A8F86 /* StampOrder.swift */,
+				1C6242D82B0220D50063C6AF /* StampFilterState.swift */,
 				1CCC693F2ADA7DC1003A8F86 /* Weekday.swift */,
 				1CCC69432ADA7DC1003A8F86 /* WeekStartsAt.swift */,
 				1CCC69412ADA7DC1003A8F86 /* Period.swift */,
@@ -345,6 +365,7 @@
 				1CCC69AC2ADA7FF4003A8F86 /* Date+Extensions.swift */,
 				1CCC69A92ADA7FF4003A8F86 /* Color+Extensions.swift */,
 				1CCC69AB2ADA7FF4003A8F86 /* View+Extensions.swift */,
+				1C6242CD2B010FC80063C6AF /* Label+Extensions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -383,6 +404,7 @@
 				1CCC69632ADA7EB5003A8F86 /* Layout&Style */,
 				1CCC69642ADA7EC4003A8F86 /* Modifier */,
 				1CCC69652ADA7ED2003A8F86 /* StampPicker */,
+				1C6242D12B0200100063C6AF /* StampFilter */,
 				1CCC69842ADA7F18003A8F86 /* CalendarHeaderView.swift */,
 				1CCC69822ADA7F18003A8F86 /* HStackedStamps.swift */,
 				1CCC69832ADA7F18003A8F86 /* VStackedStamps.swift */,
@@ -452,6 +474,7 @@
 				1CCC69682ADA7EF7003A8F86 /* CellButtonStyle.swift */,
 				1CCC69672ADA7EF7003A8F86 /* InnerCellButtonStyle.swift */,
 				1CCC69662ADA7EF7003A8F86 /* SummaryTextFieldStyle.swift */,
+				1C6242D62B020A420063C6AF /* CheckmarkToggleStyle.swift */,
 			);
 			path = "Layout&Style";
 			sourceTree = "<group>";
@@ -646,6 +669,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C6242CE2B010FC80063C6AF /* Label+Extensions.swift in Sources */,
 				1CCC69702ADA7EF8003A8F86 /* InnerCellButtonStyle.swift in Sources */,
 				1CCC69442ADA7DC1003A8F86 /* Month.swift in Sources */,
 				1CCC695D2ADA7E8A003A8F86 /* StampsViewModel.swift in Sources */,
@@ -669,6 +693,7 @@
 				1CCC69532ADA7E75003A8F86 /* CoreDataRepository.swift in Sources */,
 				1CCC69972ADA7FAD003A8F86 /* VWDayView.swift in Sources */,
 				1CCC69622ADA7E8A003A8F86 /* WeekCalendarViewModel.swift in Sources */,
+				1C6242D32B02002F0063C6AF /* StampFilterView.swift in Sources */,
 				1CCC69992ADA7FAD003A8F86 /* HorizontalWeekView.swift in Sources */,
 				1CCC69B42ADA7FF4003A8F86 /* Calendar+Extensions.swift in Sources */,
 				1CCC69A22ADA7FBD003A8F86 /* MonthCalendarView.swift in Sources */,
@@ -689,13 +714,16 @@
 				1CCC69602ADA7E8A003A8F86 /* DayCalendarViewModel.swift in Sources */,
 				1CCC697D2ADA7F09003A8F86 /* BackableModifier.swift in Sources */,
 				1CCC69982ADA7FAD003A8F86 /* HWDayView.swift in Sources */,
+				1C6242D92B0220D50063C6AF /* StampFilterState.swift in Sources */,
 				1CCC69A72ADA7FC4003A8F86 /* DayView.swift in Sources */,
+				1C6242D52B0201C50063C6AF /* StampFilterModifier.swift in Sources */,
 				1CCC69CA2ADE75FC003A8F86 /* ManagedObjectContext.swift in Sources */,
 				1CCC697C2ADA7F09003A8F86 /* JudgeDeviceModifier.swift in Sources */,
 				1CCC697B2ADA7F09003A8F86 /* JudgeOrientationModifier.swift in Sources */,
 				1CCC69462ADA7DC1003A8F86 /* Tab.swift in Sources */,
 				1CCC69542ADA7E75003A8F86 /* StampRepository.swift in Sources */,
 				1CCC696F2ADA7EF8003A8F86 /* SummaryTextFieldStyle.swift in Sources */,
+				1C6242D72B020A420063C6AF /* CheckmarkToggleStyle.swift in Sources */,
 				1CCC69712ADA7EF8003A8F86 /* CellButtonStyle.swift in Sources */,
 				1CCC698E2ADA7FA6003A8F86 /* StampsView.swift in Sources */,
 				1CCC69B02ADA7FF4003A8F86 /* Color+Extensions.swift in Sources */,

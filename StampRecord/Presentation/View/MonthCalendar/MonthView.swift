@@ -41,7 +41,7 @@ struct MonthView: View {
                     Text(weekday.shortLabel)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 8)
-                        .foregroundColor(Color.weekday(weekday))
+                        .foregroundStyle(Color.weekday(weekday))
                         .background(Color.cellBackground)
                         .cornerRadius(8)
                         .shadow(color: Color.shadow, radius: 2, x: 0, y: 3)
@@ -78,7 +78,7 @@ struct MonthView: View {
     var phantomDayView: some View {
         RoundedRectangle(cornerRadius: 8)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .foregroundColor(Color.cellBackground)
+            .foregroundStyle(Color.cellBackground)
             .shadow(color: Color.shadow, radius: 2, x: 0, y: 3)
             .opacity(0.3)
     }

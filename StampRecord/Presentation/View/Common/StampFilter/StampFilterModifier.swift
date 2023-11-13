@@ -1,17 +1,18 @@
 /*
- StampPickerModifier.swift
+ StampFilterModifier.swift
  StampRecord
 
- Created by Takuto Nakamura on 2023/09/23.
+ Created by Takuto Nakamura on 2023/11/13.
  Copyright © 2023 Studio Kyome. All rights reserved.
 */
 
 import SwiftUI
 
-struct StampPickerModifier: ViewModifier {
+struct StampFilterModifier: ViewModifier {
     @Binding var isPresented: Bool
-    let stamps: [Stamp]
-    let selectStampHandler: (Stamp) throws -> Void
+    @Binding var stamps: [Stamp]
+    let updateFilterHandler: (StampFilterState) -> Void
+    let toggleFilterHandler: (Stamp) -> Void
     let attachmentAnchor: PopoverAttachmentAnchor
     let arrowEdge: Edge
 
@@ -21,9 +22,10 @@ struct StampPickerModifier: ViewModifier {
             attachmentAnchor: attachmentAnchor,
             arrowEdge: arrowEdge
         ) {
-            StampPickerView(
-                stamps: stamps,
-                selectStampHandler: selectStampHandler
+            StampFilterView(
+                stamps: $stamps,
+                updateFilterHandler: updateFilterHandler,
+                toggleFilterHandler: toggleFilterHandler
             )
             .presentationCompactAdaptation(.popover)
         }
@@ -31,17 +33,19 @@ struct StampPickerModifier: ViewModifier {
 }
 
 extension View {
-    func stampPicker(
+    func stampFilter(
         isPresented: Binding<Bool>,
-        stamps: [Stamp],
-        selectStampHandler: @escaping (Stamp) throws -> Void,
+        stamps: Binding<[Stamp]>,
+        updateFilterHandler: @escaping (StampFilterState) -> Void,
+        toggleFilterHandler: @escaping (Stamp) -> Void,
         attachmentAnchor: PopoverAttachmentAnchor = .rect(.bounds),
         arrowEdge: Edge = .top
     ) -> some View {
-        return modifier(StampPickerModifier(
+        return modifier(StampFilterModifier(
             isPresented: isPresented,
             stamps: stamps,
-            selectStampHandler: selectStampHandler,
+            updateFilterHandler: updateFilterHandler,
+            toggleFilterHandler: toggleFilterHandler,
             attachmentAnchor: attachmentAnchor,
             arrowEdge: arrowEdge
         ))

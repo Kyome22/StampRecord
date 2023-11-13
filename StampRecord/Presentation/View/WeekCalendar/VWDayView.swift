@@ -19,7 +19,7 @@ struct VWDayView: View {
             Text(day.text)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 4)
-                .foregroundColor(Color.weekday(day.weekday, day.isToday))
+                .foregroundStyle(Color.weekday(day.weekday, day.isToday))
                 .background {
                     RoundedRectangle(cornerRadius: 6)
                         .fill(Color.highlight(day.isToday))

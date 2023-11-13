@@ -31,7 +31,7 @@ struct DayView: View {
                 .font(.title2)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
-                .foregroundColor(Color.weekday(day.weekday))
+                .foregroundStyle(Color.weekday(day.weekday))
                 .background(Color.cellBackground)
                 .cornerRadius(8)
                 .shadow(color: Color.shadow, radius: 3, x: 0, y: 3)
@@ -40,7 +40,7 @@ struct DayView: View {
                     .font(.title2)
                     .frame(maxWidth: .infinity)
                     .padding(4)
-                    .foregroundColor(Color.weekday(day.weekday, day.isToday))
+                    .foregroundStyle(Color.weekday(day.weekday, day.isToday))
                     .background {
                         RoundedRectangle(cornerRadius: 6)
                             .fill(Color.highlight(day.isToday))
@@ -53,8 +53,10 @@ struct DayView: View {
                     if let log = day.log {
                         LazyVGrid(columns: columns, spacing: 8) {
                             ForEach(log.stamps.indices, id: \.self) { index in
-                                stampCardView(stamp: log.stamps[index]) {
-                                    try removeStampHandler(day, index)
+                                if log.stamps[index].isIncluded {
+                                    stampCardView(stamp: log.stamps[index]) {
+                                        try removeStampHandler(day, index)
+                                    }
                                 }
                             }
                         }
@@ -94,11 +96,7 @@ struct DayView: View {
                     showErrorAlert = true
                 } catch {}
             } label: {
-                Label {
-                    Text("remove")
-                } icon: {
-                    Image(.stampFillMinus)
-                }
+                Label("remove", image: .stampFillMinus)
             }
             .accessibilityIdentifier("DayView_RemoveButton_\(stamp.summary)")
         }

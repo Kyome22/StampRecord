@@ -32,7 +32,7 @@ struct StampsView<SVM: StampsViewModel>: View {
                     Button {
                         viewModel.showingSheet = true
                     } label: {
-                        Text(Image(.stampPlus))
+                        Image(.stampPlus)
                             .font(.title2)
                     }
                     .buttonStyle(.square)
@@ -46,7 +46,7 @@ struct StampsView<SVM: StampsViewModel>: View {
             if viewModel.stamps.isEmpty {
                 Text("noStamps")
                     .font(.title3)
-                    .foregroundColor(Color.emptyText)
+                    .foregroundStyle(Color.emptyText)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 ScrollView(.vertical) {
@@ -115,6 +115,7 @@ struct StampsView<SVM: StampsViewModel>: View {
             }
         } label: {
             Image(systemName: "arrow.up.arrow.down")
+                .font(.title2)
         }
         .onChange(of: viewModel.stampOrderBy) { _, _ in
             viewModel.sortStamps()
@@ -130,7 +131,7 @@ struct StampsView<SVM: StampsViewModel>: View {
             viewModel.showingSheet = true
         } label: {
             VStack(spacing: 0) {
-                Text(String(stamp.emoji))
+                Text(stamp.emoji)
                     .font(.system(size: 200))
                     .minimumScaleFactor(0.01)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

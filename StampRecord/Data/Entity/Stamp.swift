@@ -13,6 +13,7 @@ struct Stamp: Identifiable, Equatable, CustomStringConvertible {
     var emoji: String
     var summary: String
     var createdDate: Date
+    var isIncluded: Bool
 
     var description: String {
         return "emoji: \(emoji), summary: \(summary), createdDate: \(createdDate.timeIntervalSince1970)"
@@ -23,6 +24,7 @@ struct Stamp: Identifiable, Equatable, CustomStringConvertible {
         self.emoji = emoji
         self.summary = summary
         self.createdDate = createdDate
+        self.isIncluded = true
     }
 }
 

@@ -19,6 +19,8 @@ protocol StampRepository: AnyObject {
     func addStamp(_ emoji: String, _ summary: String) throws
     func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) throws
     func deleteStamp(_ stamp: Stamp) throws
+    func updateFilter(state: StampFilterState)
+    func toggleFilter(stamp: Stamp)
 }
 
 final class StampRepositoryImpl: StampRepository {
@@ -111,6 +113,21 @@ final class StampRepositoryImpl: StampRepository {
         try save()
         try fetchManagedStamps()
     }
+
+    func updateFilter(state: StampFilterState) {
+        let expectedValue = state.expectedValue
+        var stamps = stampsSubject.value
+        stamps.indices.forEach { i in
+            stamps[i].isIncluded = expectedValue
+        }
+        stampsSubject.send(stamps)
+    }
+
+    func toggleFilter(stamp: Stamp) {
+        if let index = stampsSubject.value.firstIndex(of: stamp) {
+            stampsSubject.value[index].isIncluded.toggle()
+        }
+    }
 }
 
 // MARK: - Preview Mock
@@ -127,5 +144,7 @@ extension PreviewMock {
         func addStamp(_ emoji: String, _ summary: String) throws {}
         func updateStamp(_ stamp: Stamp, _ emoji: String, _ summary: String) throws {}
         func deleteStamp(_ stamp: Stamp) throws {}
+        func updateFilter(state: StampFilterState) {}
+        func toggleFilter(stamp: Stamp) {}
     }
 }

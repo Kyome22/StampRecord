@@ -21,7 +21,7 @@ struct MDayView: View {
             Text(day.text)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, isPhone ? 2 : 4)
-                .foregroundColor(Color.weekday(day.weekday, day.isToday))
+                .foregroundStyle(Color.weekday(day.weekday, day.isToday))
                 .background {
                     RoundedRectangle(cornerRadius: 6)
                         .fill(Color.highlight(day.isToday))

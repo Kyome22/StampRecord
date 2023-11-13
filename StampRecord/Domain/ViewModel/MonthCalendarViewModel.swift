@@ -17,6 +17,7 @@ protocol MonthCalendarViewModel: ObservableObject {
     var title: String { get set }
     var monthList: [Month] { get set }
     var selectedDayID: UUID? { get set }
+    var showStampFilter: Bool { get set }
     var showStampPicker: Bool { get set }
     var stamps: [Stamp] { get set }
     var weekStartsAt: WeekStartsAt { get set }
@@ -26,6 +27,8 @@ protocol MonthCalendarViewModel: ObservableObject {
     func setMonthList()
     func setToday()
     func paging(with pageDirection: PageDirection)
+    func updateFilter(state: StampFilterState)
+    func toggleFilter(stamp: Stamp)
     func putStamp(stamp: Stamp) throws
     func removeStamp(day: Day, index: Int) throws
 }
@@ -38,6 +41,7 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
     @Published var title: String = ""
     @Published var monthList: [Month] = []
     @Published var selectedDayID: UUID? = nil
+    @Published var showStampFilter: Bool = false
     @Published var showStampPicker: Bool = false
     @Published var stamps: [Stamp] = []
     @AppStorage(.weekStartsAt) var weekStartsAt: WeekStartsAt = .sunday
@@ -162,6 +166,14 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
         setToday()
     }
 
+    func updateFilter(state: StampFilterState) {
+        stampRepository.updateFilter(state: state)
+    }
+
+    func toggleFilter(stamp: Stamp) {
+        stampRepository.toggleFilter(stamp: stamp)
+    }
+
     func putStamp(stamp: Stamp) throws {
         guard let i = monthList.firstIndex(where: { $0.days.contains { $0.id == selectedDayID } }),
               let j = monthList[i].days.firstIndex(where: { $0.id == selectedDayID }) else {
@@ -199,6 +211,7 @@ extension PreviewMock {
         @Published var title: String = ""
         @Published var monthList: [Month] = []
         @Published var selectedDayID: UUID? = nil
+        @Published var showStampFilter: Bool = false
         @Published var showStampPicker: Bool = false
         @Published var stamps: [Stamp] = []
         @Published var weekStartsAt: WeekStartsAt = .sunday
@@ -225,6 +238,8 @@ extension PreviewMock {
         func setMonthList() {}
         func setToday() {}
         func paging(with pageDirection: PageDirection) {}
+        func updateFilter(state: StampFilterState) {}
+        func toggleFilter(stamp: Stamp) {}
         func putStamp(stamp: Stamp) throws {}
         func removeStamp(day: Day, index: Int) throws {}
     }

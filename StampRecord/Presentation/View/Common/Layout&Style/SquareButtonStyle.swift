@@ -38,7 +38,7 @@ struct SquareButtonStyle: ButtonStyle {
         SquareButtonContainer {
             configuration.label
                 .fixedSize()
-                .foregroundColor(.accentColor)
+                .foregroundStyle(Color.accentColor)
                 .opacity(configuration.isPressed ? 0.3 : 1.0)
         }
     }

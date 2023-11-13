@@ -23,10 +23,17 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                     get: { viewModel.selectedDayID != nil },
                     set: { _ in }
                 ),
+                showStampFilter: $viewModel.showStampFilter,
                 showStampPicker: $viewModel.showStampPicker,
                 stamps: $viewModel.stamps,
                 resetHandler: {
                     viewModel.setMonthList()
+                },
+                updateFilterHandler: { state in
+                    viewModel.updateFilter(state: state)
+                },
+                toggleFilterHandler: { stamp in
+                    viewModel.toggleFilter(stamp: stamp)
                 },
                 selectStampHandler: { stamp in
                     try viewModel.putStamp(stamp: stamp)

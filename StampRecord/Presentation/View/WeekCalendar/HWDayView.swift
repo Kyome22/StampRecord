@@ -19,7 +19,7 @@ struct HWDayView: View {
             wrapText(maxKey: "88", key: day.text)
                 .frame(maxHeight: .infinity)
                 .padding(.horizontal, 4)
-                .foregroundColor(Color.weekday(day.weekday, day.isToday))
+                .foregroundStyle(Color.weekday(day.weekday, day.isToday))
                 .background {
                     RoundedRectangle(cornerRadius: 6)
                         .fill(Color.highlight(day.isToday))

@@ -17,6 +17,7 @@ protocol DayCalendarViewModel: ObservableObject {
     var title: String { get set }
     var dayList: [Day] { get set }
     var selectedDayID: UUID? { get set }
+    var showStampFilter: Bool { get set }
     var showStampPicker: Bool { get set }
     var stamps: [Stamp] { get set }
 
@@ -25,6 +26,8 @@ protocol DayCalendarViewModel: ObservableObject {
     func setDayList()
     func setToday()
     func paging(with pageDirection: PageDirection)
+    func updateFilter(state: StampFilterState)
+    func toggleFilter(stamp: Stamp)
     func putStamp(stamp: Stamp) throws
     func removeStamp(day: Day, index: Int) throws
 }
@@ -37,6 +40,7 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
     @Published var title: String = ""
     @Published var dayList: [Day] = []
     @Published var selectedDayID: UUID? = nil
+    @Published var showStampFilter: Bool = false
     @Published var showStampPicker: Bool = false
     @Published var stamps: [Stamp] = []
 
@@ -131,6 +135,14 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
         setToday()
     }
 
+    func updateFilter(state: StampFilterState) {
+        stampRepository.updateFilter(state: state)
+    }
+
+    func toggleFilter(stamp: Stamp) {
+        stampRepository.toggleFilter(stamp: stamp)
+    }
+
     func putStamp(stamp: Stamp) throws {
         guard let index = dayList.firstIndex(where: { $0.id == selectedDayID }) else {
             return
@@ -166,6 +178,7 @@ extension PreviewMock {
         @Published var title: String = ""
         @Published var dayList: [Day] = []
         @Published var selectedDayID: UUID? = nil
+        @Published var showStampFilter: Bool = false
         @Published var showStampPicker: Bool = false
         @Published var stamps: [Stamp] = []
 
@@ -184,6 +197,8 @@ extension PreviewMock {
         func setDayList() {}
         func setToday() {}
         func paging(with pageDirection: PageDirection) {}
+        func updateFilter(state: StampFilterState) {}
+        func toggleFilter(stamp: Stamp) {}
         func putStamp(stamp: Stamp) {}
         func removeStamp(day: Day, index: Int) {}
     }

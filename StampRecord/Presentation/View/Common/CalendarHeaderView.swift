@@ -11,29 +11,48 @@ import SwiftUI
 struct CalendarHeaderView: View {
     @Binding var title: String
     @Binding var isDaySelected: Bool
+    @Binding var showStampFilter: Bool
     @Binding var showStampPicker: Bool
     @Binding var stamps: [Stamp]
     let resetHandler: () -> Void
+    let updateFilterHandler: (StampFilterState) -> Void
+    let toggleFilterHandler: (Stamp) -> Void
     let selectStampHandler: (Stamp) throws -> Void
 
     var body: some View {
         VStack(spacing: 0) {
             HeaderHStack {
-                Button {
-                    resetHandler()
-                } label: {
-                    Text(Image(systemName: "arrow.uturn.right"))
-                        .font(.title2)
+                HStack(spacing: 16) {
+                    Button {
+                        showStampFilter = true
+                    } label: {
+                        Image(.funnel)
+                            .font(.title2)
+                    }
+                    .buttonStyle(.square)
+                    .disabled(stamps.isEmpty)
+                    .stampFilter(
+                        isPresented: $showStampFilter,
+                        stamps: $stamps,
+                        updateFilterHandler: updateFilterHandler,
+                        toggleFilterHandler: toggleFilterHandler
+                    )
+                    Button {
+                        resetHandler()
+                    } label: {
+                        Image(systemName: "arrow.uturn.right")
+                            .font(.title2)
+                    }
+                    .buttonStyle(.square)
                 }
-                .buttonStyle(.square)
-                Text(verbatim: title)
+                Text(title)
                     .font(.body)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                 Button {
                     showStampPicker = true
                 } label: {
-                    Text(Image(.stamp))
+                    Image(.stamp)
                         .font(.title2)
                 }
                 .buttonStyle(.square)
@@ -58,8 +77,11 @@ struct CalendarHeaderView: View {
 #Preview {
     CalendarHeaderView(title: .constant(""),
                        isDaySelected: .constant(true),
+                       showStampFilter: .constant(true),
                        showStampPicker: .constant(false),
                        stamps: .constant([]),
                        resetHandler: {},
+                       updateFilterHandler: { _ in },
+                       toggleFilterHandler: { _ in },
                        selectStampHandler: { _ in })
 }

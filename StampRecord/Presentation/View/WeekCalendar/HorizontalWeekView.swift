@@ -21,7 +21,7 @@ struct HorizontalWeekView: View {
                     wrapText(maxKey: "MMM", key: weekday.shortLabel)
                         .frame(maxHeight: .infinity)
                         .padding(.horizontal, 4)
-                        .foregroundColor(Color.weekday(weekday))
+                        .foregroundStyle(Color.weekday(weekday))
                         .background(Color.cellBackground)
                         .cornerRadius(8)
                         .shadow(color: Color.shadow, radius: 2, x: 0, y: 3)
