@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C6242CE2B010FC80063C6AF /* Label+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242CD2B010FC80063C6AF /* Label+Extensions.swift */; };
 		1C6242D32B02002F0063C6AF /* StampFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242D22B02002F0063C6AF /* StampFilterView.swift */; };
 		1C6242D52B0201C50063C6AF /* StampFilterModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242D42B0201C50063C6AF /* StampFilterModifier.swift */; };
 		1C6242D72B020A420063C6AF /* CheckmarkToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242D62B020A420063C6AF /* CheckmarkToggleStyle.swift */; };
 		1C6242D92B0220D50063C6AF /* StampFilterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242D82B0220D50063C6AF /* StampFilterState.swift */; };
+		1C6242DB2B0259040063C6AF /* TodayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242DA2B0259040063C6AF /* TodayRepository.swift */; };
 		1CAB3EF12AE62B9900BE23F0 /* DayCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */; };
 		1CAB3EF32AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */; };
 		1CAB3EF62AE63FEF00BE23F0 /* WeekCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */; };
@@ -113,11 +113,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C6242CD2B010FC80063C6AF /* Label+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Extensions.swift"; sourceTree = "<group>"; };
 		1C6242D22B02002F0063C6AF /* StampFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampFilterView.swift; sourceTree = "<group>"; };
 		1C6242D42B0201C50063C6AF /* StampFilterModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampFilterModifier.swift; sourceTree = "<group>"; };
 		1C6242D62B020A420063C6AF /* CheckmarkToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkToggleStyle.swift; sourceTree = "<group>"; };
 		1C6242D82B0220D50063C6AF /* StampFilterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampFilterState.swift; sourceTree = "<group>"; };
+		1C6242DA2B0259040063C6AF /* TodayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRepository.swift; sourceTree = "<group>"; };
 		1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarUITests.swift; sourceTree = "<group>"; };
 		1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarUITests.swift; sourceTree = "<group>"; };
@@ -350,6 +350,7 @@
 				1CCC69502ADA7E75003A8F86 /* CoreDataRepository.swift */,
 				1CCC69512ADA7E75003A8F86 /* StampRepository.swift */,
 				1CCC694F2ADA7E74003A8F86 /* LogRepository.swift */,
+				1C6242DA2B0259040063C6AF /* TodayRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -365,7 +366,6 @@
 				1CCC69AC2ADA7FF4003A8F86 /* Date+Extensions.swift */,
 				1CCC69A92ADA7FF4003A8F86 /* Color+Extensions.swift */,
 				1CCC69AB2ADA7FF4003A8F86 /* View+Extensions.swift */,
-				1C6242CD2B010FC80063C6AF /* Label+Extensions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -669,7 +669,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C6242CE2B010FC80063C6AF /* Label+Extensions.swift in Sources */,
+				1C6242DB2B0259040063C6AF /* TodayRepository.swift in Sources */,
 				1CCC69702ADA7EF8003A8F86 /* InnerCellButtonStyle.swift in Sources */,
 				1CCC69442ADA7DC1003A8F86 /* Month.swift in Sources */,
 				1CCC695D2ADA7E8A003A8F86 /* StampsViewModel.swift in Sources */,

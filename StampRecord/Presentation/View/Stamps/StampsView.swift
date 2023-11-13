@@ -17,7 +17,7 @@ struct StampsView<SVM: StampsViewModel>: View {
         isPhone: Bool
     ) {
         _viewModel = StateObject(wrappedValue: viewModel())
-        self.columns = Array(repeating: .init(.flexible(), spacing: 16), count: isPhone ? 3 : 5)
+        columns = Array(repeating: .init(.flexible(), spacing: 16), count: isPhone ? 3 : 5)
     }
 
     var body: some View {
@@ -67,7 +67,7 @@ struct StampsView<SVM: StampsViewModel>: View {
             },
             content: {
                 if let stamp = viewModel.selectedStamp {
-                    EditStampView(viewModel: EditStampViewModelImpl(
+                    EditStampView(viewModel: SVM.EVM(
                         original: stamp,
                         updateStampHandler: { stamp, emoji, summary in
                             try viewModel.updateStamp(stamp, emoji, summary)
@@ -77,7 +77,7 @@ struct StampsView<SVM: StampsViewModel>: View {
                         }
                     ))
                 } else {
-                    AddNewStampView(viewModel: AddNewStampViewModelImpl(
+                    AddNewStampView(viewModel: SVM.AVM(
                         addStampHandler: { emoji, summary in
                             try viewModel.addNewStamp(emoji, summary)
                         }

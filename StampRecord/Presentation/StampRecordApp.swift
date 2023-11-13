@@ -10,11 +10,12 @@ import SwiftUI
 
 @main
 struct StampRecordApp: App {
-    @StateObject private var appModel = StampRecordAppModelImpl()
+    typealias SAM = StampRecordAppModelImpl
+    @StateObject private var appModel = SAM()
 
     var body: some Scene {
         WindowGroup {
-            ContentView<StampRecordAppModelImpl>()
+            ContentView<SAM>()
                 .environmentObject(appModel)
         }
     }

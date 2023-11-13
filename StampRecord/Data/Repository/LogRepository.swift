@@ -29,7 +29,7 @@ final class LogRepositoryImpl: LogRepository {
 
     private let logsSubject = PassthroughSubject<Void, Never>()
     var logsPublisher: AnyPublisher<Void, Never> {
-        logsSubject.eraseToAnyPublisher()
+        return logsSubject.eraseToAnyPublisher()
     }
 
     init(

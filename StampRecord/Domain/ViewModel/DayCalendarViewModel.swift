@@ -11,9 +11,6 @@ import Combine
 import InfinitePaging
 
 protocol DayCalendarViewModel: ObservableObject {
-    associatedtype SR: StampRepository
-    associatedtype LR: LogRepository
-
     var title: String { get set }
     var dayList: [Day] { get set }
     var selectedDayID: UUID? { get set }
@@ -21,7 +18,9 @@ protocol DayCalendarViewModel: ObservableObject {
     var showStampPicker: Bool { get set }
     var stamps: [Stamp] { get set }
 
-    init(_ stampRepository: SR, _ logRepository: LR)
+    init(_ stampRepository: StampRepository,
+         _ logRepository: LogRepository,
+         _ todayRepository: TodayRepository)
 
     func setDayList()
     func setToday()
@@ -32,11 +31,7 @@ protocol DayCalendarViewModel: ObservableObject {
     func removeStamp(day: Day, index: Int) throws
 }
 
-final class DayCalendarViewModelImpl<SR: StampRepository,
-                                     LR: LogRepository>: DayCalendarViewModel {
-    typealias SR = SR
-    typealias LR = LR
-
+final class DayCalendarViewModelImpl: DayCalendarViewModel {
     @Published var title: String = ""
     @Published var dayList: [Day] = []
     @Published var selectedDayID: UUID? = nil
@@ -45,14 +40,20 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
     @Published var stamps: [Stamp] = []
 
     private let calendar = Calendar.current
-    private let stampRepository: SR
-    private let logRepository: LR
+    private let stampRepository: StampRepository
+    private let logRepository: LogRepository
+    private let todayRepository: TodayRepository
     private var today = Date.now
     private var cancellables = Set<AnyCancellable>()
 
-    init(_ stampRepository: SR, _ logRepository: LR) {
+    init(
+        _ stampRepository: StampRepository,
+        _ logRepository: LogRepository,
+        _ todayRepository: TodayRepository
+    ) {
         self.stampRepository = stampRepository
         self.logRepository = logRepository
+        self.todayRepository = todayRepository
 
         stampRepository.stampsPublisher
             .sink { [weak self] stamps in
@@ -172,9 +173,6 @@ final class DayCalendarViewModelImpl<SR: StampRepository,
 // MARK: - Preview Mock
 extension PreviewMock {
     final class DayCalendarViewModelMock: DayCalendarViewModel {
-        typealias SR = StampRepositoryMock
-        typealias LR = LogRepositoryMock
-
         @Published var title: String = ""
         @Published var dayList: [Day] = []
         @Published var selectedDayID: UUID? = nil
@@ -182,7 +180,9 @@ extension PreviewMock {
         @Published var showStampPicker: Bool = false
         @Published var stamps: [Stamp] = []
 
-        init(_ stampRepository: SR, _ logRepository: LR) {}
+        init(_ stampRepository: StampRepository,
+             _ logRepository: LogRepository,
+             _ todayRepository: TodayRepository) {}
         init() {
             let calendar = Calendar.current
             let today = Date.now

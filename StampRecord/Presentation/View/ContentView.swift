@@ -17,7 +17,7 @@ struct ContentView<SAM: StampRecordAppModel>: View {
         TabView(selection: $appModel.tabSelection) {
             Group {
                 StampsView(
-                    viewModel: StampsViewModelImpl(appModel.stampRepository),
+                    viewModel: SAM.SVM(appModel.stampRepository),
                     isPhone: isPhone
                 )
                 .tabItem {
@@ -26,7 +26,9 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                 }
                 .tag(Tab.stamps)
                 DayCalendarView(
-                    viewModel: DayCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
+                    viewModel: SAM.DVM(appModel.stampRepository, 
+                                       appModel.logRepository,
+                                       appModel.todayRepository),
                     isPhone: isPhone
                 )
                 .tabItem {
@@ -35,7 +37,9 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                 }
                 .tag(Tab.dayCalendar)
                 WeekCalendarView(
-                    viewModel: WeekCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
+                    viewModel: SAM.WVM(appModel.stampRepository,
+                                       appModel.logRepository,
+                                       appModel.todayRepository),
                     isPhone: isPhone
                 )
                 .tabItem {
@@ -50,7 +54,9 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                 }
                 .tag(Tab.weekCalendar)
                 MonthCalendarView(
-                    viewModel: MonthCalendarViewModelImpl(appModel.stampRepository, appModel.logRepository),
+                    viewModel: SAM.MVM(appModel.stampRepository,
+                                       appModel.logRepository,
+                                       appModel.todayRepository),
                     isPhone: isPhone,
                     orientation: orientation
                 )
@@ -59,7 +65,7 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                         .accessibilityIdentifier("Tab_MonthCalendar")
                 }
                 .tag(Tab.monthCalendar)
-                SettingsView(viewModel: SettingsViewModelImpl())
+                SettingsView(viewModel: SAM.SeVM())
                     .tabItem {
                         Label("settings", systemImage: "gearshape")
                             .accessibilityIdentifier("Tab_Settings")

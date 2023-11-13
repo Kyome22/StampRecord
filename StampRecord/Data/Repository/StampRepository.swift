@@ -29,7 +29,7 @@ final class StampRepositoryImpl: StampRepository {
 
     private let stampsSubject = CurrentValueSubject<[Stamp], Never>([])
     var stampsPublisher: AnyPublisher<[Stamp], Never> {
-        stampsSubject.eraseToAnyPublisher()
+        return stampsSubject.eraseToAnyPublisher()
     }
 
     var isEmpty: Bool {

@@ -14,6 +14,8 @@ protocol SettingsViewModel: ObservableObject {
     var showDebugDialog: Bool { get set }
     var version: String { get }
 
+    init()
+
     func openProductPage()
 }
 

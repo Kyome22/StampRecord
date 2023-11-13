@@ -11,9 +11,6 @@ import Combine
 import InfinitePaging
 
 protocol MonthCalendarViewModel: ObservableObject {
-    associatedtype SR: StampRepository
-    associatedtype LR: LogRepository
-
     var title: String { get set }
     var monthList: [Month] { get set }
     var selectedDayID: UUID? { get set }
@@ -22,7 +19,9 @@ protocol MonthCalendarViewModel: ObservableObject {
     var stamps: [Stamp] { get set }
     var weekStartsAt: WeekStartsAt { get set }
 
-    init(_ stampRepository: SR, _ logRepository: LR)
+    init(_ stampRepository: StampRepository,
+         _ logRepository: LogRepository,
+         _ todayRepository: TodayRepository)
 
     func setMonthList()
     func setToday()
@@ -33,11 +32,7 @@ protocol MonthCalendarViewModel: ObservableObject {
     func removeStamp(day: Day, index: Int) throws
 }
 
-final class MonthCalendarViewModelImpl<SR: StampRepository,
-                                       LR: LogRepository>: MonthCalendarViewModel {
-    typealias SR = SR
-    typealias LR = LR
-
+final class MonthCalendarViewModelImpl: MonthCalendarViewModel {
     @Published var title: String = ""
     @Published var monthList: [Month] = []
     @Published var selectedDayID: UUID? = nil
@@ -47,14 +42,20 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
     @AppStorage(.weekStartsAt) var weekStartsAt: WeekStartsAt = .sunday
 
     private let calendar = Calendar.current
-    private let stampRepository: SR
-    private let logRepository: LR
+    private let stampRepository: StampRepository
+    private let logRepository: LogRepository
+    private let todayRepository: TodayRepository
     private var today = Date.now
     private var cancellables = Set<AnyCancellable>()
 
-    init(_ stampRepository: SR, _ logRepository: LR) {
+    init(
+        _ stampRepository: StampRepository,
+        _ logRepository: LogRepository,
+        _ todayRepository: TodayRepository
+    ) {
         self.stampRepository = stampRepository
         self.logRepository = logRepository
+        self.todayRepository = todayRepository
 
         stampRepository.stampsPublisher
             .sink { [weak self] stamps in
@@ -205,9 +206,6 @@ final class MonthCalendarViewModelImpl<SR: StampRepository,
 // MARK: - Preview Mock
 extension PreviewMock {
     final class MonthCalendarViewModelMock: MonthCalendarViewModel {
-        typealias SR = StampRepositoryMock
-        typealias LR = LogRepositoryMock
-
         @Published var title: String = ""
         @Published var monthList: [Month] = []
         @Published var selectedDayID: UUID? = nil
@@ -216,7 +214,9 @@ extension PreviewMock {
         @Published var stamps: [Stamp] = []
         @Published var weekStartsAt: WeekStartsAt = .sunday
 
-        init(_ stampRepository: SR, _ logRepository: LR) {}
+        init(_ stampRepository: StampRepository,
+            _ logRepository: LogRepository,
+            _ todayRepository: TodayRepository) {}
         init() {
             let calendar = Calendar.current
             let today = Date.now

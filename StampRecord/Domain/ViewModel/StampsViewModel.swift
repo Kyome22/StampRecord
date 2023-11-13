@@ -10,7 +10,8 @@ import Foundation
 import Combine
 
 protocol StampsViewModel: ObservableObject {
-    associatedtype SR: StampRepository
+    associatedtype AVM: AddNewStampViewModel
+    associatedtype EVM: EditStampViewModel
 
     var stampOrderBy: StampOrderBy { get set }
     var stampOrderIn: StampOrderIn { get set }
@@ -18,7 +19,7 @@ protocol StampsViewModel: ObservableObject {
     var showingSheet: Bool { get set }
     var selectedStamp: Stamp? { get set }
 
-    init(_ stampRepository: SR)
+    init(_ stampRepository: StampRepository)
 
     func sortStamps()
     func addNewStamp(_ emoji: String, _ summary: String) throws
@@ -26,8 +27,9 @@ protocol StampsViewModel: ObservableObject {
     func deleteStamp(_ stamp: Stamp) throws
 }
 
-final class StampsViewModelImpl<SR: StampRepository>: StampsViewModel {
-    typealias SR = SR
+final class StampsViewModelImpl: StampsViewModel {
+    typealias AVM = AddNewStampViewModelImpl
+    typealias EVM = EditStampViewModelImpl
 
     @Published var stampOrderBy: StampOrderBy = .createdDate
     @Published var stampOrderIn: StampOrderIn = .ascending
@@ -35,10 +37,10 @@ final class StampsViewModelImpl<SR: StampRepository>: StampsViewModel {
     @Published var showingSheet: Bool = false
     @Published var selectedStamp: Stamp? = nil
 
-    private let stampRepository: SR
+    private let stampRepository: StampRepository
     private var cancellables = Set<AnyCancellable>()
 
-    init(_ stampRepository: SR) {
+    init(_ stampRepository: StampRepository) {
         self.stampRepository = stampRepository
 
         stampRepository.stampsPublisher
@@ -69,7 +71,8 @@ final class StampsViewModelImpl<SR: StampRepository>: StampsViewModel {
 // MARK: - Preview Mock
 extension PreviewMock {
     final class StampsViewModelMock: StampsViewModel {
-        typealias SR = StampRepositoryMock
+        typealias AVM = AddNewStampViewModelMock
+        typealias EVM = EditStampViewModelMock
 
         @Published var stampOrderBy: StampOrderBy = .createdDate
         @Published var stampOrderIn: StampOrderIn = .ascending
@@ -77,7 +80,7 @@ extension PreviewMock {
         @Published var showingSheet: Bool = false
         @Published var selectedStamp: Stamp? = nil
 
-        init(_ stampRepository: SR) {}
+        init(_ stampRepository: StampRepository) {}
         init() {}
 
         func sortStamps() {}
