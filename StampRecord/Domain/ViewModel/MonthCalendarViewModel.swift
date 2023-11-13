@@ -24,7 +24,6 @@ protocol MonthCalendarViewModel: ObservableObject {
          _ todayRepository: TodayRepository)
 
     func setMonthList()
-    func setToday()
     func paging(with pageDirection: PageDirection)
     func updateFilter(state: StampFilterState)
     func toggleFilter(stamp: Stamp)
@@ -69,6 +68,12 @@ final class MonthCalendarViewModelImpl: MonthCalendarViewModel {
             }
             .store(in: &cancellables)
 
+        todayRepository.todayPublisher
+            .sink { [weak self] today in
+                self?.updateToday(today)
+            }
+            .store(in: &cancellables)
+
         setMonthList()
     }
 
@@ -77,6 +82,16 @@ final class MonthCalendarViewModelImpl: MonthCalendarViewModel {
             monthList[i].days.indices.forEach { j in
                 let date = monthList[i].days[j].date
                 monthList[i].days[j].log = logRepository.getLog(of: date)
+            }
+        }
+    }
+
+    private func updateToday(_ today: Date) {
+        self.today = today
+        monthList.indices.forEach { i in
+            monthList[i].days.indices.forEach { j in
+                let date = monthList[i].days[j].date
+                monthList[i].days[j].isToday = calendar.isEqual(a: date, b: today)
             }
         }
     }
@@ -120,7 +135,6 @@ final class MonthCalendarViewModelImpl: MonthCalendarViewModel {
     }
 
     func setMonthList() {
-        today = Date.now
         monthList.removeAll()
         monthList.append(Month(title: today.title, days: getDays(of: today)))
         if let date = getPreviousMonth(of: today) {
@@ -131,18 +145,6 @@ final class MonthCalendarViewModelImpl: MonthCalendarViewModel {
         }
         title = monthList[1].title
         selectedDayID = nil
-    }
-
-    func setToday() {
-        let old = today
-        today = Date.now
-        if calendar.isEqual(a: old, b: today) { return }
-        monthList.indices.forEach { i in
-            monthList[i].days.indices.forEach { j in
-                let date = monthList[i].days[j].date
-                monthList[i].days[j].isToday = calendar.isEqual(a: date, b: today)
-            }
-        }
     }
 
     func paging(with pageDirection: PageDirection) {
@@ -164,7 +166,6 @@ final class MonthCalendarViewModelImpl: MonthCalendarViewModel {
         }
         title = monthList[1].title
         selectedDayID = nil
-        setToday()
     }
 
     func updateFilter(state: StampFilterState) {
@@ -236,7 +237,6 @@ extension PreviewMock {
         }
 
         func setMonthList() {}
-        func setToday() {}
         func paging(with pageDirection: PageDirection) {}
         func updateFilter(state: StampFilterState) {}
         func toggleFilter(stamp: Stamp) {}

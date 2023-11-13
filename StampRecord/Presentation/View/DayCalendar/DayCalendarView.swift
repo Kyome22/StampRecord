@@ -11,7 +11,6 @@ import InfinitePaging
 
 struct DayCalendarView<DVM: DayCalendarViewModel>: View {
     @StateObject var viewModel: DVM
-    @Environment(\.scenePhase) var scenePhase
     let isPhone: Bool
 
     var body: some View {
@@ -56,11 +55,6 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
             )
         }
         .background(Color.appBackground)
-        .onChange(of: scenePhase) { _, newValue in
-            if newValue == .active {
-                viewModel.setToday()
-            }
-        }
     }
 }
 

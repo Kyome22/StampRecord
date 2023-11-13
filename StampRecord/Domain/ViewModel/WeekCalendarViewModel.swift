@@ -24,7 +24,6 @@ protocol WeekCalendarViewModel: ObservableObject {
          _ todayRepository: TodayRepository)
 
     func setWeekList()
-    func setToday()
     func paging(with pageDirection: PageDirection)
     func updateFilter(state: StampFilterState)
     func toggleFilter(stamp: Stamp)
@@ -69,6 +68,12 @@ final class WeekCalendarViewModelImpl: WeekCalendarViewModel {
             }
             .store(in: &cancellables)
 
+        todayRepository.todayPublisher
+            .sink { [weak self] today in
+                self?.updateToday(today)
+            }
+            .store(in: &cancellables)
+
         setWeekList()
     }
 
@@ -80,6 +85,17 @@ final class WeekCalendarViewModelImpl: WeekCalendarViewModel {
             }
         }
     }
+
+    private func updateToday(_ today: Date) {
+        self.today = today
+        weekList.indices.forEach { i in
+            weekList[i].days.indices.forEach { j in
+                let date = weekList[i].days[j].date
+                weekList[i].days[j].isToday = calendar.isEqual(a: date, b: today)
+            }
+        }
+    }
+
 
     private func getPreviousWeek(of date: Date) -> Date? {
         if let endOfWeek = calendar.endOfWeek(for: date, with: weekStartsAt),
@@ -117,7 +133,6 @@ final class WeekCalendarViewModelImpl: WeekCalendarViewModel {
     }
 
     func setWeekList() {
-        today = Date.now
         weekList.removeAll()
         weekList.append(Week(title: today.title, days: getDays(of: today)))
         if let date = getPreviousWeek(of: today) {
@@ -128,18 +143,6 @@ final class WeekCalendarViewModelImpl: WeekCalendarViewModel {
         }
         title = weekList[1].title
         selectedDayID = nil
-    }
-
-    func setToday() {
-        let old = today
-        today = Date.now
-        if calendar.isEqual(a: old, b: today) { return }
-        weekList.indices.forEach { i in
-            weekList[i].days.indices.forEach { j in
-                let date = weekList[i].days[j].date
-                weekList[i].days[j].isToday = calendar.isEqual(a: date, b: today)
-            }
-        }
     }
 
     func paging(with pageDirection: PageDirection) {
@@ -161,7 +164,6 @@ final class WeekCalendarViewModelImpl: WeekCalendarViewModel {
         }
         title = weekList[1].title
         selectedDayID = nil
-        setToday()
     }
 
     func updateFilter(state: StampFilterState) {
@@ -233,7 +235,6 @@ extension PreviewMock {
         }
 
         func setWeekList() {}
-        func setToday() {}
         func paging(with pageDirection: PageDirection) {}
         func updateFilter(state: StampFilterState) {}
         func toggleFilter(stamp: Stamp) {}

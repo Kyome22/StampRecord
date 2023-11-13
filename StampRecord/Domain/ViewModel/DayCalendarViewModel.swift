@@ -23,7 +23,6 @@ protocol DayCalendarViewModel: ObservableObject {
          _ todayRepository: TodayRepository)
 
     func setDayList()
-    func setToday()
     func paging(with pageDirection: PageDirection)
     func updateFilter(state: StampFilterState)
     func toggleFilter(stamp: Stamp)
@@ -67,12 +66,25 @@ final class DayCalendarViewModelImpl: DayCalendarViewModel {
             }
             .store(in: &cancellables)
 
+        todayRepository.todayPublisher
+            .sink { [weak self] today in
+                self?.updateToday(today)
+            }
+            .store(in: &cancellables)
+
         setDayList()
     }
 
     private func loadLog() {
         dayList.indices.forEach { i in
             dayList[i].log = logRepository.getLog(of: dayList[i].date)
+        }
+    }
+
+    private func updateToday(_ today: Date) {
+        self.today = today
+        dayList.indices.forEach { i in
+            dayList[i].isToday = calendar.isEqual(a: dayList[i].date, b: today)
         }
     }
 
@@ -95,7 +107,6 @@ final class DayCalendarViewModelImpl: DayCalendarViewModel {
     }
 
     func setDayList() {
-        today = Date.now
         dayList.removeAll()
         let day = Day(date: today,
                       isToday: true,
@@ -107,15 +118,6 @@ final class DayCalendarViewModelImpl: DayCalendarViewModel {
         dayList.append(getTommorow(of: today))
         title = today.title
         selectedDayID = dayList[1].id
-    }
-
-    func setToday() {
-        let old = today
-        today = Date.now
-        if calendar.isEqual(a: old, b: today) { return }
-        dayList.indices.forEach { i in
-            dayList[i].isToday = calendar.isEqual(a: dayList[i].date, b: today)
-        }
     }
 
     func paging(with pageDirection: PageDirection) {
@@ -133,7 +135,6 @@ final class DayCalendarViewModelImpl: DayCalendarViewModel {
         }
         title = dayList[1].date?.title ?? "?"
         selectedDayID = dayList[1].id
-        setToday()
     }
 
     func updateFilter(state: StampFilterState) {
@@ -195,7 +196,6 @@ extension PreviewMock {
         }
 
         func setDayList() {}
-        func setToday() {}
         func paging(with pageDirection: PageDirection) {}
         func updateFilter(state: StampFilterState) {}
         func toggleFilter(stamp: Stamp) {}
