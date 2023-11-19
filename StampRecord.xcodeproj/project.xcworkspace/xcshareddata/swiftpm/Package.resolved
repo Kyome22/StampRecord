@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Kyome22/InfinitePaging.git",
       "state" : {
-        "revision" : "47eedaece0cd5cd37e1528e1f0e84c36a6402f10",
-        "version" : "0.1.1"
+        "revision" : "dc179f3b471735e91e01ec030560717f08778937",
+        "version" : "0.2.0"
       }
     }
   ],

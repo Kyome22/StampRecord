@@ -40,6 +40,7 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
             )
             InfinitePagingView(
                 objects: $viewModel.dayList,
+                pageAlignment: .horizontal,
                 pagingHandler: { pageDirection in
                     viewModel.paging(with: pageDirection)
                 },

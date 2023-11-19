@@ -41,6 +41,7 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
             )
             InfinitePagingView(
                 objects: $viewModel.monthList,
+                pageAlignment: .horizontal,
                 pagingHandler: { pageDirection in
                     viewModel.paging(with: pageDirection)
                 },

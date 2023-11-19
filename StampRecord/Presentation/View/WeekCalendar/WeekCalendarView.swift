@@ -40,6 +40,7 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
             )
             InfinitePagingView(
                 objects: $viewModel.weekList,
+                pageAlignment: .horizontal,
                 pagingHandler: { pageDirection in
                     viewModel.paging(with: pageDirection)
                 },
