@@ -58,7 +58,11 @@ struct EditStampView<EVM: EditStampViewModel>: View {
                 Button(role: .destructive) {
                     viewModel.showDeleteConfirmation = true
                 } label: {
-                    Label("deleteStamp", image: .stampFillXmark)
+                    Label {
+                        Text("deleteStamp")
+                    } icon: {
+                        Image(.stampFillXmark)
+                    }
                 }
                 .buttonStyle(.delete)
                 .accessibilityIdentifier("EditStamp_DeleteButton")

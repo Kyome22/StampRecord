@@ -117,10 +117,10 @@ struct StampsView<SVM: StampsViewModel>: View {
             Image(systemName: "arrow.up.arrow.down")
                 .font(.title2)
         }
-        .onChange(of: viewModel.stampOrderBy) { _, _ in
+        .onChangeWithMigration(of: viewModel.stampOrderBy) {
             viewModel.sortStamps()
         }
-        .onChange(of: viewModel.stampOrderIn) { _, _ in
+        .onChangeWithMigration(of: viewModel.stampOrderIn) {
             viewModel.sortStamps()
         }
     }

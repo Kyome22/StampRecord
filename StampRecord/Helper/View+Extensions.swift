@@ -40,4 +40,17 @@ extension View {
             }
         )
     }
+
+    func onChangeWithMigration<V>(
+        of value: V,
+        _ action: @escaping () -> Void
+    ) -> some View where V: Equatable {
+        Group {
+            if #available(iOS 17, *) {
+                onChange(of: value) { _, _ in action() }
+            } else {
+                onChange(of: value) { _ in action() }
+            }
+        }
+    }
 }

@@ -66,7 +66,7 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                     }
                 }
             )
-            .onChange(of: viewModel.weekStartsAt) { _, _ in
+            .onChangeWithMigration(of: viewModel.weekStartsAt) {
                 viewModel.setWeekList()
             }
         }

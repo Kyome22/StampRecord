@@ -58,7 +58,7 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                     )
                 }
             )
-            .onChange(of: viewModel.weekStartsAt) { _, _ in
+            .onChangeWithMigration(of: viewModel.weekStartsAt) {
                 viewModel.setMonthList()
             }
         }

@@ -21,8 +21,12 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                     isPhone: isPhone
                 )
                 .tabItem {
-                    Label("stamps", image: .stampFill)
-                        .accessibilityIdentifier("Tab_Stamps")
+                    Label {
+                        Text("stamps")
+                    } icon: {
+                        Image(.stampFill)
+                    }
+                    .accessibilityIdentifier("Tab_Stamps")
                 }
                 .tag(Tab.stamps)
                 DayCalendarView(
@@ -32,8 +36,12 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                     isPhone: isPhone
                 )
                 .tabItem {
-                    Label("day", image: .calendarDay)
-                        .accessibilityIdentifier("Tab_DayCalendar")
+                    Label {
+                        Text("day")
+                    } icon: {
+                        Image(.calendarDay)
+                    }
+                    .accessibilityIdentifier("Tab_DayCalendar")
                 }
                 .tag(Tab.dayCalendar)
                 WeekCalendarView(
@@ -43,11 +51,13 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                     isPhone: isPhone
                 )
                 .tabItem {
-                    Group {
+                    Label {
+                        Text("week")
+                    } icon: {
                         if isPhone {
-                            Label("week", image: .calendarWeekHorizontal)
+                            Image(.calendarWeekHorizontal)
                         } else {
-                            Label("week", image: .calendarWeekVertical)
+                            Image(.calendarWeekVertical)
                         }
                     }
                     .accessibilityIdentifier("Tab_WeekCalendar")

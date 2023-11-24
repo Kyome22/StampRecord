@@ -96,7 +96,11 @@ struct DayView: View {
                     showErrorAlert = true
                 } catch {}
             } label: {
-                Label("remove", image: .stampFillMinus)
+                Label {
+                    Text("remove")
+                } icon: {
+                    Image(.stampFillMinus)
+                }
             }
             .accessibilityIdentifier("DayView_RemoveButton_\(stamp.summary)")
         }
