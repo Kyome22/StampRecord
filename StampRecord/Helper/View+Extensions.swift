@@ -18,12 +18,8 @@ extension View {
             .fixedSize()
     }
 
-    func onJudgeDevice(_ isPhone: Binding<Bool>) -> some View {
-        return modifier(JudgeDeviceModifier(isPhone: isPhone))
-    }
-
-    func onJudgeOrientation(_ orientation: Binding<DeviceOrientation>) -> some View {
-        return modifier(JudgeOrientationModifier(orientation: orientation))
+    func onJudgeDevice(_ device: Binding<Device>) -> some View {
+        return modifier(JudgeDeviceModifier(device: device))
     }
 
     func backable() -> some View {

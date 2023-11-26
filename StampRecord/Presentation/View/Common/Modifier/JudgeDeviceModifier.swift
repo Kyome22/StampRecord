@@ -9,11 +9,21 @@
 import SwiftUI
 
 struct JudgeDeviceModifier: ViewModifier {
-    @Binding var isPhone: Bool
+    @Binding var device: Device
 
     func body(content: Content) -> some View {
         content.onAppear {
-            isPhone = !(UIDevice.current.userInterfaceIdiom == .pad)
+            if let idiom = DeviceIdiom(UIDevice.current.userInterfaceIdiom) {
+                self.device.idiom = idiom
+            }
+            if let orientation = DeviceOrientation(UIDevice.current.orientation) {
+                self.device.orientation = orientation
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+            if let orientation = DeviceOrientation(UIDevice.current.orientation) {
+                self.device.orientation = orientation
+            }
         }
     }
 }

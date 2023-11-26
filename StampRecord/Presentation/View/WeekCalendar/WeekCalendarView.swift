@@ -11,7 +11,7 @@ import InfinitePaging
 
 struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
     @StateObject var viewModel: WVM
-    let isPhone: Bool
+    let device: Device
 
     var body: some View {
         VStack(spacing: 0) {
@@ -45,7 +45,8 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                     viewModel.paging(with: pageDirection)
                 },
                 content: { week in
-                    if isPhone {
+                    switch device.idiom {
+                    case .iPhone:
                         HorizontalWeekView(
                             selectedDayID: $viewModel.selectedDayID,
                             weekdays: viewModel.weekStartsAt.weekdays,
@@ -54,7 +55,7 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                                 try viewModel.removeStamp(day: day, index: index)
                             }
                         )
-                    } else {
+                    case .iPad:
                         VerticalWeekView(
                             selectedDayID: $viewModel.selectedDayID,
                             weekdays: viewModel.weekStartsAt.weekdays,
@@ -79,5 +80,5 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
 
 #Preview {
     WeekCalendarView(viewModel: PreviewMock.WeekCalendarViewModelMock(),
-                     isPhone: true)
+                     device: .default)
 }

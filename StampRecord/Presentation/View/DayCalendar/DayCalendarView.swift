@@ -11,7 +11,7 @@ import InfinitePaging
 
 struct DayCalendarView<DVM: DayCalendarViewModel>: View {
     @StateObject var viewModel: DVM
-    let isPhone: Bool
+    let device: Device
 
     var body: some View {
         VStack(spacing: 0) {
@@ -46,7 +46,7 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
                 },
                 content: { day in
                     DayView(
-                        isPhone: isPhone,
+                        device: device,
                         day: day,
                         removeStampHandler: { day, index in
                             try viewModel.removeStamp(day: day, index: index)
@@ -61,5 +61,5 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
 
 #Preview {
     DayCalendarView(viewModel: PreviewMock.DayCalendarViewModelMock(),
-                    isPhone: true)
+                    device: .default)
 }

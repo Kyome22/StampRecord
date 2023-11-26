@@ -10,8 +10,7 @@ import SwiftUI
 
 struct MonthView: View {
     @Binding var selectedDayID: UUID?
-    let isPhone: Bool
-    let orientation: DeviceOrientation
+    let device: Device
     let spacing: CGFloat
     let weekdays: [Weekday]
     let days: [Day]
@@ -19,16 +18,14 @@ struct MonthView: View {
 
     init(
         selectedDayID: Binding<UUID?>,
-        isPhone: Bool,
-        orientation: DeviceOrientation,
+        device: Device,
         weekdays: [Weekday],
         days: [Day],
         removeStampHandler: @escaping (Day, Int) throws -> Void
     ) {
         _selectedDayID = selectedDayID
-        self.isPhone = isPhone
-        self.spacing = isPhone ? 8 : 16
-        self.orientation = orientation
+        self.device = device
+        self.spacing = device.idiom == .iPhone ? 8 : 16
         self.weekdays = weekdays
         self.days = days
         self.removeStampHandler = removeStampHandler
@@ -56,8 +53,7 @@ struct MonthView: View {
                                     get: { selectedDayID == day.id },
                                     set: { _ in }
                                 ),
-                                isPhone: isPhone,
-                                orientation: orientation,
+                                device: device,
                                 day: day,
                                 selectHandler: {
                                     selectedDayID = day.id
@@ -86,8 +82,7 @@ struct MonthView: View {
 
 #Preview {
     MonthView(selectedDayID: .constant(nil),
-              isPhone: true,
-              orientation: .portrait,
+              device: .default,
               weekdays: Weekday.allCasesFromSunday,
               days: [],
               removeStampHandler: { _, _ in })

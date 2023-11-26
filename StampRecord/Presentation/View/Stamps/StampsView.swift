@@ -14,10 +14,10 @@ struct StampsView<SVM: StampsViewModel>: View {
 
     init(
         viewModel: @autoclosure @escaping () -> SVM,
-        isPhone: Bool
+        device: Device
     ) {
         _viewModel = StateObject(wrappedValue: viewModel())
-        columns = Array(repeating: .init(.flexible(), spacing: 16), count: isPhone ? 3 : 5)
+        columns = Array(repeating: .init(.flexible(), spacing: 16), count: device.columnCount)
     }
 
     var body: some View {
@@ -156,5 +156,5 @@ struct StampsView<SVM: StampsViewModel>: View {
 
 #Preview {
     StampsView(viewModel: PreviewMock.StampsViewModelMock(),
-               isPhone: true)
+               device: .default)
 }

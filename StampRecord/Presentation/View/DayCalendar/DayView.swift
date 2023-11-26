@@ -16,11 +16,11 @@ struct DayView: View {
     let removeStampHandler: (Day, Int) throws -> Void
 
     init(
-        isPhone: Bool,
+        device: Device,
         day: Day,
         removeStampHandler: @escaping (Day, Int) throws -> Void
     ) {
-        self.columns = Array(repeating: .init(.flexible(), spacing: 8), count: isPhone ? 3 : 5)
+        self.columns = Array(repeating: .init(.flexible(), spacing: 8), count: device.columnCount)
         self.day = day
         self.removeStampHandler = removeStampHandler
     }
@@ -109,7 +109,7 @@ struct DayView: View {
 }
 
 #Preview {
-    DayView(isPhone: true,
+    DayView(device: .default,
             day: Day(text: "", weekday: .sunday),
             removeStampHandler: { _, _ in })
 }

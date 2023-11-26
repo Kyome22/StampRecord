@@ -10,15 +10,13 @@ import SwiftUI
 
 struct ContentView<SAM: StampRecordAppModel>: View {
     @EnvironmentObject private var appModel: SAM
-    @State var isPhone: Bool = true
-    @State var orientation: DeviceOrientation = .portrait
 
     var body: some View {
         TabView(selection: $appModel.tabSelection) {
             Group {
                 StampsView(
                     viewModel: SAM.SVM(appModel.stampRepository),
-                    isPhone: isPhone
+                    device: appModel.device
                 )
                 .tabItem {
                     Label {
@@ -33,7 +31,7 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                     viewModel: SAM.DVM(appModel.stampRepository, 
                                        appModel.logRepository,
                                        appModel.todayRepository),
-                    isPhone: isPhone
+                    device: appModel.device
                 )
                 .tabItem {
                     Label {
@@ -48,15 +46,16 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                     viewModel: SAM.WVM(appModel.stampRepository,
                                        appModel.logRepository,
                                        appModel.todayRepository),
-                    isPhone: isPhone
+                    device: appModel.device
                 )
                 .tabItem {
                     Label {
                         Text("week")
                     } icon: {
-                        if isPhone {
+                        switch appModel.device.idiom {
+                        case .iPhone:
                             Image(.calendarWeekHorizontal)
-                        } else {
+                        case .iPad:
                             Image(.calendarWeekVertical)
                         }
                     }
@@ -67,8 +66,7 @@ struct ContentView<SAM: StampRecordAppModel>: View {
                     viewModel: SAM.MVM(appModel.stampRepository,
                                        appModel.logRepository,
                                        appModel.todayRepository),
-                    isPhone: isPhone,
-                    orientation: orientation
+                    device: appModel.device
                 )
                 .tabItem {
                     Label("month", systemImage: "calendar")
@@ -85,8 +83,7 @@ struct ContentView<SAM: StampRecordAppModel>: View {
             .toolbarBackground(Color.toolbarBackground, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
         }
-        .onJudgeDevice($isPhone)
-        .onJudgeOrientation($orientation)
+        .onJudgeDevice($appModel.device)
     }
 }
 

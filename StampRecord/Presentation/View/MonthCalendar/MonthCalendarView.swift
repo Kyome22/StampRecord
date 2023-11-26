@@ -11,8 +11,7 @@ import InfinitePaging
 
 struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
     @StateObject var viewModel: MVM
-    let isPhone: Bool
-    let orientation: DeviceOrientation
+    let device: Device
 
     var body: some View {
         VStack(spacing: 0) {
@@ -48,8 +47,7 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                 content: { month in
                     MonthView(
                         selectedDayID: $viewModel.selectedDayID,
-                        isPhone: isPhone,
-                        orientation: orientation,
+                        device: device,
                         weekdays: viewModel.weekStartsAt.weekdays,
                         days: month.days,
                         removeStampHandler: { day, index in
@@ -71,6 +69,5 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
 
 #Preview {
     MonthCalendarView(viewModel: PreviewMock.MonthCalendarViewModelMock(),
-                      isPhone: true,
-                      orientation: .portrait)
+                      device: .default)
 }

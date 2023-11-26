@@ -10,8 +10,7 @@ import SwiftUI
 
 struct MDayView: View {
     @Binding var isSelected: Bool
-    let isPhone: Bool
-    let orientation: DeviceOrientation
+    let device: Device
     let day: Day
     let selectHandler: () -> Void
     let removeStampHandler: (Day, Int) throws -> Void
@@ -20,7 +19,7 @@ struct MDayView: View {
         VStack(spacing: 0) {
             Text(day.text)
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, isPhone ? 2 : 4)
+                .padding(.vertical, device.idiom == .iPhone ? 2 : 4)
                 .foregroundStyle(Color.weekday(day.weekday, day.isToday))
                 .background {
                     RoundedRectangle(cornerRadius: 6)
@@ -31,7 +30,7 @@ struct MDayView: View {
                 .overlay(Color.cellBorder)
                 .padding(.horizontal, 4)
             if let log = day.log {
-                switch orientation {
+                switch device.orientation {
                 case .portrait:
                     VStackedStamps(stamps: log.stamps) { index in
                         try removeStampHandler(day, index)
@@ -57,8 +56,7 @@ struct MDayView: View {
 
 #Preview {
     MDayView(isSelected: .constant(false),
-             isPhone: true,
-             orientation: .portrait,
+             device: .default,
              day: Day(text: "", weekday: .sunday),
              selectHandler: {},
              removeStampHandler: { _, _ in })

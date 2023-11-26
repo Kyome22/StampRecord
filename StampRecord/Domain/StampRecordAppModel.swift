@@ -19,6 +19,7 @@ protocol StampRecordAppModel: ObservableObject {
     associatedtype MVM: MonthCalendarViewModel
     associatedtype SeVM: SettingsViewModel
 
+    var device: Device { get set }
     var tabSelection: Tab { get set }
     var defaultPeriod: Period { get set }
     var coreDataRepository: CoreDataRepository { get }
@@ -37,6 +38,7 @@ final class StampRecordAppModelImpl: StampRecordAppModel {
     typealias MVM = MonthCalendarViewModelImpl
     typealias SeVM = SettingsViewModelImpl
 
+    @Published var device: Device = .default
     @Published var tabSelection: Tab = .dayCalendar
     @AppStorage(.defaultPeriod) var defaultPeriod: Period = .day
 
@@ -73,6 +75,7 @@ extension PreviewMock {
         typealias MVM = MonthCalendarViewModelMock
         typealias SeVM = SettingsViewModelMock
 
+        @Published var device: Device = .default
         @Published var tabSelection: Tab = .dayCalendar
         @Published var defaultPeriod: Period = .day
 
