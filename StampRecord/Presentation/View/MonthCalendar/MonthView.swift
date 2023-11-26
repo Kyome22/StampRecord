@@ -25,7 +25,7 @@ struct MonthView: View {
     ) {
         _selectedDayID = selectedDayID
         self.device = device
-        self.spacing = device.idiom == .iPhone ? 8 : 16
+        self.spacing = device.spacing
         self.weekdays = weekdays
         self.days = days
         self.removeStampHandler = removeStampHandler

@@ -19,7 +19,7 @@ struct MDayView: View {
         VStack(spacing: 0) {
             Text(day.text)
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, device.idiom == .iPhone ? 2 : 4)
+                .padding(.vertical, 4)
                 .foregroundStyle(Color.weekday(day.weekday, day.isToday))
                 .background {
                     RoundedRectangle(cornerRadius: 6)

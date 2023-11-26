@@ -11,13 +11,18 @@ import SwiftUI
 struct StampsView<SVM: StampsViewModel>: View {
     @StateObject var viewModel: SVM
     let columns: [GridItem]
+    let summaryFont: Font
 
     init(
         viewModel: @autoclosure @escaping () -> SVM,
         device: Device
     ) {
         _viewModel = StateObject(wrappedValue: viewModel())
-        columns = Array(repeating: .init(.flexible(), spacing: 16), count: device.columnCount)
+        columns = Array(
+            repeating: .init(.flexible(), spacing: 16),
+            count: device.columnCount
+        )
+        summaryFont = device.summaryFont
     }
 
     var body: some View {
@@ -140,7 +145,7 @@ struct StampsView<SVM: StampsViewModel>: View {
                     .overlay(Color.cellBorder)
                     .padding(.horizontal, 8)
                 Text(stamp.summary)
-                    .font(.caption)
+                    .font(summaryFont)
                     .lineLimit(1)
                     .minimumScaleFactor(0.05)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

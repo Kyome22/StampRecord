@@ -7,6 +7,7 @@
 */
 
 import UIKit
+import SwiftUI
 
 enum DeviceIdiom {
     case iPhone
@@ -44,16 +45,37 @@ struct Device {
     var idiom: DeviceIdiom
     var orientation: DeviceOrientation
 
-    static let `default` = Device(idiom: .iPhone, orientation: .portrait)
+    static let `default` = Device(
+        idiom: .iPhone,
+        orientation: .portrait
+    )
 
     var columnCount: Int {
         switch (idiom, orientation) {
         case (.iPhone, _):
             return 3
         case (.iPad, .portrait):
-            return 5 // 画面サイズによって変更したい
-        case (.iPad, .landscape):
             return 5
+        case (.iPad, .landscape):
+            return 7
+        }
+    }
+
+    var spacing: CGFloat {
+        switch idiom {
+        case .iPhone:
+            return 8
+        case .iPad:
+            return 16
+        }
+    }
+
+    var summaryFont: Font {
+        switch idiom {
+        case .iPhone:
+            return .caption
+        case .iPad:
+            return .title2
         }
     }
 }

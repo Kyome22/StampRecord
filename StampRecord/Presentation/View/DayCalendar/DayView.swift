@@ -12,6 +12,7 @@ struct DayView: View {
     @State var showErrorAlert: Bool = false
     @State var srError: SRError? = nil
     let columns: [GridItem]
+    let summaryFont: Font
     let day: Day
     let removeStampHandler: (Day, Int) throws -> Void
 
@@ -20,7 +21,11 @@ struct DayView: View {
         day: Day,
         removeStampHandler: @escaping (Day, Int) throws -> Void
     ) {
-        self.columns = Array(repeating: .init(.flexible(), spacing: 8), count: device.columnCount)
+        columns = Array(
+            repeating: .init(.flexible(), spacing: 8),
+            count: device.columnCount
+        )
+        summaryFont = device.summaryFont
         self.day = day
         self.removeStampHandler = removeStampHandler
     }
@@ -79,7 +84,7 @@ struct DayView: View {
                 .minimumScaleFactor(0.01)
                 .accessibilityIdentifier("DayView_StampCard_\(stamp.summary)")
             Text(stamp.summary)
-                .font(.caption)
+                .font(summaryFont)
                 .lineLimit(1)
                 .minimumScaleFactor(0.05)
         }
