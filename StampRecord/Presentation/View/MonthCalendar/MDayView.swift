@@ -30,15 +30,8 @@ struct MDayView: View {
                 .overlay(Color.cellBorder)
                 .padding(.horizontal, 4)
             if let log = day.log {
-                switch device.orientation {
-                case .portrait:
-                    VStackedStamps(stamps: log.stamps) { index in
-                        try removeStampHandler(day, index)
-                    }
-                case .landscape:
-                    HStackedStamps(stamps: log.stamps) { index in
-                        try removeStampHandler(day, index)
-                    }
+                FlexibleStackedStamps(stamps: log.stamps) { index in
+                    try removeStampHandler(day, index)
                 }
             } else {
                 Spacer()
