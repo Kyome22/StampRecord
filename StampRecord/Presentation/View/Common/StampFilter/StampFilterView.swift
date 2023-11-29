@@ -27,12 +27,12 @@ struct StampFilterView: View {
                 updateFilterHandler(state)
             }
             Divider()
-            ForEach(stamps.indices, id: \.self) { index in
+            ForEach(stamps) { stamp in
                 Toggle(isOn: Binding<Bool>(
-                    get: { stamps[index].isIncluded },
-                    set: { _ in toggleFilterHandler(stamps[index]) }
+                    get: { stamp.isIncluded },
+                    set: { _ in toggleFilterHandler(stamp) }
                 )) {
-                    Text(verbatim: "\(stamps[index].emoji) \(stamps[index].summary)")
+                    Text(verbatim: "\(stamp.emoji) \(stamp.summary)")
                 }
                 .toggleStyle(.checkmarkToggle)
             }

@@ -14,12 +14,12 @@ struct DayView: View {
     let columns: [GridItem]
     let summaryFont: Font
     let day: Day
-    let removeStampHandler: (Day, Int) throws -> Void
+    let removeStampHandler: (Day, LoggedStamp) throws -> Void
 
     init(
         device: Device,
         day: Day,
-        removeStampHandler: @escaping (Day, Int) throws -> Void
+        removeStampHandler: @escaping (Day, LoggedStamp) throws -> Void
     ) {
         columns = Array(
             repeating: .init(.flexible(), spacing: 8),
@@ -57,10 +57,10 @@ struct DayView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     if let log = day.log {
                         LazyVGrid(columns: columns, spacing: 8) {
-                            ForEach(log.stamps.indices, id: \.self) { index in
-                                if log.stamps[index].isIncluded {
-                                    stampCardView(stamp: log.stamps[index]) {
-                                        try removeStampHandler(day, index)
+                            ForEach(log.stamps) { stamp in
+                                if stamp.isIncluded {
+                                    stampCardView(stamp: stamp) {
+                                        try removeStampHandler(day, stamp)
                                     }
                                 }
                             }
@@ -77,7 +77,10 @@ struct DayView: View {
         .padding(16)
     }
 
-    func stampCardView(stamp: Stamp, removeStampHandler: @escaping () throws -> Void) -> some View {
+    func stampCardView(
+        stamp: LoggedStamp,
+        removeStampHandler: @escaping () throws -> Void
+    ) -> some View {
         VStack(spacing: 4) {
             Text(stamp.emoji)
                 .font(.system(size: 200))

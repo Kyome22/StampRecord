@@ -10,7 +10,7 @@ import Foundation
 
 struct Log: Equatable, CustomStringConvertible {
     var date: Date
-    var stamps: [Stamp]
+    var stamps: [LoggedStamp]
 
     var description: String {
         var text = "date: \(date.timeIntervalSince1970)"

@@ -13,7 +13,7 @@ struct MDayView: View {
     let device: Device
     let day: Day
     let selectHandler: () -> Void
-    let removeStampHandler: (Day, Int) throws -> Void
+    let removeStampHandler: (Day, LoggedStamp) throws -> Void
 
     var body: some View {
         VStack(spacing: 0) {
@@ -30,8 +30,8 @@ struct MDayView: View {
                 .overlay(Color.cellBorder)
                 .padding(.horizontal, 4)
             if let log = day.log {
-                FlexibleStackedStamps(stamps: log.stamps) { index in
-                    try removeStampHandler(day, index)
+                FlexibleStackedStamps(stamps: log.stamps) { stamp in
+                    try removeStampHandler(day, stamp)
                 }
             } else {
                 Spacer()

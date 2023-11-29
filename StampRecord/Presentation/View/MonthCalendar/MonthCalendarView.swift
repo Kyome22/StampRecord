@@ -50,8 +50,8 @@ struct MonthCalendarView<MVM: MonthCalendarViewModel>: View {
                         device: device,
                         weekdays: viewModel.weekStartsAt.weekdays,
                         days: month.days,
-                        removeStampHandler: { day, index in
-                            try viewModel.removeStamp(day: day, index: index)
+                        removeStampHandler: { day, stamp in
+                            try viewModel.removeStamp(day: day, stamp: stamp)
                         }
                     )
                 }

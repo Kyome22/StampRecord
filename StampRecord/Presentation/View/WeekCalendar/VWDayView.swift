@@ -12,7 +12,7 @@ struct VWDayView: View {
     @Binding var isSelected: Bool
     let day: Day
     let selectHandler: () -> Void
-    let removeStampHandler: (Day, Int) throws -> Void
+    let removeStampHandler: (Day, LoggedStamp) throws -> Void
 
     var body: some View {
         VStack(spacing: 0) {
@@ -30,8 +30,8 @@ struct VWDayView: View {
                 .overlay(Color.cellBorder)
                 .padding(.horizontal, 4)
             if let log = day.log {
-                VStackedStamps(stamps: log.stamps) { index in
-                    try removeStampHandler(day, index)
+                VStackedStamps(stamps: log.stamps) { stamp in
+                    try removeStampHandler(day, stamp)
                 }
                 .accessibilityIdentifier("VWDayView_VStackedStamps_\(day.text)")
             } else {

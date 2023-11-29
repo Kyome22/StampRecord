@@ -104,7 +104,10 @@ final class LogRepositoryImpl: LogRepository {
               let ids = managedLog.stamps else {
             return nil
         }
-        let _stamps = ids.compactMap { id in stamps.first(where: { $0.id == id }) }
+        let _stamps = ids.compactMap { id -> LoggedStamp? in
+            guard let stamp = stamps.first(where: { $0.id == id }) else { return nil }
+            return LoggedStamp(stamp: stamp)
+        }
         return Log(date: _date, stamps: _stamps)
     }
 
@@ -116,7 +119,7 @@ final class LogRepositoryImpl: LogRepository {
             if log.stamps.isEmpty {
                 context.delete(managedLogs[index])
             } else {
-                managedLogs[index].stamps = log.stamps.map { $0.id }
+                managedLogs[index].stamps = log.stamps.map { $0.stampID }
             }
         } else {
             if log.stamps.isEmpty {
@@ -124,7 +127,7 @@ final class LogRepositoryImpl: LogRepository {
             } else {
                 let newLog: ManagedLog = context.makeObject()
                 newLog.date = log.date
-                newLog.stamps = log.stamps.map { $0.id }
+                newLog.stamps = log.stamps.map { $0.stampID }
             }
         }
         try save()

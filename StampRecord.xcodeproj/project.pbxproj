@@ -14,6 +14,7 @@
 		1C6242DB2B0259040063C6AF /* TodayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242DA2B0259040063C6AF /* TodayRepository.swift */; };
 		1C62430D2B1579B60063C6AF /* FlexibleHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C62430C2B1579B60063C6AF /* FlexibleHStack.swift */; };
 		1C6243102B157A420063C6AF /* FlexibleStackedStamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C62430F2B157A420063C6AF /* FlexibleStackedStamps.swift */; };
+		1C6243122B1739B70063C6AF /* LoggedStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6243112B1739B70063C6AF /* LoggedStamp.swift */; };
 		1CAB3EF12AE62B9900BE23F0 /* DayCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */; };
 		1CAB3EF32AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */; };
 		1CAB3EF62AE63FEF00BE23F0 /* WeekCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */; };
@@ -122,6 +123,7 @@
 		1C6242DA2B0259040063C6AF /* TodayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRepository.swift; sourceTree = "<group>"; };
 		1C62430C2B1579B60063C6AF /* FlexibleHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleHStack.swift; sourceTree = "<group>"; };
 		1C62430F2B157A420063C6AF /* FlexibleStackedStamps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleStackedStamps.swift; sourceTree = "<group>"; };
+		1C6243112B1739B70063C6AF /* LoggedStamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedStamp.swift; sourceTree = "<group>"; };
 		1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarUITests.swift; sourceTree = "<group>"; };
 		1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarUITests.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				776F9A032B10AFB10080D7DB /* Device.swift */,
 				1CCC693B2ADA7DC1003A8F86 /* Tab.swift */,
 				1CCC693A2ADA7DC1003A8F86 /* Stamp.swift */,
+				1C6243112B1739B70063C6AF /* LoggedStamp.swift */,
 				1CCC693E2ADA7DC1003A8F86 /* Log.swift */,
 				1CCC693D2ADA7DC1003A8F86 /* Day.swift */,
 				1CCC693C2ADA7DC1003A8F86 /* Week.swift */,
@@ -752,6 +755,7 @@
 				1CCC699C2ADA7FB5003A8F86 /* ColorDebugView.swift in Sources */,
 				1CCC69122ADA7AC6003A8F86 /* StampRecordApp.swift in Sources */,
 				1CCC69812ADA7F10003A8F86 /* StampPickerModifier.swift in Sources */,
+				1C6243122B1739B70063C6AF /* LoggedStamp.swift in Sources */,
 				1CCC694C2ADA7DC1003A8F86 /* Period.swift in Sources */,
 				1CCC69452ADA7DC1003A8F86 /* Stamp.swift in Sources */,
 				1CCC69B72ADA8056003A8F86 /* StampRecordAppModel.swift in Sources */,

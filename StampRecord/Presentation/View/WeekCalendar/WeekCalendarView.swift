@@ -51,8 +51,8 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                             selectedDayID: $viewModel.selectedDayID,
                             weekdays: viewModel.weekStartsAt.weekdays,
                             days: week.days,
-                            removeStampHandler: { day, index in
-                                try viewModel.removeStamp(day: day, index: index)
+                            removeStampHandler: { day, stamp in
+                                try viewModel.removeStamp(day: day, stamp: stamp)
                             }
                         )
                     case .iPad:
@@ -60,8 +60,8 @@ struct WeekCalendarView<WVM: WeekCalendarViewModel>: View {
                             selectedDayID: $viewModel.selectedDayID,
                             weekdays: viewModel.weekStartsAt.weekdays,
                             days: week.days,
-                            removeStampHandler: { day, index in
-                                try viewModel.removeStamp(day: day, index: index)
+                            removeStampHandler: { day, stamp in
+                                try viewModel.removeStamp(day: day, stamp: stamp)
                             }
                         )
                     }

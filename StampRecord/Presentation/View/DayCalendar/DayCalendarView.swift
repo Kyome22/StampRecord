@@ -48,8 +48,8 @@ struct DayCalendarView<DVM: DayCalendarViewModel>: View {
                     DayView(
                         device: device,
                         day: day,
-                        removeStampHandler: { day, index in
-                            try viewModel.removeStamp(day: day, index: index)
+                        removeStampHandler: { day, stamp in
+                            try viewModel.removeStamp(day: day, stamp: stamp)
                         }
                     )
                 }

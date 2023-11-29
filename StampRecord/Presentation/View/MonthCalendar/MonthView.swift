@@ -14,14 +14,14 @@ struct MonthView: View {
     let spacing: CGFloat
     let weekdays: [Weekday]
     let days: [Day]
-    let removeStampHandler: (Day, Int) throws -> Void
+    let removeStampHandler: (Day, LoggedStamp) throws -> Void
 
     init(
         selectedDayID: Binding<UUID?>,
         device: Device,
         weekdays: [Weekday],
         days: [Day],
-        removeStampHandler: @escaping (Day, Int) throws -> Void
+        removeStampHandler: @escaping (Day, LoggedStamp) throws -> Void
     ) {
         _selectedDayID = selectedDayID
         self.device = device

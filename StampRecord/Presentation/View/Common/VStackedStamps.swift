@@ -11,14 +11,14 @@ import SwiftUI
 struct VStackedStamps: View {
     @State var showErrorAlert: Bool = false
     @State var srError: SRError? = nil
-    let stamps: [Stamp]
-    let removeStampHandler: (Int) throws -> Void
+    let stamps: [LoggedStamp]
+    let removeStampHandler: (LoggedStamp) throws -> Void
 
     var body: some View {
         OverlappingVStack(alignment: .top, spacing: 4) {
-            ForEach(stamps.indices, id: \.self) { index in
-                if stamps[index].isIncluded {
-                    Text(stamps[index].emoji)
+            ForEach(stamps) { stamp in
+                if stamp.isIncluded {
+                    Text(stamp.emoji)
                         .font(.system(size: 200))
                         .minimumScaleFactor(0.01)
                         .padding(4)
@@ -28,23 +28,23 @@ struct VStackedStamps: View {
         .padding(4)
         .contextMenu {
             Section("removeStamp") {
-                ForEach(stamps.indices, id: \.self) { index in
-                    if stamps[index].isIncluded {
+                ForEach(stamps) { stamp in
+                    if stamp.isIncluded {
                         Button(role: .destructive) {
                             do {
-                                try removeStampHandler(index)
+                                try removeStampHandler(stamp)
                             } catch let error as SRError {
                                 srError = error
                                 showErrorAlert = true
                             } catch {}
                         } label: {
                             Label {
-                                Text(verbatim: "\(stamps[index].emoji) \(stamps[index].summary)")
+                                Text(verbatim: "\(stamp.emoji) \(stamp.summary)")
                             } icon: {
                                 Image(.stampFillMinus)
                             }
                         }
-                        .accessibilityIdentifier("VStackedStamps_RemoveButton_\(stamps[index].summary)")
+                        .accessibilityIdentifier("VStackedStamps_RemoveButton_\(stamp.summary)")
                     }
                 }
             }

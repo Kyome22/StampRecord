@@ -28,7 +28,7 @@ protocol MonthCalendarViewModel: ObservableObject {
     func updateFilter(state: StampFilterState)
     func toggleFilter(stamp: Stamp)
     func putStamp(stamp: Stamp) throws
-    func removeStamp(day: Day, index: Int) throws
+    func removeStamp(day: Day, stamp: LoggedStamp) throws
 }
 
 final class MonthCalendarViewModelImpl: MonthCalendarViewModel {
@@ -183,17 +183,17 @@ final class MonthCalendarViewModelImpl: MonthCalendarViewModel {
         }
         let day = monthList[i].days[j]
         if var log = day.log {
-            log.stamps.append(stamp)
+            log.stamps.append(LoggedStamp(stamp: stamp))
             try logRepository.updateLog(log)
         } else if let date = day.date {
-            let log = Log(date: date, stamps: [stamp])
+            let log = Log(date: date, stamps: [LoggedStamp(stamp: stamp)])
             try logRepository.updateLog(log)
         }
         monthList[i].days[j].log = logRepository.getLog(of: day.date)
     }
 
-    func removeStamp(day: Day, index: Int) throws {
-        if var log = day.log {
+    func removeStamp(day: Day, stamp: LoggedStamp) throws {
+        if var log = day.log, let index = log.stamps.firstIndex(of: stamp) {
             log.stamps.remove(at: index)
             try logRepository.updateLog(log)
         }
@@ -241,6 +241,6 @@ extension PreviewMock {
         func updateFilter(state: StampFilterState) {}
         func toggleFilter(stamp: Stamp) {}
         func putStamp(stamp: Stamp) throws {}
-        func removeStamp(day: Day, index: Int) throws {}
+        func removeStamp(day: Day, stamp: LoggedStamp) throws {}
     }
 }
