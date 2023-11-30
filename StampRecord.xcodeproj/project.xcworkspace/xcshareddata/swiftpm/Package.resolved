@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "flexiblestack",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kyome22/FlexibleStack.git",
+      "state" : {
+        "revision" : "1c6b6e6a5ded46a9502010ab9e1e45f001b40e12",
+        "version" : "0.1.0"
+      }
+    },
+    {
       "identity" : "infinitepaging",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Kyome22/InfinitePaging.git",

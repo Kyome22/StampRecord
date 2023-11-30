@@ -30,7 +30,7 @@ struct HWDayView: View {
                 .overlay(Color.cellBorder)
                 .padding(.vertical, 4)
             if let log = day.log {
-                HStackedStamps(stamps: log.stamps) { index in
+                HStackedStamps(alignment: .leading, stamps: log.stamps) { index in
                     try removeStampHandler(day, index)
                 }
                 .accessibilityIdentifier("HWDayView_HStackedStamps_\(day.text)")

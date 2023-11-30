@@ -137,7 +137,7 @@ struct StampsView<SVM: StampsViewModel>: View {
         } label: {
             VStack(spacing: 0) {
                 Text(stamp.emoji)
-                    .font(.system(size: 200))
+                    .font(.system(size: 100))
                     .minimumScaleFactor(0.01)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .aspectRatio(1.66, contentMode: .fill)

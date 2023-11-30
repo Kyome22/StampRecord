@@ -7,21 +7,22 @@
 */
 
 import SwiftUI
+import FlexibleStack
 
 struct HStackedStamps: View {
     @State var showErrorAlert: Bool = false
     @State var srError: SRError? = nil
+    let alignment: BoxAlignment
     let stamps: [LoggedStamp]
     let removeStampHandler: (LoggedStamp) throws -> Void
 
     var body: some View {
-        OverlappingHStack(alignment: .leading, spacing: 4) {
+        FlexibleHStack(alignment: alignment, spacing: 4) {
             ForEach(stamps) { stamp in
                 if stamp.isIncluded {
                     Text(stamp.emoji)
-                        .font(.system(size: 200))
+                        .font(.system(size: 100))
                         .minimumScaleFactor(0.01)
-                        .padding(4)
                 }
             }
         }
@@ -54,5 +55,5 @@ struct HStackedStamps: View {
 }
 
 #Preview {
-    HStackedStamps(stamps: [], removeStampHandler: { _ in })
+    HStackedStamps(alignment: .center, stamps: [], removeStampHandler: { _ in })
 }

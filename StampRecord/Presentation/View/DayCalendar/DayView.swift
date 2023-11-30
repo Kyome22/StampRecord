@@ -83,7 +83,7 @@ struct DayView: View {
     ) -> some View {
         VStack(spacing: 4) {
             Text(stamp.emoji)
-                .font(.system(size: 200))
+                .font(.system(size: 100))
                 .minimumScaleFactor(0.01)
                 .accessibilityIdentifier("DayView_StampCard_\(stamp.summary)")
             Text(stamp.summary)
