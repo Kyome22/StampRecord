@@ -22,7 +22,9 @@ struct HStackedStamps: View {
                 if stamp.isIncluded {
                     Text(stamp.emoji)
                         .font(.system(size: 100))
+                        .multilineTextAlignment(.center)
                         .minimumScaleFactor(0.01)
+                        .aspectRatio(1.0, contentMode: .fit)
                 }
             }
         }

@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Kyome22/FlexibleStack.git",
       "state" : {
-        "revision" : "1c6b6e6a5ded46a9502010ab9e1e45f001b40e12",
-        "version" : "0.1.0"
+        "revision" : "540a4e3e54504f50d04b2ae43fd067ee521f5398",
+        "version" : "0.3.0"
       }
     },
     {

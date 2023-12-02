@@ -1110,7 +1110,7 @@
 			repositoryURL = "https://github.com/Kyome22/FlexibleStack.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.1.0;
+				version = 0.3.0;
 			};
 		};
 		1CCC69262ADA7B79003A8F86 /* XCRemoteSwiftPackageReference "EmojiPalette" */ = {
