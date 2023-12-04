@@ -14,6 +14,7 @@
 		1C6242DB2B0259040063C6AF /* TodayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6242DA2B0259040063C6AF /* TodayRepository.swift */; };
 		1C6243122B1739B70063C6AF /* LoggedStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6243112B1739B70063C6AF /* LoggedStamp.swift */; };
 		1C6243362B18F0C70063C6AF /* FlexibleStack in Frameworks */ = {isa = PBXBuildFile; productRef = 1C6243352B18F0C70063C6AF /* FlexibleStack */; };
+		1C827DCB2B1E084F00BB4552 /* CaptureScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C827DCA2B1E084F00BB4552 /* CaptureScreenshots.swift */; };
 		1CAB3EF12AE62B9900BE23F0 /* DayCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */; };
 		1CAB3EF32AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */; };
 		1CAB3EF62AE63FEF00BE23F0 /* WeekCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */; };
@@ -96,6 +97,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1C827DCE2B1E084F00BB4552 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1CCC69062ADA7AC6003A8F86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1CCC690D2ADA7AC6003A8F86;
+			remoteInfo = StampRecord;
+		};
 		1CCC69C42ADE711C003A8F86 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1CCC69062ADA7AC6003A8F86 /* Project object */;
@@ -119,6 +127,8 @@
 		1C6242D82B0220D50063C6AF /* StampFilterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampFilterState.swift; sourceTree = "<group>"; };
 		1C6242DA2B0259040063C6AF /* TodayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRepository.swift; sourceTree = "<group>"; };
 		1C6243112B1739B70063C6AF /* LoggedStamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedStamp.swift; sourceTree = "<group>"; };
+		1C827DC82B1E084F00BB4552 /* CaptureScreenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaptureScreenshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C827DCA2B1E084F00BB4552 /* CaptureScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureScreenshots.swift; sourceTree = "<group>"; };
 		1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarUITests.swift; sourceTree = "<group>"; };
 		1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarUITests.swift; sourceTree = "<group>"; };
@@ -206,6 +216,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1C827DC52B1E084F00BB4552 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CCC690B2ADA7AC6003A8F86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -257,6 +274,14 @@
 			path = Style;
 			sourceTree = "<group>";
 		};
+		1C827DC92B1E084F00BB4552 /* CaptureScreenshots */ = {
+			isa = PBXGroup;
+			children = (
+				1C827DCA2B1E084F00BB4552 /* CaptureScreenshots.swift */,
+			);
+			path = CaptureScreenshots;
+			sourceTree = "<group>";
+		};
 		1CAB3EF42AE6307E00BE23F0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +298,7 @@
 				1CE66BA12AE50C7100AC612D /* StampRecord.xctestplan */,
 				1CCC69C12ADE711C003A8F86 /* StampRecordTests */,
 				1CCC69D52ADF67AE003A8F86 /* StampRecordUITests */,
+				1C827DC92B1E084F00BB4552 /* CaptureScreenshots */,
 				1CCC690F2ADA7AC6003A8F86 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -283,6 +309,7 @@
 				1CCC690E2ADA7AC6003A8F86 /* StampRecord.app */,
 				1CCC69C02ADE711C003A8F86 /* StampRecordTests.xctest */,
 				1CCC69D42ADF67AE003A8F86 /* StampRecordUITests.xctest */,
+				1C827DC82B1E084F00BB4552 /* CaptureScreenshots.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -541,6 +568,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1C827DC72B1E084F00BB4552 /* CaptureScreenshots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C827DD22B1E084F00BB4552 /* Build configuration list for PBXNativeTarget "CaptureScreenshots" */;
+			buildPhases = (
+				1C827DC42B1E084F00BB4552 /* Sources */,
+				1C827DC52B1E084F00BB4552 /* Frameworks */,
+				1C827DC62B1E084F00BB4552 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1C827DCF2B1E084F00BB4552 /* PBXTargetDependency */,
+			);
+			name = CaptureScreenshots;
+			productName = CaptureScreenshots;
+			productReference = 1C827DC82B1E084F00BB4552 /* CaptureScreenshots.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		1CCC690D2ADA7AC6003A8F86 /* StampRecord */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1CCC69232ADA7AC8003A8F86 /* Build configuration list for PBXNativeTarget "StampRecord" */;
@@ -611,6 +656,10 @@
 				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "Studio Kyome";
 				TargetAttributes = {
+					1C827DC72B1E084F00BB4552 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 1CCC690D2ADA7AC6003A8F86;
+					};
 					1CCC690D2ADA7AC6003A8F86 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -646,11 +695,19 @@
 				1CCC690D2ADA7AC6003A8F86 /* StampRecord */,
 				1CCC69BF2ADE711C003A8F86 /* StampRecordTests */,
 				1CCC69D32ADF67AE003A8F86 /* StampRecordUITests */,
+				1C827DC72B1E084F00BB4552 /* CaptureScreenshots */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1C827DC62B1E084F00BB4552 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CCC690C2ADA7AC6003A8F86 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -678,6 +735,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1C827DC42B1E084F00BB4552 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C827DCB2B1E084F00BB4552 /* CaptureScreenshots.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CCC690A2ADA7AC6003A8F86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -781,6 +846,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1C827DCF2B1E084F00BB4552 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1CCC690D2ADA7AC6003A8F86 /* StampRecord */;
+			targetProxy = 1C827DCE2B1E084F00BB4552 /* PBXContainerItemProxy */;
+		};
 		1CCC69C52ADE711C003A8F86 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1CCC690D2ADA7AC6003A8F86 /* StampRecord */;
@@ -794,6 +864,46 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1C827DD02B1E084F00BB4552 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.CaptureScreenshots;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StampRecord;
+			};
+			name = Debug;
+		};
+		1C827DD12B1E084F00BB4552 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.CaptureScreenshots;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StampRecord;
+			};
+			name = Release;
+		};
 		1CCC69212ADA7AC8003A8F86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1066,6 +1176,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1C827DD22B1E084F00BB4552 /* Build configuration list for PBXNativeTarget "CaptureScreenshots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C827DD02B1E084F00BB4552 /* Debug */,
+				1C827DD12B1E084F00BB4552 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1CCC69092ADA7AC6003A8F86 /* Build configuration list for PBXProject "StampRecord" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

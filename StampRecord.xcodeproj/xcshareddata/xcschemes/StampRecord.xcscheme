@@ -54,6 +54,17 @@
                ReferencedContainer = "container:StampRecord.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1C827DC72B1E084F00BB4552"
+               BuildableName = "CaptureScreenshots.xctest"
+               BlueprintName = "CaptureScreenshots"
+               ReferencedContainer = "container:StampRecord.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
