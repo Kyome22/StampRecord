@@ -1,0 +1,57 @@
+name: Dispatch Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test
+    runs-on: macos-13
+    env:
+      DEVELOPER_DIR: "/Applications/Xcode_15.0.1.app/Contents/Developer"
+      CODE_SIGN_IDENTITY: ""
+      CODE_SIGNING_REQUIRED: "NO"
+      CODE_SIGNING_ALLOWED: "NO"
+      DERIVED_DATA: "DerivedData"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Show Xcode Version
+        run: xcodebuild -version
+
+      - name: Install yeetd
+        run: |
+          wget https://github.com/biscuitehh/yeetd/releases/download/1.0/yeetd-normal.pkg
+          sudo installer -pkg yeetd-normal.pkg -target /
+          yeetd &
+
+      - name: Build for Test
+        run: |
+          xcodebuild clean build-for-testing \
+            -project StampRecord.xcodeproj \
+            -scheme StampRecord \
+            -destination "platform=iOS Simulator,name=iPhone 15,OS=17.0.1" \
+            -derivedDataPath ${{ env.DERIVED_DATA }} | \
+            xcpretty -c && exit ${PIPESTATUS[0]}
+
+      - name: Unit Test
+        run: |
+          xcodebuild test-without-building \
+            -project StampRecord.xcodeproj \
+            -scheme StampRecord \
+            -destination "platform=iOS Simulator,name=iPhone 15,OS=17.0.1" \
+            -derivedDataPath ${{ env.DERIVED_DATA }} \
+            -only-testing:StampRecordTests | \
+            xcpretty -c && exit ${PIPESTATUS[0]}
+
+      - name: UI Test
+        run: |
+          xcodebuild test-without-building \
+            -project StampRecord.xcodeproj \
+            -scheme StampRecord \
+            -destination "platform=iOS Simulator,name=iPhone 15,OS=17.0.1" \
+            -derivedDataPath ${{ env.DERIVED_DATA }} \
+            -only-testing:StampRecordUITests | \
+            xcpretty -c && exit ${PIPESTATUS[0]}
