@@ -19,7 +19,7 @@ final class LogRepositoryTests: XCTestCase {
                                         stampsPublisher: Just([Stamp]()).eraseToAnyPublisher())
             do {
                 let stamp = Stamp(emoji: "😄", summary: "Smile")
-                try sut.updateLog(Log(date: Date.now, stamps: [stamp]))
+                try sut.updateLog(Log(date: Date.now, stamps: [LoggedStamp(stamp: stamp)]))
             } catch {
                 XCTFail("catch error: \(error.localizedDescription)")
             }
@@ -33,8 +33,8 @@ final class LogRepositoryTests: XCTestCase {
             do {
                 let date = Date.now
                 let stamp = Stamp(emoji: "😄", summary: "Smile")
-                try sut.updateLog(Log(date: date, stamps: [stamp]))
-                try sut.updateLog(Log(date: date, stamps: [stamp, stamp]))
+                try sut.updateLog(Log(date: date, stamps: [LoggedStamp(stamp: stamp)]))
+                try sut.updateLog(Log(date: date, stamps: [LoggedStamp(stamp: stamp), LoggedStamp(stamp: stamp)]))
             } catch {
                 XCTFail("catch error: \(error.localizedDescription)")
             }
@@ -48,7 +48,7 @@ final class LogRepositoryTests: XCTestCase {
             do {
                 let date = Date.now
                 let stamp = Stamp(emoji: "😄", summary: "Smile")
-                try sut.updateLog(Log(date: date, stamps: [stamp]))
+                try sut.updateLog(Log(date: date, stamps: [LoggedStamp(stamp: stamp)]))
                 try sut.updateLog(Log(date: date, stamps: []))
             } catch {
                 XCTFail("catch error: \(error.localizedDescription)")
@@ -77,7 +77,7 @@ final class LogRepositoryTests: XCTestCase {
                                         stampsPublisher: Just([Stamp]()).eraseToAnyPublisher())
             do {
                 let stamp = Stamp(emoji: "😄", summary: "Smile")
-                try sut.updateLog(Log(date: Date.now, stamps: [stamp]))
+                try sut.updateLog(Log(date: Date.now, stamps: [LoggedStamp(stamp: stamp)]))
             } catch SRError.database(let type) {
                 XCTAssertEqual(type, .failedUpdateDB)
             } catch {
@@ -93,7 +93,7 @@ final class LogRepositoryTests: XCTestCase {
                                         stampsPublisher: Just([Stamp]()).eraseToAnyPublisher())
             do {
                 let stamp = Stamp(emoji: "😄", summary: "Smile")
-                try sut.updateLog(Log(date: Date.now, stamps: [stamp]))
+                try sut.updateLog(Log(date: Date.now, stamps: [LoggedStamp(stamp: stamp)]))
             } catch SRError.database(let type) {
                 XCTAssertEqual(type, .failedFetchData)
             } catch {
@@ -119,9 +119,9 @@ final class LogRepositoryTests: XCTestCase {
             let sut = LogRepositoryImpl(context: contextMock,
                                         stampsPublisher: Just([stamp]).eraseToAnyPublisher())
             let date = Date.now
-            try sut.updateLog(Log(date: date, stamps: [stamp]))
+            try sut.updateLog(Log(date: date, stamps: [LoggedStamp(stamp: stamp)]))
             let log = try XCTUnwrap(sut.getLog(of: date))
-            XCTAssertEqual(log.stamps, [stamp])
+            XCTAssertEqual(log.stamps.map({ $0.stamp }), [stamp])
         }
 
         try XCTContext.runActivity(named: "happy path (update stamp)") { _ in
@@ -132,14 +132,14 @@ final class LogRepositoryTests: XCTestCase {
             let sut = LogRepositoryImpl(context: contextMock,
                                         stampsPublisher: stampsSubject.eraseToAnyPublisher())
             let date = Date.now
-            try sut.updateLog(Log(date: date, stamps: [stamp]))
+            try sut.updateLog(Log(date: date, stamps: [LoggedStamp(stamp: stamp)]))
             let log1 = try XCTUnwrap(sut.getLog(of: date))
-            XCTAssertEqual(log1.stamps, [stamp])
+            XCTAssertEqual(log1.stamps.map({ $0.stamp }), [stamp])
             XCTAssertEqual(log1.stamps.first?.emoji, "😄")
             stamp.emoji = "💪"
             stampsSubject.send([stamp])
             let log2 = try XCTUnwrap(sut.getLog(of: date))
-            XCTAssertEqual(log2.stamps, [stamp])
+            XCTAssertEqual(log2.stamps.map({ $0.stamp }), [stamp])
             XCTAssertEqual(log2.stamps.first?.emoji, "💪")
         }
 
@@ -152,12 +152,13 @@ final class LogRepositoryTests: XCTestCase {
             let sut = LogRepositoryImpl(context: contextMock,
                                         stampsPublisher: stampsSubject.eraseToAnyPublisher())
             let date = Date.now
-            try sut.updateLog(Log(date: date, stamps: [stamp1, stamp2]))
+            let stamps = [LoggedStamp(stamp: stamp1), LoggedStamp(stamp: stamp2)]
+            try sut.updateLog(Log(date: date, stamps: stamps))
             let log1 = try XCTUnwrap(sut.getLog(of: date))
-            XCTAssertEqual(log1.stamps, [stamp1, stamp2])
+            XCTAssertEqual(log1.stamps.map({ $0.stamp }), [stamp1, stamp2])
             stampsSubject.send([stamp2])
             let log2 = try XCTUnwrap(sut.getLog(of: date))
-            XCTAssertEqual(log2.stamps, [stamp2])
+            XCTAssertEqual(log2.stamps.map({ $0.stamp }), [stamp2])
         }
 
         try XCTContext.runActivity(named: "happy path (delete stamp 2)") { _ in
@@ -168,9 +169,9 @@ final class LogRepositoryTests: XCTestCase {
             let sut = LogRepositoryImpl(context: contextMock,
                                         stampsPublisher: stampsSubject.eraseToAnyPublisher())
             let date = Date.now
-            try sut.updateLog(Log(date: date, stamps: [stamp]))
+            try sut.updateLog(Log(date: date, stamps: [LoggedStamp(stamp: stamp)]))
             let log1 = try XCTUnwrap(sut.getLog(of: date))
-            XCTAssertEqual(log1.stamps, [stamp])
+            XCTAssertEqual(log1.stamps.map({ $0.stamp }), [stamp])
             stampsSubject.send([])
             let log2 = sut.getLog(of: date)
             XCTAssertNil(log2)
