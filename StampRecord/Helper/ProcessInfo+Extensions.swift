@@ -15,4 +15,7 @@ extension ProcessInfo {
     static var isUITesting: Bool {
         return Self.processInfo.environment["EXEC_UITEST"] != nil
     }
+    static var isCapturing: Bool {
+        return Self.processInfo.environment["EXEC_CAPTURE"] != nil
+    }
 }

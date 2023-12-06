@@ -15,6 +15,7 @@
 		1C6243122B1739B70063C6AF /* LoggedStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6243112B1739B70063C6AF /* LoggedStamp.swift */; };
 		1C6243362B18F0C70063C6AF /* FlexibleStack in Frameworks */ = {isa = PBXBuildFile; productRef = 1C6243352B18F0C70063C6AF /* FlexibleStack */; };
 		1C827DCB2B1E084F00BB4552 /* CaptureScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C827DCA2B1E084F00BB4552 /* CaptureScreenshots.swift */; };
+		1C827DD42B20B0F900BB4552 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C827DD32B20B0F900BB4552 /* Dummy.swift */; };
 		1CAB3EF12AE62B9900BE23F0 /* DayCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */; };
 		1CAB3EF32AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */; };
 		1CAB3EF62AE63FEF00BE23F0 /* WeekCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */; };
@@ -129,6 +130,7 @@
 		1C6243112B1739B70063C6AF /* LoggedStamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedStamp.swift; sourceTree = "<group>"; };
 		1C827DC82B1E084F00BB4552 /* CaptureScreenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaptureScreenshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C827DCA2B1E084F00BB4552 /* CaptureScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureScreenshots.swift; sourceTree = "<group>"; };
+		1C827DD32B20B0F900BB4552 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		1CAB3EF02AE62B9900BE23F0 /* DayCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarUITests.swift; sourceTree = "<group>"; };
 		1CAB3EF22AE62F9A00BE23F0 /* XCUIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		1CAB3EF52AE63FEF00BE23F0 /* WeekCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarUITests.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				1CCC693F2ADA7DC1003A8F86 /* Weekday.swift */,
 				1CCC69432ADA7DC1003A8F86 /* WeekStartsAt.swift */,
 				1CCC69412ADA7DC1003A8F86 /* Period.swift */,
+				1C827DD32B20B0F900BB4552 /* Dummy.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 				1C6242D52B0201C50063C6AF /* StampFilterModifier.swift in Sources */,
 				1CCC69CA2ADE75FC003A8F86 /* ManagedObjectContext.swift in Sources */,
 				1CCC697C2ADA7F09003A8F86 /* JudgeDeviceModifier.swift in Sources */,
+				1C827DD42B20B0F900BB4552 /* Dummy.swift in Sources */,
 				1CCC69462ADA7DC1003A8F86 /* Tab.swift in Sources */,
 				1CCC69542ADA7E75003A8F86 /* StampRepository.swift in Sources */,
 				1CCC696F2ADA7EF8003A8F86 /* SummaryTextFieldStyle.swift in Sources */,

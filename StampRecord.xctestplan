@@ -29,6 +29,13 @@
         "identifier" : "1CCC69D32ADF67AE003A8F86",
         "name" : "StampRecordUITests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:StampRecord.xcodeproj",
+        "identifier" : "1C827DC72B1E084F00BB4552",
+        "name" : "CaptureScreenshots"
+      }
     }
   ],
   "version" : 1

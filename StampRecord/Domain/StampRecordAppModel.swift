@@ -48,14 +48,20 @@ final class StampRecordAppModelImpl: StampRecordAppModel {
     let todayRepository: TR
 
     init() {
-        let isTesting = ProcessInfo.isUnitTesting || ProcessInfo.isUITesting
-        coreDataRepository = isTesting ? .init(inMemory: true) : .shared
+        let isCapturing = ProcessInfo.isCapturing
+        if ProcessInfo.isUnitTesting || ProcessInfo.isUITesting {
+            coreDataRepository = .init(inMemory: true)
+        } else if isCapturing {
+            coreDataRepository = .mock
+        } else {
+            coreDataRepository = .shared
+        }
         let context = ManagedObjectContextImpl(context: coreDataRepository.container.viewContext)
         stampRepository = SR(context: context)
         logRepository = LR(context: context, stampsPublisher: stampRepository.stampsPublisher)
-        todayRepository = TR()
+        todayRepository = TR(date: isCapturing ? Dummy.today : .now)
 
-        if stampRepository.isEmpty {
+        if stampRepository.isEmpty || isCapturing {
             tabSelection = .stamps
         } else {
             tabSelection = defaultPeriod.tab

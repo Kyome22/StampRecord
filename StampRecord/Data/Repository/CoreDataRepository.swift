@@ -17,12 +17,18 @@ struct CoreDataRepository {
         let result = Self(inMemory: true)
         let context = result.container.viewContext
 
-        Stamp.dummy.forEach { stamp in
+        Dummy.stamps.forEach { stamp in
             let managedStamp = ManagedStamp(context: context)
             managedStamp.id = stamp.id
             managedStamp.emoji = stamp.emoji
             managedStamp.summary = stamp.summary
             managedStamp.createdDate = stamp.createdDate
+        }
+
+        Dummy.logs.forEach { log in
+            let managedLog = ManagedLog(context: context)
+            managedLog.date = log.date
+            managedLog.stamps = log.stamps.map { $0.stampID }
         }
 
         do {

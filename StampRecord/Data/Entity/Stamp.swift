@@ -27,32 +27,3 @@ struct Stamp: Identifiable, Equatable, CustomStringConvertible {
         self.isIncluded = true
     }
 }
-
-extension Stamp {
-    static let dummy: [Self] = {
-        let info: [(String, String)] = [
-            ("💪", "筋トレ"),
-            ("🍽️", "皿洗い"),
-            ("🎹", "ピアノの練習"),
-            ("🏃", "運動"),
-            ("🛠️", "開発"),
-            ("🛁", "風呂洗い"),
-            ("📝", "英語の勉強"),
-            ("🗣️", "人と話す"),
-            ("🍞", "朝食"),
-            ("🍱", "昼食"),
-            ("🍛", "夕食"),
-            ("🧘", "瞑想"),
-            ("🏆", "優勝"),
-            ("🧩", "パズル"),
-            ("🏊‍♀️", "水泳"),
-            ("🎸", "ギターの練習")
-        ]
-        var i: Int = 0
-        return info.map { (emoji, summary) in
-            let date = Calendar.current.date(byAdding: .day, value: i, to: Date.now)!
-            i += 1
-            return Stamp(emoji: emoji, summary: summary, createdDate: date)
-        }
-    }()
-}

@@ -21,8 +21,8 @@ final class TodayRepositoryImpl: TodayRepository {
         return todaySubject.eraseToAnyPublisher()
     }
 
-    init() {
-        todaySubject = .init(Date.now)
+    init(date: Date) {
+        todaySubject = .init(date)
 
         NotificationCenter.default
             .publisher(for: .NSCalendarDayChanged)
