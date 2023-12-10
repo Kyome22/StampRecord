@@ -1,5 +1,5 @@
 /*
- Color+Extensions.swift
+ Color+Extension.swift
  StampRecord
 
  Created by Takuto Nakamura on 2023/08/28.

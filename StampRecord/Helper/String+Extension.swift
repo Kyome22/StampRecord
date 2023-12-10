@@ -1,5 +1,5 @@
 /*
- String+Extensions.swift
+ String+Extension.swift
  StampRecord
 
  Created by Takuto Nakamura on 2023/10/13.

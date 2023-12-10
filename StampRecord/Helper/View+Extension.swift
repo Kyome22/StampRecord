@@ -1,5 +1,5 @@
 /*
- View+Extensions.swift
+ View+Extension.swift
  StampRecord
 
  Created by Takuto Nakamura on 2023/08/28.

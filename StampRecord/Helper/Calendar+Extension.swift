@@ -1,5 +1,5 @@
 /*
- Calendar+Extensions.swift
+ Calendar+Extension.swift
  StampRecord
 
  Created by Takuto Nakamura on 2023/08/27.

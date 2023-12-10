@@ -1,5 +1,5 @@
 /*
- ProcessInfo+Extensions.swift
+ ProcessInfo+Extension.swift
  StampRecord
 
  Created by Takuto Nakamura on 2023/10/22.
